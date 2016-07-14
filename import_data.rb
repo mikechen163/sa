@@ -172,6 +172,10 @@ def import_base_data(dir,import_daily_record=false,etf=false,update_mode_flag=fa
               code_name = line[7..10].strip+"  "
             end
 
+            if line[7..8]=='XD'
+              code_name = line[7..10].strip+"  "
+            end
+
 
             if line[7..9]=='GQY'
               code_name = line[7..11].strip+' '

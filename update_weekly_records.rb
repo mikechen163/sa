@@ -1557,6 +1557,96 @@ def load_tushare_from_json
 
 end #of load_json\\
 
+def last_three_month_analysis(dir,days=90)
+
+  load_name_into_database if Names.last == nil 
+
+   three_month_before = Time.now.to_date - days
+
+   sa=[]
+   #qf = 1.0
+
+  Dir.glob("#{dir}\/*.txt").sort.each do |afile|
+    puts "processing file #{afile}"
+     qf = 1.0
+
+    pos = afile.index('S')
+    market=afile[pos..(pos+1)]  #SH SZ
+    code = afile[(pos+2)..(pos+7)]
+
+    b_first = true
+    start = high = low = close =  0.0
+
+    File.open(afile) do |file|
+
+      #last_date = ''
+      ta = []
+      last_d = '2016-07-01'
+      ls = 0
+      file.each_line do |line|
+        #p line
+        #
+        qf = line.scan(/[0-9]+\.[0-9]+/)[0].to_f if line.index('SINA')!=nil
+
+        if line[4] == '-'
+          ta = line.split(/ /) 
+          if Date.parse(ta[0]) >= three_month_before
+             if b_first
+                start= ta[4].to_f
+                high = ta[2].to_f
+                low  = ta[3].to_f
+                close = start
+
+                b_first = false
+             end
+
+             high = ta[2].to_f if ta[2].to_f > high
+             low  = ta[3].to_f if ta[3].to_f < low
+             close = ta[4].to_f
+
+             #p "#{ta[0]} #{start} #{high} #{low} #{close}" 
+
+
+          end
+        end
+       
+      end
+
+     
+    end #each_line 
+
+    h = Hash.new
+    h[:code] = code
+    h[:close] = 0.0
+    h[:close] = close/qf if close!=0.0
+    h[:start] = start/qf
+    h[:high] = high/qf
+    h[:low] = low/qf
+    h[:roe] = 0.0
+    h[:roe] = (close-start)/start*100 if start!=0.0
+
+    h[:high_roe] = 0.0
+    h[:high_roe] = -(high-close)/close*100 if close!=0.0
+    h[:low_roe] = 0.0
+    h[:low_roe] = -(low-close)/close*100 if close!=0.0
+
+
+
+    #p h 
+
+    sa.push(h)
+
+  end # each file
+
+  #sa.sort_by{|h| h[:roe]}
+
+   p " 代码        统计回报        高位回落       低位上涨         当前价格"
+  sa.sort_by{|h| -h[:roe]}.each do |h|
+    p "#{format_code(h[:code])}  #{format_roe(h[:roe])}  #{format_roe(h[:high_roe])}  #{format_roe(h[:low_roe])} #{format_price((h[:close]*100).round/100.0)}"
+  end 
+
+end
+
 def update_till_lastest(dir)
 
   load_name_into_database if Names.last == nil 
@@ -2029,6 +2119,7 @@ def print_help
      puts "-tu [dir] [start_date] [end_date] update fuquan data for all codes from database "
      puts "-fu [codefile] [dir] [start_date] [end_date] update fuquan data for all codes from codefile "
      puts "-ud [dir]  update given directory all fuquan files to lastest "
+     puts "-sd [dir] [days]  make a statistics for last days. "
      puts "-tc [code] [start_date] [end_date] update single code data from start_date to end_date "
 
 
@@ -2263,6 +2354,12 @@ if ARGV.length != 0
       if ele == '-ud' 
        dir = ARGV[ARGV.index(ele)+1]
       update_till_lastest(dir)
+     end 
+
+     if ele == '-sd' 
+       dir = ARGV[ARGV.index(ele)+1]
+        offset = ARGV[ARGV.index(ele)+2].to_i
+      last_three_month_analysis(dir,offset)
      end 
 
       if ele == '-tc' 
