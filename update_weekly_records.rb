@@ -1640,7 +1640,7 @@ def last_three_month_analysis(dir,days=90)
 
   #sa.sort_by{|h| h[:roe]}
 
-   p " 代码        统计回报        高位回落       低位上涨         当前价格"
+   p " 代码            统计回报  高位回落 低位上涨 当前价格"
   sa.sort_by{|h| -h[:roe]}.each do |h|
     p "#{format_code(h[:code])}  #{format_roe(h[:roe])}  #{format_roe(h[:high_roe])}  #{format_roe(h[:low_roe])} #{format_price((h[:close]*100).round/100.0)}"
   end 
