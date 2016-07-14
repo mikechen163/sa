@@ -40,7 +40,7 @@ def import_base_data(dir,import_daily_record=false,etf=false,update_mode_flag=fa
   fq_file = File.new("refuquan.txt",'w')
 
 
-  Dir.glob("#{dir}\/*.txt").each do |afile|
+  Dir.glob("#{dir}\/*.txt").sort.each do |afile|
     #puts "processing file #{afile}"
 
     # ind1=afile.index("SH000300")

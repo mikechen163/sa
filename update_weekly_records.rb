@@ -1561,7 +1561,7 @@ def update_till_lastest(dir)
 
   load_name_into_database if Names.last == nil 
 
-  Dir.glob("#{dir}\/*.txt").each do |afile|
+  Dir.glob("#{dir}\/*.txt").sort.each do |afile|
     puts "processing file #{afile}"
 
     pos = afile.index('S')
