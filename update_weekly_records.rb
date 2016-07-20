@@ -1557,9 +1557,9 @@ def load_tushare_from_json
 
 end #of load_json\\
 
-def last_three_month_analysis(dir,days=90)
+def last_three_month_analysis(dir,days=90,check_ma5_days=1000)
 
-  #load_name_into_database if Names.last == nil 
+  load_name_into_database if Names.count != 0 
 
    three_month_before = Time.now.to_date - days
 
@@ -1682,9 +1682,11 @@ def last_three_month_analysis(dir,days=90)
     h[:updays_ma10] = updays_ma10
 
     h[:high_roe] = 0.0
-    h[:high_roe] = -(high-close)/close*100 if close!=0.0
+    h[:high_roe] = -(high-low)/high*100 if high!=0.0
     h[:low_roe] = 0.0
-    h[:low_roe] = -(low-close)/close*100 if close!=0.0
+    h[:low_roe] = -(low-close)/low*100 if low!=0.0
+#    h[:high_low_roe] = 0.0
+#    h[:high_low_roe] = (low-high)/high*100 if high!=0.0
 
 
 
@@ -1696,9 +1698,15 @@ def last_three_month_analysis(dir,days=90)
 
   #sa.sort_by{|h| h[:roe]}
 
-   p " 代码            统计回报  高位回落 低位上涨 当前价格 超过MA5 超过MA10"
+   puts " 代码            统计回报  高位回落 低位上涨 当前价格 超过MA5 超过MA10"
   sa.sort_by{|h| -h[:roe]}.each do |h|
-    p "#{format_code(h[:code])}  #{format_roe(h[:roe])}  #{format_roe(h[:high_roe])}  #{format_roe(h[:low_roe])} #{format_price((h[:close]*100).round/100.0)} #{h[:updays_ma5]} #{h[:updays_ma10]} "
+    if check_ma5_days == 1000
+      puts "#{format_code(h[:code])}  #{format_roe(h[:roe])}  #{format_roe(h[:high_roe])}  #{format_roe(h[:low_roe])}    #{format_price((h[:close]*100).round/100.0)}     #{h[:updays_ma5]}    #{h[:updays_ma10]} "
+    else
+      if h[:updays_ma5] >= check_ma5_days
+       puts "#{format_code(h[:code])}  #{format_roe(h[:roe])}  #{format_roe(h[:high_roe])}  #{format_roe(h[:low_roe])}    #{format_price((h[:close]*100).round/100.0)}     #{h[:updays_ma5]}    #{h[:updays_ma10]} "
+      end
+    end
   end 
 
 end
@@ -2415,7 +2423,10 @@ if ARGV.length != 0
      if ele == '-sd' 
        dir = ARGV[ARGV.index(ele)+1]
         offset = ARGV[ARGV.index(ele)+2].to_i
-      last_three_month_analysis(dir,offset)
+        check_ma5_days = 1000
+        check_ma5_days = ARGV[ARGV.index(ele)+3].to_i if ARGV[ARGV.index(ele)+3] != nil
+        #p check_ma5_days
+      last_three_month_analysis(dir,offset,check_ma5_days)
      end 
 
       if ele == '-tc' 
