@@ -1559,7 +1559,7 @@ end #of load_json\\
 
 def last_three_month_analysis(dir,days=90)
 
-  load_name_into_database if Names.last == nil 
+  #load_name_into_database if Names.last == nil 
 
    three_month_before = Time.now.to_date - days
 
@@ -1576,21 +1576,56 @@ def last_three_month_analysis(dir,days=90)
 
     b_first = true
     start = high = low = close =  0.0
+    sina_format = false
 
-    File.open(afile) do |file|
+    updays_ma5 = 0
+    updays_ma10 = 0
+
+    File.open(afile,:encoding =>'gbk' ) do |file|
 
       #last_date = ''
       ta = []
       last_d = '2016-07-01'
       ls = 0
+      ma5=0.0
+      ma10 =0.0
+      ta5 = []
+      ta10 = []
+      close = 0.0
+    
+
       file.each_line do |line|
         #p line
         #
-        qf = line.scan(/[0-9]+\.[0-9]+/)[0].to_f if line.index('SINA')!=nil
+       if (line.index('SINA')!=nil) and (not sina_format)
+          file.rewind
+          file.set_encoding('utf-8')
+          line = file.readline
+          qf = line.scan(/[0-9]+\.[0-9]+/)[0].to_f
+          sina_format = true
+        end
 
-        if line[4] == '-'
-          ta = line.split(/ /) 
-          if Date.parse(ta[0]) >= three_month_before
+        ndate = nil
+        ta=[]
+        #p line
+        
+        if (line[4] == '-') 
+          ta = line.split(/ /)
+          ndate = Date.parse(ta[0])
+          #close = ta[4].to_f
+        else
+
+          if (line[2] == '/') 
+            ta = line.split(/\t/)
+            #p ta
+            ndate = Date.new(line[6..9].to_i,line[0..1].to_i,line[3..4].to_i)
+            #close = ta[4].to_f
+          end  
+        end
+
+      
+
+          if (ndate!=nil) and ((ndate) >= three_month_before)
              if b_first
                 start= ta[4].to_f
                 high = ta[2].to_f
@@ -1604,11 +1639,30 @@ def last_three_month_analysis(dir,days=90)
              low  = ta[3].to_f if ta[3].to_f < low
              close = ta[4].to_f
 
+             ta5.shift if ta5.size >= 5
+             ta5.push(close)
+             ta10.shift if ta10.size >= 10
+             ta10.push(close)
+             ma5= ta5.inject(:+)/5
+             ma10= ta10.inject(:+)/10 
+
+             if (close > ma5) and (ma5 > ma10) 
+               updays_ma5 += 1
+             else
+               updays_ma5 = 0
+             end
+
+             if (close > ma10) 
+              updays_ma10 += 1
+             else
+              updays_ma10 = 0
+             end
+
              #p "#{ta[0]} #{start} #{high} #{low} #{close}" 
 
 
           end
-        end
+        
        
       end
 
@@ -1624,6 +1678,8 @@ def last_three_month_analysis(dir,days=90)
     h[:low] = low/qf
     h[:roe] = 0.0
     h[:roe] = (close-start)/start*100 if start!=0.0
+    h[:updays_ma5] = updays_ma5
+    h[:updays_ma10] = updays_ma10
 
     h[:high_roe] = 0.0
     h[:high_roe] = -(high-close)/close*100 if close!=0.0
@@ -1640,9 +1696,9 @@ def last_three_month_analysis(dir,days=90)
 
   #sa.sort_by{|h| h[:roe]}
 
-   p " 代码            统计回报  高位回落 低位上涨 当前价格"
+   p " 代码            统计回报  高位回落 低位上涨 当前价格 超过MA5 超过MA10"
   sa.sort_by{|h| -h[:roe]}.each do |h|
-    p "#{format_code(h[:code])}  #{format_roe(h[:roe])}  #{format_roe(h[:high_roe])}  #{format_roe(h[:low_roe])} #{format_price((h[:close]*100).round/100.0)}"
+    p "#{format_code(h[:code])}  #{format_roe(h[:roe])}  #{format_roe(h[:high_roe])}  #{format_roe(h[:low_roe])} #{format_price((h[:close]*100).round/100.0)} #{h[:updays_ma5]} #{h[:updays_ma10]} "
   end 
 
 end
