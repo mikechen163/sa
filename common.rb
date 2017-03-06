@@ -1165,6 +1165,7 @@ def show_roe_list(code,years=20)
         h= Hash.new
         h[:code] = sa[0][2..7]
         h[:open] = sa[1].to_f
+        h[:last_close] = sa[2].to_f
         h[:high] = sa[4].to_f
         h[:close] = sa[3].to_f 
         h[:low]   = sa[5].to_f
@@ -1192,7 +1193,7 @@ def show_roe_list(code,years=20)
 
         h[:amount] = (sa[9].to_i/100).to_f/100
         h[:ratio] = 0.0
-        h[:ratio] = (h[:close]-h[:open])/h[:open]*100 if h[:open] >0
+        h[:ratio] = (h[:close]-h[:last_close])/h[:last_close]*100 if h[:last_close] >0
         tta.push(h)
       end
     end
@@ -1239,7 +1240,7 @@ def show_roe_list(code,years=20)
     return cl
 end
 
-def get_topN_from_sina(topN,sortby)
+def get_topN_from_sina(topN,sortby,given_ratio=3)
 
   batch_num = 300
   cl = Names.get_code_list
@@ -1274,31 +1275,43 @@ def get_topN_from_sina(topN,sortby)
 
   #p all.length
   case sortby
-  when 10
-       all.sort_by!{|h| h[:code]}
-       #all.reverse!
+    
     when 0
        all.sort_by!{|h| h[:amount]}
        all.reverse!
-    when 10
+    when 1
         all.delete_if {|h| h[:volume] == 0.0}
        all.sort_by!{|h| h[:amount]}
-    when 1
-       all.sort_by!{|h| h[:volume]}
-       all.reverse!
-    when 11
-      all.delete_if {|h| h[:volume] == 0.0}
-       all.sort_by!{|h| h[:volume]}
     when 2
-       all.sort_by!{|h| h[:ratio]}
+       all.sort_by!{|h| h[:volume]}
        all.reverse!
     when 3
-       all.sort_by!{|h| h[:ratio]}
+      all.delete_if {|h| h[:volume] == 0.0}
+       all.sort_by!{|h| h[:volume]}
     when 4
-       all.sort_by!{|h| h[:amount]}
+       all.sort_by!{|h| h[:trade_ratio]}
        all.reverse!
-       all.delete_if{|h| h[:ratio] < 3}
     when 5
+      all.delete_if {|h| h[:volume] == 0.0}
+      all.sort_by!{|h| h[:trade_ratio]}
+    when 6
+       all.sort_by!{|h| h[:ratio]}
+       all.reverse!
+    when 7
+        all.delete_if {|h| h[:volume] == 0.0}
+       all.sort_by!{|h| h[:ratio]}
+    when 8
+       all.sort_by!{|h| h[:total_mv]}
+       all.reverse!
+    when 9
+      all.delete_if {|h| h[:volume] == 0.0}
+      all.sort_by!{|h| h[:total_mv]}
+
+    # when 4
+    #    all.sort_by!{|h| h[:code]}
+    #    #all.reverse!
+    
+    when 15
       # create a new high 
       cl=Weekly_records.new.get_high_list(4,0)
       p cl.length
@@ -1316,21 +1329,28 @@ def get_topN_from_sina(topN,sortby)
 
       end
 
-    when 6
-       all.sort_by!{|h| h[:trade_ratio]}
+
+
+     when 16
+       all.sort_by!{|h| h[:amount]}
        all.reverse!
-    when 7
-      all.delete_if {|h| h[:volume] == 0.0}
+       all.delete_if{|h| h[:ratio] < given_ratio}
 
-       all.sort_by!{|h| h[:trade_ratio]}
-
-     when 12
+     when 17
+       all.delete_if {|h| h[:ratio] < given_ratio}
+       all.delete_if {|h| h[:volume] == 0.0}
        all.sort_by!{|h| h[:total_mv]}
        all.reverse!
-    when 13
-      all.delete_if {|h| h[:volume] == 0.0}
 
+    when 18
+       all.delete_if {|h| h[:ratio] < given_ratio}
+       all.delete_if {|h| h[:volume] == 0.0}
        all.sort_by!{|h| h[:total_mv]}
+
+    when 19
+      all.delete_if {|h| h[:ratio] < given_ratio}
+       all.sort_by!{|h| h[:trade_ratio]}
+       all.reverse!
       
     when 20 
       cl = search_for_candidate('ma5')
@@ -1362,10 +1382,15 @@ def get_topN_from_sina(topN,sortby)
       puts "unknown sort method"
   end
 
-  puts "#{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
+  topN = all.length - 1 if (all.length - 1)  < topN 
+
+  #puts "#{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
   all[0..topN].each do |h|
-     puts "#{format_code(h[:code])} 当前价=#{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price(h[:amount])}万元 流通市值=#{format_price(h[:total_mv])}亿 " 
+     puts "#{format_code(h[:code])} 当前价=#{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 流通市值=#{format_price(h[:total_mv])}亿 " 
   end
+
+  ave_ratio = (all[0..topN].collect{|h| h[:ratio]}.inject(:+)/topN*100).to_i/100.0
+  puts "总共#{topN}支股票 平均涨幅 = #{ave_ratio}% on #{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
 
 
   #all=get_list_data_from_sina(Name.get_code_list)   

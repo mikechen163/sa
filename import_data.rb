@@ -641,20 +641,23 @@ def print_help
     puts "-c code least_days        ---  display minlist for code" 
     puts "-r dir        ---  analysis daily data for min list" 
     puts "-p least_days pri_day   ---  show lastest min list" 
-
+    puts
     puts "-ppp code1 code2 ... coden   ---  show stock price from sina" 
-    puts "-ppp2 TopN 0     ---  show topN performace stock from sina, sorting by 成交金额" 
-    puts "-ppp2 TopN 10     ---  show topN performace stock from sina, sorting by 成交金额 升序" 
-    puts "-ppp2 TopN 1     ---  show topN performace stock from sina, sorting by 成交量" 
-    puts "-ppp2 TopN 11     ---  show topN performace stock from sina, sorting by 成交量 升序" 
-    puts "-ppp2 TopN 6     ---  show topN performace stock from sina, sorting by 换手率" 
-    puts "-ppp2 TopN 7     ---  show topN performace stock from sina, sorting by 换手率 升序" 
-    puts "-ppp2 TopN 2     ---  show topN performace stock from sina, sorting by 涨幅" 
-    puts "-ppp2 TopN 3     ---  show topN performace stock from sina, sorting by 跌幅" 
-    puts "-ppp2 TopN 12     ---  show topN performace stock from sina, sorting by 流通市值" 
-    puts "-ppp2 TopN 13     ---  show topN performace stock from sina, sorting by 流通市值 升序" 
+    puts "-ppp2 TopN 0 ---  show topN performace stock from sina, sorting by 成交金额" 
+    puts "-ppp2 TopN 1 ---  show topN performace stock from sina, sorting by 成交金额 升序" 
+    puts "-ppp2 TopN 2 ---  show topN performace stock from sina, sorting by 成交量" 
+    puts "-ppp2 TopN 3 ---  show topN performace stock from sina, sorting by 成交量 升序" 
+    puts "-ppp2 TopN 4 ---  show topN performace stock from sina, sorting by 换手率" 
+    puts "-ppp2 TopN 5 ---  show topN performace stock from sina, sorting by 换手率 升序" 
+    puts "-ppp2 TopN 6 ---  show topN performace stock from sina, sorting by 涨幅" 
+    puts "-ppp2 TopN 7 ---  show topN performace stock from sina, sorting by 跌幅" 
+    puts "-ppp2 TopN 8 ---  show topN performace stock from sina, sorting by 流通市值" 
+    puts "-ppp2 TopN 9 ---  show topN performace stock from sina, sorting by 流通市值 升序" 
 
-    puts "-ppp2 TopN 4     ---  show topN performace stock from sina, sorting by amount,but ratio > 3 " 
+    puts "-ppp2 TopN 16 ratio ---  show topN performace stock from sina, sorting by 成交额, 涨幅大于ratio%" 
+    puts "-ppp2 TopN 17 ratio ---  show topN performace stock from sina, sorting by 流通市值，涨幅大于ratio%" 
+    puts "-ppp2 TopN 18 ratio ---  show topN performace stock from sina, sorting by 流通市值 升序，涨幅大于ratio" 
+    puts "-ppp2 TopN 19 ratio ---  show topN performace stock from sina, sorting by 换手率，涨幅大于ratio" 
 
     puts "-sb code --- 显示基本的股票股本数据"    
 
@@ -754,7 +757,9 @@ if ARGV.length != 0
     if ele == '-ppp2'
       topN = ARGV[ARGV.index(ele)+1].to_i
       sortby = ARGV[ARGV.index(ele)+2].to_i
-      get_topN_from_sina(topN,sortby)
+      given_ratio = ARGV[ARGV.index(ele)+3].to_i
+      given_ratio = 3 if 0 == given_ratio 
+      get_topN_from_sina(topN,sortby,given_ratio)
       exit
    end  
 
