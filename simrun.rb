@@ -577,16 +577,18 @@ def find_by_price_inc(day1,offset,etf_flag=false)
     len = date_list.length
     #last = date_list[len-1-pri_week]
     
+    #p day1
     day2=date_list.reverse.find {|date| date <= (day1-offset)}
-
+    #p (day1 - offset)
+    #p day2 
 
     if etf_flag
-    w_list1 = Weekly_etf_records.find(:all, :conditions=>"date = date(\'#{day1.to_s}\')", :order=>"id asc")
-    w_list2 = Weekly_etf_records.find(:all, :conditions=>"date = date(\'#{day2.to_s}\')", :order=>"id asc")
+      w_list1 = Weekly_etf_records.where(date: "#{day1.to_s}")
+      w_list2 = Weekly_etf_records.where(date: "#{day2.to_s}") 
     else
-    w_list1 = Weekly_records.find(:all, :conditions=>"date = date(\'#{day1.to_s}\')", :order=>"id asc")
-    w_list2 = Weekly_records.find(:all, :conditions=>"date = date(\'#{day2.to_s}\')", :order=>"id asc")
-
+      w_list1 = Weekly_records.where(date: "#{day1.to_s}")
+      w_list2 = Weekly_records.where(date: "#{day2.to_s}")
+    
     end
 
    #p w_list1
@@ -623,17 +625,18 @@ def find_by_price_inc(day1,offset,etf_flag=false)
              h[:pri_price]=r2['close']
              h[:next_roe]=0.0
              h[:next_price]=0.0
-             h[:name] = format_code(code,true)
+             h[:name] = format_code(code,false)
 
              sa.push(h)
 
-             #puts "found #{Names.get_name(code)}(#{code}) on #{day1.to_s} at price #{price},previous price #{old_price} ,roe:#{(roe*100).floor/100.0}%"
+
+             puts "found #{Names.get_name(code)}(#{code}) on #{day1.to_s} at price #{price},previous price #{old_price} on #{r2['date'].to_s} ,roe:#{(roe*100).floor/100.0}%"
           end
        end
     end # of each code
 
     #return sa.delete_if{|h| h[:ratio] == 100000}
-    return sa
+    return sa , day2
 
 end
 
@@ -777,7 +780,7 @@ def add_condition1(rec,market_state_list)
 
 end
 
-def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false)
+def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_diff=30)
 
      date_list = Weekly_records.new.get_date_list
      len = date_list.length
@@ -916,16 +919,19 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false)
       sa=find_by_ma(last,d2,:sort_by_drop_level) {|rec,old_rec| ((rec['close'] - rec['ma5'])/rec['ma5']<=0.01) and  (rec['close'] > rec['ma60'])  } # low than ma5
  
     when 51
-      sa=find_by_price_inc(last,30,true) {|ratio| ratio > 30}
-
+      sa,d2=find_by_price_inc(last,days_offset,false) {|ratio| ratio > roe_diff}
     when 52
-      sa=find_by_price_inc(last,90,true) {|ratio| ratio > 30}
+      roe_diff = - roe_diff
+      sa,d2=find_by_price_inc(last,days_offset,false) {|ratio| ratio < roe_diff}
 
-    when 53
-      sa=find_by_price_inc(last,180,true) {|ratio| ratio > 30}
+    # when 52
+    #   sa,d2=find_by_price_inc(last,90,false) {|ratio| ratio > roe_diff}
 
-    when 54
-      sa=find_by_price_inc(last,360,true) {|ratio| ratio > 30}
+    # when 53
+    #   sa,d2=find_by_price_inc(last,180,false) {|ratio| ratio > roe_diff}
+
+    # when 54
+    #   sa,d2=find_by_price_inc(last,360,false) {|ratio| ratio > roe_diff}
  
     when 55#current the best method
       sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| ((rec['close'] - rec['ma20'])/rec['ma20']<=0.01) and  (rec['close'] > rec['ma60'])  } # low than ma5
@@ -996,6 +1002,7 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false)
       sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| (old_rec['close'] < rec['ma5']) and  (rec['close'] > rec['ma5'])  } # low than ma5
 
 
+     #股价创新高组合 分别是90 30 7 180 270 360 
     when 90 # 股价创新高
       sa=find_by_ma(last,d2,:sort_by_gap) {|rec,old_rec| (rec['new_high']==rec['close']) and (rec['new_high_date']==rec['date']) and ((rec['new_high_date']-old_rec['new_high_date']).to_i > 90) } #and ((rec['new_high']-old_rec['new_high'])/old_rec['new_high'] >= 0.03)} # new high
 
@@ -1004,7 +1011,17 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false)
 
     when 92 # 股价创新高
       sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| (rec['new_high']==rec['close']) and (rec['new_high_date']==rec['date']) and ((rec['new_high_date']-old_rec['new_high_date']).to_i >= 7) } #and ((rec['new_high']-old_rec['new_high'])/old_rec['new_high'] >= 0.03)} # new high
-       
+
+     when 93 # 股价创新高
+      sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| (rec['new_high']==rec['close']) and (rec['new_high_date']==rec['date']) and ((rec['new_high_date']-old_rec['new_high_date']).to_i >= 180) } #and ((rec['new_high']-old_rec['new_high'])/old_rec['new_high'] >= 0.03)} # new high
+     
+      when 94 # 股价创新高
+      sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| (rec['new_high']==rec['close']) and (rec['new_high_date']==rec['date']) and ((rec['new_high_date']-old_rec['new_high_date']).to_i >= 270) } #and ((rec['new_high']-old_rec['new_high'])/old_rec['new_high'] >= 0.03)} # new high
+     
+      when 95 # 股价创新高
+      sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| (rec['new_high']==rec['close']) and (rec['new_high_date']==rec['date']) and ((rec['new_high_date']-old_rec['new_high_date']).to_i >= 360) } #and ((rec['new_high']-old_rec['new_high'])/old_rec['new_high'] >= 0.03)} # new high
+     
+
 
        when 127#周线多头排列
       sa=find_by_ma(last,d2,:sort_by_ma5) {|rec,old_rec| (rec['close']>rec['ma5']) and (rec['ma5']>rec['ma10']) and (rec['ma10']>rec['ma20']) and (rec['ma20']>rec['ma60']) }

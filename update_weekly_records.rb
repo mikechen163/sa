@@ -1682,7 +1682,7 @@ def last_three_month_analysis(dir,days=90,check_ma5_days=1000)
     h[:updays_ma10] = updays_ma10
 
     h[:high_roe] = 0.0
-    h[:high_roe] = -(high-low)/high*100 if high!=0.0
+    h[:high_roe] = -(high-close)/high*100 if high!=0.0
     h[:low_roe] = 0.0
     h[:low_roe] = -(low-close)/low*100 if low!=0.0
 #    h[:high_low_roe] = 0.0
@@ -1713,7 +1713,7 @@ end
 
 def update_till_lastest(dir)
 
-  load_name_into_database if Names.last == nil 
+  load_name_into_database if Names.count != 0 
 
   Dir.glob("#{dir}\/*.txt").sort.each do |afile|
     puts "processing file #{afile}"
@@ -1793,7 +1793,7 @@ end
 
 def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
 
-    load_name_into_database if Names.last == nil 
+   load_name_into_database if Names.count != 0 
 
    if start_date == nil
       rec = Weekly_records.where(:code =>"000300").last
@@ -1853,7 +1853,7 @@ end
 
 def update_fuquan_data(dir,start_date=nil,end_date=nil)
 
-   load_name_into_database if Names.last == nil 
+   load_name_into_database if Names.count != 0 
 
    if start_date == nil
       rec = Weekly_records.where(:code =>"000300").last
@@ -2178,6 +2178,11 @@ def print_help
 
     puts "-ttb  weeks topN  ---  compare all mode for N weeks and topN "
 
+    puts "-xp   days topN diff  ---  Find last [days], price change greater than [diff] ,top N  " 
+    puts "-xv   days topN diff  ---  Find last [days], price change little than  [diff] ,top N  "  
+
+    puts "-sroe code years ---  财报数据分析  参数: 股票代码 年 "  
+
 
      puts "--------------------------------------------------------------------------------------------"
      puts "-tu [dir] [start_date] [end_date] update fuquan data for all codes from database "
@@ -2320,6 +2325,26 @@ if ARGV.length != 0
      find_candidate(mode,topN,pri_week)
     end 
 
+    if ele == '-xp' 
+     days = ARGV[ARGV.index(ele)+1].to_i
+     topN = ARGV[ARGV.index(ele)+2].to_i
+     roe_diff = ARGV[ARGV.index(ele)+3].to_i
+
+     p "Show last #{days.to_s} days, price change over #{roe_diff.to_s}% , topN = #{topN} "
+
+     find_candidate(51,topN,0,false,days,roe_diff)
+    end 
+
+    if ele == '-xv' 
+     days = ARGV[ARGV.index(ele)+1].to_i
+     topN = ARGV[ARGV.index(ele)+2].to_i
+     roe_diff = ARGV[ARGV.index(ele)+3].to_i
+
+     p "Show last #{days.to_s} days, price change over #{roe_diff.to_s}% , topN = #{topN} "
+
+     find_candidate(52,topN,0,false,days,roe_diff)
+    end 
+
    if ele == '-y' 
      mode = ARGV[ARGV.index(ele)+1].to_i
      topN = ARGV[ARGV.index(ele)+2].to_i
@@ -2418,7 +2443,14 @@ if ARGV.length != 0
       if ele == '-ud' 
        dir = ARGV[ARGV.index(ele)+1]
       update_till_lastest(dir)
-     end 
+     end
+
+     if ele == '-sroe' 
+        code = ARGV[ARGV.index(ele)+1]
+        years = ARGV[ARGV.index(ele)+2].to_i
+        years = 20 if years == 0
+        show_roe_list(code,years)
+     end  
 
      if ele == '-sd' 
        dir = ARGV[ARGV.index(ele)+1]

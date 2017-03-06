@@ -340,6 +340,19 @@ class Names < ActiveRecord::Base
 
 end
 
+class Stock_Basic_Info < ActiveRecord::Base
+  def self.table_name() "stock_basic_info" end
+
+  def self.get_stock_free_number(code)
+    rec = self.where( code: "#{code}").first
+    return rec['total_free_number'] if rec
+    return nil    
+   
+  end
+
+
+end #of class
+
 class Etf_names < ActiveRecord::Base
   def self.table_name() "etf_name" end
 
@@ -682,6 +695,12 @@ end
   end
 
   name = Etf_names.get_name(code) if (name==nil)
+  
+  if name == nil
+    puts "unknown name for #{code}"
+    return code.to_s
+  end
+ 
   #p name.length
   name +=' ' if name.length<4
 
@@ -852,6 +871,238 @@ def get_price_from_sina(code)
  end
 
 
+def calc_fh_inc(years,n1,n2)
+  return 0 if n1/n2 < 0
+  return ((Math.exp(Math.log(n2/n1)/years)-1)*10000).to_i.to_f/100
+end
+
+def show_roe_list(code,years=20)
+  rvn = get_revenue_from_ntes(code)
+  asset = get_assets_from_ntes(code)
+  as_list = asset[asset.length-2]
+  rvn_list = rvn[rvn.length-7] 
+  income_list = rvn[1] 
+  
+  puts "#{format_code(code)}  "
+  #print rvn_list
+  #puts
+  puts "-------------------------------------增长和回报率分析------------------------------"
+  roe_list = []
+  rvn_list.each_with_index do |rr,i|
+    if (i>1) and (i<=years+1)
+     # puts "#{i} #{rvn_list[i]} #{rvn_list[i-1]}"
+      icn = income_list[i].split(',').inject(:+).to_f
+      ic = income_list[i-1].split(',').inject(:+).to_f
+      icc = ((ic-icn)/icn*10000).to_i.to_f/100
+      lyn = rvn_list[i].split(',').inject(:+).to_f
+      ly = rvn_list[i-1].split(',').inject(:+).to_f 
+      inc = ((ly-lyn)/lyn*10000).to_i.to_f/100
+      asy = as_list[i].split(',').inject(:+).to_f
+      asyn = as_list[i-1].split(',').inject(:+).to_f
+      roe = (ly/asy*10000).to_i.to_f/100
+      roe_list.push(roe)
+      inc_asy = ((asyn-asy)/asy*10000).to_i.to_f/100
+      puts "#{rvn[0][i-1]} 收入[#{income_list[i-1]}万,增长=#{icc}%] 利润[#{rvn_list[i-1]}万,增长=#{inc}%], 净资产[收益率=#{roe}%, 增长率=#{inc_asy}%]"
+    end
+  end
+
+  #puts "#{rvn[0][rvn_list.length-1]} 收入=#{income_list[income_list.length-1]}万，利润=#{rvn_list[rvn_list.length-1]}万" 
+
+  if (years > rvn_list.length-1)
+    years = rvn_list.length-1
+    puts "#{rvn[0][rvn_list.length-1]} 收入=#{income_list[income_list.length-1]}万，利润=#{rvn_list[rvn_list.length-1]}万" 
+  end
+
+  years = 3 if (years < 3)
+
+  #p years
+  #p roe_list
+
+  ave_roe = roe_list[0..(years-1)].sum/years
+  ave_roe = roe_list[0..(years-1)].sum/(years-1) if years == (rvn_list.length-1)
+
+  puts "过去#{years}年，收入复合增长率=#{calc_fh_inc(years,income_list[years].split(',').inject(:+).to_f,\
+  income_list[1].split(',').inject(:+).to_f)}%,\
+  利润复合增长率=#{calc_fh_inc(years,rvn_list[years].split(',').inject(:+).to_f,\
+  rvn_list[1].split(',').inject(:+).to_f)}%,\
+  净资产复合增长率=#{calc_fh_inc(years,as_list[years].split(',').inject(:+).to_f,as_list[1].split(',').inject(:+).to_f)}%, 净资产平均收益率=#{format_roe(ave_roe)}"
+
+  puts
+  puts "-------------------------------------利润分析------------------------------"
+  
+  cost_material_list = rvn[9]
+  cost_sale_list = rvn[21]
+  cost_manage_list = rvn[22]
+  cost_finance_list = rvn[23] 
+  rvn__operating_list = rvn[rvn.length-14]
+  rvn__before_tax_list = rvn[rvn.length-10]
+  tax_list = rvn[rvn.length-9]
+  minor_holder_list = rvn[rvn.length-4]
+  eps_list = rvn[rvn.length-1]
+
+  rvn_list.each_with_index do |rr,i|
+    if (i>0) and (i<=years)
+    
+      #毛利率
+      ic = income_list[i].split(',').inject(:+).to_f
+      cme = ic - cost_material_list[i].split(',').inject(:+).to_f
+      cm_ratio = ((cme)/ic*10000).to_i.to_f/100 
+
+      threefee = cost_sale_list[i].split(',').inject(:+).to_f + cost_manage_list[i].split(',').inject(:+).to_f + cost_finance_list[i].split(',').inject(:+).to_f
+      threefee_ratio = ((threefee)/ic*10000).to_i.to_f/100  
+      tf1 = ((cost_sale_list[i].split(',').inject(:+).to_f)/threefee*100).to_i
+      tf2 = ((cost_manage_list[i].split(',').inject(:+).to_f)/threefee*100).to_i 
+      tf3 = ((cost_finance_list[i].split(',').inject(:+).to_f)/threefee*100).to_i
+
+      rvn_opr  = rvn__operating_list[i].split(',').inject(:+).to_f
+      opr_ratio = ((rvn_opr)/ic*10000).to_i.to_f/100  
+
+      rvn_btax = rvn__before_tax_list[i].split(',').inject(:+).to_f
+      btax_ratio = ((rvn_btax)/ic*10000).to_i.to_f/100  
+
+      tax      = tax_list[i].split(',').inject(:+).to_f
+      tax_ratio = ((tax)/rvn_btax*10000).to_i.to_f/100  
+
+      lyn = rvn_list[i].split(',').inject(:+).to_f
+      net_rvn_ratio = ((lyn)/ic*10000).to_i.to_f/100  
+
+      mholder  = minor_holder_list[i].split(',').inject(:+).to_f
+      mh_ratio = ((mholder)/lyn*10000).to_i.to_f/100   
+
+      eps      = eps_list[i].split(',').inject(:+).to_f
+      
+      
+      puts "#{rvn[0][i]} 毛利率=#{cm_ratio}%, 三费率＝#{threefee_ratio}%，运营利润率=#{opr_ratio}%,税前利润率=#{btax_ratio}%,税率=#{tax_ratio}%,净利润率=#{net_rvn_ratio}%，[销售:管理:财务]费用比例=#{tf1}:#{tf2}:#{tf3} 少数股东权益=#{mh_ratio}%, eps=#{eps} "
+    end
+  end
+
+  return roe_list
+
+ end #func
+
+ def get_cash_from_ntes(code,year=true)
+  if year
+    uri="http://quotes.money.163.com/f10/xjllb_#{code}.html?type=year"
+  else
+    uri="http://quotes.money.163.com/f10/xjllb_#{code}.html"
+  end
+
+  return get_finance_info_from_ntes(uri) 
+ end
+
+ def get_assets_from_ntes(code,year=true)
+  if year
+    uri="http://quotes.money.163.com/f10/zcfzb_#{code}.html?type=year"
+  else
+    uri="http://quotes.money.163.com/f10/zcfzb_#{code}.html"
+  end
+
+  return get_finance_info_from_ntes(uri) 
+ end
+
+ def get_revenue_from_ntes(code,year=true)
+  if year
+    uri="http://quotes.money.163.com/f10/lrb_#{code}.html?type=year"
+  else
+    uri="http://quotes.money.163.com/f10/lrb_#{code}.html"
+  end
+
+  return get_finance_info_from_ntes(uri) 
+ end
+
+ def get_stockinfo_data_from_ntes(code)
+   
+   
+  uri="http://quotes.money.163.com/f10/gdfx_#{code}.html"
+   
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end  
+    title = html_response.scan(/<title>(.*)<\/title>/)
+    ind = title[0][0].split(code.to_s)
+    #puts ind[0].length
+    name = ind[0][0..ind[0].length-2]
+    #puts name
+    #puts name.length
+
+    name = name + " " if name.length == 3
+    name = name + " " if name.length == 5
+   
+    sa=html_response.split('table_bg001')
+    
+      al = sa[2].scan(/[0-9]+\.[0-9]+/)
+      #al.each_with_index {|c,i| puts "#{i} : #{c}"}
+
+      return name,al.collect{|x| x.to_f} 
+    
+ end
+
+ def get_finance_info_from_ntes(url)
+   
+   r=[]
+   
+    html_response = nil  
+    open(url) do |http|  
+      html_response = http.read  
+    end  
+    
+    sa=html_response.split('table_bg001')
+
+     thl = []
+
+      sa[1].split('</tr>').each do |line|
+        #puts line
+        al=line.scan(/<td.*>(.*)<\/td>/)
+        al2=line.scan(/<strong>(.*)<\/strong>/)
+        
+      
+        if al2.length !=0 
+          thl.push al2[0][0].to_s if al2.length !=0 
+        else
+          thl.push al[0][0].to_s if al.length !=0
+        end
+
+      end
+
+      # puts thl
+      # thl.each_with_index do |e,i|
+      #   puts "#{i}:#{e}:#{e.length}"
+      # end
+    
+      sl = sa[2].length
+      year_list = sa[2].scan(/[0-9]+\-[0-9]+\-[0-9]+/)
+
+      nyl=[]
+      nyl.push('报告日期')
+      year_list.each {|x| nyl.push x}
+      r.push(nyl)
+
+      len = year_list.length
+      index = sa[2].index(year_list[len-1]) + 10
+      index_end = sa[2][index..(sl-1)].index('table')
+
+      ll = sa[2][index..(index+index_end)].split('</tr>')
+
+      ll.each_with_index do |line,i|
+        ##puts "#{i} : #{line}"
+        al=line.scan(/[0-9\-][0-9.,\-]*/)
+        nal=[]
+        nal.push(thl[i-1])
+        al.each {|x| nal.push x}
+
+        if al.length !=0
+          r.push(nal)
+          #print "#{i}:#{thl[i-1]}"
+          #al.each {|x| print "#{x} "}
+          puts
+        end
+
+      end
+    return r
+ end #func
+
+
  def get_history_data_from_nasdaq(code)
    uri="http://www.nasdaq.com/symbol/#{code}/historical"
    
@@ -918,6 +1169,27 @@ def get_price_from_sina(code)
         h[:close] = sa[3].to_f 
         h[:low]   = sa[5].to_f
         h[:volume] = sa[8].to_f
+        #puts h[:code]
+        
+        if (h[:code] == '000300') or (h[:code][0..2] == '399' ) or (h[:code][0..2] == '159' )
+           h[:trade_ratio] = 0.0 
+           h[:total_mv] = 0.0 
+        else 
+           #puts h[:code]
+           free_number = Stock_Basic_Info.get_stock_free_number(h[:code])
+           h[:total_mv] = (h[:close]*free_number*100).to_i/100.0
+
+           if free_number > 0.0
+             h[:trade_ratio] = ((h[:volume]/(free_number*10000))).to_i/100.0
+             #puts "#{free_number} #{h[:volume]}" if not (h[:trade_ratio] > 0.0) 
+             
+           else
+             #puts h[:code]
+              h[:trade_ratio] = 0.0
+
+           end
+        end
+
         h[:amount] = (sa[9].to_i/100).to_f/100
         h[:ratio] = 0.0
         h[:ratio] = (h[:close]-h[:open])/h[:open]*100 if h[:open] >0
@@ -1008,9 +1280,15 @@ def get_topN_from_sina(topN,sortby)
     when 0
        all.sort_by!{|h| h[:amount]}
        all.reverse!
+    when 10
+        all.delete_if {|h| h[:volume] == 0.0}
+       all.sort_by!{|h| h[:amount]}
     when 1
        all.sort_by!{|h| h[:volume]}
        all.reverse!
+    when 11
+      all.delete_if {|h| h[:volume] == 0.0}
+       all.sort_by!{|h| h[:volume]}
     when 2
        all.sort_by!{|h| h[:ratio]}
        all.reverse!
@@ -1038,6 +1316,22 @@ def get_topN_from_sina(topN,sortby)
 
       end
 
+    when 6
+       all.sort_by!{|h| h[:trade_ratio]}
+       all.reverse!
+    when 7
+      all.delete_if {|h| h[:volume] == 0.0}
+
+       all.sort_by!{|h| h[:trade_ratio]}
+
+     when 12
+       all.sort_by!{|h| h[:total_mv]}
+       all.reverse!
+    when 13
+      all.delete_if {|h| h[:volume] == 0.0}
+
+       all.sort_by!{|h| h[:total_mv]}
+      
     when 20 
       cl = search_for_candidate('ma5')
       all=get_list_data_from_sina(cl)
@@ -1068,8 +1362,9 @@ def get_topN_from_sina(topN,sortby)
       puts "unknown sort method"
   end
 
+  puts "#{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
   all[0..topN].each do |h|
-     puts "#{format_code(h[:code])} on #{Time.now.strftime("%m-%d %H:%M:%S")}, price=#{format_price(h[:close])}, ratio=#{format_roe(h[:ratio])},amount=#{format_price(h[:amount])} " 
+     puts "#{format_code(h[:code])} 当前价=#{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price(h[:amount])}万元 流通市值=#{format_price(h[:total_mv])}亿 " 
   end
 
 

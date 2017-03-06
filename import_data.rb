@@ -7,6 +7,7 @@ require 'min_list'
 require 'asset'
 require 'simrun'
 
+
 def import_base_data(dir,import_daily_record=false,etf=false,update_mode_flag=false)
   fn = 1 
   mid = 1
@@ -243,6 +244,7 @@ def import_base_data(dir,import_daily_record=false,etf=false,update_mode_flag=fa
                have_data = true
 
                #p line
+               #p qf
 
               open = (((open.to_f/qf)*100).round)/100.0
                close = (((close.to_f/qf)*100).round)/100.0
@@ -626,6 +628,11 @@ def analysis_daily_records(dir,rate_min=5,rate_max=8,vol_rate = 50)
 end # analysis_daily_recoreds
 
 
+
+
+
+
+
 def print_help
     puts "This Tool is used to import data from stock software like ZhaoShangZhengquan"
     puts "-d dir        ---  Using given  dir as data store directory  "
@@ -634,6 +641,23 @@ def print_help
     puts "-c code least_days        ---  display minlist for code" 
     puts "-r dir        ---  analysis daily data for min list" 
     puts "-p least_days pri_day   ---  show lastest min list" 
+
+    puts "-ppp code1 code2 ... coden   ---  show stock price from sina" 
+    puts "-ppp2 TopN 0     ---  show topN performace stock from sina, sorting by 成交金额" 
+    puts "-ppp2 TopN 10     ---  show topN performace stock from sina, sorting by 成交金额 升序" 
+    puts "-ppp2 TopN 1     ---  show topN performace stock from sina, sorting by 成交量" 
+    puts "-ppp2 TopN 11     ---  show topN performace stock from sina, sorting by 成交量 升序" 
+    puts "-ppp2 TopN 6     ---  show topN performace stock from sina, sorting by 换手率" 
+    puts "-ppp2 TopN 7     ---  show topN performace stock from sina, sorting by 换手率 升序" 
+    puts "-ppp2 TopN 2     ---  show topN performace stock from sina, sorting by 涨幅" 
+    puts "-ppp2 TopN 3     ---  show topN performace stock from sina, sorting by 跌幅" 
+    puts "-ppp2 TopN 12     ---  show topN performace stock from sina, sorting by 流通市值" 
+    puts "-ppp2 TopN 13     ---  show topN performace stock from sina, sorting by 流通市值 升序" 
+
+    puts "-ppp2 TopN 4     ---  show topN performace stock from sina, sorting by amount,but ratio > 3 " 
+
+    puts "-sb code --- 显示基本的股票股本数据"    
+
     puts "-h            ---  This help"    
 end
 
@@ -748,6 +772,45 @@ if ARGV.length != 0
       ta=get_history_data_from_nasdaq(code)
       exit
    end    
+
+   if ele == '-sb'
+      code = ARGV[ARGV.index(ele)+1]
+      name, t = get_stockinfo_data_from_ntes(code)
+      puts "#{name}(#{code}) 总股本=#{t[0]}亿股, 流通A股=#{t[1]}亿股, 限售A股=#{t[2]}亿股, B股=#{t[3]}亿股, H股=#{t[4]}亿股"
+      exit
+   end  
+
+   if ele == '-sball'
+      # code = ARGV[ARGV.index(ele)+1]
+      # t = get_stockinfo_data_from_ntes(code)
+      # puts "#{format_code(code)} 总股本=#{t[0]}亿股, 流通A股=#{t[1]}亿股, 限售A股=#{t[2]}亿股, B股=#{t[3]}亿股, H股=#{t[4]}亿股"
+      # 加载股票信息到数据库
+      ts_list = []
+      fn = 1
+      Names.get_code_list.each do |code|
+        #puts code
+        if (code == '000300') or (code[0..2] == '399' ) or (code[0..2] == '159' )
+          next 
+        end
+
+        if (code[0] == '3') or (code[0] == '6') or (code[0] == '0')
+          name,t = get_stockinfo_data_from_ntes(code)
+
+          puts "loading #{name}(#{code}) 总股本=#{t[0]}亿股, 流通A股=#{t[1]}亿股, 限售A股=#{t[2]}亿股, B股=#{t[3]}亿股, H股=#{t[4]}亿股"
+
+          market = 'SZ'
+          market = 'SH' if code[0]=='6' 
+          ts = "#{fn},\'#{code.to_s}\',\'#{name}\',\'#{market}\',\'#{t[0]}\',\'#{t[1]}\',\'#{t[2]}\',\'#{t[3]}\',\'#{t[4]}\'"
+
+          ts_list.push(ts)
+          
+          fn += 1
+        end
+      end
+
+      insert_data('stock_basic_info',ts_list) if ts_list.length!=0
+      exit
+   end  
    
 
 
@@ -758,6 +821,7 @@ end
 if ARGV.length == 0
   puts "Please give a data directory"
   puts "Usage :import -d [directory] "
+  exit 
 end
 
 # main 

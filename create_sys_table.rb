@@ -156,6 +156,19 @@ sa = [
                 name                        varchar(20),
                 market                      varchar(2)
 
+               )",
+
+          "DROP TABLE stock_basic_info",
+          "create table  stock_basic_info ( id integer primary key,
+                code                        varchar(6),    
+                name                        varchar(20),
+                market                      varchar(2),
+                total_stock_number          float,
+                total_free_number          float,
+                total_limited_number          float,
+                total_b_number          float,
+                total_h_number          float
+
                )"
 
    ]
