@@ -19,7 +19,7 @@ ActiveRecord::Base.establish_connection(
   :host     => "localhost", 
   #~ :username => "root", 
   #~ :password => "", 
-  :database => "db0303.db"
+  :database => "db_daily.db"
   
   # :adapter  => "mysql2",
   # :encoding => "utf8",

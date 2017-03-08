@@ -1711,6 +1711,7 @@ def last_three_month_analysis(dir,days=90,check_ma5_days=1000)
 
 end
 
+
 def update_till_lastest(dir)
 
   load_name_into_database if Names.count != 0 
@@ -2329,20 +2330,22 @@ if ARGV.length != 0
      days = ARGV[ARGV.index(ele)+1].to_i
      topN = ARGV[ARGV.index(ele)+2].to_i
      roe_diff = ARGV[ARGV.index(ele)+3].to_i
+     sortby_mv = ARGV[ARGV.index(ele)+4].to_i
 
      p "Show last #{days.to_s} days, price change over #{roe_diff.to_s}% , topN = #{topN} "
 
-     find_candidate(51,topN,0,false,days,roe_diff)
+     find_candidate(51,topN,0,false,days,roe_diff,sortby_mv)
     end 
 
     if ele == '-xv' 
      days = ARGV[ARGV.index(ele)+1].to_i
      topN = ARGV[ARGV.index(ele)+2].to_i
      roe_diff = ARGV[ARGV.index(ele)+3].to_i
+     sortby_mv = ARGV[ARGV.index(ele)+4].to_i
 
      p "Show last #{days.to_s} days, price change over #{roe_diff.to_s}% , topN = #{topN} "
 
-     find_candidate(52,topN,0,false,days,roe_diff)
+     find_candidate(52,topN,0,false,days,roe_diff,sortby_mv)
     end 
 
    if ele == '-y' 

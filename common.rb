@@ -10,25 +10,27 @@ class Daily_records < ActiveRecord::Base
   def self.table_name() "daily_records" end
 
   def initialize
-    @date_list=[]
+    # @date_list=[]
 
-    list1 = self.class.find(:all,:conditions=>" code = \'601988\' ")
-    list2 = self.class.find(:all,:conditions=>" code = \'601398\' ")
-    list3 = self.class.find(:all,:conditions=>" code = \'601328\' ")
+    # list1 = self.class.find(:all,:conditions=>" code = \'601988\' ")
+    # list2 = self.class.find(:all,:conditions=>" code = \'601398\' ")
+    # list3 = self.class.find(:all,:conditions=>" code = \'601328\' ")
 
     
-    # list1.each_with_index do |rec,i|
-    #   d1=list1[i]['date']
-    #   d2=list2[i]['date']
-    #   d3=list3[i]['date']
+    # # list1.each_with_index do |rec,i|
+    # #   d1=list1[i]['date']
+    # #   d2=list2[i]['date']
+    # #   d3=list3[i]['date']
 
-    #   day = d1 if (d1==d2) 
-    #   day = d1 if (d1==d3)
-    #   day = d2 if (d2==d3)  
-    #   @date_list.push(day)
-    # end
+    # #   day = d1 if (d1==d2) 
+    # #   day = d1 if (d1==d3)
+    # #   day = d2 if (d2==d3)  
+    # #   @date_list.push(day)
+    # # end
 
-    @date_list=(list1+list2+list3).uniq
+    # @date_list=(list1+list2+list3).uniq
+
+    @date_list = self.class.where(code: '399905').collect {|rec| rec['date']}
 
   end
 
@@ -346,6 +348,13 @@ class Stock_Basic_Info < ActiveRecord::Base
   def self.get_stock_free_number(code)
     rec = self.where( code: "#{code}").first
     return rec['total_free_number'] if rec
+    return nil    
+   
+  end
+
+   def self.get_stock_total_number(code)
+    rec = self.where( code: "#{code}").first
+    return rec['total_stock_number'] if rec
     return nil    
    
   end
@@ -878,7 +887,9 @@ end
 
 def show_roe_list(code,years=20)
   rvn = get_revenue_from_ntes(code)
+  #puts "get_revenue_from_ntes"
   asset = get_assets_from_ntes(code)
+  #puts "get_assets_from_ntes"
   as_list = asset[asset.length-2]
   rvn_list = rvn[rvn.length-7] 
   income_list = rvn[1] 
@@ -928,6 +939,29 @@ def show_roe_list(code,years=20)
   净资产复合增长率=#{calc_fh_inc(years,as_list[years].split(',').inject(:+).to_f,as_list[1].split(',').inject(:+).to_f)}%, 净资产平均收益率=#{format_roe(ave_roe)}"
 
   puts
+  puts "-------------------------------------估值分析------------------------------"
+
+  frvn = rvn_list[1].split(',').inject(:+).to_f
+  fas =  as_list[1].split(',').inject(:+).to_f
+  #total_mv = Stock_Basic_Info.get_stock_total_number(code)
+  al = []
+  al.push (code)
+  close_price = get_list_data_from_sina(al)[0][:close]
+  #puts close_price
+  total_mv = Stock_Basic_Info.get_stock_total_number(code) * close_price
+  #puts total_mv
+  pe = ((total_mv*10000/frvn)*100).to_i/100.0
+  pb = ((total_mv*10000/fas)*100).to_i/100.0
+  real_roe = (ave_roe/pb*100).to_i/100.0
+  ten_year_roe = ((((1+real_roe/100)**10)-1)*10000).to_i/100.0
+  total_ten_year_roe = (ten_year_roe/100)*pe
+  puts "pb = #{pb}, pe = #{pe}, 一年预期回报率=#{real_roe}%, 10年预期资产回报率=#{ten_year_roe}%"
+  #puts pb
+
+
+
+
+  puts
   puts "-------------------------------------利润分析------------------------------"
   
   cost_material_list = rvn[9]
@@ -975,6 +1009,9 @@ def show_roe_list(code,years=20)
       puts "#{rvn[0][i]} 毛利率=#{cm_ratio}%, 三费率＝#{threefee_ratio}%，运营利润率=#{opr_ratio}%,税前利润率=#{btax_ratio}%,税率=#{tax_ratio}%,净利润率=#{net_rvn_ratio}%，[销售:管理:财务]费用比例=#{tf1}:#{tf2}:#{tf3} 少数股东权益=#{mh_ratio}%, eps=#{eps} "
     end
   end
+
+  
+
 
   return roe_list
 
@@ -1085,7 +1122,7 @@ def show_roe_list(code,years=20)
       ll = sa[2][index..(index+index_end)].split('</tr>')
 
       ll.each_with_index do |line,i|
-        ##puts "#{i} : #{line}"
+        #puts "#{i} : #{line}"
         al=line.scan(/[0-9\-][0-9.,\-]*/)
         nal=[]
         nal.push(thl[i-1])
@@ -1095,7 +1132,7 @@ def show_roe_list(code,years=20)
           r.push(nal)
           #print "#{i}:#{thl[i-1]}"
           #al.each {|x| print "#{x} "}
-          puts
+          #puts
         end
 
       end
@@ -1123,8 +1160,7 @@ def show_roe_list(code,years=20)
     pref = "sz" if (code[0]!='6')   
 
     #hk02208  gb_bidu
-    pref = "" if (code[0]=='h') or (code[0]=='g')  
-
+    pref = "" if (code[0]=='h') or (code[0]=='g') or (code[0]=='s') or (code[0]=='i') 
 
 
     if sl.length >0
@@ -1163,37 +1199,120 @@ def show_roe_list(code,years=20)
     
         #ta=[ sa[0][2..7], sa[1].to_f,sa[4].to_f,sa[3].to_f,sa[5].to_f,sa[8].to_i,sa[9].to_f]
         h= Hash.new
-        h[:code] = sa[0][2..7]
-        h[:open] = sa[1].to_f
-        h[:last_close] = sa[2].to_f
-        h[:high] = sa[4].to_f
-        h[:close] = sa[3].to_f 
-        h[:low]   = sa[5].to_f
-        h[:volume] = sa[8].to_f
-        #puts h[:code]
+        ts = sa[0].split('=')
+        #p ts
         
-        if (h[:code] == '000300') or (h[:code][0..2] == '399' ) or (h[:code][0..2] == '159' )
-           h[:trade_ratio] = 0.0 
-           h[:total_mv] = 0.0 
-        else 
-           #puts h[:code]
-           free_number = Stock_Basic_Info.get_stock_free_number(h[:code])
-           h[:total_mv] = (h[:close]*free_number*100).to_i/100.0
-
-           if free_number > 0.0
-             h[:trade_ratio] = ((h[:volume]/(free_number*10000))).to_i/100.0
-             #puts "#{free_number} #{h[:volume]}" if not (h[:trade_ratio] > 0.0) 
-             
-           else
-             #puts h[:code]
-              h[:trade_ratio] = 0.0
-
-           end
+        if ts[0][0] == 's'
+          h[:code] = sa[0][2..7]
+        else
+          h[:code] = ts[0]
         end
 
-        h[:amount] = (sa[9].to_i/100).to_f/100
-        h[:ratio] = 0.0
-        h[:ratio] = (h[:close]-h[:last_close])/h[:last_close]*100 if h[:last_close] >0
+        nz = ts[1].encode('utf-8','gbk')
+        nzlen = nz.length
+        nz = nz[1..nzlen-1]
+        h[:name] =  nz
+
+        #p ts[0]
+        case ts[0][0]
+          when 'i'
+            #p h[:name] 
+            tl = ts[0].length
+            h[:code] = ts[0][4..tl-1]
+            h[:close] = sa[1].to_f 
+            h[:change_value] = sa[2].to_f 
+            h[:ratio] = sa[3].to_f 
+
+            if nz.length == 3
+              nz= nz + "  " 
+            else
+              if nz.length == 5
+                nz= nz + " " 
+              end
+            end
+             h[:name] =  nz
+
+          when 's' # sh or sz
+            if nz.length == 3
+              nz= nz + "  " 
+            else
+              if nz.length == 5
+                nz= nz + " " 
+              end
+            end
+
+            h[:name] =  nz
+
+            h[:open] = sa[1].to_f
+            h[:last_close] = sa[2].to_f
+            h[:high] = sa[4].to_f
+            h[:close] = sa[3].to_f 
+            h[:low]   = sa[5].to_f
+            h[:volume] = sa[8].to_f
+            h[:amount] = (sa[9].to_i/100).to_f/100
+
+             free_number = Stock_Basic_Info.get_stock_free_number(h[:code])
+             free_number = 0.0 if free_number == nil
+             h[:total_mv] = (h[:close]*free_number*100).to_i/100.0
+
+             if free_number > 0.0
+               h[:trade_ratio] = ((h[:volume]/(free_number*10000))).to_i/100.0
+             else
+                h[:trade_ratio] = 0.0
+             end
+            h[:ratio] = 0.0
+            h[:ratio] = (h[:close]-h[:last_close])/h[:last_close]*100 if h[:last_close] >0
+
+          when 'g' #gb_ us
+
+            tl = ts[0].length
+            #h[:code] = ts[0][3..tl-1]
+           
+            h[:close] = sa[1].to_f 
+            h[:ratio] = sa[2].to_f
+            h[:change_value] = sa[4].to_f
+            h[:last_close] = sa[5].to_f
+            h[:high] = sa[6].to_f
+            h[:low] = sa[7].to_f
+            h[:week52_high] = sa[8].to_f
+            h[:week52_low] = sa[9].to_f
+
+            h[:volume] = sa[10].to_f
+            h[:volume_10days] = sa[11].to_f
+            h[:total_mv] = sa[12].to_f
+            h[:eps] = sa[13].to_f
+            h[:pe] = sa[14].to_f
+            h[:beta] = sa[16].to_f
+            h[:total_stock_number] = sa[19].to_f
+           
+          when 'h' #hk
+
+            h[:name] = sa[1].encode('utf-8','gbk')
+            tl = ts[0].length
+            #h[:code] = ts[0][2..tl-1]
+
+            h[:open] = sa[2].to_f
+            h[:last_close] = sa[3].to_f
+            h[:high] = sa[4].to_f 
+            h[:low]   = sa[5].to_f
+            h[:close] = sa[6].to_f 
+            h[:change_value] = sa[6].to_f
+            h[:ratio] = sa[7].to_f
+            h[:buy1] = sa[8].to_f
+            h[:sell1] = sa[9].to_f
+            h[:amount] = sa[10].to_f
+            h[:volume] = sa[11].to_f
+            h[:pe] = sa[12].to_f
+            h[:week_interest_ratio] = sa[13].to_f
+            h[:week52_high] = sa[14].to_f
+            h[:week52_low] = sa[15].to_f
+            h[:date] = sa[16]
+            h[:time] = sa[17]
+
+          else
+            puts "unknown code = #{ts[0]}"
+        end
+
         tta.push(h)
       end
     end
@@ -1240,39 +1359,34 @@ def show_roe_list(code,years=20)
     return cl
 end
 
-def get_topN_from_sina(topN,sortby,given_ratio=3)
-
+def get_all_stock_price_from_sina
+   
   batch_num = 300
   cl = Names.get_code_list
-
   len = cl.length
-  #p len
-
   step = 0
-
   all = []
 
-
-  if sortby <20
-    t1= Time.now
-    while (step < len)
-       a_end = step+batch_num-1
-       a_end = len-1 if a_end > len 
-       #p step
-       #p a_end
-       tl = get_list_data_from_sina(cl[step..a_end])
-       #p tl
-       all += tl
-       step += batch_num
-    end
-    t2 = Time.now
-    
-
-    puts "fetching all data from sina takes #{t2-t1} seconds."
+  while (step < len)
+     a_end = step+batch_num-1
+     a_end = len-1 if a_end > len 
+     tl = get_list_data_from_sina(cl[step..a_end])
+     all += tl
+     step += batch_num
   end
-  #p (t2.usec-t1.usec)/1000
   
+  return all
+end
 
+def get_topN_from_sina(topN,sortby,given_ratio=3)
+
+  t1= Time.now
+  all = get_all_stock_price_from_sina
+  t2 = Time.now
+  
+  puts "fetching all data from sina takes #{t2-t1} seconds."
+  
+  
   #p all.length
   case sortby
     
@@ -1311,7 +1425,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3)
     #    all.sort_by!{|h| h[:code]}
     #    #all.reverse!
     
-    when 15
+    when 99
       # create a new high 
       cl=Weekly_records.new.get_high_list(4,0)
       p cl.length
@@ -1328,6 +1442,23 @@ def get_topN_from_sina(topN,sortby,given_ratio=3)
         end 
 
       end
+
+   when 13
+       all.delete_if {|h| h[:ratio] < given_ratio}
+       all.delete_if {|h| h[:volume] == 0.0}
+       all.sort_by!{|h| h[:trade_ratio]}
+       
+    when 14
+       all.delete_if {|h| h[:ratio] > -given_ratio}
+       all.delete_if {|h| h[:volume] == 0.0}
+       all.sort_by!{|h| h[:total_mv]}
+       all.reverse!
+
+    when 15
+       all.delete_if {|h| h[:volume] == 0.0}
+       all.sort_by!{|h| h[:amount]}
+       all.reverse!
+       all.delete_if{|h| h[:ratio] > - given_ratio }
 
 
 
@@ -1386,7 +1517,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3)
 
   #puts "#{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
   all[0..topN].each do |h|
-     puts "#{format_code(h[:code])} 当前价=#{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 流通市值=#{format_price(h[:total_mv])}亿 " 
+     puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 流通市值=#{format_price(h[:total_mv])}亿 " 
   end
 
   ave_ratio = (all[0..topN].collect{|h| h[:ratio]}.inject(:+)/topN*100).to_i/100.0

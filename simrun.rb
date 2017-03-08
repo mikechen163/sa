@@ -264,6 +264,10 @@ def find_by_ma5(m_state_list,day1,day2,day3)
            h[:next_roe]=0.0
            h[:next_price]=0.0
 
+            h[:total_mv] = Stock_Basic_Info.get_stock_total_number(h[:code]) * rec['close']
+             h[:total_free_mv] = Stock_Basic_Info.get_stock_free_number(h[:code]) * rec['close']
+
+
 
 
            if  ((rec['market_state'] == 3) or (rec['market_state'] == 8)) and ((rec['new_high']-rec['close'])/rec['new_high'] > 0.25)
@@ -627,6 +631,9 @@ def find_by_price_inc(day1,offset,etf_flag=false)
              h[:next_price]=0.0
              h[:name] = format_code(code,false)
 
+             h[:total_mv] = Stock_Basic_Info.get_stock_total_number(h[:code]) * rec['close']
+             h[:total_free_mv] = Stock_Basic_Info.get_stock_free_number(h[:code]) * rec['close']
+
              sa.push(h)
 
 
@@ -752,6 +759,10 @@ def find_by_ma(day1,day2,sort_method,etf_flag=false)
              h[:next_price]=0.0
              h[:today_roe]=0.0
 
+             h[:total_mv] = Stock_Basic_Info.get_stock_total_number(h[:code]) * rec['close']
+             h[:total_free_mv] = Stock_Basic_Info.get_stock_free_number(h[:code]) * rec['close']
+
+
              sa.push(h)
 
              #puts "found #{Names.get_name(code)}(#{code}) on #{last.to_s} at price #{price},previous price #{old_price} ,roe:#{(roe*100).floor/100.0}%"
@@ -780,7 +791,7 @@ def add_condition1(rec,market_state_list)
 
 end
 
-def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_diff=30)
+def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_diff=30,sortby_mv=0)
 
      date_list = Weekly_records.new.get_date_list
      len = date_list.length
@@ -1068,7 +1079,17 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
 
     #sa.delete_if{|h| h[:ratio] == 100000}
     #p sa.length
-    sa.sort_by!{|h| h[:ratio]}
+     
+     if (sortby_mv == 0)
+      sa.sort_by!{|h| h[:ratio]}
+      else
+        if (sortby_mv == 1)
+          sa.sort_by!{|h| h[:total_free_mv]}
+        else
+          sa.sort_by!{|h| h[:total_free_mv]}
+          sa.reverse!
+        end
+      end
     len=sa.length
     len = topN if len>topN
 
@@ -1090,7 +1111,7 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
         #p name
         #puts "#{format_code(h[:code])} on #{h[:date].to_s} at #{format_price(h[:price])} roe=#{format_roe(h[:roe])}" 
         #p h
-        puts "#{format_code(h[:code])} on #{h[:date].to_s}, price #{format_price(h[:price])}, on #{d2.to_s} price #{format_price(h[:pri_price])} #{format_roe(h[:roe])} ratio=#{format_price((h[:ratio]*100).to_i/100.0)}" 
+        puts "#{format_code(h[:code])} on #{h[:date].to_s}, price #{format_price(h[:price])}, on #{d2.to_s} price #{format_price(h[:pri_price])} #{format_roe(h[:roe])} ratio=#{format_price((h[:ratio]*100).to_i/100.0)}, #{(h[:total_free_mv]*100).to_i/100.0}亿 #{(h[:total_mv]*100).to_i/100.0}亿" 
   
     end
     puts "total #{len} ave_roe = #{(ave_roe*100).floor/100.0}%"
@@ -1181,7 +1202,7 @@ def find_lastweek_roe(mode,topN,pri_week,func_mode=false,compared_with_last_day=
   puts"----------------------------------------------------------------------"
   sa[0..len-1].each do |h|
      # p h
-      puts "#{format_code(h[:code])} on #{day.to_s}, price #{format_price(h[:next_price])}, select on #{h[:date].to_s} price #{format_price(h[:price])} #{format_roe(h[:next_roe])} #{format_roe(h[:today_roe])} ratio=#{format_price((h[:ratio]*100).to_i/100.0)}" 
+      puts "#{format_code(h[:code])} on #{day.to_s}, price #{format_price(h[:next_price])}, on #{h[:date].to_s} price #{format_price(h[:price])} #{format_roe(h[:next_roe])} #{format_roe(h[:today_roe])} #{(h[:total_mv]*100).to_i/100.0}亿" 
   end
   puts "total #{len} ave_roe = #{(ave_roe*100).floor/100.0}%"
 

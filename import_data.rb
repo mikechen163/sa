@@ -421,9 +421,9 @@ def import_base_data(dir,import_daily_record=false,etf=false,update_mode_flag=fa
      week_list.push(ts)
      wid += 1
      if etf
-       insert_data('weekly_etf_records',week_list)
+       insert_data('weekly_etf_records',week_list) 
      else 
-       insert_data('weekly_records',week_list)
+       insert_data('weekly_records',week_list) if not import_daily_record
      end
 
      ts = "#{mid},\'#{fcode.to_s}\',date(\'#{month_day}\'),#{month},#{month_open},#{month_high},#{month_low},#{month_close},#{month_volume},#{month_amount},0,0,0,0,0,0,0"
@@ -628,8 +628,129 @@ def analysis_daily_records(dir,rate_min=5,rate_max=8,vol_rate = 50)
 end # analysis_daily_recoreds
 
 
+#显示过去若干天，topN,roe>given_roe, 流通市值> given_free_mv,按照sortby_method排序的结果
+def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0)
+  load_name_into_database if Names.count != 0 
+  #puts "#{days} #{topN} #{given_roe} #{gl_roe} #{sortby_method}"
+  #
+  end_date = Time.now.to_date
+  
+  date_list = Daily_records.new.get_date_list
+  start_date = date_list.reverse.find {|date| date <= (end_date - days)}
+
+  sortby_method = 0 if (sortby_method > 4) or (sortby_method < 0)
+  sbs = ['按流通市值降序','按流通市值升序','按涨幅降序','按涨幅升序','按代码排序']
+
+  if gl_roe == 0
+    p "Show last #{days.to_s} days on #{start_date}, price change greater than #{given_roe.to_s}% , topN = #{topN} ，sortby = #{sbs[sortby_method]} "
+   else
+    p "Show last #{days.to_s} days on #{start_date}, price change little than #{given_roe.to_s}% , topN = #{topN} ，sortby = #{sbs[sortby_method]} "
+  end
 
 
+  sa=[]
+  all = get_all_stock_price_from_sina
+  all.delete_if {|h| h[:volume] == 0.0}
+
+  rec = nil
+  fr_list = Daily_records.where(date: "#{start_date.to_s}")
+  all.each do |h|
+    code = h[:code]
+    rec = nil
+    fr = fr_list.find {|rec| rec['code'] == code}
+    if fr != nil
+      rec = fr
+    else
+      #p "#{h[:code]}"
+      print "."
+      fr2_list = Daily_records.where(code: "#{code}")
+      rec = fr2_list.reverse.find {|rec| rec['date'] <= start_date }
+    end
+    
+    #found
+    if rec != nil
+       roe = ( h[:close] - rec['close'])/rec['close']*100
+       #p roe
+      if gl_roe == 0
+        if roe >= given_roe
+          h[:new_roe] = roe
+           h[:old_price] = rec['close']
+           h[:old_date] = rec['date']
+          sa.push(h)
+        end
+      else
+        if roe <= -given_roe
+          h[:new_roe] = roe
+           h[:old_price] = rec['close']
+           h[:old_date] = rec['date']
+          sa.push(h)
+        end
+      end
+    end
+
+   #p "#{h[:code]}"
+
+  end
+
+  case sortby_method
+    
+    when 0
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 1
+      sa.sort_by!{|h| h[:total_mv]}
+    when 2 
+      sa.sort_by!{|h| h[:new_roe]}
+      sa.reverse!
+    when 3 
+      sa.sort_by!{|h| h[:new_roe]}
+    when 4 
+      sa.sort_by!{|h| h[:code]}
+    else
+      p "unknown sort method #{sortby_method}"
+  end
+    
+  return if sa.length == 0
+
+  topN = sa.length - 1 if topN > (sa.length - 1 )
+  
+  puts
+  sa[0..topN].each do |h|
+     puts "#{format_code(h[:code])} #{format_price(h[:close])}, 涨幅=#{format_roe(h[:new_roe])}, on #{(h[:old_date])} at #{format_price(h[:old_price])}, 流通市值=#{format_price(h[:total_mv])}亿 " 
+  end
+
+  ave_ratio = (sa[0..topN].collect{|h| h[:new_roe]}.inject(:+)/topN*100).to_i/100.0
+  puts "总共#{topN}支股票 平均涨幅 = #{ave_ratio}% on #{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
+  
+  
+
+end # of show_stock_price_change
+
+def show_globl_index
+  cl_list = [
+    'sh000001',
+    'sz399001',
+    'sz399300',
+    'sz399005',
+    'sz399006',
+    'int_sp500',
+    'int_nasdaq',
+    'int_dji',
+    'int_hangseng',
+     'int_nikkei',
+    'int_ftse',
+    'gb_spy',
+    'gb_simo',
+    'gb_qiwi',
+    'hk02208',
+    'hk00700']
+  sa = get_list_data_from_sina(cl_list)
+  
+  sa.each do |h|
+    puts "#{h[:name]} 收盘价=#{h[:close]} 涨幅=#{(h[:ratio]*100).to_i/100.0}%"
+  end
+
+end
 
 
 
@@ -654,12 +775,16 @@ def print_help
     puts "-ppp2 TopN 8 ---  show topN performace stock from sina, sorting by 流通市值" 
     puts "-ppp2 TopN 9 ---  show topN performace stock from sina, sorting by 流通市值 升序" 
 
+    puts "-ppp2 TopN 13 ratio ---  show topN performace stock from sina, sorting by 换手率 升序, 涨幅大于ratio%" 
+    puts "-ppp2 TopN 14 ratio ---  show topN performace stock from sina, sorting by 流通市值, 跌幅大于ratio%" 
+    puts "-ppp2 TopN 15 ratio ---  show topN performace stock from sina, sorting by 成交额, 跌幅大于ratio%" 
     puts "-ppp2 TopN 16 ratio ---  show topN performace stock from sina, sorting by 成交额, 涨幅大于ratio%" 
     puts "-ppp2 TopN 17 ratio ---  show topN performace stock from sina, sorting by 流通市值，涨幅大于ratio%" 
     puts "-ppp2 TopN 18 ratio ---  show topN performace stock from sina, sorting by 流通市值 升序，涨幅大于ratio" 
     puts "-ppp2 TopN 19 ratio ---  show topN performace stock from sina, sorting by 换手率，涨幅大于ratio" 
 
-    puts "-sb code --- 显示基本的股票股本数据"    
+    puts "-sb  code --- 显示基本的股票股本数据"    
+    puts "-ttp days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果"    
 
     puts "-h            ---  This help"    
 end
@@ -816,6 +941,26 @@ if ARGV.length != 0
       insert_data('stock_basic_info',ts_list) if ts_list.length!=0
       exit
    end  
+
+   if ele == '-ttp' 
+     days = ARGV[ARGV.index(ele)+1].to_i
+     topN = ARGV[ARGV.index(ele)+2].to_i
+     roe_diff = ARGV[ARGV.index(ele)+3].to_i
+     gl_roe = ARGV[ARGV.index(ele)+4].to_i
+     sortby_mv = ARGV[ARGV.index(ele)+5].to_i
+
+     #p "Show last #{days.to_s} days, price change over #{roe_diff.to_s}% , topN = #{topN} "
+
+     show_stock_price_change(days,topN,roe_diff,gl_roe,sortby_mv)
+
+     exit
+    end 
+
+
+   if ele == '-sidx'   
+     show_globl_index
+     exit
+    end 
    
 
 
