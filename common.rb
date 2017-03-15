@@ -1094,7 +1094,7 @@ def show_roe_list(code,years=20)
        s4 = s4 + cpdl
 
 
-      puts "#{rvn[0][i-1]} 投资现金流出[#{cash_invest_list[i-1]}万], 筹资[#{cash_new_debt_list[i-1]}万],还款[#{cash_payback_debt_list[i-1]}万], 分红[#{cash_divide_list[i-1]}万], 运营现金变化[#{cash_running_list[i-1]}万], 期末现金:净资产＝#{cfratio}%, 运营现金:借款＝#{ctratio}% "
+      puts "#{rvn[0][i-1]} 投资现金流出[#{cash_invest_list[i-1]}万], 筹资[#{cash_new_debt_list[i-1]}万],还款[#{cash_payback_debt_list[i-1]}万], 分红[#{cash_divide_list[i-1]}万], 期末现金变化[#{cash_running_list[i-1]}万], 期末现金:净资产＝#{cfratio}%, 运营现金:借款＝#{ctratio}% "
     end
   end
 
@@ -1162,6 +1162,8 @@ def show_roe_list(code,years=20)
     
  end
 
+
+
  def get_finance_info_from_ntes(url)
    
    r=[]
@@ -1226,6 +1228,48 @@ def show_roe_list(code,years=20)
     return r
  end #func
 
+#港股的股本数据
+def get_stockinfo_data_from_sina(code)
+   
+   
+  uri="http://stock.finance.sina.com.cn/hkstock/info/#{code}.html"
+  # uri="http://stock.finance.sina.com.cn/hkstock/info/00700.html"
+   
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end  
+    title = html_response.scan(/<title>(.*)<\/title>/)
+    return "",0.0 if title[0] == nil
+    title = title[0][0].encode('utf-8','gbk')
+    #puts title
+    # ind = title[0][0].split(code.to_s)
+    # #puts ind[0].length
+    ind = title.index('0')
+    name = title[0..(ind-2)]
+    #puts name
+    # #puts name.length
+
+    # name = name + " " if name.length == 3
+    # name = name + " " if name.length == 5
+   
+    # sa=html_response.split('table_bg001')
+     sa = html_response.scan(/<td>(.*)<\/td>/)
+     sa.each do |item|
+      ns = item[0].encode('utf-8','gbk')
+       ind =  ns.index("(股)")
+       return  name,ns[0..(ind-1)].to_i if ind != nil
+     end
+    
+    #   al = sa[2].scan(/[0-9]+\.[0-9]+/)
+    #   #al.each_with_index {|c,i| puts "#{i} : #{c}"}
+
+    #   return name,al.collect{|x| x.to_f} 
+    
+    return "" , 0.0
+    
+ end
+
 
  def get_history_data_from_nasdaq(code)
    uri="http://www.nasdaq.com/symbol/#{code}/historical"
@@ -1282,7 +1326,7 @@ def show_roe_list(code,years=20)
       if i != 0
         #p str
         sa=str.split(',')
-        #p sa
+        next if  sa.length < 2
     
         #ta=[ sa[0][2..7], sa[1].to_f,sa[4].to_f,sa[3].to_f,sa[5].to_f,sa[8].to_i,sa[9].to_f]
         h= Hash.new
@@ -1371,9 +1415,16 @@ def show_roe_list(code,years=20)
             h[:pe] = sa[14].to_f
             h[:beta] = sa[16].to_f
             h[:total_stock_number] = sa[19].to_f
+
+            h[:trade_ratio] = 0.0
+            if h[:total_stock_number] > 0.0
+              h[:trade_ratio] = ((h[:volume]/h[:total_stock_number])*10000).to_i/100.0
+            end
            
           when 'h' #hk
 
+            next if  sa[6].to_f < 1
+            #p sa
             h[:name] = sa[1].encode('utf-8','gbk')
             tl = ts[0].length
             #h[:code] = ts[0][2..tl-1]
@@ -1383,18 +1434,31 @@ def show_roe_list(code,years=20)
             h[:high] = sa[4].to_f 
             h[:low]   = sa[5].to_f
             h[:close] = sa[6].to_f 
-            h[:change_value] = sa[6].to_f
-            h[:ratio] = sa[7].to_f
-            h[:buy1] = sa[8].to_f
-            h[:sell1] = sa[9].to_f
-            h[:amount] = sa[10].to_f
-            h[:volume] = sa[11].to_f
-            h[:pe] = sa[12].to_f
-            h[:week_interest_ratio] = sa[13].to_f
-            h[:week52_high] = sa[14].to_f
-            h[:week52_low] = sa[15].to_f
-            h[:date] = sa[16]
-            h[:time] = sa[17]
+            h[:change_value] = sa[7].to_f
+            h[:ratio] = sa[8].to_f
+            h[:buy1] = sa[9].to_f
+            h[:sell1] = sa[10].to_f
+            h[:amount] = sa[11].to_f
+            h[:volume] = sa[12].to_f
+            h[:pe] = sa[13].to_f
+            h[:week_interest_ratio] = sa[14].to_f
+            h[:week52_high] = sa[15].to_f
+            h[:week52_low] = sa[16].to_f
+            h[:date] = sa[17]
+            h[:time] = sa[18]
+
+            #h[:trade_ratio] = 0.0
+            free_number = Stock_Basic_Info.get_stock_free_number(h[:code][2..6])
+             free_number = 0.0 if free_number == nil
+             h[:total_mv] = (h[:close]*free_number/1000000).to_i/100.0
+
+             if free_number > 0.0
+               h[:trade_ratio] = ((h[:volume]/free_number)*10000).to_i/100.0
+             else
+                h[:trade_ratio] = 0.0
+             end
+
+             next if  h[:total_mv] < 10
 
           else
             puts "unknown code = #{ts[0]}"
@@ -1446,10 +1510,10 @@ def show_roe_list(code,years=20)
     return cl
 end
 
-def get_all_stock_price_from_sina
+def get_all_stock_price_from_sina(cl)
    
   batch_num = 300
-  cl = Names.get_code_list
+  #cl = Names.get_code_list
   len = cl.length
   step = 0
   all = []
@@ -1465,10 +1529,30 @@ def get_all_stock_price_from_sina
   return all
 end
 
-def get_topN_from_sina(topN,sortby,given_ratio=3)
+def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
 
   t1= Time.now
-  all = get_all_stock_price_from_sina
+
+  case market 
+    when :china
+      all = get_all_stock_price_from_sina(Names.get_code_list)
+    when :hk
+       cl = []
+       File.open('hk_name.txt') do |file|
+            file.each_line do |line|
+              na = line.split('|')
+              code = "hk"+na[1].strip
+              cl.push(code) 
+            end
+       end
+       puts "total #{cl.length} stocks"
+       t1= Time.now
+       all = get_all_stock_price_from_sina(cl)
+    when :us
+    else
+      puts "unknown market #{market.to_s}"
+  end
+
   t2 = Time.now
   
   puts "fetching all data from sina takes #{t2-t1} seconds."
@@ -1603,9 +1687,47 @@ def get_topN_from_sina(topN,sortby,given_ratio=3)
   topN = all.length - 1 if (all.length - 1)  < topN 
 
   #puts "#{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
-  all[0..topN].each do |h|
-     puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 流通市值=#{format_price(h[:total_mv])}亿 " 
+  case market 
+    when :china
+      all[0..topN].each do |h|
+         #p h
+         puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 流通市值=#{format_price(h[:total_mv])}亿 " 
+      end
+    when :hk
+      all[0..topN].each do |h|
+         name = h[:name]
+         if (name[0] >= 'A') and (name[0] <= 'Z')
+            if name.length<8 
+              name += ' '*(8 - name.length)
+            else
+              name = name[0..7]
+            end
+         else
+          if name.length>=4
+            name = name[0..3]
+          else
+            len = name.length
+            if (name[len-1] >= 'A') and (name[len-1] <= 'Z')
+              name += ' '*((4-name.length)*2 + 1)
+            else
+              name += ' '*(4-name.length)*2
+            end
+          end 
+         end
+
+         puts "#{name}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])}, 换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{((h[:amount]/100.0).to_i/100.0)}万元, 市值=#{format_price(h[:total_mv])}亿 " 
+      end
+
+    when :us 
+        all[0..topN].each do |h|
+         #p h
+         puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 市值=#{format_price(h[:total_mv])}亿 " 
+      end
+
+    else
+      puts "unknown market #{market.to_s}"
   end
+
 
   ave_ratio = (all[0..topN].collect{|h| h[:ratio]}.inject(:+)/topN*100).to_i/100.0
   puts "总共#{topN}支股票 平均涨幅 = #{ave_ratio}% on #{Time.now.strftime("%y-%m-%d %H:%M:%S")}"

@@ -649,7 +649,7 @@ def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0)
 
 
   sa=[]
-  all = get_all_stock_price_from_sina
+  all = get_all_stock_price_from_sina(Names.get_code_list)
   all.delete_if {|h| h[:volume] == 0.0}
 
   rec = nil
@@ -888,14 +888,24 @@ if ARGV.length != 0
       exit
    end  
 
+
     if ele == '-ppp3'
-      #a_start = ARGV.index(ele)+1
-      #a_end   = ARGV.length-1
-      #codelist=ARGV[a_start..a_end] 
-      ta=get_data_from_sina('aapl')
-      #ta.each {|cl| p cl}
+      topN = ARGV[ARGV.index(ele)+1].to_i
+      sortby = ARGV[ARGV.index(ele)+2].to_i
+      given_ratio = ARGV[ARGV.index(ele)+3].to_i
+      given_ratio = 3 if 0 == given_ratio 
+      get_topN_from_sina(topN,sortby,given_ratio,:hk)
       exit
-   end
+   end  
+
+   #  if ele == '-ppp3'
+   #    #a_start = ARGV.index(ele)+1
+   #    #a_end   = ARGV.length-1
+   #    #codelist=ARGV[a_start..a_end] 
+   #    ta=get_data_from_sina('aapl')
+   #    #ta.each {|cl| p cl}
+   #    exit
+   # end
 
     if ele == '-ppp4'
       code = ARGV.index(ele)+1
@@ -937,6 +947,41 @@ if ARGV.length != 0
           fn += 1
         end
       end
+
+      insert_data('stock_basic_info',ts_list) if ts_list.length!=0
+      exit
+   end  
+
+   if ele == '-sbhkall'
+      # code = ARGV[ARGV.index(ele)+1]
+      # t = get_stockinfo_data_from_ntes(code)
+      # puts "#{format_code(code)} 总股本=#{t[0]}亿股, 流通A股=#{t[1]}亿股, 限售A股=#{t[2]}亿股, B股=#{t[3]}亿股, H股=#{t[4]}亿股"
+      # 加载股票信息到数据库
+      ts_list = []
+      fn = 3154
+    
+       #cl = []
+       File.open('hk_name.txt') do |file|
+            file.each_line do |line|
+              na = line.split('|')
+              code = na[1].strip
+        
+              name,t = get_stockinfo_data_from_sina(code)
+
+              if t>0
+
+                  puts "loading #{name}(#{code}) 总股本=#{t}股"
+                  market = 'HK'
+                  ts = "#{fn},\'#{code.to_s}\',\'#{name}\',\'#{market}\',\'#{t}\',\'#{t}\',\'#{t}\',\'#{t}\',\'#{t}\'"
+                  ts_list.push(ts)  
+                  fn += 1
+                end
+
+                #break
+
+            end
+       end
+       #puts "total #{cl.length} stocks"
 
       insert_data('stock_basic_info',ts_list) if ts_list.length!=0
       exit
