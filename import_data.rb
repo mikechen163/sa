@@ -423,7 +423,7 @@ def import_base_data(dir,import_daily_record=false,etf=false,update_mode_flag=fa
      if etf
        insert_data('weekly_etf_records',week_list) 
      else 
-       insert_data('weekly_records',week_list) if not import_daily_record
+       insert_data('weekly_records',week_list) #if not import_daily_record
      end
 
      ts = "#{mid},\'#{fcode.to_s}\',date(\'#{month_day}\'),#{month},#{month_open},#{month_high},#{month_low},#{month_close},#{month_volume},#{month_amount},0,0,0,0,0,0,0"

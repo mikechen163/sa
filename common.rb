@@ -890,6 +890,11 @@ def show_roe_list(code,years=20)
   #puts "get_revenue_from_ntes"
   asset = get_assets_from_ntes(code)
   #puts "get_assets_from_ntes"
+  cash = get_cash_from_ntes(code)
+
+  cash_list = cash[26]
+
+
   as_list = asset[asset.length-2]
   rvn_list = rvn[rvn.length-7] 
   income_list = rvn[1] 
@@ -1010,7 +1015,89 @@ def show_roe_list(code,years=20)
     end
   end
 
-  
+
+  puts ""
+  puts "-------------------------------------现金流量分析------------------------------"  
+
+  puts "经营活动现金流分析:"
+  cash_income_list = cash[15]
+  cash_tax_list = cash[23]   
+  cash_list.each_with_index do |rr,i|
+    if (i>1) and (i<=years+1)
+     # puts "#{i} #{rvn_list[i]} #{rvn_list[i-1]}"
+       icn = cash_list[i].split(',').inject(:+).to_f
+       ic = cash_list[i-1].split(',').inject(:+).to_f
+       icc = ((ic-icn)/icn*10000).to_i.to_f/100
+
+       cicn = cash_income_list[i].split(',').inject(:+).to_f
+       cic = cash_income_list[i-1].split(',').inject(:+).to_f
+       cicc = ((cic-cicn)/cicn*10000).to_i.to_f/100
+       total_ic = income_list[i-1].split(',').inject(:+).to_f
+
+
+       ly = rvn_list[i-1].split(',').inject(:+).to_f 
+
+       # cticn = cash_tax_list[i].split(',').inject(:+).to_f
+       # ctic = cash_tax_list[i-1].split(',').inject(:+).to_f
+       # cticc = ((ctic-cticn)/cticn*10000).to_i.to_f/100
+
+       cratio = ((ic)/cic*10000).to_i.to_f/100
+       lr_cash_ratio = ((ic)/ly*10000).to_i.to_f/100
+       ltr_cash_ratio = ((cic)/total_ic*10000).to_i.to_f/100
+      
+      puts "#{rvn[0][i-1]} 运营现金流入[#{cash_income_list[i-1]}万,增长=#{cicc}%], 净现金流入[#{cash_list[i-1]}万,增长=#{icc}%], 净现金流入比例＝#{cratio}%, 净现金:利润=#{lr_cash_ratio}%,  流入现金:营收=#{ltr_cash_ratio}%"
+      #puts "#{rvn[0][i-1]} 运营现金流入[#{cash_income_list[i-1]}万,增长=#{cicc}%], 净现金流入[#{cash_list[i-1]}万,增长=#{icc}%], 净现金流入比例＝#{cratio}%"
+    end
+  end
+
+   puts "过去#{years}年，现金复合增长率=#{calc_fh_inc(years,cash_income_list[years].split(',').inject(:+).to_f,\
+  cash_income_list[1].split(',').inject(:+).to_f)}%,\
+  净现金流复合增长率=#{calc_fh_inc(years,cash_list[years].split(',').inject(:+).to_f,\
+  cash_list[1].split(',').inject(:+).to_f)}%"
+
+   puts
+   puts "投资和筹资、分红现金分析"
+   cash_invest_list = cash[42]
+   cash_new_debt_list = cash[49]
+   cash_payback_debt_list = cash[50]
+   cash_divide_list = cash[51]
+   cash_stock_opr_list = cash[55]
+   cash_running_list = cash[59]
+   cash_final_list = cash[61]
+   s1 = 0.0
+   s2 = 0.0
+   s3 = 0.0
+   s4 = 0.0
+   s5 = 0.0
+   cash_list.each_with_index do |rr,i|
+    if (i>1) and (i<=years+1)
+     # puts "#{i} #{rvn_list[i]} #{rvn_list[i-1]}"
+       cinl = - cash_invest_list[i-1].split(',').inject(:+).to_f
+       csol = cash_stock_opr_list[i-1].split(',').inject(:+).to_f
+       cdl = cash_divide_list[i-1].split(',').inject(:+).to_f
+       cndl = cash_new_debt_list[i-1].split(',').inject(:+).to_f
+       cpdl = cash_payback_debt_list[i-1].split(',').inject(:+).to_f
+       cfl = cash_final_list[i-1].split(',').inject(:+).to_f
+       crl = cash_running_list[i-1].split(',').inject(:+).to_f
+       ic = cash_list[i-1].split(',').inject(:+).to_f
+       asyn = as_list[i-1].split(',').inject(:+).to_f
+       
+    
+
+       cfratio = ((cfl)/asyn*10000).to_i.to_f/100
+       ctratio = 0.0
+       ctratio = ((ic)/cndl*10000).to_i.to_f/100 if cndl > 0.0
+      
+       s1 = s1 + cinl
+       s2 = s2 + cdl
+       s3 = s3 + cndl
+       s4 = s4 + cpdl
+
+
+      puts "#{rvn[0][i-1]} 投资现金流出[#{cash_invest_list[i-1]}万], 筹资[#{cash_new_debt_list[i-1]}万],还款[#{cash_payback_debt_list[i-1]}万], 分红[#{cash_divide_list[i-1]}万], 运营现金变化[#{cash_running_list[i-1]}万], 期末现金:净资产＝#{cfratio}%, 运营现金:借款＝#{ctratio}% "
+    end
+  end
+
 
 
   return roe_list
