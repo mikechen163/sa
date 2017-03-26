@@ -752,16 +752,42 @@ def show_globl_index
 
 end
 
+def scan_for_chance
+  puts "scanning..."
+
+  puts "－－－－－－－－－资产配置分析－－－－－－－－－－－"
+  puts "股权市场总体估值分析。。。"
+  puts "检查债券市场。。。"
+  puts "检查房地产reits市场。。。"
+  puts "检查原油市场。。。"
+  puts "检查黄金市场。。。"
+  puts "检查外汇市场。。。"
+
+  puts "－－－－－－－－－投资机会分析－－－－－－－－－－－"
+  puts "检查高股权回报的价值股列表。。。"
+  puts "检查高利润增长率成长股列表。。。"
+  puts "检查周期股跟踪列表。。。"
+  puts "检查困境股跟踪表。。。"
+
+  puts "－－－－－－－－－投机机会分析－－－－－－－－－－－"
+  puts "检查趋势交易机会"
+
+  puts "－－－－－－－－－风险分析－－－－－－－－－－－"
+  puts "检查系统性风险状态。 隐形 显性"
+  puts ""
+
+end
+
 
 
 def print_help
     puts "This Tool is used to import data from stock software like ZhaoShangZhengquan"
     puts "-d dir        ---  Using given  dir as data store directory  "
     puts "-b            ---  import daily records, default only import weekly records and monthly records."
-    puts "-g dir        ---  generating min_list for daily_records"
-    puts "-c code least_days        ---  display minlist for code" 
-    puts "-r dir        ---  analysis daily data for min list" 
-    puts "-p least_days pri_day   ---  show lastest min list" 
+    #puts "-g dir        ---  generating min_list for daily_records"
+    #puts "-c code least_days        ---  display minlist for code" 
+    #puts "-r dir        ---  analysis daily data for min list" 
+    #puts "-p least_days pri_day   ---  show lastest min list" 
     puts
     puts "-ppp code1 code2 ... coden   ---  show stock price from sina" 
     puts "-ppp2 TopN 0 ---  show topN performace stock from sina, sorting by 成交金额" 
@@ -783,8 +809,17 @@ def print_help
     puts "-ppp2 TopN 18 ratio ---  show topN performace stock from sina, sorting by 流通市值 升序，涨幅大于ratio" 
     puts "-ppp2 TopN 19 ratio ---  show topN performace stock from sina, sorting by 换手率，涨幅大于ratio" 
 
-    puts "-sb  code --- 显示基本的股票股本数据"    
     puts "-ttp days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果"    
+
+    puts
+    puts "-sb  code --- 显示基本的股票股本数据" 
+    puts "-sball    --- 下载A股股权数据到数据库" 
+    puts "-sbhkall  --- 下载港股股权数据" 
+    puts "-loadfile filename tablename --- 装载文件到数据表"  
+    puts
+    puts "-sidx     --- 显示指数数据"   
+    puts "-sfc      --- 显示投资机会"    
+      
 
     puts "-h            ---  This help"    
 end
@@ -808,7 +843,18 @@ if ARGV.length != 0
     if ele == '-d'
       dir = ARGV[ARGV.index(ele)+1]
       puts "Using directory : "+dir  
-  
+
+       begin
+        import_base_data(dir,import_daily_record,etf,update_mode_flag)
+      rescue => detail
+         print "An error occurred: ",$!, "\n"
+      #if show_detail?
+        puts detail.message
+        print detail.backtrace.join("\n")
+        puts
+      #end
+      end
+       exit
     end
 
     if ele == '-e'
@@ -926,7 +972,13 @@ if ARGV.length != 0
       # puts "#{format_code(code)} 总股本=#{t[0]}亿股, 流通A股=#{t[1]}亿股, 限售A股=#{t[2]}亿股, B股=#{t[3]}亿股, H股=#{t[4]}亿股"
       # 加载股票信息到数据库
       ts_list = []
-      fn = 1
+
+      if (Stock_Basic_Info.count == 0)
+        fn = 1
+      else
+        fn = Stock_Basic_Info.last.id + 1
+      end
+
       Names.get_code_list.each do |code|
         #puts code
         if (code == '000300') or (code[0..2] == '399' ) or (code[0..2] == '159' )
@@ -958,7 +1010,11 @@ if ARGV.length != 0
       # puts "#{format_code(code)} 总股本=#{t[0]}亿股, 流通A股=#{t[1]}亿股, 限售A股=#{t[2]}亿股, B股=#{t[3]}亿股, H股=#{t[4]}亿股"
       # 加载股票信息到数据库
       ts_list = []
-      fn = 3154
+      if (Stock_Basic_Info.count == 0)
+        fn = 1
+      else
+        fn = Stock_Basic_Info.last.id + 1
+      end
     
        #cl = []
        File.open('hk_name.txt') do |file|
@@ -987,6 +1043,40 @@ if ARGV.length != 0
       exit
    end  
 
+   if ele == '-loadfile'
+      filename = ARGV[ARGV.index(ele)+1]
+      table = ARGV[ARGV.index(ele)+2]
+      
+      ts_list = []
+
+      if (Stock_Basic_Info.count == 0)
+        fn = 1
+      else
+        fn = Stock_Basic_Info.last.id + 1
+      end
+    
+       #cl = []
+       File.open(filename) do |file|
+            file.each_line do |line|
+              #puts line
+              na = line.split('|')
+              len = na.length
+                   ts = na[1..len-1].inject("#{fn},") {|res,x| res << "\'#{x.to_s}\',"}
+                   ts = ts[0..(ts.length-2)]
+                   #puts ts
+                  ts_list.push(ts)  
+                  fn += 1
+              
+                #break
+
+            end
+       end
+       #puts "total #{cl.length} stocks"
+
+      insert_data(table,ts_list) if ts_list.length!=0
+      exit
+   end  
+
    if ele == '-ttp' 
      days = ARGV[ARGV.index(ele)+1].to_i
      topN = ARGV[ARGV.index(ele)+2].to_i
@@ -1006,6 +1096,11 @@ if ARGV.length != 0
      show_globl_index
      exit
     end 
+
+   if ele == '-sfc'   
+     scan_for_chance
+     exit
+    end 
    
 
 
@@ -1013,20 +1108,10 @@ if ARGV.length != 0
    end
 end
 
-if ARGV.length == 0
-  puts "Please give a data directory"
-  puts "Usage :import -d [directory] "
-  exit 
-end
-
-# main 
-begin
-  import_base_data(dir,import_daily_record,etf,update_mode_flag)
-rescue => detail
-   print "An error occurred: ",$!, "\n"
-#if show_detail?
-  puts detail.message
-  print detail.backtrace.join("\n")
-  puts
+#if ARGV.length == 0
+#  puts "Please give a data directory"
+#  puts "Usage :import -d [directory] "
+#  exit 
 #end
-end
+
+print_help

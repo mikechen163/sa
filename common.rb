@@ -722,10 +722,13 @@ def format_price(price)
   s=price.to_s
   ind=s.index('.')
   #return ' '+price.to_s+'0' if (price<10) and ((price*100).floor%10 == 0)
-  return ' '+s+'0' if (price<10) and ((s.length-2) == ind)
-  return ' '+price.to_s if (price<10) 
+  return '  '+s+'0' if (price<10) and ((s.length-2) == ind)
+  return '  '+price.to_s if (price<10) 
   #return price.to_s+'0' if (((price*100).floor)%10 == 0)
-  return s+'0' if (s.length-2) == ind
+  #return s+'0' if (s.length-2) == ind
+  return ' '+s+'0' if (price<100) and ((s.length-2) == ind)
+  return ' '+price.to_s if (price<100) 
+  return s+'0' if  ((s.length-2) == ind)
   return price.to_s 
 end
  
@@ -1373,6 +1376,26 @@ def get_stockinfo_data_from_sina(code)
             end
 
             h[:name] =  nz
+            if (nz[0] == 'N') 
+              h[:name] =  nz + ' '
+            end 
+
+            if (nz[0] == 'S') and (nz[1] != 'T') 
+              h[:name] =  nz + ' '
+            end 
+
+             if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length>3)
+              h[:name] =  nz[0..4]
+            end 
+
+            if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length == 3)
+              h[:name] =  nz + '   '
+            end 
+
+             if (nz[0] == 'S') and (nz[1] == 'T')
+              h[:name] =  nz + '  '
+            end 
+
 
             h[:open] = sa[1].to_f
             h[:last_close] = sa[2].to_f
@@ -1426,6 +1449,30 @@ def get_stockinfo_data_from_sina(code)
             next if  sa[6].to_f < 1
             #p sa
             h[:name] = sa[1].encode('utf-8','gbk')
+
+            name = h[:name]
+             if (name[0] >= 'A') and (name[0] <= 'Z')
+                if name.length<8 
+                  name += ' '*(8 - name.length)
+                else
+                  name = name[0..7]
+                end
+             else
+              if name.length>=4
+                name = name[0..3]
+              else
+                len = name.length
+                if (name[len-1] >= 'A') and (name[len-1] <= 'Z')
+                  name += ' '*((4-name.length)*2 + 1)
+                else
+                  name += ' '*(4-name.length)*2
+                end
+              end 
+             end
+             h[:name] = name
+
+
+
             tl = ts[0].length
             #h[:code] = ts[0][2..tl-1]
 
@@ -1690,32 +1737,22 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
   case market 
     when :china
       all[0..topN].each do |h|
-         #p h
-         puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 流通市值=#{format_price(h[:total_mv])}亿 " 
+         
+          cje = "#{((h[:amount]/100).to_i/100.0)}亿元"
+         if (h[:amount] < 10000)
+           cje = "#{((h[:amount]).to_i)}万元"
+         end
+
+         puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i/100)}手, 成交额=#{cje} 流通市值=#{format_price(h[:total_mv])}亿 " 
       end
     when :hk
       all[0..topN].each do |h|
-         name = h[:name]
-         if (name[0] >= 'A') and (name[0] <= 'Z')
-            if name.length<8 
-              name += ' '*(8 - name.length)
-            else
-              name = name[0..7]
-            end
-         else
-          if name.length>=4
-            name = name[0..3]
-          else
-            len = name.length
-            if (name[len-1] >= 'A') and (name[len-1] <= 'Z')
-              name += ' '*((4-name.length)*2 + 1)
-            else
-              name += ' '*(4-name.length)*2
-            end
-          end 
+  
+         cje = "#{((h[:amount]/100.0).to_i/100.0)}万元"
+         if (h[:amount] > 100000000)
+           cje = "#{((h[:amount]/1000000.0).to_i/100.0)}亿元"
          end
-
-         puts "#{name}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])}, 换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{((h[:amount]/100.0).to_i/100.0)}万元, 市值=#{format_price(h[:total_mv])}亿 " 
+         puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])}, 换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{((h[:volume]/100.0).to_i/100.0)}万股, 成交额=#{cje}, 市值=#{format_price(h[:total_mv])}亿 " 
       end
 
     when :us 

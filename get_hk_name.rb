@@ -2,7 +2,7 @@ no = 1
 Dir.glob("dhk_0315\/*.txt").sort.each do |afile|
     #puts afile
     ind = afile.index('/')
-    if (afile[ind+1] == '3') or  (afile[ind+1] == '7')
+    if (afile[ind+1] == '3') or  (afile[ind+1] == '7') #or  (afile[ind+1] == '4')
         File.open(afile,:encoding =>'gbk' ) do |file|
             i = 0
             file.each_line do |line|
