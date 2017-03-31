@@ -11,6 +11,8 @@ require 'simrun'
 require 'tushare_interface'
 require 'json'
 
+require 'basic_value_analysis'
+
 # def find_number_of_record(l,date)
 
 #   #p date
