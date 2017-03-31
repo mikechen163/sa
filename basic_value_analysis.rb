@@ -10,23 +10,44 @@ def check_growth_stock_list(vl)
 end
 
 def check_stock_list()
+
+  all = []
   puts "检查高股权回报的价值股列表。。。"
    File.open('value_list.txt') do |file|       
         file.each_line do |line|
           code = line.strip
-          puts "#{format_code(code)}"
+          #puts "#{format_code(code)}"
           #show_roe_list(code,1)
+          h = evalate_equity(code)
+          all.push(h)
         end
     end
 
+   all.sort_by!{|h| h[:real_roe]}
+   all.reverse!
+   puts
+   all.each do |h|
+     puts "#{format_code(h[:code])} [#{h[:year]}] pb = #{h[:pb]}, pe = #{h[:pe]}, 净资产回报率 = #{(h[:ave_roe]*100).to_i/100.0}% 预期回报率=#{h[:real_roe]}%, 10年期回报率=#{h[:ten_year_roe]}%"
+   end
+   
+    all = []
+   puts
    puts "检查高利润增长率成长股列表。。。"
      File.open('growth_list.txt') do |file|       
         file.each_line do |line|
           code = line.strip
-          puts "#{format_code(code)}"
+          #puts "#{format_code(code)}"
           #show_roe_list(code,1)
+          h = evalate_equity(code)
+          all.push(h)
         end
     end
+   all.sort_by!{|h| h[:real_roe]}
+   all.reverse!
+   puts
+   all.each do |h|
+     puts "#{format_code(h[:code])} [#{h[:year]}] pb = #{h[:pb]}, pe = #{h[:pe]}, 净资产回报率 = #{(h[:ave_roe]*100).to_i/100.0}% 预期回报率=#{h[:real_roe]}%, 10年期回报率=#{h[:ten_year_roe]}%"
+   end
 end
 
 def scan_for_chance
@@ -82,6 +103,95 @@ def show_globl_index
 
 end
 
+def evalate_equity(code,years=10)
+
+  rvn = get_revenue_from_ntes(code)
+  rvn_list = rvn[rvn.length-7] 
+  asset = get_assets_from_ntes(code)
+  as_list = asset[asset.length-2]
+  income_list = rvn[1] 
+
+  if (years > rvn_list.length-1)
+    years = rvn_list.length-1
+  end
+
+  years = 3 if (years < 3)
+
+  roe_list = []
+  income_inc_list =[]
+  revenue_inc_list =[]
+  net_asset_inc_list = []
+  rvn_list.each_with_index do |rr,i|
+    if (i>1) and (i<=years+1)
+      ly = rvn_list[i-1].split(',').inject(:+).to_f 
+      asy = as_list[i].split(',').inject(:+).to_f
+      roe = (ly/asy*10000).to_i.to_f/100
+      roe_list.push(roe)
+
+      asyn = as_list[i-1].split(',').inject(:+).to_f
+      inc_asy = ((asyn-asy)/asy*10000).to_i.to_f/100
+      net_asset_inc_list.push(inc_asy)
+
+      icn = income_list[i].split(',').inject(:+).to_f
+      ic = income_list[i-1].split(',').inject(:+).to_f
+      icc = ((ic-icn)/icn*10000).to_i.to_f/100
+      income_inc_list.push(icc)
+
+      lyn = rvn_list[i].split(',').inject(:+).to_f
+      ly = rvn_list[i-1].split(',').inject(:+).to_f 
+      inc = ((ly-lyn)/lyn*10000).to_i.to_f/100
+      revenue_inc_list.push(inc)
+    end
+  end
+
+  ave_roe = roe_list[0..2].sum/3
+  #ave_roe = roe_list[0..(years-1)].sum/years
+  #ave_roe = roe_list[0..(years-1)].sum/(years-1) if years == (rvn_list.length-1)
+
+  frvn = rvn_list[1].split(',').inject(:+).to_f
+  fas =  as_list[1].split(',').inject(:+).to_f
+  #total_mv = Stock_Basic_Info.get_stock_total_number(code)
+  al = []
+  al.push (code)
+  close_price = get_list_data_from_sina(al)[0][:close]
+  #puts close_price
+  total_mv = Stock_Basic_Info.get_stock_total_number(code) * close_price
+  #puts total_mv
+  pe = ((total_mv*10000/frvn)*100).to_i/100.0
+  pb = ((total_mv*10000/fas)*100).to_i/100.0
+  real_roe = (ave_roe/pb*100).to_i/100.0
+  ten_year_roe = ((((1+real_roe/100)**10)-1)*10000).to_i/100.0
+  total_ten_year_roe = (ten_year_roe/100)*pe 
+
+  h = Hash.new
+  h[:code] = code
+  h[:price] = close_price
+  h[:total_mv] = total_mv
+  h[:pb] = pb
+  h[:pe] = pe
+  h[:ave_roe] = ave_roe
+  h[:real_roe] = real_roe
+  h[:ten_year_roe] = ten_year_roe
+  h[:year] = rvn[0][1][0..3]
+
+  puts
+  puts "#{format_code(code)} 年报 [#{rvn[0][1]}]"
+  puts "过去3年平均净资产回报率 =#{(ave_roe*100).to_i/100.0}% #{roe_list.to_s}"
+  income_inc_ratio = calc_fh_inc(years,income_list[years].split(',').inject(:+).to_f,income_list[1].split(',').inject(:+).to_f)
+  revenue_inc_ratio = calc_fh_inc(years,rvn_list[years].split(',').inject(:+).to_f,rvn_list[1].split(',').inject(:+).to_f)
+  net_asset_inc_ratio = calc_fh_inc(years,as_list[years].split(',').inject(:+).to_f,as_list[1].split(',').inject(:+).to_f)
+  puts "过去#{years}年收入复合增长率  =#{income_inc_ratio}% #{income_inc_list.to_s}"
+  puts "过去#{years}年利润复合增长率  =#{revenue_inc_ratio}% #{revenue_inc_list.to_s}"
+  puts "过去#{years}年净资产复合增长率=#{net_asset_inc_ratio}% #{net_asset_inc_list.to_s}"
+
+  #puts "      过去#{years}年，收入复合增长率=#{income_inc_ratio}%,利润复合增长率=#{revenue_inc_ratio}%,\
+  #净资产复合增长率=#{net_asset_inc_ratio}%, 净资产平均收益率=#{format_roe(ave_roe)}"
+
+  #puts "#{format_code(code)} [#{rvn[0][1][0..3]}] pb = #{pb}, pe = #{pe}, 净资产回报率 = #{(ave_roe*100).to_i/100.0}% 一年期回报率=#{real_roe}%, 10年期回报率=#{ten_year_roe}%"
+  
+  return h
+  
+end
 
 # 分析企业的财务数据
 def show_roe_list(code,years=20)
@@ -128,7 +238,7 @@ def show_roe_list(code,years=20)
     puts "#{rvn[0][rvn_list.length-1]} 收入=#{income_list[income_list.length-1]}万，利润=#{rvn_list[rvn_list.length-1]}万" 
   end
 
-  years = 3 if (years < 3)
+  years = 1 if (years < 1)
 
   #p years
   #p roe_list
