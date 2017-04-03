@@ -42,11 +42,11 @@ def check_stock_list()
           all.push(h)
         end
     end
-   all.sort_by!{|h| h[:real_roe]}
-   all.reverse!
+   all.sort_by!{|h| h[:peg]}
+   #all.reverse!
    puts
    all.each do |h|
-     puts "#{format_code(h[:code])} [#{h[:year]}] pb = #{h[:pb]}, pe = #{h[:pe]}, 净资产回报率 = #{(h[:ave_roe]*100).to_i/100.0}% 预期回报率=#{h[:real_roe]}%, 10年期回报率=#{h[:ten_year_roe]}%"
+     puts "#{format_code(h[:code])} [#{h[:year]}] pb =#{format_price(h[:pb],2)}, pe =#{format_price(h[:pe])} 利润增长率 =#{format_roe(h[:revenue_inc_ratio])} peg=#{(h[:peg]*100).to_i/100.0} 收入增长率=#{h[:income_inc_ratio]}% 净资产增长率=#{h[:net_asset_inc_ratio]}%"
    end
 end
 
@@ -111,6 +111,9 @@ def evalate_equity(code,years=10)
   as_list = asset[asset.length-2]
   income_list = rvn[1] 
 
+  main_idx = get_main_index_from_ntes(code)
+  roe_quan = main_idx[19]
+
   if (years > rvn_list.length-1)
     years = rvn_list.length-1
   end
@@ -126,6 +129,7 @@ def evalate_equity(code,years=10)
       ly = rvn_list[i-1].split(',').inject(:+).to_f 
       asy = as_list[i].split(',').inject(:+).to_f
       roe = (ly/asy*10000).to_i.to_f/100
+      roe = roe_quan[i-1].split(',').inject(:+).to_f
       roe_list.push(roe)
 
       asyn = as_list[i-1].split(',').inject(:+).to_f
@@ -173,6 +177,7 @@ def evalate_equity(code,years=10)
   h[:real_roe] = real_roe
   h[:ten_year_roe] = ten_year_roe
   h[:year] = rvn[0][1][0..3]
+ 
 
   puts
   puts "#{format_code(code)} 年报 [#{rvn[0][1]}]"
@@ -189,6 +194,12 @@ def evalate_equity(code,years=10)
 
   #puts "#{format_code(code)} [#{rvn[0][1][0..3]}] pb = #{pb}, pe = #{pe}, 净资产回报率 = #{(ave_roe*100).to_i/100.0}% 一年期回报率=#{real_roe}%, 10年期回报率=#{ten_year_roe}%"
   
+  h[:income_inc_ratio] = income_inc_ratio
+  h[:revenue_inc_ratio] = revenue_inc_ratio
+  h[:net_asset_inc_ratio] = net_asset_inc_ratio
+  h[:peg] =  pe /revenue_inc_ratio 
+
+
   return h
   
 end
@@ -203,9 +214,13 @@ def show_roe_list(code,years=20)
 
   cash_list = cash[26]
 
+  main_idx = get_main_index_from_ntes(code)
+  roe_quan = main_idx[19]
 
   as_list = asset[asset.length-2]
   rvn_list = rvn[rvn.length-7] 
+  #rvn_list = main_idx[11] 
+  eps_list = rvn[rvn.length-1] 
   income_list = rvn[1] 
   
   puts "#{format_code(code)}  "
@@ -225,6 +240,7 @@ def show_roe_list(code,years=20)
       asy = as_list[i].split(',').inject(:+).to_f
       asyn = as_list[i-1].split(',').inject(:+).to_f
       roe = (ly/asy*10000).to_i.to_f/100
+      roe = roe_quan[i-1].split(',').inject(:+).to_f
       roe_list.push(roe)
       inc_asy = ((asyn-asy)/asy*10000).to_i.to_f/100
       puts "#{rvn[0][i-1]} 收入[#{income_list[i-1]}万,增长=#{icc}%] 利润[#{rvn_list[i-1]}万,增长=#{inc}%], 净资产[收益率=#{roe}%, 增长率=#{inc_asy}%]"
@@ -264,12 +280,14 @@ def show_roe_list(code,years=20)
   #puts close_price
   total_mv = Stock_Basic_Info.get_stock_total_number(code) * close_price
   #puts total_mv
+  
+  eps = rvn_list[1].split(',').inject(:+).to_f/Stock_Basic_Info.get_stock_total_number(code)/10000
   pe = ((total_mv*10000/frvn)*100).to_i/100.0
   pb = ((total_mv*10000/fas)*100).to_i/100.0
   real_roe = (ave_roe/pb*100).to_i/100.0
   ten_year_roe = ((((1+real_roe/100)**10)-1)*10000).to_i/100.0
   total_ten_year_roe = (ten_year_roe/100)*pe
-  puts "pb = #{pb}, pe = #{pe}, 一年预期回报率=#{real_roe}%, 10年预期资产回报率=#{ten_year_roe}%"
+  puts "pb = #{pb}, pe = #{pe}, eps = #{eps_list[1]} 一年预期回报率=#{real_roe}%, 10年预期资产回报率=#{ten_year_roe}%"
   #puts pb
 
 
@@ -286,7 +304,7 @@ def show_roe_list(code,years=20)
   rvn__before_tax_list = rvn[rvn.length-10]
   tax_list = rvn[rvn.length-9]
   minor_holder_list = rvn[rvn.length-4]
-  eps_list = rvn[rvn.length-1]
+  #eps_list = rvn[rvn.length-1]
 
   rvn_list.each_with_index do |rr,i|
     if (i>0) and (i<=years)

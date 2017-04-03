@@ -718,16 +718,30 @@ end
   return ns
 end
 
-def format_price(price)
+def format_price(price,number_of_space = 3)
+
+  price = price.round(2)
   s=price.to_s
   ind=s.index('.')
+
+  i=number_of_space
+  nc = 10
+  while i > 1 
+    nsp = ' '*(i-1)
+ 
+    return nsp+s+'0' if (price<nc) and ((s.length-2) == ind)
+    return nsp+price.to_s if (price<nc) 
+    
+    i = i-1
+    nc = nc * 10
+  end
   #return ' '+price.to_s+'0' if (price<10) and ((price*100).floor%10 == 0)
-  return '  '+s+'0' if (price<10) and ((s.length-2) == ind)
-  return '  '+price.to_s if (price<10) 
-  #return price.to_s+'0' if (((price*100).floor)%10 == 0)
-  #return s+'0' if (s.length-2) == ind
-  return ' '+s+'0' if (price<100) and ((s.length-2) == ind)
-  return ' '+price.to_s if (price<100) 
+  # return '  '+s+'0' if (price<10) and ((s.length-2) == ind)
+  # return '  '+price.to_s if (price<10) 
+  # #return price.to_s+'0' if (((price*100).floor)%10 == 0)
+  # #return s+'0' if (s.length-2) == ind
+  # return ' '+s+'0' if (price<100) and ((s.length-2) == ind)
+  # return ' '+price.to_s if (price<100) 
   return s+'0' if  ((s.length-2) == ind)
   return price.to_s 
 end
@@ -889,6 +903,19 @@ def calc_fh_inc(years,n1,n2)
 end
 
 
+ def get_main_index_from_ntes(code,type=:year)
+  if (type == :year)
+    uri="http://quotes.money.163.com/f10/zycwzb_#{code},year.html"
+  else
+    if  (type == :season)
+      uri="http://quotes.money.163.com/f10/zycwzb_#{code},season.html"
+    else
+      uri="http://quotes.money.163.com/f10/zycwzb_#{code},report.html"
+    end
+  end
+
+  return get_finance_info_from_ntes(uri) 
+ end
 
  def get_cash_from_ntes(code,year=true)
   if year
@@ -948,9 +975,7 @@ end
     
  end
 
-
-
- def get_finance_info_from_ntes(url)
+def get_finance_info_from_ntes(url)
    
    r=[]
    
@@ -981,38 +1006,119 @@ end
       # thl.each_with_index do |e,i|
       #   puts "#{i}:#{e}:#{e.length}"
       # end
+      
+      #puts sa.length
     
-      sl = sa[2].length
-      year_list = sa[2].scan(/[0-9]+\-[0-9]+\-[0-9]+/)
+      #支持返回结果中有多个表
+      sa[2..(sa.length-1)].each do |xa|
+        #puts sa
+        sl = xa.length
+        year_list = xa.scan(/[0-9]+\-[0-9]+\-[0-9]+/)
+        nyl=[]
+        nyl.push('报告日期')
+        year_list.each {|x| nyl.push x}
+        r.push(nyl)
 
-      nyl=[]
-      nyl.push('报告日期')
-      year_list.each {|x| nyl.push x}
-      r.push(nyl)
+        len = year_list.length
+        index = xa.index(year_list[len-1]) + 10
+        index_end = xa[index..(sl-1)].index('table')
 
-      len = year_list.length
-      index = sa[2].index(year_list[len-1]) + 10
-      index_end = sa[2][index..(sl-1)].index('table')
+        ll = xa[index..(index+index_end)].split('</tr>')
 
-      ll = sa[2][index..(index+index_end)].split('</tr>')
+        ll.each_with_index do |line,i|
+          #puts "#{i} : #{line}"
+          tal=line.scan(/<td class="td_1">(.*)<\/td>/)
 
-      ll.each_with_index do |line,i|
-        #puts "#{i} : #{line}"
-        al=line.scan(/[0-9\-][0-9.,\-]*/)
-        nal=[]
-        nal.push(thl[i-1])
-        al.each {|x| nal.push x}
+          al=""
+          nal=[]
+         
+          if tal.length !=0 
+            nal.push tal[0][0].to_s if tal.length !=0 
+            ind = line.index("td_1")
+            al=line[(ind+4)..(line.length-1)].scan(/[0-9\-][0-9.,\-]*/)
+          else
+            nal.push(thl[i-1])
+            al=line.scan(/[0-9\-][0-9.,\-]*/)
+          end
 
-        if al.length !=0
-          r.push(nal)
-          #print "#{i}:#{thl[i-1]}"
-          #al.each {|x| print "#{x} "}
-          #puts
+          al.each {|x| nal.push x}
+
+          if al.length !=0
+            r.push(nal)
+            #print "#{i}:#{thl[i-1]}"
+            #al.each {|x| print "#{x} "}
+            #puts
+          end
+
         end
-
       end
     return r
  end #func
+
+
+ # def get_finance_info_from_ntes(url)
+   
+ #   r=[]
+   
+ #    html_response = nil  
+ #    open(url) do |http|  
+ #      html_response = http.read  
+ #    end  
+    
+ #    sa=html_response.split('table_bg001')
+
+ #     thl = []
+
+ #      sa[1].split('</tr>').each do |line|
+ #        #puts line
+ #        al=line.scan(/<td.*>(.*)<\/td>/)
+ #        al2=line.scan(/<strong>(.*)<\/strong>/)
+        
+      
+ #        if al2.length !=0 
+ #          thl.push al2[0][0].to_s if al2.length !=0 
+ #        else
+ #          thl.push al[0][0].to_s if al.length !=0
+ #        end
+
+ #      end
+
+ #      # puts thl
+ #      # thl.each_with_index do |e,i|
+ #      #   puts "#{i}:#{e}:#{e.length}"
+ #      # end
+    
+ #      sl = sa[2].length
+ #      year_list = sa[2].scan(/[0-9]+\-[0-9]+\-[0-9]+/)
+
+ #      nyl=[]
+ #      nyl.push('报告日期')
+ #      year_list.each {|x| nyl.push x}
+ #      r.push(nyl)
+
+ #      len = year_list.length
+ #      index = sa[2].index(year_list[len-1]) + 10
+ #      index_end = sa[2][index..(sl-1)].index('table')
+
+ #      ll = sa[2][index..(index+index_end)].split('</tr>')
+
+ #      ll.each_with_index do |line,i|
+ #        #puts "#{i} : #{line}"
+ #        al=line.scan(/[0-9\-][0-9.,\-]*/)
+ #        nal=[]
+ #        nal.push(thl[i-1])
+ #        al.each {|x| nal.push x}
+
+ #        if al.length !=0
+ #          r.push(nal)
+ #          #print "#{i}:#{thl[i-1]}"
+ #          #al.each {|x| print "#{x} "}
+ #          #puts
+ #        end
+
+ #      end
+ #    return r
+ # end #func
 
 #港股的股本数据
 def get_stockinfo_data_from_sina(code)
