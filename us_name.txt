@@ -5383,3 +5383,415 @@ ZPIN,"Zhaopin Limited American Depositary Shares, each reprenting two Ordinary S
 ZTO,"ZTO Express (Cayman) Inc. American Depositary Shares, each representing one Class A ordinary share."
 ZTS,Zoetis Inc. Class A Common Stock
 ZX,"China Zenix Auto International Limited American Depositary Shares, each representing four ordinary shares."
+AAXJ,iShares MSCI All Country Asia ex Japan Index Fund,iShares MSCI All Country Asia ex Japan Index Fund,G,N,N,100.0,Y,N
+ACWI,iShares MSCI ACWI Index Fund,iShares MSCI ACWI Index Fund,G,N,N,100.0,Y,N
+ACWX,iShares MSCI ACWI ex US Index Fund,iShares MSCI ACWI ex US Index Fund,G,N,N,100.0,Y,N
+ADRA,BLDRS Asia 50 ADR Index Fund,BLDRS Asia 50 ADR Index Fund,G,N,N,100.0,Y,N
+ADRD,BLDRS Developed Markets 100 ADR Index Fund,BLDRS Developed Markets 100 ADR Index Fund,G,N,N,100.0,Y,N
+ADRE,BLDRS Emerging Markets 50 ADR Index Fund,BLDRS Emerging Markets 50 ADR Index Fund,G,N,N,100.0,Y,N
+ADRU,BLDRS Europe 100 ADR Index Fund,BLDRS Europe 100 ADR Index Fund,G,N,N,100.0,Y,N
+AGND,WisdomTree Barclays Negative Duration U.S. Aggregate Bond Fund,WisdomTree Barclays Negative Duration U.S. Aggregate Bond Fund,G,N,N,100.0,Y,N
+AGZD,WisdomTree Barclays Interest Rate Hedged U.S. Aggregate Bond Fund,WisdomTree Barclays Interest Rate Hedged U.S. Aggregate Bond Fund,G,N,N,100.0,Y,N
+AINV,Apollo Investment Corporation ,Apollo Investment Corporation - Closed End Fund,Q,N,N,100.0,N,N
+ARCC,Ares Capital Corporation ,Ares Capital Corporation - Closed End Fund,Q,N,N,100.0,N,N
+ASET,FlexShares Real Assets Allocation Index Fund,FlexShares Real Assets Allocation Index Fund,G,N,N,100.0,Y,N
+ASFI,"Asta Funding, Inc. ","Asta Funding, Inc. - Common Stock",Q,N,N,100.0,N,N
+BBC,BioShares Biotechnology Clinical Trials Fund,BioShares Biotechnology Clinical Trials Fund,G,N,N,100.0,Y,N
+BBP,BioShares Biotechnology Products Fund,BioShares Biotechnology Products Fund,G,N,N,100.0,Y,N
+BICK,First Trust BICK Index Fund,First Trust BICK Index Fund,G,N,N,100.0,Y,N
+CARZ,First Trust NASDAQ Global Auto Index Fund,First Trust NASDAQ Global Auto Index Fund,G,N,N,100.0,Y,N
+CCD,Calamos Dynamic Convertible & Income Fund ,Calamos Dynamic Convertible & Income Fund - Common Shares,Q,N,N,100.0,N,N
+CGO,Calamos Global Total Return Fund ,Calamos Global Total Return Fund - Common Stock,Q,N,N,100.0,N,N
+CHI,Calamos Convertible Opportunities and Income Fund ,Calamos Convertible Opportunities and Income Fund - Common Stock,Q,N,N,100.0,N,N
+CHW,Calamos Global Dynamic Income Fund ,Calamos Global Dynamic Income Fund - Common Stock,Q,N,N,100.0,N,N
+CHY,Calamos Convertible and High Income Fund ,Calamos Convertible and High Income Fund - Common Stock,Q,N,N,100.0,N,N
+CRDT,WisdomTree Strategic Corporate Bond Fund,WisdomTree Strategic Corporate Bond Fund,G,N,N,100.0,Y,N
+CSQ,Calamos Strategic Total Return Fund ,Calamos Strategic Total Return Fund - Common Stock,Q,N,N,100.0,N,N
+CUBA,"The Herzfeld Caribbean Basin Fund, Inc. ","The Herzfeld Caribbean Basin Fund, Inc. - Closed End FUnd",S,N,N,100.0,N,N
+CXSE,WisdomTree China ex,WisdomTree China ex-State-Owned Enterprises Fund,G,N,N,100.0,Y,N
+DGRE,WisdomTree Emerging Markets Quality Dividend Growth Fund,WisdomTree Emerging Markets Quality Dividend Growth Fund,G,N,N,100.0,Y,N
+DGRS,WisdomTree U.S. SmallCap Quality Dividend Growth Fund,WisdomTree U.S. SmallCap Quality Dividend Growth Fund,G,N,N,100.0,Y,N
+DGRW,WisdomTree U.S. Quality Dividend Growth Fund,WisdomTree U.S. Quality Dividend Growth Fund,G,N,N,100.0,Y,N
+DXGE,WisdomTree Germany Hedged Equity Fund,WisdomTree Germany Hedged Equity Fund,G,N,N,100.0,Y,N
+DXJS,WisdomTree Japan Hedged SmallCap Equity Fund,WisdomTree Japan Hedged SmallCap Equity Fund,G,N,N,100.0,Y,N
+DXPS,WisdomTree United Kingdom Hedged Equity Fund,WisdomTree United Kingdom Hedged Equity Fund,G,N,N,100.0,Y,N
+EEMA,iShares MSCI Emerging Markets Asia Index Fund,iShares MSCI Emerging Markets Asia Index Fund,G,N,N,100.0,Y,N
+EMCB,WisdomTree Emerging Markets Corporate Bond Fund,WisdomTree Emerging Markets Corporate Bond Fund,G,N,N,100.0,Y,N
+EMCG,WisdomTree Emerging Markets Consumer Growth Fund,WisdomTree Emerging Markets Consumer Growth Fund,G,N,N,100.0,Y,N
+EMIF,iShares S&P Emerging Markets Infrastructure Index Fund,iShares S&P Emerging Markets Infrastructure Index Fund,G,N,N,100.0,Y,N
+ESG,FlexShares STOXX US ESG Impact Index Fund,FlexShares STOXX US ESG Impact Index Fund,G,N,N,100.0,Y,N
+ESGG,FlexShares STOXX Global ESG Impact Index Fund,FlexShares STOXX Global ESG Impact Index Fund,G,N,N,100.0,Y,N
+EUFN,iShares MSCI Europe Financials Sector Index Fund,iShares MSCI Europe Financials Sector Index Fund,G,N,N,100.0,Y,N
+FAB,First Trust Multi Cap Value AlphaDEX Fund,First Trust Multi Cap Value AlphaDEX Fund,G,N,N,100.0,Y,N
+FAD,First Trust Multi Cap Growth AlphaDEX Fund,First Trust Multi Cap Growth AlphaDEX Fund,G,N,N,100.0,Y,N
+FBZ,First Trust Brazil AlphaDEX Fund,First Trust Brazil AlphaDEX Fund,G,N,N,100.0,Y,N
+FCA,First Trust China AlphaDEX Fund,First Trust China AlphaDEX Fund,G,N,N,100.0,Y,N
+FCAN,First Trust Canada AlphaDEX Fund,First Trust Canada AlphaDEX Fund,G,N,N,100.0,Y,N
+FDT,First Trust Developed Markets Ex,First Trust Developed Markets Ex-US AlphaDEX Fund,G,N,N,100.0,Y,N
+FDTS,First Trust Developed Markets ex,First Trust Developed Markets ex-US Small Cap AlphaDEX Fund,G,N,N,100.0,Y,N
+FEM,First Trust Emerging Markets AlphaDEX Fund,First Trust Emerging Markets AlphaDEX Fund,G,N,N,100.0,Y,N
+FEMS,First Trust Emerging Markets Small Cap AlphaDEX Fund,First Trust Emerging Markets Small Cap AlphaDEX Fund,G,N,N,100.0,Y,N
+FEP,First Trust Europe AlphaDEX Fund,First Trust Europe AlphaDEX Fund,G,N,N,100.0,Y,N
+FEX,First Trust Large Cap Core AlphaDEX Fund,First Trust Large Cap Core AlphaDEX Fund,G,N,N,100.0,Y,N
+FGM,First Trust Germany AlphaDEX Fund,First Trust Germany AlphaDEX Fund,G,N,N,100.0,Y,N
+FHK,First Trust Hong Kong AlphaDEX Fund,First Trust Hong Kong AlphaDEX Fund,G,N,N,100.0,Y,N
+FJP,First Trust Japan AlphaDEX Fund,First Trust Japan AlphaDEX Fund,G,N,N,100.0,Y,N
+FKO,First Trust South Korea AlphaDEX Fund,First Trust South Korea AlphaDEX Fund,G,N,N,100.0,Y,N
+FKU,First Trust United Kingdom AlphaDEX Fund,First Trust United Kingdom AlphaDEX Fund,G,N,N,100.0,Y,N
+FLN,First Trust Latin America AlphaDEX Fund,First Trust Latin America AlphaDEX Fund,G,N,N,100.0,Y,N
+FMK,First Trust Mega Cap AlphaDEX Fund,First Trust Mega Cap AlphaDEX Fund,G,N,N,100.0,Y,N
+FNK,First Trust Mid Cap Value AlphaDEX Fund,First Trust Mid Cap Value AlphaDEX Fund,G,N,N,100.0,Y,N
+FNX,First Trust Mid Cap Core AlphaDEX Fund,First Trust Mid Cap Core AlphaDEX Fund,G,N,N,100.0,Y,N
+FNY,First Trust Mid Cap Growth AlphaDEX Fund,First Trust Mid Cap Growth AlphaDEX Fund,G,N,N,100.0,Y,N
+FONE,First Trust NASDAQ Smartphone Index Fund,First Trust NASDAQ Smartphone Index Fund,G,N,N,100.0,Y,N
+FPA,First Trust Asia Pacific Ex,First Trust Asia Pacific Ex-Japan AlphaDEX Fund,G,N,N,100.0,Y,N
+FSZ,First Trust Switzerland AlphaDEX Fund,First Trust Switzerland AlphaDEX Fund,G,N,N,100.0,Y,N
+FTA,First Trust Large Cap Value AlphaDEX Fund,First Trust Large Cap Value AlphaDEX Fund,G,N,N,100.0,Y,N
+FTC,First Trust Large Cap Growth AlphaDEX Fund,First Trust Large Cap Growth AlphaDEX Fund,G,N,N,100.0,Y,N
+FTGC,First Trust Global Tactical Commodity Strategy Fund,First Trust Global Tactical Commodity Strategy Fund,G,N,N,100.0,Y,N
+FTSL,First Trust Senior Loan Fund ETF,First Trust Senior Loan Fund ETF,G,N,N,100.0,Y,N
+FTW,First Trust Taiwan AlphaDEX Fund,First Trust Taiwan AlphaDEX Fund,G,N,N,100.0,Y,N
+FUND,"Sprott Focus Trust, Inc. ","Sprott Focus Trust, Inc. - Closed End Fund",Q,N,N,100.0,N,N
+FYC,First Trust Small Cap Growth AlphaDEX Fund,First Trust Small Cap Growth AlphaDEX Fund,G,N,N,100.0,Y,N
+FYT,First Trust Small Cap Value AlphaDEX Fund,First Trust Small Cap Value AlphaDEX Fund,G,N,N,100.0,Y,N
+FYX,First Trust Small Cap Core AlphaDEX Fund,First Trust Small Cap Core AlphaDEX Fund,G,N,N,100.0,Y,N
+GRID,First Trust NASDAQ Clean Edge Smart Grid Infrastructure Index Fund,First Trust NASDAQ Clean Edge Smart Grid Infrastructure Index Fund,G,N,N,100.0,Y,N
+GULF,WisdomTree Middle East Dividend Fund,WisdomTree Middle East Dividend Fund,G,N,N,100.0,Y,N
+HYND,WisdomTree Negative Duration High Yield Bond Fund,WisdomTree Negative Duration High Yield Bond Fund,G,N,N,100.0,Y,N
+HYZD,WisdomTree Interest Rate Hedged High Yield Bond Fund,WisdomTree Interest Rate Hedged High Yield Bond Fund,G,N,N,100.0,Y,N
+IBB,iShares Nasdaq Biotechnology Index Fund,iShares Nasdaq Biotechnology Index Fund,G,N,N,100.0,Y,N
+ICLN,iShares S&P Global Clean Energy Index Fund,iShares S&P Global Clean Energy Index Fund,G,N,N,100.0,Y,N
+IFEU,iShares FTSE EPRA/NAREIT Europe Index Fund,iShares FTSE EPRA/NAREIT Europe Index Fund,G,N,N,100.0,Y,N
+IFGL,iShares FTSE EPRA/NAREIT Global Real Estate ex,iShares FTSE EPRA/NAREIT Global Real Estate ex-U.S. Index Fund,G,N,N,100.0,Y,N
+IGOV,iShares S&P/Citigroup International Treasury Bond Fund,iShares S&P/Citigroup International Treasury Bond Fund,G,N,N,100.0,Y,N
+IMED,PureFunds ETFx HealthTech ETF,PureFunds ETFx HealthTech ETF,G,N,N,100.0,Y,N
+INDY,iShares S&P India Nifty 50 Index Fund,iShares S&P India Nifty 50 Index Fund,G,N,N,100.0,Y,N
+ISHG,iShares S&P/Citigroup 1,iShares S&P/Citigroup 1-3 Year International Treasury Bond Fund,G,N,N,100.0,Y,N
+LKOR,FlexShares Credit,FlexShares Credit-Scored US Long Corporate Bond Index Fund,G,N,N,100.0,Y,N
+LMFA,"LM Funding America, Inc. ","LM Funding America, Inc. - Common Stock",S,N,N,100.0,N,N
+LMFAW,"LM Funding America, Inc. ","LM Funding America, Inc. - Warrant",S,N,N,100.0,N,N
+MBSD,FlexShares Disciplined Duration MBS Index Fund,FlexShares Disciplined Duration MBS Index Fund,G,N,N,100.0,Y,N
+MDIV,First Trust Multi,First Trust Multi-Asset Diversified Income Index Fund,G,N,N,100.0,Y,N
+OHAI,OHA Investment Corporation ,OHA Investment Corporation - Closed End Fund,Q,N,N,100.0,N,N
+QABA,First Trust NASDAQ ABA Community Bank Index Fund,First Trust NASDAQ ABA Community Bank Index Fund,G,N,N,100.0,Y,N
+QCLN,First Trust NASDAQ Clean Edge Green Energy Index Fund,First Trust NASDAQ Clean Edge Green Energy Index Fund,G,N,N,100.0,Y,N
+QLC,FlexShares US Quality Large Cap Index Fund,FlexShares US Quality Large Cap Index Fund,G,N,N,100.0,Y,N
+QQEW,First Trust NASDAQ,First Trust NASDAQ-100 Equal Weighted Index Fund,G,N,N,100.0,Y,N
+QQQX,Nuveen NASDAQ 100 Dynamic Overwrite Fund ,Nuveen NASDAQ 100 Dynamic Overwrite Fund - Shares of Beneficial Interest,Q,N,N,100.0,N,N
+QQXT,First Trust NASDAQ,First Trust NASDAQ-100 Ex-Technology Sector Index Fund,G,N,N,100.0,Y,N
+QTEC,First Trust NASDAQ,First Trust NASDAQ-100- Technology Index Fund,G,N,N,100.0,Y,N
+SKOR,FlexShares Credit,FlexShares Credit-Scored US Corporate Bond Index Fund,G,N,N,100.0,Y,N
+SOXX,iShares PHLX SOX Semiconductor Sector Index Fund,iShares PHLX SOX Semiconductor Sector Index Fund,G,N,N,100.0,Y,N
+SVVC,"Firsthand Technology Value Fund, Inc. ","Firsthand Technology Value Fund, Inc. - Common Stock",Q,N,N,100.0,N,N
+TDIV,First Trust NASDAQ Technology Dividend Index Fund,First Trust NASDAQ Technology Dividend Index Fund,G,N,N,100.0,Y,N
+TICC,TICC Capital Corp. ,TICC Capital Corp. - Closed End Fund,Q,N,N,100.0,N,N
+UBND,WisdomTree Western Asset Unconstrained Bond Fund,WisdomTree Western Asset Unconstrained Bond Fund,G,N,N,100.0,Y,N
+VBND,Vident Core U.S. Bond Strategy Fund,Vident Core U.S. Bond Strategy Fund,G,N,N,100.0,Y,N
+VIDI,Vident International Equity Fund,Vident International Equity Fund,G,N,N,100.0,Y,N
+VTIP,Vanguard Short,Vanguard Short-Term Inflation-Protected Securities Index Fund,G,N,N,100.0,Y,N
+WOOD,iShares S&P Global Timber & Forestry Index Fund,iShares S&P Global Timber & Forestry Index Fund,G,N,N,100.0,Y,N
+YDIV,First Trust International Multi,First Trust International Multi-Asset Diversified Income Index Fund,G,N,N,100.0,Y,N
+ACP,Avenue Income Credit Strategies Fund Common Shares
+ACV,AllianzGI Diversified Income & Convertible Fund Common Shares of Beneficial Interest
+ADX,Adams Diversified Equity Fund Inc.
+AFB,AllianceBernstein National Municipal Income Fund Inc
+AFT,Apollo Senior Floating Rate Fund Inc. Common Stock
+AGC,Advent Claymore Convertible Securities and Income Fund Common Shares of Beneficial Interest
+AGD,Alpine Global Dynamic Dividend Fund Shares of Beneficial Interest
+AIF,Apollo Tactical Income Fund Inc. Common Stock
+AKP,Alliance California Municipal Income Fund Inc
+AOD,Alpine Total Dynamic Dividend Fund Common Stock
+APB,"Asia Pacific Fund, Inc. (The)"
+ARDC,"Ares Dynamic Credit Allocation Fund, Inc. Common Shares"
+AVK,Advent Claymore Convertible Securities and Income Fund
+AWF,Alliancebernstein Global High Income Fund
+AWP,Alpine Global Premier Properties Fund Alpine Global Premier Properties Fund Common Shares of Beneficial Interest
+BGB,Blackstone / GSO Strategic Credit Fund Common Shares
+BGH,Barings Global Short Duration High Yield Fund Common Shares of Beneficial Interests
+BGX,Blackstone GSO Long Short Credit Income Fund Common Shares
+BGY,"BLACKROCK INTERNATIONAL, LTD. Blackrock International Real Estate Fund, Inc."
+BIF,"Boulder Growth & Income Fund, Inc."
+BSL,Blackstone GSO Senior Floating Rate Term Fund Common Shares of Beneficial Interest
+BTO,John Hancock Financial Opportunities Fund Common Stock
+BWG,Legg Mason BW Global Income Opportunities Fund Inc. Common Stock
+CAF,Morgan Stanley China A Share Fund Inc. Common Stock
+CBA,ClearBridge American Energy MLP Fund Inc. Common Stock
+CEE,"Central Europe, Russia and Turkey Fund, Inc. (The) Common Stock"
+CEM,ClearBridge Energy MLP Fund Inc. Common Stock
+CEN,Center Coast MLP & Infrastructure Fund Common Shares of Beneficial Interest
+CHN,"China Fund, Inc. (The) Common Stock"
+CIF,MFS Intermediate High Income Fund Common Stock
+CII,"Blackrock Capital and Income Fund, Inc."
+CTR,ClearBridge Energy MLP Total Return Fund Inc. Common Stock
+DBL,DoubleLine Opportunistic Credit Fund Common Shares of Beneficial Interest
+DDF,"Delaware Investments Dividend & Income Fund, Inc. Common Stock"
+DFP,Flaherty & Crumrine Dynamic Preferred and Income Fund Inc. Common Stock
+DHF,Dreyfus High Yield Strategies Fund Common Stock
+DHG,"Deutsche High Income Opportunities Fund, Inc  New Common Stock"
+DIAX,Nuveen Dow 30SM Dynamic Overwrite Fund Common Shares of Beneficial Interest
+DMB,"Dreyfus Municipal Bond Infrastructure Fund, Inc. Common Stock"
+DMO,Western Asset Mortgage Defined Opportunity Fund Inc Common Stock
+DNI,Dividend and Income Fund Common Stock
+DNP,"DNP Select Income Fund, Inc. Common Stock"
+DPG,Duff & Phelps Global Utility Income Fund Inc. Common Stock
+DRA,Diversified Real Asset Income Fund Common Shares of Beneficial Interest
+DSE,Duff & Phelps Select Energy MLP Fund Inc. Common Stock
+DSL,DoubleLine Income Solutions Fund Common Shares of Beneficial Interests
+DSM,"Dreyfus Strategic Municipal Bond Fund, Inc. Common Stock"
+DSU,"Blackrock Debt Strategies Fund, Inc. Common Stock"
+EDD,"Morgan Stanley Emerging Markets Domestic Debt Fund, Inc. Morgan Stanley Emerging Markets Domestic Debt Fund, Inc. Common Stock"
+EDF,Stone Harbor Emerging Markets Income Fund Common Shares of Beneficial Interest
+EDI,Stone Harbor Emerging Markets Total Income Fund Common Shares of Beneficial Interests
+EEA,"The European Equity Fund, Inc. Common Stock"
+EGF,"Blackrock Enhanced Government Fund, Inc. Common Stock"
+EGIF,Eagle Growth and Income Opportunities Fund Common Shares of Beneficial Interest
+EHI,Western Asset Global High Income Fund Inc Common Stock
+EMD,Western Asset Emerging Markets Debt Fund Inc Common Stock
+EMF,Templeton Emerging Markets Fund Common Stock
+EMO,ClearBridge Energy MLP Opportunity Fund Inc. Common Stock
+EOD,Wells Fargo Global Dividend Opportunity Fund
+EOI,Eaton Vance Enhance Equity Income Fund Eaton Vance Enhanced Equity Income Fund Shares of Beneficial Interest
+EOS,Eaton Vance Enhance Equity Income Fund II Common Stock
+EVG,Eaton Vance Short Diversified Income Fund Eaton Vance Short Duration Diversified Income Fund Common Shares of Beneficial Interest
+EVT,Eaton Vance Tax Advantaged Dividend Income Fund Common Shares of Beneficial Interest
+FAM,First Trust/Aberdeen Global Opportunity Income Fund First Trust/Aberdeen Global Opportunity Income Fund Common Shares of Beneficial Interest
+FCT,First Trust Senior Floating Rate Income Fund II Common Shares of Beneficial Interest
+FDEU,First Trust Dynamic Europe Equity Income Fund Common Shares of Beneficial Interest
+FEI,First Trust MLP and Energy Income Fund Common Shares of Beneficial Interest
+FEO,First Trust/Aberdeen Emerging Opportunity Fund Common Shares of Beneficial Interest
+FFA,First Trust Enhanced Equity Income Fund
+FFC,Flaherty & Crumrine Preferred Securities Income Fund Incorporated
+FGB,First Trust Specialty Finance and Financial Opportunities Fund
+FHY,First Trust Strategic High Income Fund II First Trust Strategic High Income Fund II Common Shares of Beneficial Interest
+FIF,First Trust Energy Infrastructure Fund Common Shares of Beneficial Interest
+FIV,First Trust Senior Floating Rate 2022 Target Term Fund Common Shares of Beneficial Interest
+FLC,Flaherty & Crumrine Total Return Fund Inc Common Stock
+FMN,Federated Premier Municipal Income Fund Federated Premier Municipal Income Fund
+FMO,Fiduciary/Claymore MLP Opportunity Fund Fiduciary/Claymore MLP Opportunity Fund Common Shares of Beneficial Interest
+FMY,First Trust Motgage Income Fund Common Shares of Beneficial Interest
+FPF,First Trust Intermediate Duration Preferred & Income Fund Common Shares of Beneficial Interest
+FPL,First Trust New Opportunities MLP & Energy Fund Common Shares of Beneficial Interest
+FPT,Federated Premier Intermediate Municipal Income Fund Federated Premier Intermediate Municipal Income Fund
+FRA,Blackrock Floating Rate Income Strategies Fund Inc  Common Stock
+FSD,First Trust High Income Long Short Fund Common Shares of Beneficial Interest
+GCH,"Aberdeen Greater China Fund, Inc. Common Stock"
+GCV,"Gabelli Convertible and Income Securities Fund, Inc. (The) Common Stock"
+GCV$B,"Gabelli Convertible and Income Securities Fund, Inc. (The) Series B 6.00% Cumulative Preferred Stock"
+GDL,"GDL Fund, The Common Shares of Beneficial Interest"
+GDL$B,The GDL Fund Series B Cumulative Puttable and Callable Preferred Shares
+GDO,Western Asset Global Corporate Defined Opportunity Fund Inc. Western Asset Global Corporate Defined Opportunity Fund Inc.
+GER,Goldman Sachs MLP Energy Renaissance Fund
+GF,"New Germany Fund, Inc. (The) Common Stock"
+GFY,Western Asset Variable Rate Strategic Fund Inc. Common Stock
+GGM,Guggenheim Credit Allocation Fund Common Shares of Beneficial Interest
+GHY,"Prudential Global Short Duration High Yield Fund, Inc. Common Stock"
+GIM,"Templeton Global Income Fund, Inc. Common Stock"
+GMZ,Goldman Sachs MLP Income Opportunities Fund
+GOF,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest
+GPM,Guggenheim Enhanced Equity Income Fund
+GRR,"Asia Tigers Fund, Inc. (The) Common Stock"
+HEQ,John Hancock Hedged Equity & Income Fund Common Shares of Beneficial Interest
+HIE,Miller/Howard High Income Equity Fund Common Shares of Beneficial Interest
+HIO,"Western Asset High Income Opportunity Fund, Inc. Common Stock"
+HIX,Western Asset High Income Fund II Inc. Common Stock
+HPF,John Hancock Pfd Income Fund II Pfd Income Fund II
+HPI,John Hancock Preferred Income Fund Common Shares of Beneficial Interest
+HPS,John Hancock Preferred Income Fund III Preferred Income Fund III
+HTD,John Hancock Tax Advantaged Dividend Income Fund Common Shares of Beneficial Interest
+HYB,"New America High Income Fund, Inc. (The) Common Stock"
+HYI,Western Asset High Yield Defined Opportunity Fund Inc. Common Stock
+HYT,"Blackrock Corporate High Yield Fund, Inc. Common Stock"
+IAE,Voya Asia Pacific High Dividend Equity Income Fund ING Asia Pacific High Dividend Equity Income Fund Common Shares of Beneficial Interest
+IDE,"Voya Infrastructure, Industrials and Materials Fund Common Shares of Beneficial Interest"
+IFN,"India Fund, Inc. (The) Common Stock"
+IGA,Voya Global Advantage and Premium Opportunity Fund Common Shares of Beneficial Interest
+IGD,Voya Global Equity Dividend and Premium Opportunity Fund
+IGR,CBRE Clarion Global Real Estate Income Fund Common Stock
+IHD,Voya Emerging Markets High Income Dividend Equity Fund Common Shares
+IHIT,Invesco High Income 2023 Target Term Fund Common Shares of Beneficial Interest
+IID,Voya International High Dividend Equity Income Fund Common Shares of Beneficial Interest
+IIF,"Morgan Stanley India Investment Fund, Inc. Common Stock"
+INF,Brookfield Global Listed Infrastructure Income Fund Closed End Fund
+INSI,Insight Select Income Fund
+IRL,"New Ireland Fund, Inc (The) Common Stock"
+IRR,Voya Natural Resources Equity Income Fund Common Shares of Beneficial Interest
+ISD,"Prudential Short Duration High Yield Fund, Inc. Common Stock"
+IVH,Ivy High Income Opportunities Fund Common Shares of Beneficial Interest
+JCE,Nuveen Core Equity Alpha Fund Nuveen Core Equity Alpha Fund Common Shares of Beneficial Interest
+JCO,Nuveen Credit Opportunities 2022 Target Term Fund Common Shares of Beneficial Interest
+JDD,Nuveen Diversified Dividend and Income Fund Shares of Beneficial Interest
+JEQ,"Aberdeen Japan Equity Fund, Inc.  Common Stock"
+JFC,"JPMorgan China Region  Fund, Inc. Common Stock"
+JFR,Nuveen Floating Rate Income Fund Common Stock
+JGH,Nuveen Global High Income Fund Common Shares of Beneficial Interest
+JHA,Nuveen High Income December 2018 Target Term Fund
+JHB,Nuveen High Income November 2021 Target Term Fund Nuveen High Income November 2021 Target Term Fund
+JHD,Nuveen High Income December 2019 Target Term Fund Common Shares of Beneficial Interest
+JHY,Nuveen High Income 2020 Target Term Fund Common Shares of Beneficial Interest
+JLS,Nuveen Mortgage Opportunity Term Fund Nuveen Mortgage Opportunity Term Fund
+JMF,Nuveen Energy MLP Total Return Fund Common Shares of Beneficial Interest
+JMLP,Nuveen All Cap Energy MLP Opportunities Fund Common Shares of Beneficial Interest
+JMT,Nuveen Mortgage Opportunity Term Fund 2 Common Shares of Beneficial Interest
+JOF,Japan Smaller Capitalization Fund Inc Common Stock
+JPC,Nuveen  Preferred Income Opportunities Fund
+JPI,Nuveen Preferred and Income Term Fund Common Shares of Beneficial Interest
+JPS,Nuveen Preferred Securities Income Fund 2 Shares of Beneficial Interest
+JPT,Nuveen Preferred and Income 2022 Term Fund Common Shares of Beneficial Interest
+JPW,Nuveen Flexible Investment Income Fund Common Shares of Beneficial Interest
+JQC,Nuveen Credit Strategies Income Fund Shares of Beneficial Interest
+JRI,Nuveen Real Asset Income and Growth Fund Common Shares of Beneficial Interest
+JRO,Nuveen Floating Rate Income Opportuntiy Fund Shares of Beneficial Interest
+JRS,Nuveen Real Estate Income Fund Common Shares of Beneficial Interest
+JSD,Nuveen Short Duration Credit Opportunities Fund Common Shares of Beneficial Interest
+KEF,"Korea Equity Fund, Inc. Common Stock"
+KF,"Korea Fund, Inc. (The) New Common Stock"
+KIO,KKR Income Opportunities Fund Common Shares
+KMF,"Kayne Anderson Midstream Energy Fund, Inc Common Stock"
+KYE,"Kayne Anderson Total Energy Return Fund, Inc. Common Stock"
+LBF,"Deutsche Global High Income Fund, Inc. Common Stock"
+LCM,Advent/Claymore Enhanced Growth & Income Fund Advent/Claymore Enhanced Growth & Income Fund Common Shares of Beneficial Interest
+LDF,"Latin American Discovery Fund, Inc. (The) Common Stock"
+LDP,"Cohen & Steers Limited Duration Preferred and Income Fund, Inc."
+LGI,Lazard Global Total Return and Income Fund Common Stock
+LOR,"Lazard World Dividend & Income Fund, Inc. Common Stock"
+MCA,"Blackrock MuniYield California Quality Fund, Inc. Common Stock"
+MCN,Madison Covered Call & Equity Strategy Fund Common Stock
+MEN,"Blackrock MuniEnhanced Fund, Inc Common Stock"
+MFL,Blackrock MuniHoldings Investment Quality Fund Common Shares of Beneficial Interest
+MFT,Blackrock MuniYield Investment Quality Fund Common Shares of Beneficial Interest
+MGU,Macquarie Global Infrastructure Total Return Fund Inc. Common Stock
+MHD,"Blackrock MuniHoldings Fund, Inc. Common Stock"
+MHF,"Western Asset Municipal High Income Fund, Inc. Common Stock"
+MHN,"Blackrock MuniHoldings New York Quality Fund, Inc. Common Stock"
+MIE,"Cohen & Steers MLP Income and Energy Opportunity Fund, Inc. Common Stock"
+MIY,"Blackrock MuniYield Michigan Quality Fund, Inc. Common Stock"
+MMD,MainStay DefinedTerm Municipal Opportunities Fund Common Shares of Beneficial Interest
+MMU,"Western Asset Managed Municipals Fund, Inc. Common Stock"
+MNE,Blackrock Muni New York Intermediate Duration Fund Inc Common Stock
+MNP,"Western Asset Municipal Partners Fund, Inc. Common Stock"
+MPA,Blackrock MuniYield Pennsylvania Quality Fund Common Stock
+MQT,"Blackrock MuniYield Quality Fund II, Inc. Common Stock"
+MQY,"Blackrock MuniYield Quality Fund, Inc. Common Stock"
+MSD,"Morgan Stanley Emerging Markets Debt Fund, Inc. Common Stock"
+MSF,"Morgan Stanley Emerging Markets Fund, Inc. Common Stock"
+MSP,Madison Strategic Sector Premium Fund Madison Strategic Sector Premium Fund Common Shares of Beneficial Interest
+MUA,"Blackrock MuniAssets Fund, Inc Common Stock"
+MUC,"Blackrock MuniHoldings California Quality Fund, Inc.  Common Stock"
+MUE,"Blackrock MuniHoldings Quality Fund II, Inc. Common Stock"
+MUH,"Blackrock MuniHoldings Fund II, Inc. Common Stock"
+MUI,Blackrock Muni Intermediate Duration Fund Inc Common Stock
+MUJ,"Blackrock MuniHoldings New Jersey Quality Fund, Inc. Common Stock"
+MUS,"Blackrock MuniHoldings Quality Fund, Inc Common Stock"
+MVT,"Blackrock MuniVest Fund II, Inc.  Common Stock"
+MXE,"Mexico Equity and Income Fund, Inc. (The) Common Stock"
+MXF,"Mexico Fund, Inc. (The) Common Stock"
+MYC,"Blackrock MuniYield California Fund, Inc. Common Stock"
+MYD,"Blackrock MuniYield Fund, Inc.  Common Stock"
+MYF,Blackrock MuniYield Investment Fund Common Stock
+MYI,"Blackrock MuniYield Quality Fund III, Inc Common Stock"
+MYJ,"Blackrock MuniYield New Jersey Fund, Inc Common Stock"
+MYN,"Blackrock MuniYield New York Quality Fund, Inc.Common Stock"
+MZF,Managed Duration Investment Grade Municipal Fund
+NAC,Nuveen California Quality Municipal Income Fund
+NAD,Nuveen Quality Municipal Income Fund Common Stock
+NAN,Nuveen New York Quality Municipal Income Fund Common Stock
+NAZ,Nuveen Arizona Quality Municipal Income Fund Common Stock
+NBB,Nuveen Build America Bond Fund Common Shares of Beneficial Interest
+NBD,Nuveen Build America Bond Opportunity Fund Common Shares of Beneficial Interest
+NCA,"Nuveen California Municipal Value Fund, Inc. Common Stock"
+NCB,Nuveen California Municipal Value Fund 2 Common Shares of Beneficial Interest
+NCV,AllianzGI Convertible & Income Fund
+NCZ,AllianzGI Convertible & Income Fund II Common Shares of Beneficial Interest
+NDP,"Tortoise Energy Independence Fund, Inc. Common Stock"
+NEV,Nuveen Enhanced Municipal Value Fund Common Shares of Beneficial Interest
+NFJ,"AllianzGI NFJ Dividend, Interest & Premium Strategy Fund"
+NHA,Nuveen Municipal 2021 Target Term Fund Fund
+NHF,NexPoint Credit Strategies Fund
+NID,Nuveen Intermediate Duration Municipal Term Fund Common Shares of Beneficial Interest
+NIE,AllianzGI Equity & Convertible Income Fund
+NIM,Nuveen Select Maturities Municipal Fund Common Stock
+NIQ,Nuveenn Intermediate Duration Quality Municipal Term Fund Common Shares of Beneficial Interest
+NKG,Nuveen Georgia Quality Municipal Income Fund 
+NMI,"Nuveen Municipal Income Fund, Inc. Common Stock"
+NMS,Nuveen Minnesota Quality Municipal Income Fund 
+NMT,Nuveen Massachusetts Quality Municipal Income Fund Common Stock
+NMY,Nuveen Maryland Quality Municipal Income Fund Common Stock
+NMZ,"Nuveen Municipal High Income Opportunity Fund Common Stock, $0.01 par value, per share"
+NNC,Nuveen North Carolina Quality Municipal Income Fund Common Stock
+NNY,"Nuveen New York Municipal Value Fund, Inc. Common Stock"
+NOM,Nuveen Missouri Quality Municipal Income Fund 
+NPV,Nuveen Virginia Quality Municipal Income Fund Common Stock
+NQP,Nuveen Pennsylvania Quality Municipal Income Fund Common Stock
+NSL,Nuveen Senior Income Fund Common Stock
+NTC,Nuveen Connecticut Quality Municipal Income Fund Common Stock
+NTG,"Tortoise MLP Fund, Inc. Common Stock"
+NTX,Nuveen Texas Quality Municipal Income Fund Common Stock
+NUM,Nuveen Michigan Quality Municipal Income Fund Common Stock
+NUO,Nuveen Ohio Quality Municipal Income Fund Common Stock
+NUV,"Nuveen Municipal Value Fund, Inc. Common Stock"
+NXJ,Nuveen New Jersey Qualified Municipal Fund 
+NYV,Nuveen New York Municipal Value Fund 2 Common Shares of Beneficial Interest
+NZF,Nuveen Municipal Credit Income Fund 
+OPP,"RiverNorth/DoubleLine Strategic Opportunity Fund, Inc. Common Stock"
+PAI,Western Asset Income Fund Common Stock
+PCF,Putnam High Income Securities Fund Common Stock
+PCI,PIMCO Dynamic Credit and Mortgage Income Fund Common Shares of Beneficial Interest
+PCK,Pimco California Municipal Income Fund II Common Shares of Beneficial Interest
+PCM,"PCM Fund, Inc. Common Stock"
+PCN,Pimco Corporate & Income Strategy Fund Common Stock
+PCQ,PIMCO California Municipal Income Fund Common Stock
+PDI,PIMCO Dynamic Income Fund Common Stock
+PDT,John Hancock Premium Dividend Fund
+PEO,"Adams Natural Resources Fund, Inc. Common Stock"
+PFD,Flaherty & Crumrine Preferred Income Fund Incorporated Common Stock
+PFL,PIMCO Income Strategy Fund Shares of Beneficial Interest
+PFN,PIMCO Income Strategy Fund II
+PFO,Flaherty & Crumrine Preferred Income Opportunity Fund Incorporated Common Stock
+PGP,Pimco Global Stocksplus & Income Fund Pimco Global StocksPlus & Income Fund Common Shares of Beneficial Interest
+PGZ,Principal Real Estate Income Fund Common Shares of Beneficial Interest
+PHK,Pimco High Income Fund Pimco High Income Fund
+PKO,Pimco Income Opportunity Fund Common Shares of Beneficial Interest
+PMF,PIMCO Municipal Income Fund Common Stock
+PML,Pimco Municipal Income Fund II Common Shares of Beneficial Interest
+PMX,PIMCO Municipal Income Fund III Common Shares of Beneficial Interest
+PNF,PIMCO New York Municipal Income Fund Common Stock
+PNI,Pimco New York Municipal Income Fund II Common Shares of Beneficial Interest
+PPX,"PPL Capital Funding, Inc. 2013 Series B Junior Subordinated Notes due 2073"
+PSF,"Cohen & Steers Select Preferred and Income Fund, Inc. Common Stock"
+PTY,Pimco Corporate & Income Opportunity Fund
+PYN,PIMCO New York Municipal Income Fund III Common Shares of Beneficial Interest
+PZC,PIMCO California Municipal Income Fund III Common Shares of Beneficial Interest
+RA,Brookfield Real Assets Income Fund Inc. Common Stock
+RCS,"PIMCO Strategic Income Fund, Inc."
+RFI,"Cohen & Steers Total Return Realty Fund, Inc. Common Stock"
+RIV,"RiverNorth Opportunities Fund, Inc. Common Stock"
+RNP,Cohen & Steers Reit and Preferred Income Fund Inc Common Shares
+RQI,Cohen & Steers Quality Income Realty Fund Inc Common Shares
+SCD,LMP Capital and Income Fund Inc. Common Stock
+SGF,"Aberdeen Singapore Fund, Inc. Common Stock"
+SPE,"Special Opportunities Fund, Inc Common Stock"
+SPE$B,"Special Opportunities Fund Inc. 3.50% Convertible Preferred Stock, Series B"
+SPXX,Nuveen S&P 500 Dynamic Overwrite Fund
+SRF,Cushing Energy Income Fund Common Shares of Beneficial Interest
+SRV,The Cushing MLP Total Return Fund Common Shares of Beneficial Interest
+STK,Columbia Seligman Premium Technology Growth Fund Inc
+SWZ,"Swiss Helvetia Fund, Inc. (The) Common Stock"
+SZC,Cushing Renaissance Fund (The) Common Shares of Beneficial Interest
+TDF,"Templeton Dragon Fund, Inc. Common Stock"
+TEI,"Templeton Emerging Markets Income Fund, Inc. Common Stock"
+THQ,Tekla Healthcare Opportunies Fund Shares of Beneficial Interest
+THW,Tekla World Healthcare Fund Shares of Beneficial Interest
+TKF,"Turkish Investment Fund, Inc. (The) Common Stock"
+TLI,Western Asset Corporate Loan Fund Inc Common Stock
+TPZ,"Tortoise Power and Energy Infrastructure Fund, Inc Common Stock"
+TSI,"TCW Strategic Income Fund, Inc. Common Stock"
+TSLF,THL Credit Senior Loan Fund Common Shares of Beneficial Interest
+TTF,"Thai Fund, Inc. (The) Common Stock"
+TTP,"Tortoise Pipeline & Energy Fund, Inc. Common Stock"
+TWN,"Taiwan Fund, Inc. (The) Common Stock"
+UTF,"Cohen & Steers Infrastructure Fund, Inc Common Stock"
+VBF,Invesco Bond Fund Common Stock
+VTA,Invesco Credit Opportunities Fund Common Shares of Beneficial Interest
+WEA,Western Asset Bond Fund Share of Beneficial Interest
+ZF,Virtus Total Return Fund Inc. Common Stock
+ZTR,Virtus Global Dividend & Income Fund Inc. Common Stock

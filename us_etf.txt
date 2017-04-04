@@ -1,0 +1,1336 @@
+ACIM,SPDR MSCI ACWI IMI ETF,SPDR MSCI ACWI IMI ETF,P,ACIM,Y,100.0,N,ACIM
+BIL,SPDR Bloomberg Barclays 1,SPDR Bloomberg Barclays 1-3 Month T-Bill ETF,P,BIL,Y,100.0,N,BIL
+BNDS,SPDR Bloomberg Barclays Aggregate Bond ETF,SPDR Bloomberg Barclays Aggregate Bond ETF,P,BNDS,Y,100.0,N,BNDS
+BWX,SPDR Bloomberg Barclays Intl Treasury Bd,SPDR Bloomberg Barclays Intl Treasury Bd,P,BWX,Y,100.0,N,BWX
+BWZ,SPDR Bloomberg Barclays Short Term International Treasury Bond ETF,SPDR Bloomberg Barclays Short Term International Treasury Bond ETF,P,BWZ,Y,100.0,N,BWZ
+CBND,SPDR Bloomberg Barclays Issuer Scored Corporate Bond ETF,SPDR Bloomberg Barclays Issuer Scored Corporate Bond ETF,P,CBND,Y,100.0,N,CBND
+CJNK,SPDR BofA Merrill Lynch Crossover Corporate Bond ETF,SPDR BofA Merrill Lynch Crossover Corporate Bond ETF,P,CJNK,Y,100.0,N,CJNK
+CWB,SPDR Bloomberg Barclays Convertible Securities ETF,SPDR Bloomberg Barclays Convertible Securities ETF,P,CWB,Y,100.0,N,CWB
+CWI,SPDR MSCI ACWI ex,SPDR MSCI ACWI ex-US ETF,P,CWI,Y,100.0,N,CWI
+DGT,SPDR Global Dow ETF (based on The Global Dow),SPDR Global Dow ETF (based on The Global Dow),P,DGT,Y,100.0,N,DGT
+DIA,SPDR Dow Jones Industrial Average ETF,SPDR Dow Jones Industrial Average ETF,P,DIA,Y,100.0,N,DIA
+DWX,SPDR S&P International Dividend ETF,SPDR S&P International Dividend ETF,P,DWX,Y,100.0,N,DWX
+EBND,SPDR Bloomberg Barclays Emerging Markets Local Bond ETF,SPDR Bloomberg Barclays Emerging Markets Local Bond ETF,P,EBND,Y,100.0,N,EBND
+EDIV,SPDR S&P Emerging Markets Dividend ETF,SPDR S&P Emerging Markets Dividend ETF,P,EDIV,Y,100.0,N,EDIV
+EEMX,SPDR MSCI Emerging Markets Fuel Reserves Free ETF,SPDR MSCI Emerging Markets Fuel Reserves Free ETF,P,EEMX,Y,100.0,N,EEMX
+EFAX,SPDR MSCI EAFE Fossil Fuel Reserves Free ETF,SPDR MSCI EAFE Fossil Fuel Reserves Free ETF,P,EFAX,Y,100.0,N,EFAX
+EMTL,SPDR DoubleLine Emerging Markets Fixed Income ETF,SPDR DoubleLine Emerging Markets Fixed Income ETF,Z,EMTL,Y,100.0,N,EMTL
+EWX,SPDR S&P Emerging Markets Small Cap ETF,SPDR S&P Emerging Markets Small Cap ETF,P,EWX,Y,100.0,N,EWX
+FEU,SPDR DJ STOXX 50 Etf,SPDR DJ STOXX 50 Etf,P,FEU,Y,100.0,N,FEU
+FEZ,SPDR DJ Euro STOXX 50 Etf,SPDR DJ Euro STOXX 50 Etf,P,FEZ,Y,100.0,N,FEZ
+FLRN,SPDR Bloomberg Barclays Investment Grade Floating Rate ETF,SPDR Bloomberg Barclays Investment Grade Floating Rate ETF,P,FLRN,Y,100.0,N,FLRN
+GAF,SPDR S&P Middle East & Africa ETF,SPDR S&P Middle East & Africa ETF,P,GAF,Y,100.0,N,GAF
+GAL,SPDR SSgA Global Allocation ETF,SPDR SSgA Global Allocation ETF,P,GAL,Y,100.0,N,GAL
+GII,SPDR S&P Global Infrastructure ETF,SPDR S&P Global Infrastructure ETF,P,GII,Y,100.0,N,GII
+GLD,SPDR Gold Trust,SPDR Gold Trust,P,GLD,Y,100.0,N,GLD
+GLDW,SPDR Long Dollar Gold Trust,SPDR Long Dollar Gold Trust,P,GLDW,Y,100.0,N,GLDW
+GMF,SPDR S&P Emerging Asia Pacific ETF,SPDR S&P Emerging Asia Pacific ETF,P,GMF,Y,100.0,N,GMF
+GML,SPDR S&P Emerging Latin America ETF,SPDR S&P Emerging Latin America ETF,P,GML,Y,100.0,N,GML
+GMM,SPDR S&P Emerging Markets ETF,SPDR S&P Emerging Markets ETF,P,GMM,Y,100.0,N,GMM
+GNR,SPDR S&P Global Natural Resources ETF,SPDR S&P Global Natural Resources ETF,P,GNR,Y,100.0,N,GNR
+GUR,SPDR S&P Emerging Europe ETF,SPDR S&P Emerging Europe ETF,P,GUR,Y,100.0,N,GUR
+GWL,SPDR S&P World ex,SPDR S&P World ex-US ETF,P,GWL,Y,100.0,N,GWL
+GWX,SPDR S&P International SmallCap ETF,SPDR S&P International SmallCap ETF,P,GWX,Y,100.0,N,GWX
+GXC,SPDR S&P China ETF,SPDR S&P China ETF,P,GXC,Y,100.0,N,GXC
+HDWX,SPDR S&P International Dividend Currency Hedged ETF,SPDR S&P International Dividend Currency Hedged ETF,P,HDWX,Y,100.0,N,HDWX
+HFEZ,SPDR EURO STOXX 50 Currency Hedged ETF,SPDR EURO STOXX 50 Currency Hedged ETF,P,HFEZ,Y,100.0,N,HFEZ
+HYMB,SPDR Nuveen S&P High Yield Municipal Bond ETF,SPDR Nuveen S&P High Yield Municipal Bond ETF,P,HYMB,Y,100.0,N,HYMB
+IBND,SPDR Bloomberg Barclays International Corporate Bond ETF,SPDR Bloomberg Barclays International Corporate Bond ETF,P,IBND,Y,100.0,N,IBND
+INKM,SPDR SSgA Income Allocation ETF,SPDR SSgA Income Allocation ETF,P,INKM,Y,100.0,N,INKM
+IPD,SPDR S&P International Consumer Discretionary Sector ETF,SPDR S&P International Consumer Discretionary Sector ETF,P,IPD,Y,100.0,N,IPD
+IPE,SPDR Bloomberg Barclays TIPS ETF,SPDR Bloomberg Barclays TIPS ETF,P,IPE,Y,100.0,N,IPE
+IPF,SPDR S&P International Financial Sector ETF,SPDR S&P International Financial Sector ETF,P,IPF,Y,100.0,N,IPF
+IPK,SPDR S&P International Technology Sector ETF,SPDR S&P International Technology Sector ETF,P,IPK,Y,100.0,N,IPK
+IPN,SPDR S&P International Industrial Sector ETF,SPDR S&P International Industrial Sector ETF,P,IPN,Y,100.0,N,IPN
+IPS,SPDR S&P International Consumer Staples Sector ETF,SPDR S&P International Consumer Staples Sector ETF,P,IPS,Y,100.0,N,IPS
+IPU,SPDR S&P International Utilities Sector ETF,SPDR S&P International Utilities Sector ETF,P,IPU,Y,100.0,N,IPU
+IPW,SPDR S&P International Energy Sector ETF,SPDR S&P International Energy Sector ETF,P,IPW,Y,100.0,N,IPW
+IRV,SPDR S&P International Materials Sector ETF,SPDR S&P International Materials Sector ETF,P,IRV,Y,100.0,N,IRV
+IRY,SPDR S&P International Health Care Sector ETF,SPDR S&P International Health Care Sector ETF,P,IRY,Y,100.0,N,IRY
+IST,SPDR S&P International Telecommunications Sector ETF,SPDR S&P International Telecommunications Sector ETF,P,IST,Y,100.0,N,IST
+ITE,SPDR Bloomberg Barclays Intermediate Term Treasury ETF,SPDR Bloomberg Barclays Intermediate Term Treasury ETF,P,ITE,Y,100.0,N,ITE
+ITR,SPDR Bloomberg Barclays Intermediate Term Corporate Bond ETF (based on Barclays Capital Intermediate U.S. Corporate Index symbol LD06TRUU,SPDR Bloomberg Barclays Intermediate Term Corporate Bond ETF (based on Barclays Capital Intermediate U.S. Corporate Index symbol LD06TRUU,P,ITR,Y,100.0,N,ITR
+JNK,SPDR Bloomberg Barclays High Yield Bond ETF,SPDR Bloomberg Barclays High Yield Bond ETF,P,JNK,Y,100.0,N,JNK
+KBE,SPDR S&P Bank ETF,SPDR S&P Bank ETF,P,KBE,Y,100.0,N,KBE
+KCE,SPDR S&P Capital Markets ETF,SPDR S&P Capital Markets ETF,P,KCE,Y,100.0,N,KCE
+KIE,SPDR S&P Insurance ETF,SPDR S&P Insurance ETF,P,KIE,Y,100.0,N,KIE
+KRE,SPDR S&P Regional Banking ETF,SPDR S&P Regional Banking ETF,P,KRE,Y,100.0,N,KRE
+LGLV,SPDR SSGA US Large Cap Low Volatility Index ETF,SPDR SSGA US Large Cap Low Volatility Index ETF,P,LGLV,Y,100.0,N,LGLV
+LOWC,SPDR MSCI ACWI Low Carbon Target ETF,SPDR MSCI ACWI Low Carbon Target ETF,P,LOWC,Y,100.0,N,LOWC
+LWC,SPDR Bloomberg Barclays Long Term Corporate Bond ETF (based on Barclays Capital Long U.S. Corporate Index symbol,SPDR Bloomberg Barclays Long Term Corporate Bond ETF (based on Barclays Capital Long U.S. Corporate Index symbol--LD07TRUU,P,LWC,Y,100.0,N,LWC
+MBG,SPDR Bloomberg Barclays Mortgage Backed Bond ETF,SPDR Bloomberg Barclays Mortgage Backed Bond ETF,P,MBG,Y,100.0,N,MBG
+MDY,SPDR MidCap Trust Series I,SPDR MidCap Trust Series I,P,MDY,Y,100.0,N,MDY
+MDYG,SPDR S&P 400 Mid Cap Growth ETF (based on S&P MidCap 400 Growth Index,SPDR S&P 400 Mid Cap Growth ETF (based on S&P MidCap 400 Growth Index--symbol: MUV),P,MDYG,Y,100.0,N,MDYG
+MDYV,SPDR S&P 400 Mid Cap Value ETF (based on S&P MidCap 400 Value Index,SPDR S&P 400 Mid Cap Value ETF (based on S&P MidCap 400 Value Index--symbol: MGD,P,MDYV,Y,100.0,N,MDYV
+MMTM,SPDR S&P 1500 Momentum Tilt ETF,SPDR S&P 1500 Momentum Tilt ETF,P,MMTM,Y,100.0,N,MMTM
+MTK,SPDR MS Technology,SPDR MS Technology,P,MTK,Y,100.0,N,MTK
+NANR,SPDR S&P North American Natural Resources ETF,SPDR S&P North American Natural Resources ETF,P,NANR,Y,100.0,N,NANR
+ONEK,SPDR Russell 1000 ETF,SPDR Russell 1000 ETF,P,ONEK,Y,100.0,N,ONEK
+ONEO,SPDR Russell 1000 Momentum Focus ETF,SPDR Russell 1000 Momentum Focus ETF,P,ONEO,Y,100.0,N,ONEO
+ONEV,SPDR Russell 1000 Low Volatility Focus ETF,SPDR Russell 1000 Low Volatility Focus ETF,P,ONEV,Y,100.0,N,ONEV
+ONEY,SPDR Russell 1000 Yield Focus ETF,SPDR Russell 1000 Yield Focus ETF,P,ONEY,Y,100.0,N,ONEY
+PSK,SPDR Wells Fargo Preferred Stock ETF,SPDR Wells Fargo Preferred Stock ETF,P,PSK,Y,100.0,N,PSK
+QAUS,SPDR MSCI Australia StrategicFactors ETF,SPDR MSCI Australia StrategicFactors ETF,P,QAUS,Y,100.0,N,QAUS
+QCAN,SPDR MSCI Canada StrategicFactors ETF,SPDR MSCI Canada StrategicFactors ETF,P,QCAN,Y,100.0,N,QCAN
+QDEU,SPDR MSCI Germany StrategicFactors ETF,SPDR MSCI Germany StrategicFactors ETF,P,QDEU,Y,100.0,N,QDEU
+QEFA,SPDR MSCI EAFE StrategicFactors ETF,SPDR MSCI EAFE StrategicFactors ETF,P,QEFA,Y,100.0,N,QEFA
+QEMM,SPDR MSCI Emerging Markets StrategicFactors ETF,SPDR MSCI Emerging Markets StrategicFactors ETF,P,QEMM,Y,100.0,N,QEMM
+QESP,SPDR MSCI Spain StrategicFactors ETF,SPDR MSCI Spain StrategicFactors ETF,P,QESP,Y,100.0,N,QESP
+QGBR,SPDR MSCI United Kingdom StrategicFactors ETF,SPDR MSCI United Kingdom StrategicFactors ETF,P,QGBR,Y,100.0,N,QGBR
+QJPN,SPDR MSCI Japan StrategicFactors ETF,SPDR MSCI Japan StrategicFactors ETF,P,QJPN,Y,100.0,N,QJPN
+QUS,SPDR MSCI USA StrategicFactors ETF,SPDR MSCI USA StrategicFactors ETF,P,QUS,Y,100.0,N,QUS
+QWLD,SPDR MSCI World StrategicFactors ETF,SPDR MSCI World StrategicFactors ETF,P,QWLD,Y,100.0,N,QWLD
+RBL,SPDR S&P Russia ETF,SPDR S&P Russia ETF,P,RBL,Y,100.0,N,RBL
+RLY,SPDR SSgA Multi Asset Real Return ETF,SPDR SSgA Multi Asset Real Return ETF,P,RLY,Y,100.0,N,RLY
+RWO,SPDR DJ Wilshire Global Real Estate ETF,SPDR DJ Wilshire Global Real Estate ETF,P,RWO,Y,100.0,N,RWO
+RWR,SPDR DJ Wilshire REIT ETF,SPDR DJ Wilshire REIT ETF,P,RWR,Y,100.0,N,RWR
+RWX,SPDR DJ Wilshire Intl Real Estate,SPDR DJ Wilshire Intl Real Estate,P,RWX,Y,100.0,N,RWX
+SCPB,SPDR Bloomberg Barclays Short Term Corporate Bond ETF,SPDR Bloomberg Barclays Short Term Corporate Bond ETF,P,SCPB,Y,100.0,N,SCPB
+SDY,SPDR S&P Dividend ETF,SPDR S&P Dividend ETF,P,SDY,Y,100.0,N,SDY
+SHE,SPDR Series Trust SPDR SSGA Gender Diversity Index ETF,SPDR Series Trust SPDR SSGA Gender Diversity Index ETF,P,SHE,Y,100.0,N,SHE
+SHM,SPDR Nuveen Bloomberg Barclays Short Term Municipal Bond ETF,SPDR Nuveen Bloomberg Barclays Short Term Municipal Bond ETF,P,SHM,Y,100.0,N,SHM
+SIPE,SPDR Bloomberg Barclays 0,SPDR Bloomberg Barclays 0-5 Year TIPS ETF,P,SIPE,Y,100.0,N,SIPE
+SJNK,SPDR Bloomberg Barclays Short Term High Yield Bond ETF,SPDR Bloomberg Barclays Short Term High Yield Bond ETF,P,SJNK,Y,100.0,N,SJNK
+SLY,SPDR S&P 600 Small Cap ETF (based on S&P SmallCap 600 Index ,SPDR S&P 600 Small Cap ETF (based on S&P SmallCap 600 Index -- symbol SML),P,SLY,Y,100.0,N,SLY
+SLYG,SPDR S&P 600 Small Cap Growth ETF (based on S&P SmallCap 600 Growth Index ,SPDR S&P 600 Small Cap Growth ETF (based on S&P SmallCap 600 Growth Index --symbol CGK),P,SLYG,Y,100.0,N,SLYG
+SLYV,SPDR S&P 600 Small Cap Value ETF (based on S&P SmallCap Value Index,SPDR S&P 600 Small Cap Value ETF (based on S&P SmallCap Value Index--symbol--CVK,P,SLYV,Y,100.0,N,SLYV
+SMD,SPDR S&P 1000 ETF  ,SPDR S&P 1000 ETF  ,P,SMD,Y,100.0,N,SMD
+SMEZ,SPDR EURO STOXX Small Cap ETF,SPDR EURO STOXX Small Cap ETF,P,SMEZ,Y,100.0,N,SMEZ
+SMLV,SPDR SSGA US Small Cap Low Volatility Index ETF,SPDR SSGA US Small Cap Low Volatility Index ETF,P,SMLV,Y,100.0,N,SMLV
+SPY,SPDR S&P 500,SPDR S&P 500,P,SPY,Y,100.0,N,SPY
+SPYB,SPDR S&P 500 Buyback ETF,SPDR S&P 500 Buyback ETF,P,SPYB,Y,100.0,N,SPYB
+SPYD,SPDR S&P 500 High Dividend ETF,SPDR S&P 500 High Dividend ETF,P,SPYD,Y,100.0,N,SPYD
+SPYG,SPDR S&P 500 Growth ETF (based on S&P 500 Growth Index symbol,SPDR S&P 500 Growth ETF (based on S&P 500 Growth Index symbol--SGX),P,SPYG,Y,100.0,N,SPYG
+SPYV,SPDR S&P 500 Value ETF (based on S&P 500 Value Index,SPDR S&P 500 Value ETF (based on S&P 500 Value Index--symbol: SVX),P,SPYV,Y,100.0,N,SPYV
+SPYX,SPDR S&P 500 Fossil Fuel Reserves Free ETF,SPDR S&P 500 Fossil Fuel Reserves Free ETF,P,SPYX,Y,100.0,N,SPYX
+SRLN,SPDR Blackstone GSO Senior Loan ETF,SPDR Blackstone GSO Senior Loan ETF,P,SRLN,Y,100.0,N,SRLN
+SST,SPDR Bloomberg Barclays Short Term Treasury ETF,SPDR Bloomberg Barclays Short Term Treasury ETF,P,SST,Y,100.0,N,SST
+STOT,SPDR DoubleLine Short Duration Total Return Tactical ETF,SPDR DoubleLine Short Duration Total Return Tactical ETF,Z,STOT,Y,100.0,N,STOT
+SYE,SPDR MFS Systematic Core Equity ETF,SPDR MFS Systematic Core Equity ETF,P,SYE,Y,100.0,N,SYE
+SYG,SPDR MFS Systematic Growth Equity ETF,SPDR MFS Systematic Growth Equity ETF,P,SYG,Y,100.0,N,SYG
+SYV,SPDR MFS Systematic Value Equity ETF,SPDR MFS Systematic Value Equity ETF,P,SYV,Y,100.0,N,SYV
+TFI,SPDR Nuveen Bloomberg Barclays Municipal Bond ETF,SPDR Nuveen Bloomberg Barclays Municipal Bond ETF,P,TFI,Y,100.0,N,TFI
+THRK,SPDR Russell 3000 ETF,SPDR Russell 3000 ETF,P,THRK,Y,100.0,N,THRK
+TIPX,SPDR Bloomberg Barclays 1,SPDR Bloomberg Barclays 1-10 Year TIPS,P,TIPX,Y,100.0,N,TIPX
+TLO,SPDR Bloomberg Barclays Long Term Treasury ETF,SPDR Bloomberg Barclays Long Term Treasury ETF,P,TLO,Y,100.0,N,TLO
+TOTL,SPDR DoubleLine Total Return Tactical ETF,SPDR DoubleLine Total Return Tactical ETF,P,TOTL,Y,100.0,N,TOTL
+TWOK,SPDR Russell 2000 ETF,SPDR Russell 2000 ETF,P,TWOK,Y,100.0,N,TWOK
+ULST,SPDR SSgA Ultra Short Term Bond ETF,SPDR SSgA Ultra Short Term Bond ETF,P,ULST,Y,100.0,N,ULST
+VLU,SPDR S&P 1500 Value Tilt ETF,SPDR S&P 1500 Value Tilt ETF,P,VLU,Y,100.0,N,VLU
+WDIV,SPDR S&P Global Dividend,SPDR S&P Global Dividend,P,WDIV,Y,100.0,N,WDIV
+WIP,SPDR Citi International Government Inflation,SPDR Citi International Government Inflation-Protected Bond ETF,P,WIP,Y,100.0,N,WIP
+XAR,SPDR S&P Aerospace & Defense ETF,SPDR S&P Aerospace & Defense ETF,P,XAR,Y,100.0,N,XAR
+XBI,SPDR Series Trust  SPDR S&P Biotech ETF,SPDR Series Trust  SPDR S&P Biotech ETF,P,XBI,Y,100.0,N,XBI
+XES,SPDR Series Trust SPDR S&P Oil & Gas Equipment & Services ETF,SPDR Series Trust SPDR S&P Oil & Gas Equipment & Services ETF,P,XES,Y,100.0,N,XES
+XHB,SPDR Series Trust SPDR Homebuilders ETF,SPDR Series Trust SPDR Homebuilders ETF,P,XHB,Y,100.0,N,XHB
+XHE,SPDR S&P Health Care Equipment,SPDR S&P Health Care Equipment,P,XHE,Y,100.0,N,XHE
+XHS,SPDR S&P Health Care Services ETF,SPDR S&P Health Care Services ETF,P,XHS,Y,100.0,N,XHS
+XINA,SPDR MSCI China A Shares IMI ETF,SPDR MSCI China A Shares IMI ETF,P,XINA,Y,100.0,N,XINA
+XITK,SPDR FactSet Innovative Technology ETF,SPDR FactSet Innovative Technology ETF,P,XITK,Y,100.0,N,XITK
+XLB,Materials Select Sector SPDR,Materials Select Sector SPDR,P,XLB,Y,100.0,N,XLB
+XLE,SPDR Select Sector Fund ,SPDR Select Sector Fund - Energy Select Sector,P,XLE,Y,100.0,N,XLE
+XLF,SPDR Select Sector Fund ,SPDR Select Sector Fund - Financial,P,XLF,Y,100.0,N,XLF
+XLI,SPDR Select Sector Fund ,SPDR Select Sector Fund - Industrial,P,XLI,Y,100.0,N,XLI
+XLK,SPDR Select Sector Fund ,SPDR Select Sector Fund - Technology,P,XLK,Y,100.0,N,XLK
+XLP,SPDR Select Sector Fund ,SPDR Select Sector Fund - Consumer Staples,P,XLP,Y,100.0,N,XLP
+XLRE,Real Estate Select Sector SPDR Fund (The),Real Estate Select Sector SPDR Fund (The),P,XLRE,Y,100.0,N,XLRE
+XLU,SPDR Select Sector Fund ,SPDR Select Sector Fund - Utilities,P,XLU,Y,100.0,N,XLU
+XLV,SPDR Select Sector Fund ,SPDR Select Sector Fund - Health Care,P,XLV,Y,100.0,N,XLV
+XLY,SPDR Select Sector Fund ,SPDR Select Sector Fund - Consumer Discretionary,P,XLY,Y,100.0,N,XLY
+XME,SPDR S&P Metals & Mining ETF,SPDR S&P Metals & Mining ETF,P,XME,Y,100.0,N,XME
+XOP,SPDR S&P Oil & Gas Explor & Product,SPDR S&P Oil & Gas Explor & Product,P,XOP,Y,100.0,N,XOP
+XPH,SPDR S&P Pharmaceuticals ETF,SPDR S&P Pharmaceuticals ETF,P,XPH,Y,100.0,N,XPH
+XRT,SPDR S&P Retail ETF,SPDR S&P Retail ETF,P,XRT,Y,100.0,N,XRT
+XSD,SPDR S&P Semiconductor ETF,SPDR S&P Semiconductor ETF,P,XSD,Y,100.0,N,XSD
+XSW,SPDR S&P Software & Services ETF,SPDR S&P Software & Services ETF,P,XSW,Y,100.0,N,XSW
+XTH,SPDR S&P Technology Hardware ETF,SPDR S&P Technology Hardware ETF,P,XTH,Y,100.0,N,XTH
+XTL,SPDR S&P Telecom ETF,SPDR S&P Telecom ETF,P,XTL,Y,100.0,N,XTL
+XTN,SPDR S&P Transportation ETF,SPDR S&P Transportation ETF,P,XTN,Y,100.0,N,XTN
+XWEB,SPDR S&P Internet ETF,SPDR S&P Internet ETF,P,XWEB,Y,100.0,N,XWEB
+ACWF,iShares Edge MSCI Multifactor Global ETF,iShares Edge MSCI Multifactor Global ETF,P,ACWF,Y,100.0,N,ACWF
+ACWV,iShares Edge MSCI Min Vol Global ETF,iShares Edge MSCI Min Vol Global ETF,P,ACWV,Y,100.0,N,ACWV
+AGG,iShares Core U.S. Aggregate Bond ETF,iShares Core U.S. Aggregate Bond ETF,P,AGG,Y,100.0,N,AGG
+AGZ,iShares  Agency Bond ETF,iShares  Agency Bond ETF,P,AGZ,Y,100.0,N,AGZ
+AOA,iShares Core Aggressive Allocation ETF,iShares Core Aggressive Allocation ETF,P,AOA,Y,100.0,N,AOA
+AOK,iShares Core Conservative Allocation ETF,iShares Core Conservative Allocation ETF,P,AOK,Y,100.0,N,AOK
+AOM,iShares Core Moderate Allocation ETF,iShares Core Moderate Allocation ETF,P,AOM,Y,100.0,N,AOM
+AOR,iShares Core Growth Allocation ETF,iShares Core Growth Allocation ETF,P,AOR,Y,100.0,N,AOR
+AXJV,iShares Edge MSCI A Min Vol Asia ex Japan ETF,iShares Edge MSCI A Min Vol Asia ex Japan ETF,P,AXJV,Y,100.0,N,AXJV
+BKF,iShares MSCI BRIC Index Fund,iShares MSCI BRIC Index Fund,P,BKF,Y,100.0,N,BKF
+BYLD,iShares Yield Optimized Bond ETF,iShares Yield Optimized Bond ETF,P,BYLD,Y,100.0,N,BYLD
+CEMB,iShares Emerging Markets Corporate Bond ETF,iShares Emerging Markets Corporate Bond ETF,Z,CEMB,Y,100.0,N,CEMB
+CIU,iShares Intermediate Credit Bond ETF,iShares Intermediate Credit Bond ETF,P,CIU,Y,100.0,N,CIU
+CLY,iShares 10  Year Credit Bond ETF,iShares 10  Year Credit Bond ETF,P,CLY,Y,100.0,N,CLY
+CLYH,iShares Interest Rate Hedged 10  Year Credit Bond ETF,iShares Interest Rate Hedged 10  Year Credit Bond ETF,P,CLYH,Y,100.0,N,CLYH
+CMBS,iShares CMBS Bond ETF,iShares CMBS Bond ETF,P,CMBS,Y,100.0,N,CMBS
+CMDT,iShares Commodity Optimized Trust,iShares Commodity Optimized Trust,P,CMDT,Y,100.0,N,CMDT
+CMF,iShares California Muni Bond ETF,iShares California Muni Bond ETF,P,CMF,Y,100.0,N,CMF
+CNDF,iShares Edge MSCI Multifactor Consumer Discretionary ETF,iShares Edge MSCI Multifactor Consumer Discretionary ETF,Z,CNDF,Y,100.0,N,CNDF
+CNSF,iShares Edge MSCI Multifactor Consumer Staples ETF,iShares Edge MSCI Multifactor Consumer Staples ETF,Z,CNSF,Y,100.0,N,CNSF
+CNYA,iShares MSCI China A ETF,iShares MSCI China A ETF,Z,CNYA,Y,100.0,N,CNYA
+CRBN,iShares MSCI ACWI Low Carbon Target ETF,iShares MSCI ACWI Low Carbon Target ETF,P,CRBN,Y,100.0,N,CRBN
+CRED,iShares U.S. Credit Bond ETF,iShares U.S. Credit Bond ETF,P,CRED,Y,100.0,N,CRED
+CSJ,iShares 1,iShares 1-3 Year Credit Bond ETF,P,CSJ,Y,100.0,N,CSJ
+DEFA,iShares Adaptive Currency Hedged MSCI EAFE ETF,iShares Adaptive Currency Hedged MSCI EAFE ETF,Z,DEFA,Y,100.0,N,DEFA
+DEWJ,iShares Adaptive Currency Hedged MSCI Japan ETF,iShares Adaptive Currency Hedged MSCI Japan ETF,Z,DEWJ,Y,100.0,N,DEWJ
+DEZU,iShares Adaptive Currency Hedged MSCI Eurozone ETF,iShares Adaptive Currency Hedged MSCI Eurozone ETF,Z,DEZU,Y,100.0,N,DEZU
+DGRO,iShares Core Dividend Growth ETF,iShares Core Dividend Growth ETF,P,DGRO,Y,100.0,N,DGRO
+DSI,iShares MSCI KLD 400 Social ETF,iShares MSCI KLD 400 Social ETF,P,DSI,Y,100.0,N,DSI
+DVY,iShares Select Dividend ETF,iShares Select Dividend ETF,P,DVY,Y,100.0,N,DVY
+DVYA,iShares Asia / Pacific Dividend 30 Index Fund Exchange Traded Fund,iShares Asia / Pacific Dividend 30 Index Fund Exchange Traded Fund,P,DVYA,Y,100.0,N,DVYA
+DVYE,iShares Emerging Markets Dividend Index Fund Exchange Traded Fund,iShares Emerging Markets Dividend Index Fund Exchange Traded Fund,P,DVYE,Y,100.0,N,DVYE
+ECH,iShares MSCI Chile Capped Investable Market Index Fund,iShares MSCI Chile Capped Investable Market Index Fund,P,ECH,Y,100.0,N,ECH
+ECNS,iShares MSCI China Small,iShares MSCI China Small-Cap ETF,P,ECNS,Y,100.0,N,ECNS
+EDEN,Ishares MSCI Denmark Capped ETF,Ishares MSCI Denmark Capped ETF,Z,EDEN,Y,100.0,N,EDEN
+EEM,iShares MSCI Emerging Index Fund,iShares MSCI Emerging Index Fund,P,EEM,Y,100.0,N,EEM
+EEMS,Ishares MSCI Emerging Markets Small Cap Index Fund,Ishares MSCI Emerging Markets Small Cap Index Fund,P,EEMS,Y,100.0,N,EEMS
+EEMV,iShares Edge MSCI Min Vol Emerging Markets ETF,iShares Edge MSCI Min Vol Emerging Markets ETF,P,EEMV,Y,100.0,N,EEMV
+EFA,iShares MSCI EAFE ETF,iShares MSCI EAFE ETF,P,EFA,Y,100.0,N,EFA
+EFAV,iShares Edge MSCI Min Vol EAFE ETF,iShares Edge MSCI Min Vol EAFE ETF,P,EFAV,Y,100.0,N,EFAV
+EFG,iShares MSCI EAFE Growth ETF,iShares MSCI EAFE Growth ETF,P,EFG,Y,100.0,N,EFG
+EFNL,Ishares MSCI Finland Capped ETF,Ishares MSCI Finland Capped ETF,Z,EFNL,Y,100.0,N,EFNL
+EFV,iShares MSCI EAFE Value ETF,iShares MSCI EAFE Value ETF,P,EFV,Y,100.0,N,EFV
+EIDO,iShares MSCI Indonesia ETF,iShares MSCI Indonesia ETF,P,EIDO,Y,100.0,N,EIDO
+EIRL,iShares MSCI Ireland Capped ETF,iShares MSCI Ireland Capped ETF,P,EIRL,Y,100.0,N,EIRL
+EIS,iShares MSCI Israel Capped Investable Market Index Fund,iShares MSCI Israel Capped Investable Market Index Fund,P,EIS,Y,100.0,N,EIS
+EMB,"iShares J,P. Morgan USD Emerging Markets Bond ETF","iShares J,P. Morgan USD Emerging Markets Bond ETF",P,EMB,Y,100.0,N,EMB
+EMBH,iShares Interest Rate Hedged Emerging Markets Bond ETF,iShares Interest Rate Hedged Emerging Markets Bond ETF,P,EMBH,Y,100.0,N,EMBH
+EMGF,iShares Edge MSCI Multifactor Emerging Markets ETF,iShares Edge MSCI Multifactor Emerging Markets ETF,Z,EMGF,Y,100.0,N,EMGF
+EMHY,iShares Emerging Markets High Yield Bond ETF,iShares Emerging Markets High Yield Bond ETF,Z,EMHY,Y,100.0,N,EMHY
+ENOR,Ishares MSCI Norway Capped ETF,Ishares MSCI Norway Capped ETF,Z,ENOR,Y,100.0,N,ENOR
+EPHE,iShares MSCI Philippines ETF,iShares MSCI Philippines ETF,P,EPHE,Y,100.0,N,EPHE
+EPOL,iShares MSCI Poland Capped ETF,iShares MSCI Poland Capped ETF,P,EPOL,Y,100.0,N,EPOL
+EPP,iShares MSCI Pacific Ex,iShares MSCI Pacific Ex-Japan Index Fund,P,EPP,Y,100.0,N,EPP
+EPU,iShares MSCI All Peru Capped ETF,iShares MSCI All Peru Capped ETF,P,EPU,Y,100.0,N,EPU
+ERGF,iShares Edge MSCI Multifactor Energy ETF,iShares Edge MSCI Multifactor Energy ETF,Z,ERGF,Y,100.0,N,ERGF
+ERUS,iShares MSCI Russia Capped ETF New,iShares MSCI Russia Capped ETF New,P,ERUS,Y,100.0,N,ERUS
+EUMV,iShares Edge MSCI Min Vol Europe ETF,iShares Edge MSCI Min Vol Europe ETF,P,EUMV,Y,100.0,N,EUMV
+EUSA,iShares MSCI USA Equal Weighted ETF,iShares MSCI USA Equal Weighted ETF,P,EUSA,Y,100.0,N,EUSA
+EWA,iShares MSCI Australia Index Fund,iShares MSCI Australia Index Fund,P,EWA,Y,100.0,N,EWA
+EWC,iShares MSCI Canada Index Fund,iShares MSCI Canada Index Fund,P,EWC,Y,100.0,N,EWC
+EWD,iShares MSCI Sweden Capped ETF,iShares MSCI Sweden Capped ETF,P,EWD,Y,100.0,N,EWD
+EWG,iShares MSCI Germany Index Fund,iShares MSCI Germany Index Fund,P,EWG,Y,100.0,N,EWG
+EWGS,Ishares MSCI Germany Small Cap ETF,Ishares MSCI Germany Small Cap ETF,Z,EWGS,Y,100.0,N,EWGS
+EWH,iShares MSCI Hong Kong Index Fund,iShares MSCI Hong Kong Index Fund,P,EWH,Y,100.0,N,EWH
+EWI,iShares MSCI Italy Capped Index Fund,iShares MSCI Italy Capped Index Fund,P,EWI,Y,100.0,N,EWI
+EWJ,iShares MSCI Japan Index Fund,iShares MSCI Japan Index Fund,P,EWJ,Y,100.0,N,EWJ
+EWK,iShares MSCI Belgium Capped Investable Market Index Fund,iShares MSCI Belgium Capped Investable Market Index Fund,P,EWK,Y,100.0,N,EWK
+EWL,iShares MSCI Switzerland Capped Index Fund,iShares MSCI Switzerland Capped Index Fund,P,EWL,Y,100.0,N,EWL
+EWM,iShares MSCI Malaysia Index Fund,iShares MSCI Malaysia Index Fund,P,EWM,Y,100.0,N,EWM
+EWN,iShares MSCI Netherlands Index Fund,iShares MSCI Netherlands Index Fund,P,EWN,Y,100.0,N,EWN
+EWO,iShares MSCI Austria Capped Investable Market Index Fund,iShares MSCI Austria Capped Investable Market Index Fund,P,EWO,Y,100.0,N,EWO
+EWP,iShares MSCI Spain Capped Index Fund,iShares MSCI Spain Capped Index Fund,P,EWP,Y,100.0,N,EWP
+EWQ,iShares MSCI France Index Fund,iShares MSCI France Index Fund,P,EWQ,Y,100.0,N,EWQ
+EWS,iShares MSCI Singapore Capped ETF,iShares MSCI Singapore Capped ETF,P,EWS,Y,100.0,N,EWS
+EWT,iShares MSCI Taiwan Capped ETF,iShares MSCI Taiwan Capped ETF,P,EWT,Y,100.0,N,EWT
+EWU,iShares MSCI United Kingdom ETF,iShares MSCI United Kingdom ETF,P,EWU,Y,100.0,N,EWU
+EWUS,Ishares MSCI United Kingdom Small Cap ETF,Ishares MSCI United Kingdom Small Cap ETF,Z,EWUS,Y,100.0,N,EWUS
+EWW,iShares MSCI Mexico Capped Investable Market Index Fund,iShares MSCI Mexico Capped Investable Market Index Fund,P,EWW,Y,100.0,N,EWW
+EWY,iShares MSCI South Korea Capped Index Fund,iShares MSCI South Korea Capped Index Fund,P,EWY,Y,100.0,N,EWY
+EWZ,iShares MSCI Brazil Capped Index Fund,iShares MSCI Brazil Capped Index Fund,P,EWZ,Y,100.0,N,EWZ
+EXI,iShares Global Industrials ETF,iShares Global Industrials ETF,P,EXI,Y,100.0,N,EXI
+EZA,iShares MSCI South Africa Index Fund,iShares MSCI South Africa Index Fund,P,EZA,Y,100.0,N,EZA
+EZU,iShares MSCI Eurozone ETF,iShares MSCI Eurozone ETF,Z,EZU,Y,100.0,N,EZU
+FIBR,iShares Edge U.S. Fixed Income Balanced Risk ETF,iShares Edge U.S. Fixed Income Balanced Risk ETF,Z,FIBR,Y,100.0,N,FIBR
+FILL,iShares MSCI Global Energy Producers Fund,iShares MSCI Global Energy Producers Fund,P,FILL,Y,100.0,N,FILL
+FLOT,iShares Floating Rate Bond ETF,iShares Floating Rate Bond ETF,P,FLOT,Y,100.0,N,FLOT
+FM,iShares MSCI Frontier 100 Fund,iShares MSCI Frontier 100 Fund,P,FM,Y,100.0,N,FM
+FNCF,iShares Edge MSCI Multifactor Financials ETF,iShares Edge MSCI Multifactor Financials ETF,Z,FNCF,Y,100.0,N,FNCF
+FXI,iShares China Large,iShares China Large-Cap ETF,P,FXI,Y,100.0,N,FXI
+GBF,iShares Government/Credit Bond ETF,iShares Government/Credit Bond ETF,P,GBF,Y,100.0,N,GBF
+GHYG,iShares Global High Yield Corporate Bond ETF,iShares Global High Yield Corporate Bond ETF,Z,GHYG,Y,100.0,N,GHYG
+GOVT,iShares U.S. Treasury Bond ETF,iShares U.S. Treasury Bond ETF,P,GOVT,Y,100.0,N,GOVT
+GSG,iShares GSCI Commodity,iShares GSCI Commodity-Indexed Trust Fund,P,GSG,Y,100.0,N,GSG
+GVI,iShares Intermediate Government/Credit Bond ETF,iShares Intermediate Government/Credit Bond ETF,P,GVI,Y,100.0,N,GVI
+HACV,iShares Edge MSCI Min Vol Global Currency Hedged ETF,iShares Edge MSCI Min Vol Global Currency Hedged ETF,Z,HACV,Y,100.0,N,HACV
+HACW,iShares Currency Hedged MSCI ACWI ETF,iShares Currency Hedged MSCI ACWI ETF,P,HACW,Y,100.0,N,HACW
+HAUD,iShares Currency Hedged MSCI Australia ETF,iShares Currency Hedged MSCI Australia ETF,P,HAUD,Y,100.0,N,HAUD
+HAWX,iShares Currency Hedged MSCI ACWI ex U.S. ETF,iShares Currency Hedged MSCI ACWI ex U.S. ETF,P,HAWX,Y,100.0,N,HAWX
+HCRF,iShares Edge MSCI Multifactor Healthcare ETF,iShares Edge MSCI Multifactor Healthcare ETF,Z,HCRF,Y,100.0,N,HCRF
+HDV,iShares Core High Dividend ETF,iShares Core High Dividend ETF,P,HDV,Y,100.0,N,HDV
+HEEM,iShares Currency Hedged MSCI Emerging Markets ETF,iShares Currency Hedged MSCI Emerging Markets ETF,P,HEEM,Y,100.0,N,HEEM
+HEFA,iShares Currency Hedged MSCI EAFE ETF,iShares Currency Hedged MSCI EAFE ETF,P,HEFA,Y,100.0,N,HEFA
+HEFV,iShares Edge MSCI Min Vol EAFE Currency Hedged ETF,iShares Edge MSCI Min Vol EAFE Currency Hedged ETF,Z,HEFV,Y,100.0,N,HEFV
+HEMV,iShares Edge MSCI Min Vol EM Currency Hedged ETF,iShares Edge MSCI Min Vol EM Currency Hedged ETF,Z,HEMV,Y,100.0,N,HEMV
+HEUS,iShares Currency Hedged MSCI Europe Small,iShares Currency Hedged MSCI Europe Small-Cap ETF,Z,HEUS,Y,100.0,N,HEUS
+HEUV,iShares Edge MSCI Min Vol Europe Currency Hedged ETF,iShares Edge MSCI Min Vol Europe Currency Hedged ETF,Z,HEUV,Y,100.0,N,HEUV
+HEWC,iShares Currency Hedged MSCI Canada ETF,iShares Currency Hedged MSCI Canada ETF,P,HEWC,Y,100.0,N,HEWC
+HEWG,iShares Currency Hedged MSCI Germany ETF,iShares Currency Hedged MSCI Germany ETF,P,HEWG,Y,100.0,N,HEWG
+HEWI,iShares Currency Hedged MSCI Italy ETF,iShares Currency Hedged MSCI Italy ETF,P,HEWI,Y,100.0,N,HEWI
+HEWJ,iShares Currency Hedged MSCI Japan ETF,iShares Currency Hedged MSCI Japan ETF,P,HEWJ,Y,100.0,N,HEWJ
+HEWL,iShares Currency Hedged MSCI Switzerland ETF,iShares Currency Hedged MSCI Switzerland ETF,P,HEWL,Y,100.0,N,HEWL
+HEWP,iShares Currency Hedged MSCI Spain,iShares Currency Hedged MSCI Spain,P,HEWP,Y,100.0,N,HEWP
+HEWU,iShares Currency Hedged MSCI United Kingdom ETF,iShares Currency Hedged MSCI United Kingdom ETF,P,HEWU,Y,100.0,N,HEWU
+HEWW,iShares Currency Hedged MSCI Mexico ETF,iShares Currency Hedged MSCI Mexico ETF,P,HEWW,Y,100.0,N,HEWW
+HEWY,iShares Currency Hedged MSCI South Korea ETF,iShares Currency Hedged MSCI South Korea ETF,P,HEWY,Y,100.0,N,HEWY
+HEZU,iShares Currency Hedged MSCI Eurozone ETF,iShares Currency Hedged MSCI Eurozone ETF,P,HEZU,Y,100.0,N,HEZU
+HHYX,iShares Currency Hedged International High Yield Bond ETF,iShares Currency Hedged International High Yield Bond ETF,P,HHYX,Y,100.0,N,HHYX
+HJPX,iShares Currency Hedged JPX,iShares Currency Hedged JPX-Nikkei 400 ETF,P,HJPX,Y,100.0,N,HJPX
+HSCZ,iShares Currency Hedged MSCI EAFE Small,iShares Currency Hedged MSCI EAFE Small-Cap ETF,P,HSCZ,Y,100.0,N,HSCZ
+HYG,iShares iBoxx $ High Yield Corporate Bond ETF,iShares iBoxx $ High Yield Corporate Bond ETF,P,HYG,Y,100.0,N,HYG
+HYGH,iShares Interest Rate Hedged High Yield Bond ETF,iShares Interest Rate Hedged High Yield Bond ETF,P,HYGH,Y,100.0,N,HYGH
+HYXU,iShares International High Yield Bond ETF,iShares International High Yield Bond ETF,Z,HYXU,Y,100.0,N,HYXU
+IAGG,iShares International Aggregate Bond Fund,iShares International Aggregate Bond Fund,Z,IAGG,Y,100.0,N,IAGG
+IAI,iShares U.S. Broker,iShares U.S. Broker-Dealers & Securities Exchanges ETF,P,IAI,Y,100.0,N,IAI
+IAK,iShares U.S. Insurance ETF,iShares U.S. Insurance ETF,P,IAK,Y,100.0,N,IAK
+IAT,iShares U.S. Regional Banks ETF,iShares U.S. Regional Banks ETF,P,IAT,Y,100.0,N,IAT
+IAU,ishares Gold Trust,ishares Gold Trust,P,IAU,Y,100.0,N,IAU
+IBCC,iShares iBonds Mar 2018 Term Corporate ex,iShares iBonds Mar 2018 Term Corporate ex-Financials ETF,P,IBCC,Y,100.0,N,IBCC
+IBCD,iShares iBonds Mar 2020 Term Corporate ex,iShares iBonds Mar 2020 Term Corporate ex-Financials Term ETF,P,IBCD,Y,100.0,N,IBCD
+IBCE,iShares iBonds Mar 2023 Term Corporate ex,iShares iBonds Mar 2023 Term Corporate ex-Financials ETF,P,IBCE,Y,100.0,N,IBCE
+IBDB,iShares iBonds Mar 2018 Term Corporate ETF,iShares iBonds Mar 2018 Term Corporate ETF,P,IBDB,Y,100.0,N,IBDB
+IBDC,iShares iBonds Mar 2020 Term Corporate ETF,iShares iBonds Mar 2020 Term Corporate ETF,P,IBDC,Y,100.0,N,IBDC
+IBDD,iShares iBonds Mar 2023 Term Corporate ETF,iShares iBonds Mar 2023 Term Corporate ETF,P,IBDD,Y,100.0,N,IBDD
+IBDH,iShares iBonds Dec 2018 Term Corporate ETF,iShares iBonds Dec 2018 Term Corporate ETF,P,IBDH,Y,100.0,N,IBDH
+IBDJ,iShares iBonds Dec 2017 Term Corporate ETF,iShares iBonds Dec 2017 Term Corporate ETF,P,IBDJ,Y,100.0,N,IBDJ
+IBDK,iShares iBonds Dec 2019 Term Corporate ETF,iShares iBonds Dec 2019 Term Corporate ETF,P,IBDK,Y,100.0,N,IBDK
+IBDL,iShares iBonds Dec 2020 Term Corporate ETF,iShares iBonds Dec 2020 Term Corporate ETF,P,IBDL,Y,100.0,N,IBDL
+IBDM,iShares iBonds Dec 2021 Term Corporate ETF,iShares iBonds Dec 2021 Term Corporate ETF,P,IBDM,Y,100.0,N,IBDM
+IBDN,iShares iBonds Dec 2022 Term Corporate ETF,iShares iBonds Dec 2022 Term Corporate ETF,P,IBDN,Y,100.0,N,IBDN
+IBDO,iShares iBonds Dec 2023 Term Corporate ETF,iShares iBonds Dec 2023 Term Corporate ETF,P,IBDO,Y,100.0,N,IBDO
+IBDP,iShares iBonds Dec 2024 Term Corporate ETF,iShares iBonds Dec 2024 Term Corporate ETF,P,IBDP,Y,100.0,N,IBDP
+IBDQ,iShares iBonds Dec 2025 Term Corporate ETF,iShares iBonds Dec 2025 Term Corporate ETF,P,IBDQ,Y,100.0,N,IBDQ
+IBDR,iShares iBonds Dec 2026 Term Corporate ETF,iShares iBonds Dec 2026 Term Corporate ETF,P,IBDR,Y,100.0,N,IBDR
+IBMF,iShares iBonds Sep 2017 Term Muni Bond ETF,iShares iBonds Sep 2017 Term Muni Bond ETF,P,IBMF,Y,100.0,N,IBMF
+IBMG,iShares iBonds Sep 2018 Term Muni Bond ETF,iShares iBonds Sep 2018 Term Muni Bond ETF,P,IBMG,Y,100.0,N,IBMG
+IBMH,iShares iBonds Sep 2019 Term Muni Bond ETF,iShares iBonds Sep 2019 Term Muni Bond ETF,P,IBMH,Y,100.0,N,IBMH
+IBMI,iShares iBonds Sep 2020 Term Muni Bond ETF,iShares iBonds Sep 2020 Term Muni Bond ETF,P,IBMI,Y,100.0,N,IBMI
+IBMJ,iShares iBonds Dec 2021 Term Muni Bond ETF,iShares iBonds Dec 2021 Term Muni Bond ETF,P,IBMJ,Y,100.0,N,IBMJ
+IBMK,iShares iBonds Dec 2022 Term Muni Bond ETF,iShares iBonds Dec 2022 Term Muni Bond ETF,P,IBMK,Y,100.0,N,IBMK
+ICF,iShares Cohen & Steers REIT ETF,iShares Cohen & Steers REIT ETF,P,ICF,Y,100.0,N,ICF
+ICOL,iShares MSCI Colombia Capped,iShares MSCI Colombia Capped,P,ICOL,Y,100.0,N,ICOL
+ICSH,iShares Ultra Short,iShares Ultra Short-Term Bond ETF,Z,ICSH,Y,100.0,N,ICSH
+ICVT,iShares Convertible Bond ETF,iShares Convertible Bond ETF,Z,ICVT,Y,100.0,N,ICVT
+IDEV,iShares Core MSCI International Developed Markets ETF,iShares Core MSCI International Developed Markets ETF,P,IDEV,Y,100.0,N,IDEV
+IDU,iShares U.S. Utilities ETF,iShares U.S. Utilities ETF,P,IDU,Y,100.0,N,IDU
+IDV,iShares International Select Dividend ETF,iShares International Select Dividend ETF,P,IDV,Y,100.0,N,IDV
+IEF,iShares 7,iShares 7-10 Year Treasury Bond ETF,P,IEF,Y,100.0,N,IEF
+IEFA,iShares Core MSCI EAFE ETF,iShares Core MSCI EAFE ETF,P,IEFA,Y,100.0,N,IEFA
+IEI,iShares 3,iShares 3-7 Year Treasury Bond ETF,P,IEI,Y,100.0,N,IEI
+IEMG,iShares Core MSCI Emerging Markets ETF,iShares Core MSCI Emerging Markets ETF,P,IEMG,Y,100.0,N,IEMG
+IEO,iShares U.S. Oil & Gas Exploration & Production ETF,iShares U.S. Oil & Gas Exploration & Production ETF,P,IEO,Y,100.0,N,IEO
+IEUR,iShares Core MSCI Europe ETF,iShares Core MSCI Europe ETF,P,IEUR,Y,100.0,N,IEUR
+IEV,iShares Europe ETF,iShares Europe ETF,P,IEV,Y,100.0,N,IEV
+IEZ,iShares U.S. Oil Equipment & Services ETF,iShares U.S. Oil Equipment & Services ETF,P,IEZ,Y,100.0,N,IEZ
+IGE,iShares North American Natural Resources ETF,iShares North American Natural Resources ETF,P,IGE,Y,100.0,N,IGE
+IGM,iShares North American Tech ETF,iShares North American Tech ETF,P,IGM,Y,100.0,N,IGM
+IGN,iShares North American Tech,iShares North American Tech-Multimedia Networking ETF,P,IGN,Y,100.0,N,IGN
+IGRO,iShares International Dividend Growth ETF,iShares International Dividend Growth ETF,Z,IGRO,Y,100.0,N,IGRO
+IGV,iShares North American Tech,iShares North American Tech-Software ETF,P,IGV,Y,100.0,N,IGV
+IHE,iShares U.S. Pharmaceutical ETF,iShares U.S. Pharmaceutical ETF,P,IHE,Y,100.0,N,IHE
+IHF,iShares U.S. Health Care Providers ETF,iShares U.S. Health Care Providers ETF,P,IHF,Y,100.0,N,IHF
+IHI,iShares U.S. Medical Devices ETF,iShares U.S. Medical Devices ETF,P,IHI,Y,100.0,N,IHI
+IJH,iShares Core S&P Mid,iShares Core S&P Mid-Cap ETF,P,IJH,Y,100.0,N,IJH
+IJJ,iShares S&P Mid,iShares S&P Mid-Cap 400 Value ETF,P,IJJ,Y,100.0,N,IJJ
+IJK,iShares S&P Mid,iShares S&P Mid-Cap 400 Growth ETF,P,IJK,Y,100.0,N,IJK
+IJR,iShares Core S&P Small,iShares Core S&P Small-Cap ETF,P,IJR,Y,100.0,N,IJR
+IJS,iShares S&P SmallCap 600 Value ETF,iShares S&P SmallCap 600 Value ETF,P,IJS,Y,100.0,N,IJS
+IJT,iShares S&P SmallCap 600 Growth ETF,iShares S&P SmallCap 600 Growth ETF,P,IJT,Y,100.0,N,IJT
+ILF,iShares Latin America 40 ETF,iShares Latin America 40 ETF,P,ILF,Y,100.0,N,ILF
+ILTB,iShares Core 10  Year USD Bond ETF,iShares Core 10  Year USD Bond ETF,P,ILTB,Y,100.0,N,ILTB
+IMTB,iShares Core 5,iShares Core 5-10 Year USD Bond ETF,P,IMTB,Y,100.0,N,IMTB
+IMTM,iShares Edge MSCI Intl Momentum Factor ETF,iShares Edge MSCI Intl Momentum Factor ETF,P,IMTM,Y,100.0,N,IMTM
+INDA,Ishares MSCI India ETF,Ishares MSCI India ETF,Z,INDA,Y,100.0,N,INDA
+INDF,iShares Edge MSCI Multifactor Industrials ETF,iShares Edge MSCI Multifactor Industrials ETF,Z,INDF,Y,100.0,N,INDF
+INTF,iShares Edge MSCI Multifactor Intl ETF,iShares Edge MSCI Multifactor Intl ETF,P,INTF,Y,100.0,N,INTF
+IOO,iShares Global 100 ETF,iShares Global 100 ETF,P,IOO,Y,100.0,N,IOO
+IPAC,iShares Core MSCI Pacific ETF,iShares Core MSCI Pacific ETF,P,IPAC,Y,100.0,N,IPAC
+IPFF,iShares International Preferred Stock ETF,iShares International Preferred Stock ETF,P,IPFF,Y,100.0,N,IPFF
+IQLT,iShares Edge MSCI Intl Quality Factor ETF,iShares Edge MSCI Intl Quality Factor ETF,P,IQLT,Y,100.0,N,IQLT
+ISCF,iShares Edge MSCI Intl Size Factor ETF,iShares Edge MSCI Intl Size Factor ETF,P,ISCF,Y,100.0,N,ISCF
+ISTB,iShares Core 1,iShares Core 1-5 Year USD Bond ETF,P,ISTB,Y,100.0,N,ISTB
+ISZE,iShares Edge MSCI Intl Size Factor ETF,iShares Edge MSCI Intl Size Factor ETF,P,ISZE,Y,100.0,N,ISZE
+ITA,iShares U.S. Aerospace & Defense ETF,iShares U.S. Aerospace & Defense ETF,P,ITA,Y,100.0,N,ITA
+ITB,iShares U.S. Home Construction ETF,iShares U.S. Home Construction ETF,P,ITB,Y,100.0,N,ITB
+ITOT,iShares Core S&P Total U.S. Stock Market ETF,iShares Core S&P Total U.S. Stock Market ETF,P,ITOT,Y,100.0,N,ITOT
+IUSB,iShares Core Total USD Bond Market ETF,iShares Core Total USD Bond Market ETF,P,IUSB,Y,100.0,N,IUSB
+IUSG,iShares Core S&P U.S. Growth ETF,iShares Core S&P U.S. Growth ETF,P,IUSG,Y,100.0,N,IUSG
+IUSV,iShares Core S&P U.S. Value ETF,iShares Core S&P U.S. Value ETF,P,IUSV,Y,100.0,N,IUSV
+IVE,iShares S&P 500 Value ETF,iShares S&P 500 Value ETF,P,IVE,Y,100.0,N,IVE
+IVLU,iShares Edge MSCI Intl Value Factor ETF,iShares Edge MSCI Intl Value Factor ETF,P,IVLU,Y,100.0,N,IVLU
+IVV,iShares Core S&P 500 ETF,iShares Core S&P 500 ETF,P,IVV,Y,100.0,N,IVV
+IVW,iShares S&P 500 Growth ETF,iShares S&P 500 Growth ETF,P,IVW,Y,100.0,N,IVW
+IWB,iShares Russell 1000 ETF,iShares Russell 1000 ETF,P,IWB,Y,100.0,N,IWB
+IWC,iShares Microcap ETF,iShares Microcap ETF,P,IWC,Y,100.0,N,IWC
+IWD,iShares Russell 1000 Value ETF,iShares Russell 1000 Value ETF,P,IWD,Y,100.0,N,IWD
+IWF,iShares Russell 1000 Growth ETF,iShares Russell 1000 Growth ETF,P,IWF,Y,100.0,N,IWF
+IWL,iShares Russell Top 200 ETF,iShares Russell Top 200 ETF,P,IWL,Y,100.0,N,IWL
+IWM,iShares Russell 2000 ETF,iShares Russell 2000 ETF,P,IWM,Y,100.0,N,IWM
+IWN,iShares Russell 2000 Value ETF,iShares Russell 2000 Value ETF,P,IWN,Y,100.0,N,IWN
+IWO,iShares Russell 2000 Growth ETF,iShares Russell 2000 Growth ETF,P,IWO,Y,100.0,N,IWO
+IWP,iShares Russell Midcap Growth ETF,iShares Russell Midcap Growth ETF,P,IWP,Y,100.0,N,IWP
+IWR,iShares Russell Mid,iShares Russell Mid-Cap ETF,P,IWR,Y,100.0,N,IWR
+IWS,iShares Russell Mid,iShares Russell Mid-cap Value ETF,P,IWS,Y,100.0,N,IWS
+IWV,iShares Russell 3000 ETF,iShares Russell 3000 ETF,P,IWV,Y,100.0,N,IWV
+IWX,iShares Russell Top 200 Value ETF,iShares Russell Top 200 Value ETF,P,IWX,Y,100.0,N,IWX
+IWY,iShares Russell Top 200 Growth ETF,iShares Russell Top 200 Growth ETF,P,IWY,Y,100.0,N,IWY
+IXC,iShares Global Energy ETF,iShares Global Energy ETF,P,IXC,Y,100.0,N,IXC
+IXG,iShares Global Financial ETF,iShares Global Financial ETF,P,IXG,Y,100.0,N,IXG
+IXJ,iShares Global Healthcare ETF,iShares Global Healthcare ETF,P,IXJ,Y,100.0,N,IXJ
+IXN,iShares Global Tech ETF,iShares Global Tech ETF,P,IXN,Y,100.0,N,IXN
+IXP,iShares Global Telecom ETF,iShares Global Telecom ETF,P,IXP,Y,100.0,N,IXP
+IYC,iShares U.S. Consumer Services ETF,iShares U.S. Consumer Services ETF,P,IYC,Y,100.0,N,IYC
+IYE,iShares U.S. Energy ETF,iShares U.S. Energy ETF,P,IYE,Y,100.0,N,IYE
+IYF,iShares U.S. Financial ETF,iShares U.S. Financial ETF,P,IYF,Y,100.0,N,IYF
+IYG,iShares U.S. Financial Services ETF,iShares U.S. Financial Services ETF,P,IYG,Y,100.0,N,IYG
+IYH,iShares U.S. Healthcare ETF,iShares U.S. Healthcare ETF,P,IYH,Y,100.0,N,IYH
+IYJ,iShares U.S. Industrials ETF,iShares U.S. Industrials ETF,P,IYJ,Y,100.0,N,IYJ
+IYK,iShares U.S. Consumer Goods ETF,iShares U.S. Consumer Goods ETF,P,IYK,Y,100.0,N,IYK
+IYLD,iShares Morningstar Multi,iShares Morningstar Multi-Asset Income ETF,Z,IYLD,Y,100.0,N,IYLD
+IYM,iShares U.S. Basic Materials ETF,iShares U.S. Basic Materials ETF,P,IYM,Y,100.0,N,IYM
+IYR,iShares U.S. Real Estate ETF,iShares U.S. Real Estate ETF,P,IYR,Y,100.0,N,IYR
+IYT,iShares Transportation AverageETF,iShares Transportation AverageETF,P,IYT,Y,100.0,N,IYT
+IYW,iShares U.S. Technology ETF,iShares U.S. Technology ETF,P,IYW,Y,100.0,N,IYW
+IYY,iShares Dow Jones U.S. ETF,iShares Dow Jones U.S. ETF,P,IYY,Y,100.0,N,IYY
+IYZ,iShares U.S. Telecommunications ETF,iShares U.S. Telecommunications ETF,P,IYZ,Y,100.0,N,IYZ
+JKD,iShares Morningstar Large,iShares Morningstar Large-Cap ETF,P,JKD,Y,100.0,N,JKD
+JKE,iShares Morningstar Large,iShares Morningstar Large-Cap Growth ETF,P,JKE,Y,100.0,N,JKE
+JKF,iShares Morningstar Large,iShares Morningstar Large-Cap  Value ETF,P,JKF,Y,100.0,N,JKF
+JKG,iShares Morningstar Mid,iShares Morningstar Mid-Cap ETF,P,JKG,Y,100.0,N,JKG
+JKH,iShares Morningstar Mid,iShares Morningstar Mid-Cap Growth ETF,P,JKH,Y,100.0,N,JKH
+JKJ,iShares Morningstar Small,iShares Morningstar Small-Cap ETF,P,JKJ,Y,100.0,N,JKJ
+JKK,iShares Morningstar Small,iShares Morningstar Small-Cap Growth ETF,P,JKK,Y,100.0,N,JKK
+JKL,iShares Morningstar Small,iShares Morningstar Small-Cap Value ETFnd,P,JKL,Y,100.0,N,JKL
+JPMV,iShares Edge MSCI Min Vol Japan ETF,iShares Edge MSCI Min Vol Japan ETF,P,JPMV,Y,100.0,N,JPMV
+JPXN,iShares JPX,iShares JPX-Nikkei 400 ETF,P,JPXN,Y,100.0,N,JPXN
+JXI,iShares Global Utilities ETF,iShares Global Utilities ETF,P,JXI,Y,100.0,N,JXI
+KLD,iShares MSCI USA ESG Select ETF,iShares MSCI USA ESG Select ETF,P,KLD,Y,100.0,N,KLD
+KSA,iShares MSCI Saudi Arabia Capped ETF,iShares MSCI Saudi Arabia Capped ETF,P,KSA,Y,100.0,N,KSA
+KXI,iShares Global Consumer Staples ETF,iShares Global Consumer Staples ETF,P,KXI,Y,100.0,N,KXI
+LEMB,iShares Emerging Markets Local Currency Bond,iShares Emerging Markets Local Currency Bond,P,LEMB,Y,100.0,N,LEMB
+LQD,iShares iBoxx $ Investment Grade Corporate Bond ETF,iShares iBoxx $ Investment Grade Corporate Bond ETF,P,LQD,Y,100.0,N,LQD
+LQDH,iShares Interest Rate Hedged Corporate Bond ETF,iShares Interest Rate Hedged Corporate Bond ETF,P,LQDH,Y,100.0,N,LQDH
+LRGF,iShares Edge MSCI Multifactor USA ETF,iShares Edge MSCI Multifactor USA ETF,P,LRGF,Y,100.0,N,LRGF
+MATF,iShares Edge MSCI Multifactor Materials ETF,iShares Edge MSCI Multifactor Materials ETF,Z,MATF,Y,100.0,N,MATF
+MBB,iShares MBS ETF,iShares MBS ETF,P,MBB,Y,100.0,N,MBB
+MEAR,iShares Short Maturity Municipal Bond ETF,iShares Short Maturity Municipal Bond ETF,Z,MEAR,Y,100.0,N,MEAR
+MTUM,iShares Edge MSCI USA Momentum Factor ETF,iShares Edge MSCI USA Momentum Factor ETF,P,MTUM,Y,100.0,N,MTUM
+MUB,iShares National Muni Bond ETF,iShares National Muni Bond ETF,P,MUB,Y,100.0,N,MUB
+MXI,iShares Global Materials ETF,iShares Global Materials ETF,P,MXI,Y,100.0,N,MXI
+NEAR,iShares Short Maturity Bond ETF,iShares Short Maturity Bond ETF,Z,NEAR,Y,100.0,N,NEAR
+NYF,iShares New York Muni Bond ETF,iShares New York Muni Bond ETF,P,NYF,Y,100.0,N,NYF
+OEF,iShares S&P 100 ETF,iShares S&P 100 ETF,P,OEF,Y,100.0,N,OEF
+PFF,iShares US Preferred Stock ETF,iShares US Preferred Stock ETF,P,PFF,Y,100.0,N,PFF
+PICK,iShares MSCI Global Select Metals & Mining Producers Fund,iShares MSCI Global Select Metals & Mining Producers Fund,P,PICK,Y,100.0,N,PICK
+QLTA,iShares Aaa A Rated Corporate Bond ETF,iShares Aaa A Rated Corporate Bond ETF,P,QLTA,Y,100.0,N,QLTA
+QUAL,iShares Edge MSCI USA Quality Factor ETF,iShares Edge MSCI USA Quality Factor ETF,P,QUAL,Y,100.0,N,QUAL
+REET,iShares Trust iShares Global REIT ETF,iShares Trust iShares Global REIT ETF,P,REET,Y,100.0,N,REET
+REM,iShares Mortgage Real Estate Capped ETF,iShares Mortgage Real Estate Capped ETF,P,REM,Y,100.0,N,REM
+REZ,iShares Residential Real Estate Capped ETF,iShares Residential Real Estate Capped ETF,P,REZ,Y,100.0,N,REZ
+RING,iShares MSCI Global Gold Miners Fund,iShares MSCI Global Gold Miners Fund,P,RING,Y,100.0,N,RING
+RXI,iShares Global Consumer Discretionary ETF,iShares Global Consumer Discretionary ETF,P,RXI,Y,100.0,N,RXI
+SCJ,iShares MSCI Japan Sm Cap,iShares MSCI Japan Sm Cap,P,SCJ,Y,100.0,N,SCJ
+SHV,iShares Short Treasury Bond ETF,iShares Short Treasury Bond ETF,P,SHV,Y,100.0,N,SHV
+SHY,iShares 1,iShares 1-3 Year Treasury Bond ETF,P,SHY,Y,100.0,N,SHY
+SHYG,iShares 0,iShares 0-5 Year High Yield Corporate Bond ETF,P,SHYG,Y,100.0,N,SHYG
+SIZE,iShares Edge MSCI USA Size Factor ETF,iShares Edge MSCI USA Size Factor ETF,P,SIZE,Y,100.0,N,SIZE
+SLV,iShares Silver Trust,iShares Silver Trust,P,SLV,Y,100.0,N,SLV
+SLVP,iShares MSCI Global Silver Miners Fund,iShares MSCI Global Silver Miners Fund,P,SLVP,Y,100.0,N,SLVP
+SMIN,Ishares MSCI India Small Cap ETF,Ishares MSCI India Small Cap ETF,Z,SMIN,Y,100.0,N,SMIN
+SMLF,iShares Edge MSCI Multifactor USA Small,iShares Edge MSCI Multifactor USA Small-Cap ETF,P,SMLF,Y,100.0,N,SMLF
+SMMV,iShares Trust ETF,iShares Trust ETF,Z,SMMV,Y,100.0,N,SMMV
+STIP,iShares 0,iShares 0-5 Year TIPS Bond ETF,P,STIP,Y,100.0,N,STIP
+SUB,iShares Short,iShares Short-Term National Muni Bond ETF,P,SUB,Y,100.0,N,SUB
+TCHF,iShares Edge MSCI Multifactor Technology ETF,iShares Edge MSCI Multifactor Technology ETF,Z,TCHF,Y,100.0,N,TCHF
+TFLO,iShares Treasury Floating Rate Bond ETF,iShares Treasury Floating Rate Bond ETF,P,TFLO,Y,100.0,N,TFLO
+THD,iShares MSCI Thailand Capped Investable Market Index Fund,iShares MSCI Thailand Capped Investable Market Index Fund,P,THD,Y,100.0,N,THD
+TIP,iShares TIPS Bond ETF,iShares TIPS Bond ETF,P,TIP,Y,100.0,N,TIP
+TLH,iShares 10,iShares 10-20 Year Treasury Bond ETF,P,TLH,Y,100.0,N,TLH
+TOK,iShares MSCI Kokusai ETF,iShares MSCI Kokusai ETF,P,TOK,Y,100.0,N,TOK
+TUR,iShares MSCI Turkey Investable Market Index Fund,iShares MSCI Turkey Investable Market Index Fund,P,TUR,Y,100.0,N,TUR
+URTH,Ishares MSCI World Index Fund,Ishares MSCI World Index Fund,P,URTH,Y,100.0,N,URTH
+USMV,iShares Edge MSCI Min Vol USA ETF,iShares Edge MSCI Min Vol USA ETF,P,USMV,Y,100.0,N,USMV
+USRT,iShares Core U.S. REIT ETF,iShares Core U.S. REIT ETF,P,USRT,Y,100.0,N,USRT
+UTLF,iShares Edge MSCI Multifactor Utilities ETF,iShares Edge MSCI Multifactor Utilities ETF,Z,UTLF,Y,100.0,N,UTLF
+VEGI,iShares MSCI Agriculture Producers Fund,iShares MSCI Agriculture Producers Fund,P,VEGI,Y,100.0,N,VEGI
+VLUE,iShares Edge MSCI USA Value Factor ETF,iShares Edge MSCI USA Value Factor ETF,P,VLUE,Y,100.0,N,VLUE
+WPS,iShares International Developed Property ETF,iShares International Developed Property ETF,P,WPS,Y,100.0,N,WPS
+XT,iShares Exponential Technologies ETF,iShares Exponential Technologies ETF,P,XT,Y,100.0,N,XT
+AVD,American Vanguard Corporation Common Stock ($0.10 Par Value),American Vanguard Corporation Common Stock ($0.10 Par Value),N,AVD,N,100.0,N,AVD
+BIV,Vanguard Intermediate,Vanguard Intermediate-Term Bond ETF,P,BIV,Y,100.0,N,BIV
+BLV,Vanguard Long,Vanguard Long-Term Bond ETF,P,BLV,Y,100.0,N,BLV
+BND,Vanguard Total Bond Market ETF,Vanguard Total Bond Market ETF,P,BND,Y,100.0,N,BND
+BSV,Vanguard Short,Vanguard Short-Term Bond ETF,P,BSV,Y,100.0,N,BSV
+EDV,Vanguard Extended Duration Treasury ETF,Vanguard Extended Duration Treasury ETF,P,EDV,Y,100.0,N,EDV
+IVOG,Vanguard S&P Mid,Vanguard S&P Mid-Cap 400 Growth ETF,P,IVOG,Y,100.0,N,IVOG
+IVOO,Vanguard S&P Mid,Vanguard S&P Mid-Cap 400 ETF,P,IVOO,Y,100.0,N,IVOO
+IVOV,Vanguard S&P Mid,Vanguard S&P Mid-Cap 400 Value ETF,P,IVOV,Y,100.0,N,IVOV
+MGC,Vanguard Mega Cap ETF,Vanguard Mega Cap ETF,P,MGC,Y,100.0,N,MGC
+MGK,Vanguard Mega Cap Growth ETF,Vanguard Mega Cap Growth ETF,P,MGK,Y,100.0,N,MGK
+MGV,Vanguard Mega Cap Value ETF,Vanguard Mega Cap Value ETF,P,MGV,Y,100.0,N,MGV
+VAW,Vanguard Materials ETF ,Vanguard Materials ETF - DNQ,P,VAW,Y,100.0,N,VAW
+VB,Vanguard Small,Vanguard Small-Cap ETF - DNQ,P,VB,Y,100.0,N,VB
+VBK,Vanguard Small,Vanguard Small-Cap Growth ETF - DNQ,P,VBK,Y,100.0,N,VBK
+VBR,Vanguard Small,Vanguard Small-Cap Value ETF - DNQ,P,VBR,Y,100.0,N,VBR
+VCR,Vanguard Consumer Discretion ETF ,Vanguard Consumer Discretion ETF - DNQ,P,VCR,Y,100.0,N,VCR
+VDC,Vanguard Consumer Staples ETF ,Vanguard Consumer Staples ETF - DNQ,P,VDC,Y,100.0,N,VDC
+VDE,Vanguard Energy ETF,Vanguard Energy ETF,P,VDE,Y,100.0,N,VDE
+VEA,Vanguard FTSE Developed Markets ETF,Vanguard FTSE Developed Markets ETF,P,VEA,Y,100.0,N,VEA
+VEU,Vanguard FTSE All World Ex US ETF,Vanguard FTSE All World Ex US ETF,P,VEU,Y,100.0,N,VEU
+VFH,Vanguard Financials ETF ,Vanguard Financials ETF - DNQ,P,VFH,Y,100.0,N,VFH
+VGK,Vanguard FTSEEuropean ETF,Vanguard FTSEEuropean ETF,P,VGK,Y,100.0,N,VGK
+VGT,Vanguard Information Tech ETF ,Vanguard Information Tech ETF - DNQ,P,VGT,Y,100.0,N,VGT
+VHT,Vanguard Health Care ETF ,Vanguard Health Care ETF - DNQ,P,VHT,Y,100.0,N,VHT
+VIG,Vanguard Div Appreciation ETF ,Vanguard Div Appreciation ETF - DNQ,P,VIG,Y,100.0,N,VIG
+VIOG,Vanguard S&P Small,Vanguard S&P Small-Cap 600 Growth ETF,P,VIOG,Y,100.0,N,VIOG
+VIOO,Vanguard S&P Small,Vanguard S&P Small-Cap 600 ETF,P,VIOO,Y,100.0,N,VIOO
+VIOV,Vanguard S&P Small,Vanguard S&P Small-Cap 600 Value ETF,P,VIOV,Y,100.0,N,VIOV
+VIS,Vanguard Industrials ETF ,Vanguard Industrials ETF - DNQ,P,VIS,Y,100.0,N,VIS
+VNQ,Vanguard REIT ETF ,Vanguard REIT ETF - DNQ,P,VNQ,Y,100.0,N,VNQ
+VO,Vanguard Mid,Vanguard Mid-Cap ETF - DNQ,P,VO,Y,100.0,N,VO
+VOE,Vanguard Mid,Vanguard Mid-Cap Value ETF - DNQ,P,VOE,Y,100.0,N,VOE
+VOO,Vanguard S&P 500 ETF,Vanguard S&P 500 ETF,P,VOO,Y,100.0,N,VOO
+VOOG,Vanguard S&P 500 Growth ETF,Vanguard S&P 500 Growth ETF,P,VOOG,Y,100.0,N,VOOG
+VOOV,Vanguard S&P 500 Value ETF,Vanguard S&P 500 Value ETF,P,VOOV,Y,100.0,N,VOOV
+VOT,Vanguard Mid,Vanguard Mid-Cap Growth ETF - DNQ,P,VOT,Y,100.0,N,VOT
+VOX,Vanguard Telecom ETF ,Vanguard Telecom ETF - DNQ,P,VOX,Y,100.0,N,VOX
+VPL,Vanguard FTSE Pacific ETF,Vanguard FTSE Pacific ETF,P,VPL,Y,100.0,N,VPL
+VPU,Vanguard Utilities ETF ,Vanguard Utilities ETF - DNQ,P,VPU,Y,100.0,N,VPU
+VSS,Vanguard FTSE All,Vanguard FTSE All-Wld ex-US SmCp Idx ETF,P,VSS,Y,100.0,N,VSS
+VT,Vanguard Total World Stock Index ETF,Vanguard Total World Stock Index ETF,P,VT,Y,100.0,N,VT
+VTEB,Vanguard Tax,Vanguard Tax-Exempt Bond ETF,P,VTEB,Y,100.0,N,VTEB
+VTI,Vanguard Total Stock Market ETF,Vanguard Total Stock Market ETF,P,VTI,Y,100.0,N,VTI
+VTV,Vanguard Value ETF ,Vanguard Value ETF - DNQ,P,VTV,Y,100.0,N,VTV
+VUG,Vanguard Growth ETF ,Vanguard Growth ETF - DNQ,P,VUG,Y,100.0,N,VUG
+VV,Vanguard Large,Vanguard Large-Cap ETF - DNQ,P,VV,Y,100.0,N,VV
+VWO,Vanguard FTSE Emerging Markets ETF,Vanguard FTSE Emerging Markets ETF,P,VWO,Y,100.0,N,VWO
+VXF,Vanguard Extended Market ETF ,Vanguard Extended Market ETF - DNQ,P,VXF,Y,100.0,N,VXF
+VYM,Vanguard High Dividend Yield ETF ,Vanguard High Dividend Yield ETF - DNQ,P,VYM,Y,100.0,N,VYM
+BAB,PowerShares Build America Bond Portfolio,PowerShares Build America Bond Portfolio,P,BAB,Y,100.0,N,BAB
+BKLN,PowerShares Exchange,PowerShares Exchange-Traded Fund Trust ETF,P,BKLN,Y,100.0,N,BKLN
+CLTL,PowerShares Treasury Collateral Portfolio,PowerShares Treasury Collateral Portfolio,P,CLTL,Y,100.0,N,CLTL
+CNTR,PowerShares Contrarian Opportunities Portfolio,PowerShares Contrarian Opportunities Portfolio,P,CNTR,Y,100.0,N,CNTR
+DBA,PowerShares DB Agriculture Fund,PowerShares DB Agriculture Fund,P,DBA,Y,100.0,N,DBA
+DBB,PowerShares DB Base Metals Fund,PowerShares DB Base Metals Fund,P,DBB,Y,100.0,N,DBB
+DBC,PowerShares DB Commodity Index Trac,PowerShares DB Commodity Index Trac,P,DBC,Y,100.0,N,DBC
+DBE,PowerShares DB Energy Fund,PowerShares DB Energy Fund,P,DBE,Y,100.0,N,DBE
+DBO,PowerShares DB Oil Fund,PowerShares DB Oil Fund,P,DBO,Y,100.0,N,DBO
+DBP,PowerShares DB Precious Metals Fund,PowerShares DB Precious Metals Fund,P,DBP,Y,100.0,N,DBP
+DBS,PowerShares DB Silver Fund,PowerShares DB Silver Fund,P,DBS,Y,100.0,N,DBS
+DBV,PowerShares DB G10 Currency Harvest,PowerShares DB G10 Currency Harvest,P,DBV,Y,100.0,N,DBV
+DGL,PowerShares DB Gold Fund,PowerShares DB Gold Fund,P,DGL,Y,100.0,N,DGL
+DSUM,PowerShares Chinese Yuan Dim Sum Bond Portfolio,PowerShares Chinese Yuan Dim Sum Bond Portfolio,P,DSUM,Y,100.0,N,DSUM
+EELV,PowerShares S&P Emerging Markets Low Volatility Portfolio,PowerShares S&P Emerging Markets Low Volatility Portfolio,P,EELV,Y,100.0,N,EELV
+EEMO,PowerShares S&P Emerging Markets Momentum Portfolio,PowerShares S&P Emerging Markets Momentum Portfolio,P,EEMO,Y,100.0,N,EEMO
+EQAL,PowerShares Russell 1000 Equal Weight POrtfolio,PowerShares Russell 1000 Equal Weight POrtfolio,P,EQAL,Y,100.0,N,EQAL
+EQWL,PowerShares Russell Top 200 Equal Weight Portfolio,PowerShares Russell Top 200 Equal Weight Portfolio,P,EQWL,Y,100.0,N,EQWL
+EQWM,PowerShares Russell Midcap Equal Weight Portfolio,PowerShares Russell Midcap Equal Weight Portfolio,P,EQWM,Y,100.0,N,EQWM
+EQWS,PowerShares Russell 2000 Equal Weight Portfolio,PowerShares Russell 2000 Equal Weight Portfolio,P,EQWS,Y,100.0,N,EQWS
+FXEP,PowerShares Developed EuroPacific Currency Hedged Low Volatility Portfolio,PowerShares Developed EuroPacific Currency Hedged Low Volatility Portfolio,P,FXEP,Y,100.0,N,FXEP
+FXEU,PowerShares Europe Currency Hedged Low Volatility Portfolio,PowerShares Europe Currency Hedged Low Volatility Portfolio,P,FXEU,Y,100.0,N,FXEU
+FXJP,PowerShares Japan Currency Hedged Low Volatility Portfolio,PowerShares Japan Currency Hedged Low Volatility Portfolio,P,FXJP,Y,100.0,N,FXJP
+IDHD,PowerShares S&P International Developed High Dividend Low Volatility Portfolio,PowerShares S&P International Developed High Dividend Low Volatility Portfolio,Z,IDHD,Y,100.0,N,IDHD
+IDHQ,PowerShares S&P International Developed Quality Portfolio (S&P International Developed High Quality Ranking Index,PowerShares S&P International Developed Quality Portfolio (S&P International Developed High Quality Ranking Index--index symbol SPIDHQR),P,IDHQ,Y,100.0,N,IDHQ
+IDLV,PowerShares S&P International Developed Low Volatility Portfolio,PowerShares S&P International Developed Low Volatility Portfolio,P,IDLV,Y,100.0,N,IDLV
+IDMO,PowerShares S&P International Developed Momentum Portfolio,PowerShares S&P International Developed Momentum Portfolio,P,IDMO,Y,100.0,N,IDMO
+PAF,PowerShares FTSE RAFI Asia Pacific ex,PowerShares FTSE RAFI Asia Pacific ex-Japan Portfolio,P,PAF,Y,100.0,N,PAF
+PBD,PowerShares Global Clean Energy Portfolio,PowerShares Global Clean Energy Portfolio,P,PBD,Y,100.0,N,PBD
+PBE,PowerShares Dynamic Biotech &Genome,PowerShares Dynamic Biotech &Genome,P,PBE,Y,100.0,N,PBE
+PBJ,PowerShares Dynamic Food & Beverage,PowerShares Dynamic Food & Beverage,P,PBJ,Y,100.0,N,PBJ
+PBP,PowerShares S&P 500 BuyWrite Portfolio,PowerShares S&P 500 BuyWrite Portfolio,P,PBP,Y,100.0,N,PBP
+PBS,PowerShares Dynamic Media,PowerShares Dynamic Media,P,PBS,Y,100.0,N,PBS
+PBW,PowerShares WilderHill Clean Energy Portfolio,PowerShares WilderHill Clean Energy Portfolio,P,PBW,Y,100.0,N,PBW
+PCEF,PowerShares CEF Income Composite Portfolio,PowerShares CEF Income Composite Portfolio,P,PCEF,Y,100.0,N,PCEF
+PCY,PowerShares Emerging Markets Sovereign Debt Portfolio,PowerShares Emerging Markets Sovereign Debt Portfolio,P,PCY,Y,100.0,N,PCY
+PDN,PowerShares FTSE RAFI Developed Markets ex,PowerShares FTSE RAFI Developed Markets ex-U.S. Small-Mid Portfolio,P,PDN,Y,100.0,N,PDN
+PEJ,PowerShares Dynamic Leisure & Entertainment Portfolio,PowerShares Dynamic Leisure & Entertainment Portfolio,P,PEJ,Y,100.0,N,PEJ
+PFIG,PowerShares Fundamental Investment Grade Corporate Bond Portfolio ETF,PowerShares Fundamental Investment Grade Corporate Bond Portfolio ETF,P,PFIG,Y,100.0,N,PFIG
+PGF,PowerShares Financial Preferred,PowerShares Financial Preferred,P,PGF,Y,100.0,N,PGF
+PGHY,PowerShares Global Short Term High Yield Bond Portfolio,PowerShares Global Short Term High Yield Bond Portfolio,P,PGHY,Y,100.0,N,PGHY
+PGX,PowerShares Preferred Portfolio,PowerShares Preferred Portfolio,P,PGX,Y,100.0,N,PGX
+PHB,PowerShares High Yield Corporate Bond Portfolio,PowerShares High Yield Corporate Bond Portfolio,P,PHB,Y,100.0,N,PHB
+PHDG,PowerShares S&P 500 Downside Hedged Portfolio,PowerShares S&P 500 Downside Hedged Portfolio,P,PHDG,Y,100.0,N,PHDG
+PICB,PowerShares International Corporate Bond Portfolio,PowerShares International Corporate Bond Portfolio,P,PICB,Y,100.0,N,PICB
+PIN,PowerShares India Portfolio,PowerShares India Portfolio,P,PIN,Y,100.0,N,PIN
+PJP,PowerShares Dynamic Pharmaceuticals,PowerShares Dynamic Pharmaceuticals,P,PJP,Y,100.0,N,PJP
+PKB,PowerShares Dynamic Build & Construction,PowerShares Dynamic Build & Construction,P,PKB,Y,100.0,N,PKB
+PMR,PowerShares Dynamic Retail,PowerShares Dynamic Retail,P,PMR,Y,100.0,N,PMR
+PPA,PowerShares Aerospace & Defense Portfolio ,PowerShares Aerospace & Defense Portfolio ,P,PPA,Y,100.0,N,PPA
+PRF,Powershares FTSE RAFI US 1000 Portfolio,Powershares FTSE RAFI US 1000 Portfolio,P,PRF,Y,100.0,N,PRF
+PSI,PowerShares Dynamic Semiconductors,PowerShares Dynamic Semiconductors,P,PSI,Y,100.0,N,PSI
+PSJ,PowerShares Dynamic Software,PowerShares Dynamic Software,P,PSJ,Y,100.0,N,PSJ
+PSMB,PowerShares Balanced Multi,PowerShares Balanced Multi-Asset Allocation Portfolio,Z,PSMB,Y,100.0,N,PSMB
+PSMC,PowerShares Conservative Multi,PowerShares Conservative Multi-Asset Allocation Portfolio,Z,PSMC,Y,100.0,N,PSMC
+PSMG,PowerShares Growth Multi,PowerShares Growth Multi-Asset Allocation Portfolio,Z,PSMG,Y,100.0,N,PSMG
+PSMM,PowerShares Moderately Conservative Multi,PowerShares Moderately Conservative Multi-Asset Allocation Portfolio,Z,PSMM,Y,100.0,N,PSMM
+PSP,PowerShares Listed Private Equity,PowerShares Listed Private Equity,P,PSP,Y,100.0,N,PSP
+PSR,PowerShares Active U.S. Real Estate Fund,PowerShares Active U.S. Real Estate Fund,P,PSR,Y,100.0,N,PSR
+PUW,PowerShares WilderHill Progressive Energy Portfolio,PowerShares WilderHill Progressive Energy Portfolio,P,PUW,Y,100.0,N,PUW
+PVI,PowerShares VRDO Tax Free Weekly Portfolio,PowerShares VRDO Tax Free Weekly Portfolio,P,PVI,Y,100.0,N,PVI
+PWB,PowerShares Dynamic LargeCap Growth,PowerShares Dynamic LargeCap Growth,P,PWB,Y,100.0,N,PWB
+PWC,PowerShares XTF: Dynamic Market Portfolio,PowerShares XTF: Dynamic Market Portfolio,P,PWC,Y,100.0,N,PWC
+PWV,PowerShares Dynamic LargeCap Value,PowerShares Dynamic LargeCap Value,P,PWV,Y,100.0,N,PWV
+PWZ,PowerShares California AMT,PowerShares California AMT-Free Municipal Bond Portfolio,P,PWZ,Y,100.0,N,PWZ
+PXE,PowerShares Dynamic Energy E&P,PowerShares Dynamic Energy E&P,P,PXE,Y,100.0,N,PXE
+PXF,PowerShares FTSE RAFI Developed Markets ex,PowerShares FTSE RAFI Developed Markets ex-U.S. Portfolio,P,PXF,Y,100.0,N,PXF
+PXH,PowerShares FTSE RAFI Emerging Markets Portfolio,PowerShares FTSE RAFI Emerging Markets Portfolio,P,PXH,Y,100.0,N,PXH
+PXJ,PowerShares Dynamic Oil Services,PowerShares Dynamic Oil Services,P,PXJ,Y,100.0,N,PXJ
+PXLG,PowerShares Russell Top 200 Pure Growth Portfolio,PowerShares Russell Top 200 Pure Growth Portfolio,P,PXLG,Y,100.0,N,PXLG
+PXLV,PowerShares Russell Top 200 Pure Value Portfolio,PowerShares Russell Top 200 Pure Value Portfolio,P,PXLV,Y,100.0,N,PXLV
+PXMG,PowerShares Russell Midcap Pure Growth Portfolio,PowerShares Russell Midcap Pure Growth Portfolio,P,PXMG,Y,100.0,N,PXMG
+PXMV,PowerShares Russell Midcap Pure Value Portfolio,PowerShares Russell Midcap Pure Value Portfolio,P,PXMV,Y,100.0,N,PXMV
+PXQ,PowerShares Dynamic Networking,PowerShares Dynamic Networking,P,PXQ,Y,100.0,N,PXQ
+PXR,PowerShares Global Emerging Markets Infrastructure,PowerShares Global Emerging Markets Infrastructure,P,PXR,Y,100.0,N,PXR
+PXSG,PowerShares Russell 2000 Pure Growth Portfolio,PowerShares Russell 2000 Pure Growth Portfolio,P,PXSG,Y,100.0,N,PXSG
+PXSV,PowerShares Russell 2000 Pure Value Portfolio,PowerShares Russell 2000 Pure Value Portfolio,P,PXSV,Y,100.0,N,PXSV
+PZA,PowerShares National AMT,PowerShares National AMT-Free Municipal Bond Portfolio,P,PZA,Y,100.0,N,PZA
+PZD,PowerShares Cleantech Portfolio,PowerShares Cleantech Portfolio,P,PZD,Y,100.0,N,PZD
+PZI,PowerShares Zacks Micro Cap,PowerShares Zacks Micro Cap,P,PZI,Y,100.0,N,PZI
+PZT,PowerShares New York AMT,PowerShares New York AMT-Free Municipal Bond Portfolio,P,PZT,Y,100.0,N,PZT
+SPHB,PowerShares S&P 500 High Beta Portfolio,PowerShares S&P 500 High Beta Portfolio,P,SPHB,Y,100.0,N,SPHB
+SPHD,PowerShares S&P 500 High Dividend Low Volatility Portfolio,PowerShares S&P 500 High Dividend Low Volatility Portfolio,P,SPHD,Y,100.0,N,SPHD
+SPHQ,PowerShares S&P 500 Quality Portfolio,PowerShares S&P 500 Quality Portfolio,P,SPHQ,Y,100.0,N,SPHQ
+SPLV,PowerShares S&P 500 Low Volatility Portfolio ETF,PowerShares S&P 500 Low Volatility Portfolio ETF,P,SPLV,Y,100.0,N,SPLV
+SPMO,PowerShares S&P 500 Momentum Portfolio,PowerShares S&P 500 Momentum Portfolio,P,SPMO,Y,100.0,N,SPMO
+SPVU,PowerShares S&P 500 Value Portfolio,PowerShares S&P 500 Value Portfolio,P,SPVU,Y,100.0,N,SPVU
+UDN,PowerShares DB USD Index Bearish,PowerShares DB USD Index Bearish,P,UDN,Y,100.0,N,UDN
+UUP,PowerShares DB USD Index Bullish,PowerShares DB USD Index Bullish,P,UUP,Y,100.0,N,UUP
+VRP,PowerShares Variable Rate Preferred Portfolio,PowerShares Variable Rate Preferred Portfolio,P,VRP,Y,100.0,N,VRP
+XMLV,PowerShares S&P MidCap Low Volatility Portfolio,PowerShares S&P MidCap Low Volatility Portfolio,P,XMLV,Y,100.0,N,XMLV
+XRLV,PowerShares S&P 500 ex,PowerShares S&P 500 ex-Rate Sensitive Low Volatility Portfolio,P,XRLV,Y,100.0,N,XRLV
+XSHD,PowerShares S&P SmallCap High Dividend Low Volatility Portfolio,PowerShares S&P SmallCap High Dividend Low Volatility Portfolio,Z,XSHD,Y,100.0,N,XSHD
+XSLV,PowerShares S&P SmallCap Low Volatility Portfolio,PowerShares S&P SmallCap Low Volatility Portfolio,P,XSLV,Y,100.0,N,XSLV
+AGGE,IQ Enhanced Core Bond U.S. ETF,IQ Enhanced Core Bond U.S. ETF,P,AGGE,Y,100.0,N,AGGE
+AGGP,IQ Enhanced Core Plus Bond U.S. ETF,IQ Enhanced Core Plus Bond U.S. ETF,P,AGGP,Y,100.0,N,AGGP
+AGGY,WisdomTree Barclays Yield Enhanced U.S. Aggregate Bond Fund,WisdomTree Barclays Yield Enhanced U.S. Aggregate Bond Fund,P,AGGY,Y,100.0,N,AGGY
+ANGL,VanEck Vectors Fallen Angel High Yield Bond,VanEck Vectors Fallen Angel High Yield Bond,P,ANGL,Y,100.0,N,ANGL
+BBK,Blackrock Municipal Bond Trust,Blackrock Municipal Bond Trust,N,BBK,N,100.0,N,BBK
+BBN,BlackRock Taxable Municipal Bond Trust Common Shares of Beneficial Interest,BlackRock Taxable Municipal Bond Trust Common Shares of Beneficial Interest,N,BBN,N,100.0,N,BBN
+BHK,Blackrock Core Bond Trust Blackrock Core Bond Trust,Blackrock Core Bond Trust Blackrock Core Bond Trust,N,BHK,N,100.0,N,BHK
+BHV,BlackRock Virginia Municipal Bond Trust,BlackRock Virginia Municipal Bond Trust,A,BHV,N,100.0,N,BHV
+BLJ,Blackrock New Jersey Municipal Bond Trust,Blackrock New Jersey Municipal Bond Trust,A,BLJ,N,100.0,N,BLJ
+BNDC,FlexShares Core Select Bond Fund,FlexShares Core Select Bond Fund,P,BNDC,Y,100.0,N,BNDC
+BOND,PIMCO Total Return Active Exchange,PIMCO Total Return Active Exchange-Traded Fund,P,BOND,Y,100.0,N,BOND
+BQH,Blackrock New York Municipal Bond Trust Common Shares of Beneficial Interest,Blackrock New York Municipal Bond Trust Common Shares of Beneficial Interest,N,BQH,N,100.0,N,BQH
+BSCH,Guggenheim BulletShares 2017 Corporate Bond ETF,Guggenheim BulletShares 2017 Corporate Bond ETF,P,BSCH,Y,100.0,N,BSCH
+BSCI,Guggenheim BulletShares 2018 Corporate Bond ETF,Guggenheim BulletShares 2018 Corporate Bond ETF,P,BSCI,Y,100.0,N,BSCI
+BSCJ,Guggenheim BulletShares 2019 Corporate Bond ETF,Guggenheim BulletShares 2019 Corporate Bond ETF,P,BSCJ,Y,100.0,N,BSCJ
+BSCK,Guggenheim BulletShares 2020 Corporate Bond ETF,Guggenheim BulletShares 2020 Corporate Bond ETF,P,BSCK,Y,100.0,N,BSCK
+BSCL,Guggenheim BulletShares 2021 Corporate Bond ETF,Guggenheim BulletShares 2021 Corporate Bond ETF,P,BSCL,Y,100.0,N,BSCL
+BSCM,Guggenheim BulletShares 2022 Corporate Bond ETF,Guggenheim BulletShares 2022 Corporate Bond ETF,P,BSCM,Y,100.0,N,BSCM
+BSCN,Guggenheim BulletShares 2023 Corporate Bond ETF,Guggenheim BulletShares 2023 Corporate Bond ETF,P,BSCN,Y,100.0,N,BSCN
+BSCO,Guggenheim BulletShares 2024 Corporate Bond ETF,Guggenheim BulletShares 2024 Corporate Bond ETF,P,BSCO,Y,100.0,N,BSCO
+BSCP,Guggenheim BulletShares 2025 Corporate Bond ETF,Guggenheim BulletShares 2025 Corporate Bond ETF,P,BSCP,Y,100.0,N,BSCP
+BSJH,Guggenheim BulletShares 2017 High Yield Corporate Bond ETF,Guggenheim BulletShares 2017 High Yield Corporate Bond ETF,P,BSJH,Y,100.0,N,BSJH
+BSJI,Guggenheim BulletShares 2018 High Yield Corporate Bond ETF,Guggenheim BulletShares 2018 High Yield Corporate Bond ETF,P,BSJI,Y,100.0,N,BSJI
+BSJJ,Guggenheim BulletShares 2019 High Yield Corporate Bond ETF,Guggenheim BulletShares 2019 High Yield Corporate Bond ETF,P,BSJJ,Y,100.0,N,BSJJ
+BSJK,Guggenheim BulletShares 2020 High Yield Corporate Bond ETF,Guggenheim BulletShares 2020 High Yield Corporate Bond ETF,P,BSJK,Y,100.0,N,BSJK
+BSJL,Guggenheim BulletShares 2021 High Yield Corporate Bond ETF,Guggenheim BulletShares 2021 High Yield Corporate Bond ETF,P,BSJL,Y,100.0,N,BSJL
+BSJM,Guggenheim BulletShares 2022 High Yield Corporate Bond ETF,Guggenheim BulletShares 2022 High Yield Corporate Bond ETF,P,BSJM,Y,100.0,N,BSJM
+BSJN,Guggenheim BulletShares 2023 High Yield Corporate Bond ETF,Guggenheim BulletShares 2023 High Yield Corporate Bond ETF,P,BSJN,Y,100.0,N,BSJN
+BSJO,Guggenheim BulletShares 2024 High Yield Corporate Bond ETF,Guggenheim BulletShares 2024 High Yield Corporate Bond ETF,P,BSJO,Y,100.0,N,BSJO
+BZM,BlackRock Maryland Municipal Bond Trust Common shares of beneficial interest,BlackRock Maryland Municipal Bond Trust Common shares of beneficial interest,A,BZM,N,100.0,N,BZM
+CBON,VanEck Vectors ChinaAMC China Bond ETF,VanEck Vectors ChinaAMC China Bond ETF,P,CBON,Y,100.0,N,CBON
+COBO,ProShares USD Covered Bond,ProShares USD Covered Bond,P,COBO,Y,100.0,N,COBO
+CORP,Pimco Investment Grade Corporate Bond Index Exchange,Pimco Investment Grade Corporate Bond Index Exchange-Traded Fund,P,CORP,Y,100.0,N,CORP
+CUMB,Virtus Cumberland Municipal Bond ETF,Virtus Cumberland Municipal Bond ETF,P,CUMB,Y,100.0,N,CUMB
+DHY,Credit Suisse High Yield Bond Fund Common Stock,Credit Suisse High Yield Bond Fund Common Stock,A,DHY,N,100.0,N,DHY
+DMB,"Dreyfus Municipal Bond Infrastructure Fund, Inc. Common Stock","Dreyfus Municipal Bond Infrastructure Fund, Inc. Common Stock",N,DMB,N,100.0,N,DMB
+DSM,"Dreyfus Strategic Municipal Bond Fund, Inc. Common Stock","Dreyfus Strategic Municipal Bond Fund, Inc. Common Stock",N,DSM,N,100.0,N,DSM
+DUC,"Duff & Phelps Utility & Corporate Bond Trust, Inc. Common Stock","Duff & Phelps Utility & Corporate Bond Trust, Inc. Common Stock",N,DUC,N,100.0,N,DUC
+EAB,"Entergy Arkansas, Inc. First Mortgage Bonds, 4.90% Series Due December 1, 2052","Entergy Arkansas, Inc. First Mortgage Bonds, 4.90% Series Due December 1, 2052",N,EAB,N,100.0,N,EAB
+EAE,"Entergy Arkansas, Inc. First Mortgage Bonds, 4.75% Series due June 1, 2063","Entergy Arkansas, Inc. First Mortgage Bonds, 4.75% Series due June 1, 2063",N,EAE,N,100.0,N,EAE
+EAI,"Entergy Arkansas, Inc. First Mortgage Bonds, 4.875% Series Due September 1, 2066","Entergy Arkansas, Inc. First Mortgage Bonds, 4.875% Series Due September 1, 2066",N,EAI,N,100.0,N,EAI
+EIA,"Eaton Vance California Municipal Bond Fund II Common Shares of Beneficial Interest, $.01 par value","Eaton Vance California Municipal Bond Fund II Common Shares of Beneficial Interest, $.01 par value",A,EIA,N,100.0,N,EIA
+EIM,"Eaton Vance Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value","Eaton Vance Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",A,EIM,N,100.0,N,EIM
+EIO,"Eaton Vance Ohio Municipal Bond Fund Common Shared of Befeficial Interest, $.01 par value","Eaton Vance Ohio Municipal Bond Fund Common Shared of Befeficial Interest, $.01 par value",A,EIO,N,100.0,N,EIO
+EIP,"Eaton Vance Pennsylvania Municipal Bond Fund Common Shares of Befeficial Interest, $.01 par value","Eaton Vance Pennsylvania Municipal Bond Fund Common Shares of Befeficial Interest, $.01 par value",A,EIP,N,100.0,N,EIP
+EIV,"Eaton Vance Municipal Bond Fund II Common Shares of Beneficial Interest, $.01 Par Value","Eaton Vance Municipal Bond Fund II Common Shares of Beneficial Interest, $.01 Par Value",A,EIV,N,100.0,N,EIV
+ELC,"Entergy Louisiana, Inc. Collateral Trust Mortgage Bonds, 4.875 % Series due September 1, 2066","Entergy Louisiana, Inc. Collateral Trust Mortgage Bonds, 4.875 % Series due September 1, 2066",N,ELC,N,100.0,N,ELC
+ELJ,"Entergy Louisiana, Inc. First Mortgage Bonds, 5.25% Series due July 1, 2052","Entergy Louisiana, Inc. First Mortgage Bonds, 5.25% Series due July 1, 2052",N,ELJ,N,100.0,N,ELJ
+ELU,"Entergy Louisiana, Inc. First Mortgage Bonds, 4.70% Series due June 1, 2063","Entergy Louisiana, Inc. First Mortgage Bonds, 4.70% Series due June 1, 2063",N,ELU,N,100.0,N,ELU
+EMAG,VanEck Vectors Emerging Markets Aggregate Bond ETF,VanEck Vectors Emerging Markets Aggregate Bond ETF,P,EMAG,Y,100.0,N,EMAG
+EMIH,Deutsche X,Deutsche X-trackers Emerging Markets Bond - Interest Rate Hedged ETF,Z,EMIH,Y,100.0,N,EMIH
+EMJ,"Eaton Vance New Jersey Municipal Bond Fund Common Shres of Beneficial Interest, $.01 par value","Eaton Vance New Jersey Municipal Bond Fund Common Shres of Beneficial Interest, $.01 par value",A,EMJ,N,100.0,N,EMJ
+EMLC,VanEck Vectors J.P. Morgan EM Local Currency Bond ETF,VanEck Vectors J.P. Morgan EM Local Currency Bond ETF,P,EMLC,Y,100.0,N,EMLC
+EMP,"Entergy Mississippi, Inc. First Mortgage Bonds, 4.90% Series Due October 1, 2066","Entergy Mississippi, Inc. First Mortgage Bonds, 4.90% Series Due October 1, 2066",N,EMP,N,100.0,N,EMP
+EMSH,ProShares Short Term USD Emerging Markets Bond ETF,ProShares Short Term USD Emerging Markets Bond ETF,Z,EMSH,Y,100.0,N,EMSH
+ENJ,"Entergy New Orleans, Inc. First Mortgage Bonds, 5.0% Series due December 1, 2052","Entergy New Orleans, Inc. First Mortgage Bonds, 5.0% Series due December 1, 2052",N,ENJ,N,100.0,N,ENJ
+ENO,"Entergy New Orleans, Inc. First Mortgage Bonds, 5.50% Series due April 1, 2066","Entergy New Orleans, Inc. First Mortgage Bonds, 5.50% Series due April 1, 2066",N,ENO,N,100.0,N,ENO
+ENX,"Eaton Vance New York Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value","Eaton Vance New York Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",A,ENX,N,100.0,N,ENX
+EVM,"Eaton Vance California Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value","Eaton Vance California Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",A,EVM,N,100.0,N,EVM
+EXD,Eaton Vance Tax,Eaton Vance Tax-Advantaged Bond Common Shares of Beneficial Interest,N,EXD,N,100.0,N,EXD
+EZT,"Entergy Texas Inc First Mortgage Bonds 5.625% Series due June 1, 2064","Entergy Texas Inc First Mortgage Bonds 5.625% Series due June 1, 2064",N,EZT,N,100.0,N,EZT
+FBND,Fidelity Total Bond ETF,Fidelity Total Bond ETF,P,FBND,Y,100.0,N,FBND
+FCOR,Fidelity Corporate Bond ETF,Fidelity Corporate Bond ETF,P,FCOR,Y,100.0,N,FCOR
+FLTB,Fidelity Limited Term Bond ETF,Fidelity Limited Term Bond ETF,P,FLTB,Y,100.0,N,FLTB
+FWDB,Madrona Global Bond ETF,Madrona Global Bond ETF,P,FWDB,Y,100.0,N,FWDB
+GMMB,Columbia Intermediate Municipal Bond Fund,Columbia Intermediate Municipal Bond Fund,P,GMMB,Y,100.0,N,GMMB
+GMTB,Columbia Core Bond ETF,Columbia Core Bond ETF,P,GMTB,Y,100.0,N,GMTB
+GRNB,VanEck Vectors Green Bond ETF,VanEck Vectors Green Bond ETF,P,GRNB,Y,100.0,N,GRNB
+GTO,Guggenheim Total Return Bond ETF,Guggenheim Total Return Bond ETF,P,GTO,Y,100.0,N,GTO
+HCOR,Hartford Corporate Bond ETF,Hartford Corporate Bond ETF,P,HCOR,Y,100.0,N,HCOR
+HQBD,Hartford Quality Bonds ETF,Hartford Quality Bonds ETF,P,HQBD,Y,100.0,N,HQBD
+HYEM,VanEck Vectors Emerging Markets High Yield Bond ETF,VanEck Vectors Emerging Markets High Yield Bond ETF,P,HYEM,Y,100.0,N,HYEM
+HYIH,Deutsche X,Deutsche X-trackers High Yield Corporate Bond - Interest Rate Hedged ETF,Z,HYIH,Y,100.0,N,HYIH
+HYLB,Deutsche X,Deutsche X-trackers USD High Yield Corporate Bond ETF,P,HYLB,Y,100.0,N,HYLB
+HYLV,IndexIQ ETF Trust IQ S&P High Yield Low Volatility Bond ETF,IndexIQ ETF Trust IQ S&P High Yield Low Volatility Bond ETF,P,HYLV,Y,100.0,N,HYLV
+HYS,PIMCO 0,PIMCO 0-5 Year High Yield Corporat Bond Index Exchange-Traded Fund,P,HYS,Y,100.0,N,HYS
+IFIX,Deutsche X,Deutsche X-trackers Barclays International Corporate Bond Hedged ETF,Z,IFIX,Y,100.0,N,IFIX
+IGEM,VanEck Vectors ETF Trust Market Vectors EM Investment Grade + BB Rated USD Sovereign Bond ETF,VanEck Vectors ETF Trust Market Vectors EM Investment Grade + BB Rated USD Sovereign Bond ETF,P,IGEM,Y,100.0,N,IGEM
+IGIH,Deutsche X,Deutsche X-trackers Investment Grade Bond - Interest Rate Hedged ETF,Z,IGIH,Y,100.0,N,IGIH
+IGVT,Deutsche X,Deutsche X-trackers Barclays International Treasury Bond Hedged ETF,Z,IGVT,Y,100.0,N,IGVT
+IHY,VanEck Vectors International High Yield Bond,VanEck Vectors International High Yield Bond,P,IHY,Y,100.0,N,IHY
+MAB,"Eaton Vance Massachusetts Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value","Eaton Vance Massachusetts Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",A,MAB,N,100.0,N,MAB
+MIW,"Eaton Vance Michigan Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value","Eaton Vance Michigan Municipal Bond Fund Common Shares of Beneficial Interest, $.01 par value",A,MIW,N,100.0,N,MIW
+MUNI,PIMCO Intermediate Municipal Bond Active Exchange,PIMCO Intermediate Municipal Bond Active Exchange-Traded Fund,P,MUNI,Y,100.0,N,MUNI
+NBB,Nuveen Build America Bond Fund Common Shares of Beneficial Interest,Nuveen Build America Bond Fund Common Shares of Beneficial Interest,N,NBB,N,100.0,N,NBB
+NBD,Nuveen Build America Bond Opportunity Fund Common Shares of Beneficial Interest,Nuveen Build America Bond Opportunity Fund Common Shares of Beneficial Interest,N,NBD,N,100.0,N,NBD
+NFLT,Virtus Newfleet Multi,Virtus Newfleet Multi-Sector Unconstrained Bond ETF,P,NFLT,Y,100.0,N,NFLT
+NUAG,NuShares Enhanced Yield US Aggregate Bond ETF ETF,NuShares Enhanced Yield US Aggregate Bond ETF ETF,P,NUAG,Y,100.0,N,NUAG
+NURE,NuShares Enhanced Yield US Aggregate Bond ETF ETF,NuShares Enhanced Yield US Aggregate Bond ETF ETF,Z,NURE,Y,100.0,N,NURE
+NUSA,NuShares Enhanced Yield 1,NuShares Enhanced Yield 1-5 Year U.S. Aggregate Bond ETF,P,NUSA,Y,100.0,N,NUSA
+NYH,"Eaton Vance New York Municipal Bond Fund II Common Shares of Beneficial Interest, $.01 par value","Eaton Vance New York Municipal Bond Fund II Common Shares of Beneficial Interest, $.01 par value",A,NYH,N,100.0,N,NYH
+RVNU,Deutsche X,Deutsche X-Trackers Municipal Infrastructure Revenue Bond ETF,P,RVNU,Y,100.0,N,RVNU
+SAGG,Direxion Daily Total Bond Market Bear 1X Shares,Direxion Daily Total Bond Market Bear 1X Shares,P,SAGG,Y,100.0,N,SAGG
+SCHZ,Schwab US Aggregate Bond ETF,Schwab US Aggregate Bond ETF,P,SCHZ,Y,100.0,N,SCHZ
+SFHY,WisdomTree Fundamental U.S. Short,WisdomTree Fundamental U.S. Short-Term High Yield Corporate Bond Fund,Z,SFHY,Y,100.0,N,SFHY
+SFIG,WisdomTree Fundamental U.S. Short,WisdomTree Fundamental U.S. Short-Term Corporate Bond Fund,Z,SFIG,Y,100.0,N,SFIG
+SMMU,Short Term Municipal Bond Active Exchange,Short Term Municipal Bond Active Exchange-Traded Fund,P,SMMU,Y,100.0,N,SMMU
+SOVB,Cambria Sovereign High Yield Bond ETF,Cambria Sovereign High Yield Bond ETF,Z,SOVB,Y,100.0,N,SOVB
+THHY,VanEck Vectors Treasury,VanEck Vectors Treasury-Hedged High Yield Bond ETF,P,THHY,Y,100.0,N,THHY
+VBF,Invesco Bond Fund Common Stock,Invesco Bond Fund Common Stock,N,VBF,N,100.0,N,VBF
+WEA,Western Asset Bond Fund Share of Beneficial Interest,Western Asset Bond Fund Share of Beneficial Interest,N,WEA,N,100.0,N,WEA
+WFHY,WisdomTree Fundamental U.S. High Yield Corporate Bond Fund,WisdomTree Fundamental U.S. High Yield Corporate Bond Fund,Z,WFHY,Y,100.0,N,WFHY
+WFIG,WisdomTree Fundamental U.S. Corporate Bond Fund,WisdomTree Fundamental U.S. Corporate Bond Fund,Z,WFIG,Y,100.0,N,WFIG
+AADR,AdvisorShares Dorsey Wright ADR ETF,AdvisorShares Dorsey Wright ADR ETF,P,AADR,Y,100.0,N,AADR
+ACSI,American Customer Satisfaction Core Alpha ETF,American Customer Satisfaction Core Alpha ETF,Z,ACSI,Y,100.0,N,ACSI
+AFK,VanEck Vectors,VanEck Vectors-Africa Index ETF,P,AFK,Y,100.0,N,AFK
+AFTY,CSOP FTSE China A50 ETF,CSOP FTSE China A50 ETF,P,AFTY,Y,100.0,N,AFTY
+ALD,WisdomTree Asia Local Debt Fund ETF,WisdomTree Asia Local Debt Fund ETF,P,ALD,Y,100.0,N,ALD
+ALFA,AlphaClone Alternative Alpha ETF,AlphaClone Alternative Alpha ETF,P,ALFA,Y,100.0,N,ALFA
+ALFI,ETF Series Solutions Trust ETF,ETF Series Solutions Trust ETF,P,ALFI,Y,100.0,N,ALFI
+ALTS,ProShares Morningstar Alternatives Solution ETF,ProShares Morningstar Alternatives Solution ETF,Z,ALTS,Y,100.0,N,ALTS
+AMLP,Alerian MLP ETF,Alerian MLP ETF,P,AMLP,Y,100.0,N,AMLP
+AMZA,InfraCap MLP ETF,InfraCap MLP ETF,P,AMZA,Y,100.0,N,AMZA
+AND,Global X FTSE Andean 40 ETF,Global X FTSE Andean 40 ETF,P,AND,Y,100.0,N,AND
+ARCM,Arrow Reserve Capital Management ETF,Arrow Reserve Capital Management ETF,Z,ARCM,Y,100.0,N,ARCM
+ARGT,Global X MSCI Argentina ETF,Global X MSCI Argentina ETF,P,ARGT,Y,100.0,N,ARGT
+ARKG,ARK Genomic Revolution Multi,ARK Genomic Revolution Multi-Sector ETF,P,ARKG,Y,100.0,N,ARKG
+ARKK,ARK Innovation ETF,ARK Innovation ETF,P,ARKK,Y,100.0,N,ARKK
+ARKQ,ARK Industrial Innovation ETF,ARK Industrial Innovation ETF,P,ARKQ,Y,100.0,N,ARKQ
+ARKW,ARK Web x.0 ETF,ARK Web x.0 ETF,P,ARKW,Y,100.0,N,ARKW
+ASEA,Global X FTSE Southeast Asia ETF,Global X FTSE Southeast Asia ETF,P,ASEA,Y,100.0,N,ASEA
+ASHR,Deutsche X,Deutsche X-Trackers Harvest CSI 300 China A-Shares ETF,P,ASHR,Y,100.0,N,ASHR
+ASHS,Deutsche X,Deutsche X-trackers Harvest CSI 500 China A-Shares Small Cap ETF,P,ASHS,Y,100.0,N,ASHS
+ASHX,Deutsche X,Deutsche X-trackers CSI 300 China A-Shares Hedged Equity ETF,P,ASHX,Y,100.0,N,ASHX
+BBRC,Columbia Beyond BRICs ETF,Columbia Beyond BRICs ETF,P,BBRC,Y,100.0,N,BBRC
+BCD,ETFS Bloomberg All Commodity Longer Dated Strategy K,ETFS Bloomberg All Commodity Longer Dated Strategy K-1 Free ETF,P,BCD,Y,100.0,N,BCD
+BCI,ETFS Bloomberg All Commodity Strategy K,ETFS Bloomberg All Commodity Strategy K-1 Free ETF,P,BCI,Y,100.0,N,BCI
+BEF,ETFS Bloomberg Energy Commodity Longer Dated Strategy K,ETFS Bloomberg Energy Commodity Longer Dated Strategy K-1 Free ETF,P,BEF,Y,100.0,N,BEF
+BEMO,Aptus Behavioral Momentum ETF,Aptus Behavioral Momentum ETF,Z,BEMO,Y,100.0,N,BEMO
+BIGD,PureFunds ISE Big Data ETF,PureFunds ISE Big Data ETF,P,BIGD,Y,100.0,N,BIGD
+BIZD,VanEck Vectors BDC Income ETF,VanEck Vectors BDC Income ETF,P,BIZD,Y,100.0,N,BIZD
+BJK,VanEck Vectors Gaming ETF,VanEck Vectors Gaming ETF,P,BJK,Y,100.0,N,BJK
+BLES,Inspire Global Hope ETF,Inspire Global Hope ETF,P,BLES,Y,100.0,N,BLES
+BOSS,Global X Funds Global X Founder,Global X Funds Global X Founder-Run Companies ETF,Z,BOSS,Y,100.0,N,BOSS
+BRAQ,Global X Brazil Consumer ETF,Global X Brazil Consumer ETF,P,BRAQ,Y,100.0,N,BRAQ
+BRAZ,Global X Brazil Mid Cap ETF,Global X Brazil Mid Cap ETF,P,BRAZ,Y,100.0,N,BRAZ
+BRF,VanEck Vectors Brazil Small,VanEck Vectors Brazil Small-Cap ETF,P,BRF,Y,100.0,N,BRF
+BSCQ,Claymore Exchange,Claymore Exchange-Traded Fund Trust ETF,P,BSCQ,Y,100.0,N,BSCQ
+BTAL,QuantShares U.S. Market Neutral Anti Beta Fund ETF,QuantShares U.S. Market Neutral Anti Beta Fund ETF,P,BTAL,Y,100.0,N,BTAL
+BUZ,Buzz US Sentiment Leaders ETF,Buzz US Sentiment Leaders ETF,P,BUZ,Y,100.0,N,BUZ
+CEFS,Exchange Listed Funds Trust ETF,Exchange Listed Funds Trust ETF,Z,CEFS,Y,100.0,N,CEFS
+CHEP,QuantShares U.S. Market Neutral Value Fund ETF,QuantShares U.S. Market Neutral Value Fund ETF,P,CHEP,Y,100.0,N,CHEP
+CHIE,Global X China Energy ETF,Global X China Energy ETF,P,CHIE,Y,100.0,N,CHIE
+CHII,Global X China Industrials ETF,Global X China Industrials ETF,P,CHII,Y,100.0,N,CHII
+CHIM,Global X China Materials ETF,Global X China Materials ETF,P,CHIM,Y,100.0,N,CHIM
+CHIQ,Global X China Consumer ETF,Global X China Consumer ETF,P,CHIQ,Y,100.0,N,CHIQ
+CHIX,Global X China Financials ETF,Global X China Financials ETF,P,CHIX,Y,100.0,N,CHIX
+CN,Deutsche X,Deutsche X-trackers MSCI All China Equity ETF,P,CN,Y,100.0,N,CN
+CNDA,IQ Canada Small Cap ETF,IQ Canada Small Cap ETF,P,CNDA,Y,100.0,N,CNDA
+CNHX,CSOP MSCI China A International Hedged ETF,CSOP MSCI China A International Hedged ETF,P,CNHX,Y,100.0,N,CNHX
+CNXT,VanEck Vectors ChinaAMC SME,VanEck Vectors ChinaAMC SME-ChNext ETF,P,CNXT,Y,100.0,N,CNXT
+COM,Direxion Auspice Broad Commodity Strategy ETF,Direxion Auspice Broad Commodity Strategy ETF,P,COM,Y,100.0,N,COM
+COPX,Global X Copper Miners ETF,Global X Copper Miners ETF,P,COPX,Y,100.0,N,COPX
+COWZ,Pacer US Cash Cows 100 ETF,Pacer US Cash Cows 100 ETF,Z,COWZ,Y,100.0,N,COWZ
+CPI,IQ Real Return ETF,IQ Real Return ETF,P,CPI,Y,100.0,N,CPI
+CQQQ,Guggenheim China Technology ETF,Guggenheim China Technology ETF,P,CQQQ,Y,100.0,N,CQQQ
+CRAK,VanEck Vectors Oil Refiners ETF,VanEck Vectors Oil Refiners ETF,P,CRAK,Y,100.0,N,CRAK
+CROP,IQ Global Agribusiness Small Cap ETF,IQ Global Agribusiness Small Cap ETF,P,CROP,Y,100.0,N,CROP
+CSD,Guggenheim S&P Spin,Guggenheim S&P Spin-Off ETF,P,CSD,Y,100.0,N,CSD
+CUT,Guggenheim MSCI Global Timber ETF,Guggenheim MSCI Global Timber ETF,P,CUT,Y,100.0,N,CUT
+CVY,Guggenheim Multi,Guggenheim Multi-Asset Income ETF,P,CVY,Y,100.0,N,CVY
+CWAI,CWA Income ETF,CWA Income ETF,Z,CWAI,Y,100.0,N,CWAI
+CWS,AdvisorShares Focused Equity ETF,AdvisorShares Focused Equity ETF,P,CWS,Y,100.0,N,CWS
+CZA,Guggenheim Mid,Guggenheim Mid-Cap Core ETF,P,CZA,Y,100.0,N,CZA
+DBAP,Deutsche X,Deutsche X-Trackers MSCI AC Asia Pacific ex Japan Hedged Equity ETF,P,DBAP,Y,100.0,N,DBAP
+DBAU,Deutsche X,Deutsche X-trackers MSCI Australia Hedged Equity ETF,P,DBAU,Y,100.0,N,DBAU
+DBAW,Deutsche X,Deutsche X-trackers MSCI All World ex US Hedged Equity ETF,P,DBAW,Y,100.0,N,DBAW
+DBEF,Deutsche X,Deutsche X-trackers MSCI EAFE Hedged Equity ETF,P,DBEF,Y,100.0,N,DBEF
+DBEM,Deutsche X,Deutsche X-trackers MSCI Emerging Markets Hedged Equity ETF,P,DBEM,Y,100.0,N,DBEM
+DBES,Deutsche X,Deutsche X-trackers MSCI EAFE Small Cap Hedged Equity ETF,Z,DBES,Y,100.0,N,DBES
+DBEU,Deutsche X,Deutsche X-Trackers MSCI Europe Hedged Equity ETF,P,DBEU,Y,100.0,N,DBEU
+DBEZ,Deutsche X,Deutsche X-trackers MSCI Eurozone Hedged Equity ETF,P,DBEZ,Y,100.0,N,DBEZ
+DBGR,Deutsche X,Deutsche X-trackers MSCI Germany Hedged Equity ETF,P,DBGR,Y,100.0,N,DBGR
+DBIF,Deutsche X,Deutsche X-trackers S&P Hedged Global Infrastructure ETF,P,DBIF,Y,100.0,N,DBIF
+DBIT,Deutsche X,Deutsche X-trackers MSCI Italy Hedged Equity ETF,Z,DBIT,Y,100.0,N,DBIT
+DBJP,Deutsche X,Deutsche X-trackers MSCI Japan Hedged Equity ETF,P,DBJP,Y,100.0,N,DBJP
+DBKO,Deutsche X,Deutsche X-trackers MSCI South Korea Hedged Equity ETF,P,DBKO,Y,100.0,N,DBKO
+DBMX,Deutsche X,Deutsche X-trackers MSCI Mexico Hedged Equity ETF,P,DBMX,Y,100.0,N,DBMX
+DBRE,Deutsche X,Deutsche X-trackers Dow Jones Hedged International Real Estate ETF,Z,DBRE,Y,100.0,N,DBRE
+DBSE,Deutsche X,Deutsche X-trackers MSCI Southern Europe Hedged Equity ETF,Z,DBSE,Y,100.0,N,DBSE
+DBSP,Deutsche X,Deutsche X-trackers MSCI Spain Hedged Equity ETF,Z,DBSP,Y,100.0,N,DBSP
+DBUK,Deutsche X,Deutsche X-Trackers MSCI United Kingdom Hedged Equity ETF,P,DBUK,Y,100.0,N,DBUK
+DEEF,Deutsche X,Deutsche X-trackers FTSE Developed ex US Comprehensive Factor ETF,P,DEEF,Y,100.0,N,DEEF
+DEF,Guggenheim Defensive Equity ETF,Guggenheim Defensive Equity ETF,P,DEF,Y,100.0,N,DEF
+DEMG,Deutsche X,Deutsche X-trackers FTSE Emerging Comprehensive Factor ETF,P,DEMG,Y,100.0,N,DEMG
+DESC,Deutsche X,Deutsche X-trackers Russell 2000 Comprehensive Factor ETF,P,DESC,Y,100.0,N,DESC
+DEUS,Deutsche X,Deutsche X-trackers Russell 1000 Comprehensive Factor ETF,P,DEUS,Y,100.0,N,DEUS
+DFND,Realty Shares DIVCON Dividend Defender ETF,Realty Shares DIVCON Dividend Defender ETF,Z,DFND,Y,100.0,N,DFND
+DHVW,Diamond Hill Valuation,Diamond Hill Valuation-Weighted 500 ETF,P,DHVW,Y,100.0,N,DHVW
+DIV,Global X Super Dividend ETF,Global X Super Dividend ETF,P,DIV,Y,100.0,N,DIV
+DIVO,Amplify YieldShares CWP Dividend & Option Income ETF,Amplify YieldShares CWP Dividend & Option Income ETF,Z,DIVO,Y,100.0,N,DIVO
+DIVY,Realty Shares DIVS ETF,Realty Shares DIVS ETF,P,DIVY,Y,100.0,N,DIVY
+DJD,Guggenheim Dow Jones Industrial Average Dividend ETF,Guggenheim Dow Jones Industrial Average Dividend ETF,P,DJD,Y,100.0,N,DJD
+DULL,Direxion Funds ETF,Direxion Funds ETF,P,DULL,Y,100.0,N,DULL
+DVP,Deep Value ETF,Deep Value ETF,P,DVP,Y,100.0,N,DVP
+ECON,Columbia Emerging Markets Consumer ETF,Columbia Emerging Markets Consumer ETF,P,ECON,Y,100.0,N,ECON
+EDOG,ALPS Emerging Sector Dividend Dogs ETF,ALPS Emerging Sector Dividend Dogs ETF,P,EDOG,Y,100.0,N,EDOG
+EEB,Guggenheim BRIC ETF,Guggenheim BRIC ETF,P,EEB,Y,100.0,N,EEB
+EFAD,ProShares Trust ProShares MSCI EAFE Dividend Growers ETF,ProShares Trust ProShares MSCI EAFE Dividend Growers ETF,Z,EFAD,Y,100.0,N,EFAD
+EFFE,Global X JPMorgan Efficiente Index ETF,Global X JPMorgan Efficiente Index ETF,P,EFFE,Y,100.0,N,EFFE
+EGPT,VanEck Vectors Egypt Index ETF,VanEck Vectors Egypt Index ETF,P,EGPT,Y,100.0,N,EGPT
+EMCR,Columbia Emerging Markets CORE ETF,Columbia Emerging Markets CORE ETF,P,EMCR,Y,100.0,N,EMCR
+EMDD,Columbia EM Strategic Opportunities ETF,Columbia EM Strategic Opportunities ETF,P,EMDD,Y,100.0,N,EMDD
+EMDV,ProShares MSCI Emerging Markets Dividend Growers ETF,ProShares MSCI Emerging Markets Dividend Growers ETF,Z,EMDV,Y,100.0,N,EMDV
+EMFM,Global X Next Emerging & Frontier ETF,Global X Next Emerging & Frontier ETF,P,EMFM,Y,100.0,N,EMFM
+EMQQ,Emerging Markets Internet and Ecommerce ETF (The),Emerging Markets Internet and Ecommerce ETF (The),P,EMQQ,Y,100.0,N,EMQQ
+ENFR,Alerian Energy Infrastructure ETF,Alerian Energy Infrastructure ETF,P,ENFR,Y,100.0,N,ENFR
+ENY,Guggenheim Canadian Energy Income ETF,Guggenheim Canadian Energy Income ETF,P,ENY,Y,100.0,N,ENY
+EPRF,Elkhorn S&P High Quality Preferred ETF,Elkhorn S&P High Quality Preferred ETF,Z,EPRF,Y,100.0,N,EPRF
+EPV,ProShares UltraShort FTSE Europe ETF,ProShares UltraShort FTSE Europe ETF,P,EPV,Y,100.0,N,EPV
+EQL,ALPS Equal Sector Weight ETF,ALPS Equal Sector Weight ETF,P,EQL,Y,100.0,N,EQL
+EQLT,Workplace Equality Portfolio ETF,Workplace Equality Portfolio ETF,P,EQLT,Y,100.0,N,EQLT
+ESGF,Oppenheimer Revenue Weighted ETF Trust Oppenheimer Global ESG Revenue ETF,Oppenheimer Revenue Weighted ETF Trust Oppenheimer Global ESG Revenue ETF,P,ESGF,Y,100.0,N,ESGF
+ESGL,Oppenheimer Revenue Weighted ETF Trust Oppenheimer ESG Revenue ETF,Oppenheimer Revenue Weighted ETF Trust Oppenheimer ESG Revenue ETF,P,ESGL,Y,100.0,N,ESGL
+ESGN,Columbia Sustainable International Equity Income ETF,Columbia Sustainable International Equity Income ETF,P,ESGN,Y,100.0,N,ESGN
+ESGS,Columbia Sustainable U.S. Equity Income ETF,Columbia Sustainable U.S. Equity Income ETF,P,ESGS,Y,100.0,N,ESGS
+ESGW,Columbia Sustainable Global Equity Income ETF,Columbia Sustainable Global Equity Income ETF,P,ESGW,Y,100.0,N,ESGW
+ETHO,Etho Climate Leadership U.S. ETF,Etho Climate Leadership U.S. ETF,P,ETHO,Y,100.0,N,ETHO
+EUDV,ProShares MSCI Europe Dividend Growers ETF,ProShares MSCI Europe Dividend Growers ETF,Z,EUDV,Y,100.0,N,EUDV
+EUFS,Direxion Funds ETF,Direxion Funds ETF,P,EUFS,Y,100.0,N,EUFS
+EVX,VanEck Vectors Environmental Services ETF,VanEck Vectors Environmental Services ETF,P,EVX,Y,100.0,N,EVX
+EWEM,Guggenheim MSCI Emerging Markets Equal Country Weight ETF,Guggenheim MSCI Emerging Markets Equal Country Weight ETF,P,EWEM,Y,100.0,N,EWEM
+EWMC,Guggenheim S&P MidCap 400 Equal Weight ETF,Guggenheim S&P MidCap 400 Equal Weight ETF,P,EWMC,Y,100.0,N,EWMC
+EWRE,Guggenheim S&P 500 Equal Weight Real Estate ETF,Guggenheim S&P 500 Equal Weight Real Estate ETF,P,EWRE,Y,100.0,N,EWRE
+EWSC,Guggenheim S&P SmallCap 600 Equal Weight ETF,Guggenheim S&P SmallCap 600 Equal Weight ETF,P,EWSC,Y,100.0,N,EWSC
+EYLD,Cambria ETF Trust Cambria Emerging Shareholder Yield ETF,Cambria ETF Trust Cambria Emerging Shareholder Yield ETF,Z,EYLD,Y,100.0,N,EYLD
+FAN,First Trust Global Wind Energy ETF,First Trust Global Wind Energy ETF,P,FAN,Y,100.0,N,FAN
+FCG,First Trust Natural Gas ETF,First Trust Natural Gas ETF,P,FCG,Y,100.0,N,FCG
+FCOM,Fidelity MSCI Telecommunication Services Index ETF,Fidelity MSCI Telecommunication Services Index ETF,P,FCOM,Y,100.0,N,FCOM
+FDIS,Fidelity MSCI Consumer Discretionary Index ETF,Fidelity MSCI Consumer Discretionary Index ETF,P,FDIS,Y,100.0,N,FDIS
+FDL,First Trust Morningstar ETF,First Trust Morningstar ETF,P,FDL,Y,100.0,N,FDL
+FDLO,Fidelity Low Volatility Factor ETF,Fidelity Low Volatility Factor ETF,P,FDLO,Y,100.0,N,FDLO
+FDM,First Trust DJ Select MicroCap ETF,First Trust DJ Select MicroCap ETF,P,FDM,Y,100.0,N,FDM
+FDMO,Fidelity Momentum Factor ETF,Fidelity Momentum Factor ETF,P,FDMO,Y,100.0,N,FDMO
+FDRR,Fidelity Dividend ETF for Rising Rates,Fidelity Dividend ETF for Rising Rates,P,FDRR,Y,100.0,N,FDRR
+FDVV,Fidelity Core Dividend ETF,Fidelity Core Dividend ETF,P,FDVV,Y,100.0,N,FDVV
+FENY,Fidelity MSCI Energy Index ETF,Fidelity MSCI Energy Index ETF,P,FENY,Y,100.0,N,FENY
+FFTY,Innovator IBD 50 Fund ETF,Innovator IBD 50 Fund ETF,P,FFTY,Y,100.0,N,FFTY
+FHLC,Fidelity MSCI Health Care Index ETF,Fidelity MSCI Health Care Index ETF,P,FHLC,Y,100.0,N,FHLC
+FIDU,Fidelity MSCI Industrials Index ETF,Fidelity MSCI Industrials Index ETF,P,FIDU,Y,100.0,N,FIDU
+FIW,First Trust Water ETF,First Trust Water ETF,P,FIW,Y,100.0,N,FIW
+FLCO,Franklin Liberty Investment Grade Corporate ETF,Franklin Liberty Investment Grade Corporate ETF,P,FLCO,Y,100.0,N,FLCO
+FLIO,Franklin Liberty International Opportunities ETF,Franklin Liberty International Opportunities ETF,P,FLIO,Y,100.0,N,FLIO
+FLLV,Franklin Liberty U.S. Low Volatility ETF,Franklin Liberty U.S. Low Volatility ETF,P,FLLV,Y,100.0,N,FLLV
+FLM,First Trust Global Engineering and Construction ETF,First Trust Global Engineering and Construction ETF,P,FLM,Y,100.0,N,FLM
+FLQD,Franklin LibertyQ Global Dividend ETF,Franklin LibertyQ Global Dividend ETF,P,FLQD,Y,100.0,N,FLQD
+FLQE,Franklin LibertyQ Emerging Markets ETF,Franklin LibertyQ Emerging Markets ETF,P,FLQE,Y,100.0,N,FLQE
+FLQG,Franklin LibertyQ Global Equity ETF,Franklin LibertyQ Global Equity ETF,P,FLQG,Y,100.0,N,FLQG
+FLQH,Franklin LibertyQ International Equity Hedged ETF,Franklin LibertyQ International Equity Hedged ETF,P,FLQH,Y,100.0,N,FLQH
+FLRT,AdvisorShares Pacific Asset Enhanced Floating Rate ETF,AdvisorShares Pacific Asset Enhanced Floating Rate ETF,P,FLRT,Y,100.0,N,FLRT
+FLTR,VanEck Vectors Investment Grade Floating Rate ETF,VanEck Vectors Investment Grade Floating Rate ETF,P,FLTR,Y,100.0,N,FLTR
+FMAT,Fidelity MSCI Materials Index ETF,Fidelity MSCI Materials Index ETF,P,FMAT,Y,100.0,N,FMAT
+FNCL,Fidelity MSCI Financials Index ETF,Fidelity MSCI Financials Index ETF,P,FNCL,Y,100.0,N,FNCL
+FNDA,Schwab Fundamental U.S. Small Company Index ETF,Schwab Fundamental U.S. Small Company Index ETF,P,FNDA,Y,100.0,N,FNDA
+FNDB,Schwab Fundamental U.S. Broad Market Index ETF,Schwab Fundamental U.S. Broad Market Index ETF,P,FNDB,Y,100.0,N,FNDB
+FNDC,Schwab Fundamental International Small Company Index ETF,Schwab Fundamental International Small Company Index ETF,P,FNDC,Y,100.0,N,FNDC
+FNDE,Schwab Fundamental Emerging Markets Large Company Index ETF,Schwab Fundamental Emerging Markets Large Company Index ETF,P,FNDE,Y,100.0,N,FNDE
+FNDF,Schwab Fundamental International Large Company Index ETF,Schwab Fundamental International Large Company Index ETF,P,FNDF,Y,100.0,N,FNDF
+FNDX,Schwab Fundamental U.S. Large Company Index ETF,Schwab Fundamental U.S. Large Company Index ETF,P,FNDX,Y,100.0,N,FNDX
+FNI,First Trust Chindia ETF,First Trust Chindia ETF,P,FNI,Y,100.0,N,FNI
+FPE,First Trust Preferred Securities and Income ETF ETF,First Trust Preferred Securities and Income ETF ETF,P,FPE,Y,100.0,N,FPE
+FPX,First Trust US Equity Opportunities ETF,First Trust US Equity Opportunities ETF,P,FPX,Y,100.0,N,FPX
+FQAL,Fidelity Quality Factor ETF,Fidelity Quality Factor ETF,P,FQAL,Y,100.0,N,FQAL
+FRAK,VanEck Vectors Unconventional Oil & Gas ETF,VanEck Vectors Unconventional Oil & Gas ETF,P,FRAK,Y,100.0,N,FRAK
+FREL,Fidelity MSCI Real Estate Index ETF,Fidelity MSCI Real Estate Index ETF,P,FREL,Y,100.0,N,FREL
+FRN,Guggenheim Frontier Markets ETF,Guggenheim Frontier Markets ETF,P,FRN,Y,100.0,N,FRN
+FSTA,Fidelity MSCI COnsumer Staples Index ETF,Fidelity MSCI COnsumer Staples Index ETF,P,FSTA,Y,100.0,N,FSTA
+FTEC,Fidelity MSCI Information Technology Index ETF,Fidelity MSCI Information Technology Index ETF,P,FTEC,Y,100.0,N,FTEC
+FTSD,Franklin Liberty Short Duration U.S. Government ETF,Franklin Liberty Short Duration U.S. Government ETF,P,FTSD,Y,100.0,N,FTSD
+FUT,ProShares Managed Futures Strategy ETF,ProShares Managed Futures Strategy ETF,Z,FUT,Y,100.0,N,FUT
+FUTY,Fidelity MSCI Utilities Index ETF,Fidelity MSCI Utilities Index ETF,P,FUTY,Y,100.0,N,FUTY
+FVAL,Fidelity Value Factor ETF,Fidelity Value Factor ETF,P,FVAL,Y,100.0,N,FVAL
+FWDD,Madrona Domestic ETF,Madrona Domestic ETF,P,FWDD,Y,100.0,N,FWDD
+FWDI,Madrona International ETF,Madrona International ETF,P,FWDI,Y,100.0,N,FWDI
+FXSG,Guggenheim CurrencyShares Singapore Dollar Trust ETF,Guggenheim CurrencyShares Singapore Dollar Trust ETF,P,FXSG,Y,100.0,N,FXSG
+FYLD,Cambria Foreign Shareholder Yield ETF,Cambria Foreign Shareholder Yield ETF,Z,FYLD,Y,100.0,N,FYLD
+GAA,Cambria Global Asset Allocation ETF,Cambria Global Asset Allocation ETF,Z,GAA,Y,100.0,N,GAA
+GAMR,FactorShares Trust PureFunds Video Game Tech ETF,FactorShares Trust PureFunds Video Game Tech ETF,P,GAMR,Y,100.0,N,GAMR
+GARD,Realty Shares DIVCON Dividend Guard ETF,Realty Shares DIVCON Dividend Guard ETF,Z,GARD,Y,100.0,N,GARD
+GBIL,"Goldman Sachs Group, Inc. (The) ETF","Goldman Sachs Group, Inc. (The) ETF",P,GBIL,Y,100.0,N,GBIL
+GCOW,Pacer Global Cash Cows Dividend ETF,Pacer Global Cash Cows Dividend ETF,Z,GCOW,Y,100.0,N,GCOW
+GDX,VanEck Vectors Gold Miners ETF,VanEck Vectors Gold Miners ETF,P,GDX,Y,100.0,N,GDX
+GDXJ,VanEck Vectors Junior Gold Miners ETF,VanEck Vectors Junior Gold Miners ETF,P,GDXJ,Y,100.0,N,GDXJ
+GDXS,ProShares UltraShort Gold Miners ETF,ProShares UltraShort Gold Miners ETF,P,GDXS,Y,100.0,N,GDXS
+GDXX,ProShares Ultra Gold Miners ETF,ProShares Ultra Gold Miners ETF,P,GDXX,Y,100.0,N,GDXX
+GEM,Goldman Sachs ActiveBeta Emerging Markets Equity ETF,Goldman Sachs ActiveBeta Emerging Markets Equity ETF,P,GEM,Y,100.0,N,GEM
+GEUR,AdvisorShares Gartman Gold/Euro ETF,AdvisorShares Gartman Gold/Euro ETF,P,GEUR,Y,100.0,N,GEUR
+GEX,VanEck Vectors Global Alternative Energy ETF,VanEck Vectors Global Alternative Energy ETF,P,GEX,Y,100.0,N,GEX
+GGOV,ProShares German Sovereign Sub Soverign ETF,ProShares German Sovereign Sub Soverign ETF,P,GGOV,Y,100.0,N,GGOV
+GHE,REX Gold Hedged FTSE Emerging Markets ETF,REX Gold Hedged FTSE Emerging Markets ETF,P,GHE,Y,100.0,N,GHE
+GHII,Guggenheim S&P High Income Infrastructure ETF,Guggenheim S&P High Income Infrastructure ETF,P,GHII,Y,100.0,N,GHII
+GHS,REX Gold Hedged S&P 500 ETF,REX Gold Hedged S&P 500 ETF,P,GHS,Y,100.0,N,GHS
+GLTR,ETFS Physical Precious Metal Basket Shares ETF,ETFS Physical Precious Metal Basket Shares ETF,P,GLTR,Y,100.0,N,GLTR
+GMOM,Cambria Global Momentum ETF,Cambria Global Momentum ETF,P,GMOM,Y,100.0,N,GMOM
+GOEX,Global X Gold Explorers ETF,Global X Gold Explorers ETF,P,GOEX,Y,100.0,N,GOEX
+GREK,Global X MSCI Greece ETF,Global X MSCI Greece ETF,P,GREK,Y,100.0,N,GREK
+GRES,IQ ARB Global Resources ETF,IQ ARB Global Resources ETF,P,GRES,Y,100.0,N,GRES
+GRI,Cohen & Steers Global Realty Majors ETF,Cohen & Steers Global Realty Majors ETF,P,GRI,Y,100.0,N,GRI
+GSEU,Goldman Sachs ActiveBeta Europe Equity ETF,Goldman Sachs ActiveBeta Europe Equity ETF,P,GSEU,Y,100.0,N,GSEU
+GSIE,Goldman Sachs ActiveBeta International Equity ETF,Goldman Sachs ActiveBeta International Equity ETF,P,GSIE,Y,100.0,N,GSIE
+GSJY,Goldman Sachs ActiveBeta Japan Equity ETF,Goldman Sachs ActiveBeta Japan Equity ETF,P,GSJY,Y,100.0,N,GSJY
+GSLC,Goldman Sachs ActiveBeta U.S. Large Cap Equity ETF,Goldman Sachs ActiveBeta U.S. Large Cap Equity ETF,P,GSLC,Y,100.0,N,GSLC
+GSY,Guggenheim Enhanced Short Duration ETF,Guggenheim Enhanced Short Duration ETF,P,GSY,Y,100.0,N,GSY
+GTAA,AdvisorShares Morgan Creek Global Tactical ETF,AdvisorShares Morgan Creek Global Tactical ETF,P,GTAA,Y,100.0,N,GTAA
+GUNR,FlexShares Global Upstream Natural Resources Index Fund ETF,FlexShares Global Upstream Natural Resources Index Fund ETF,P,GUNR,Y,100.0,N,GUNR
+GURI,Global X Guru International Index ETF,Global X Guru International Index ETF,P,GURI,Y,100.0,N,GURI
+GURU,Global X Guru Index ETF,Global X Guru Index ETF,P,GURU,Y,100.0,N,GURU
+GVAL,Cambria Global Value ETF,Cambria Global Value ETF,P,GVAL,Y,100.0,N,GVAL
+GVIP,Goldman Sachs Hedge Industry VIP ETF,Goldman Sachs Hedge Industry VIP ETF,P,GVIP,Y,100.0,N,GVIP
+GXF,Global X FTSE Nordic Region ETF,Global X FTSE Nordic Region ETF,P,GXF,Y,100.0,N,GXF
+GXG,Global X MSCI Colombia ETF,Global X MSCI Colombia ETF,P,GXG,Y,100.0,N,GXG
+GYEN,AdvisorShares Gartman Gold/Yen ETF,AdvisorShares Gartman Gold/Yen ETF,P,GYEN,Y,100.0,N,GYEN
+GYLD,Arrow Dow Jones Global Yield ETF ETF,Arrow Dow Jones Global Yield ETF ETF,P,GYLD,Y,100.0,N,GYLD
+HACK,PureFunds ISE Cyber Security ETF,PureFunds ISE Cyber Security ETF,P,HACK,Y,100.0,N,HACK
+HAHA,CSOP China CSI 300 A,CSOP China CSI 300 A-H Dynamic ETF,P,HAHA,Y,100.0,N,HAHA
+HAO,Guggenheim China Small Cap Index ETF,Guggenheim China Small Cap Index ETF,P,HAO,Y,100.0,N,HAO
+HAP,VanEck Vectors Natural Resources ETF,VanEck Vectors Natural Resources ETF,P,HAP,Y,100.0,N,HAP
+HDAW,Deutsche X,Deutsche X-trackers MSCI All World ex US High Dividend Yield Hedged Equity ETF,P,HDAW,Y,100.0,N,HDAW
+HDEE,Deutsche X,Deutsche X-trackers MSCI Emerging Markets High Dividend Yield Hedged Equity ETF,Z,HDEE,Y,100.0,N,HDEE
+HDEF,Deutsche X,Deutsche X-trackers MSCI EAFE High Dividend Yield Hedged Equity ETF,P,HDEF,Y,100.0,N,HDEF
+HDEZ,Deutsche X,Deutsche X-trackers MSCI Eurozone High Dividend Yield Hedged Equity ETF,Z,HDEZ,Y,100.0,N,HDEZ
+HDG,ProShares Hedge Replication ETF,ProShares Hedge Replication ETF,P,HDG,Y,100.0,N,HDG
+HDGE,Ranger Equity Bear Bear ETF,Ranger Equity Bear Bear ETF,P,HDGE,Y,100.0,N,HDGE
+HDMV,First Trust Exchange,First Trust Exchange-Traded Fund III First Trust Horizon Managed Volatility Developed International ETF,P,HDMV,Y,100.0,N,HDMV
+HECO,EcoLogical Strategy ETF,EcoLogical Strategy ETF,P,HECO,Y,100.0,N,HECO
+HFXE,IQ 50 Percent Hedged FTSE Europe ETF,IQ 50 Percent Hedged FTSE Europe ETF,P,HFXE,Y,100.0,N,HFXE
+HFXI,IQ 50 Percent Hedged FTSE International ETF,IQ 50 Percent Hedged FTSE International ETF,P,HFXI,Y,100.0,N,HFXI
+HFXJ,IQ 50 Percent Hedged FTSE Japan ETF,IQ 50 Percent Hedged FTSE Japan ETF,P,HFXJ,Y,100.0,N,HFXJ
+HGEU,ProShares Hedged FTSE Europe ETF,ProShares Hedged FTSE Europe ETF,P,HGEU,Y,100.0,N,HGEU
+HGI,Guggenheim International Multi,Guggenheim International Multi-Asset Income Index ETF,P,HGI,Y,100.0,N,HGI
+HGJP,ProShares Hedged FTSE Japan ETF,ProShares Hedged FTSE Japan ETF,P,HGJP,Y,100.0,N,HGJP
+HILO,Columbia EM Quality Dividend ETF,Columbia EM Quality Dividend ETF,P,HILO,Y,100.0,N,HILO
+HIPS,Master Income ETF,Master Income ETF,P,HIPS,Y,100.0,N,HIPS
+HOLD,AdvisorShares Sage Core Reserves ETF,AdvisorShares Sage Core Reserves ETF,P,HOLD,Y,100.0,N,HOLD
+HTUS,Hull Tactical US ETF,Hull Tactical US ETF,P,HTUS,Y,100.0,N,HTUS
+HUSE,US Market Rotation Strategy ETF,US Market Rotation Strategy ETF,P,HUSE,Y,100.0,N,HUSE
+HUSV,First Trust Exchange,First Trust Exchange-Traded Fund III First Trust Horizon Managed Volatility Domestic ETF,P,HUSV,Y,100.0,N,HUSV
+HYD,VanEck Vectors High Yield Municipal Index ETF,VanEck Vectors High Yield Municipal Index ETF,P,HYD,Y,100.0,N,HYD
+HYLD,Peritus High Yield ETF,Peritus High Yield ETF,P,HYLD,Y,100.0,N,HYLD
+IBLN,Direxion iBillionaire Index ETF,Direxion iBillionaire Index ETF,P,IBLN,Y,100.0,N,IBLN
+IDOG,ALPS International Sector Dividend Dogs ETF,ALPS International Sector Dividend Dogs ETF,P,IDOG,Y,100.0,N,IDOG
+IDX,VanEck Vectors Indonesia Index ETF,VanEck Vectors Indonesia Index ETF,P,IDX,Y,100.0,N,IDX
+IFLY,FactorShares Trust PureFunds Drone Economy Strategy ETF,FactorShares Trust PureFunds Drone Economy Strategy ETF,P,IFLY,Y,100.0,N,IFLY
+IMOM,MomentumShares International Quantitative Momentum ETF,MomentumShares International Quantitative Momentum ETF,Z,IMOM,Y,100.0,N,IMOM
+INCO,Columbia India Consumer ETF,Columbia India Consumer ETF,P,INCO,Y,100.0,N,INCO
+INXX,Columbia India Infrastructure ETF,Columbia India Infrastructure ETF,P,INXX,Y,100.0,N,INXX
+IOIL,IQ Global Oil Small Cap ETF,IQ Global Oil Small Cap ETF,P,IOIL,Y,100.0,N,IOIL
+IPAY,PureFunds ISE Mobile Payments ETF,PureFunds ISE Mobile Payments ETF,P,IPAY,Y,100.0,N,IPAY
+IPO,Renaissance IPO ETF,Renaissance IPO ETF,P,IPO,Y,100.0,N,IPO
+ISMD,Inspire Small/Mid Cap Impact ETF,Inspire Small/Mid Cap Impact ETF,P,ISMD,Y,100.0,N,ISMD
+ISRA,VanEck Vectors Israel ETF,VanEck Vectors Israel ETF,P,ISRA,Y,100.0,N,ISRA
+ITM,VanEck Vectors AMT,VanEck Vectors AMT-Free Intermediate Municipal Index ETF,P,ITM,Y,100.0,N,ITM
+ITML,VanEck Vectors AMT,VanEck Vectors AMT-Free 12-17 Year Municipal Index ETF ,Z,ITML,Y,100.0,N,ITML
+ITMS,VanEck Vectors AMT,VanEck Vectors AMT-Free 6-8 Year Municipal Index ETF,Z,ITMS,Y,100.0,N,ITMS
+IVAL,ValueShares International Quantitative Value ETF,ValueShares International Quantitative Value ETF,Z,IVAL,Y,100.0,N,IVAL
+JETS,U.S. Global Jets ETF,U.S. Global Jets ETF,P,JETS,Y,100.0,N,JETS
+JHMA,John Hancock Multifactor Materials ETF,John Hancock Multifactor Materials ETF,P,JHMA,Y,100.0,N,JHMA
+JHMC,John Hancock Multifactor Consumer Discretionary ETF,John Hancock Multifactor Consumer Discretionary ETF,P,JHMC,Y,100.0,N,JHMC
+JHMD,John Hancock Exchange,John Hancock Exchange-Traded Fund Trust John Hancock Multifactor Developed International ETF,P,JHMD,Y,100.0,N,JHMD
+JHME,John Hancock Multifactor Energy ETF,John Hancock Multifactor Energy ETF,P,JHME,Y,100.0,N,JHME
+JHMF,John Hancock Multifactor Financials ETF,John Hancock Multifactor Financials ETF,P,JHMF,Y,100.0,N,JHMF
+JHMH,John Hancock Multifactor Healthcare ETF,John Hancock Multifactor Healthcare ETF,P,JHMH,Y,100.0,N,JHMH
+JHMI,John Hancock Multifactor Industrials ETF,John Hancock Multifactor Industrials ETF,P,JHMI,Y,100.0,N,JHMI
+JHML,John Hancock Multifactor Large Cap ETF,John Hancock Multifactor Large Cap ETF,P,JHML,Y,100.0,N,JHML
+JHMM,John Hancock Multifactor Mid Cap ETF,John Hancock Multifactor Mid Cap ETF,P,JHMM,Y,100.0,N,JHMM
+JHMS,John Hancock Multifactor Consumer Staples ETF,John Hancock Multifactor Consumer Staples ETF,P,JHMS,Y,100.0,N,JHMS
+JHMT,John Hancock Multifactor Technology ETF,John Hancock Multifactor Technology ETF,P,JHMT,Y,100.0,N,JHMT
+JHMU,John Hancock Multifactor Utilities ETF,John Hancock Multifactor Utilities ETF,P,JHMU,Y,100.0,N,JHMU
+JPEH,JPMorgan Diversified Return Europe Currency Hedged ETF,JPMorgan Diversified Return Europe Currency Hedged ETF,P,JPEH,Y,100.0,N,JPEH
+JPEM,JPMorgan Diversified Return Emerging Markets Equity ETF,JPMorgan Diversified Return Emerging Markets Equity ETF,P,JPEM,Y,100.0,N,JPEM
+JPEU,JPMorgan Diversified Return Europe Equity ETF,JPMorgan Diversified Return Europe Equity ETF,P,JPEU,Y,100.0,N,JPEU
+JPGE,JPMorgan Diversified Return Global Equity ETF,JPMorgan Diversified Return Global Equity ETF,P,JPGE,Y,100.0,N,JPGE
+JPHF,J P Morgan Chase & Co ETF,J P Morgan Chase & Co ETF,P,JPHF,Y,100.0,N,JPHF
+JPHY,JPMorgan Disciplined HY ETF,JPMorgan Disciplined HY ETF,Z,JPHY,Y,100.0,N,JPHY
+JPIH,JPMorgan Diversified Return International Currency Hedged ETF,JPMorgan Diversified Return International Currency Hedged ETF,P,JPIH,Y,100.0,N,JPIH
+JPIN,JPMorgan Diversified Return International Equity ETF,JPMorgan Diversified Return International Equity ETF,P,JPIN,Y,100.0,N,JPIN
+JPME,JPMorgan Diversified Return U.S. Mid Cap Equity ETF,JPMorgan Diversified Return U.S. Mid Cap Equity ETF,P,JPME,Y,100.0,N,JPME
+JPN,Deutsche X,Deutsche X-trackers Japan JPX-Nikkei 400 Equity ETF,P,JPN,Y,100.0,N,JPN
+JPNH,Deutsche X,Deutsche X-trackers Japan JPX-Nikkei 400 Hedged Equity ETF,Z,JPNH,Y,100.0,N,JPNH
+JPNL,Direxion Daily Japan Bull 3X ETF,Direxion Daily Japan Bull 3X ETF,P,JPNL,Y,100.0,N,JPNL
+JPSE,JPMorgan Diversified Return U.S. Small Cap Equity ETF,JPMorgan Diversified Return U.S. Small Cap Equity ETF,P,JPSE,Y,100.0,N,JPSE
+JPUS,JPMorgan Diversified Return U.S. Equity ETF,JPMorgan Diversified Return U.S. Equity ETF,P,JPUS,Y,100.0,N,JPUS
+JUNE,Cambria ETF Trust ETF,Cambria ETF Trust ETF,P,JUNE,Y,100.0,N,JUNE
+KBA,KraneShares Bosera MSCI China A ETF,KraneShares Bosera MSCI China A ETF,P,KBA,Y,100.0,N,KBA
+KCNY,KraneShares E Fund China Commercial Paper ETF,KraneShares E Fund China Commercial Paper ETF,P,KCNY,Y,100.0,N,KCNY
+KEMP,KraneShares FTSE Emerging Markets Plus ETF,KraneShares FTSE Emerging Markets Plus ETF,Z,KEMP,Y,100.0,N,KEMP
+KFYP,KraneShares Zacks New China ETF,KraneShares Zacks New China ETF,P,KFYP,Y,100.0,N,KFYP
+KLDW,Knowledge Leaders Developed World ETF,Knowledge Leaders Developed World ETF,P,KLDW,Y,100.0,N,KLDW
+KOL,VanEck Vectors Coal ETF,VanEck Vectors Coal ETF,P,KOL,Y,100.0,N,KOL
+KOR,AdvisorShares KIM Korea Equity ETF,AdvisorShares KIM Korea Equity ETF,P,KOR,Y,100.0,N,KOR
+KROO,IQ Australia Small Cap ETF,IQ Australia Small Cap ETF,P,KROO,Y,100.0,N,KROO
+KWT,VanEck Vectors Solar Energy ETF,VanEck Vectors Solar Energy ETF,P,KWT,Y,100.0,N,KWT
+LARE,Tierra XP Latin America Real Estate ETF,Tierra XP Latin America Real Estate ETF,P,LARE,Y,100.0,N,LARE
+LEAD,Realty Shares DIVCON Leaders Dividend ETF,Realty Shares DIVCON Leaders Dividend ETF,Z,LEAD,Y,100.0,N,LEAD
+LIT,Global X Lithium & Battery Tech ETF,Global X Lithium & Battery Tech ETF,P,LIT,Y,100.0,N,LIT
+LVHB,Elkhorn Lunt Low Vol/High Beta Tactical ETF,Elkhorn Lunt Low Vol/High Beta Tactical ETF,Z,LVHB,Y,100.0,N,LVHB
+LVHE,Legg Mason Emerging Markets Low Volatility High Dividend ETF,Legg Mason Emerging Markets Low Volatility High Dividend ETF,Z,LVHE,Y,100.0,N,LVHE
+LVHI,Legg Mason International Low Volatility High Dividend ETF,Legg Mason International Low Volatility High Dividend ETF,Z,LVHI,Y,100.0,N,LVHI
+LVL,Guggenheim Global Dividend Opportunities Index ETF,Guggenheim Global Dividend Opportunities Index ETF,P,LVL,Y,100.0,N,LVL
+MATH,Meidell Tactical Advantage ETF,Meidell Tactical Advantage ETF,P,MATH,Y,100.0,N,MATH
+MCRO,IQ Hedge Macro Tracker ETF,IQ Hedge Macro Tracker ETF,P,MCRO,Y,100.0,N,MCRO
+MINC,AdvisorShares Newfleet Multi,AdvisorShares Newfleet Multi-sector Income ETF,P,MINC,Y,100.0,N,MINC
+MLN,VanEck Vectors AMT,VanEck Vectors AMT-Free Long Municipal Index ETF,P,MLN,Y,100.0,N,MLN
+MLPA,Global X MLP ETF,Global X MLP ETF,P,MLPA,Y,100.0,N,MLPA
+MLPJ,Global X Junior MLP ETF,Global X Junior MLP ETF,P,MLPJ,Y,100.0,N,MLPJ
+MLPX,Global X MLP & Energy Infrastructure ETF,Global X MLP & Energy Infrastructure ETF,P,MLPX,Y,100.0,N,MLPX
+MNA,IQ Merger Arbitrage ETF,IQ Merger Arbitrage ETF,P,MNA,Y,100.0,N,MNA
+MOAT,VanEck Vectors Morningstar Wide Moat ETF,VanEck Vectors Morningstar Wide Moat ETF,P,MOAT,Y,100.0,N,MOAT
+MOM,QuantShares U.S. Market Neutral Momentum Fund ETF,QuantShares U.S. Market Neutral Momentum Fund ETF,P,MOM,Y,100.0,N,MOM
+MOO,VanEck Vectors Agribusiness ETF,VanEck Vectors Agribusiness ETF,P,MOO,Y,100.0,N,MOO
+MORT,VanEck Vectors Mortgage REIT Income ETF,VanEck Vectors Mortgage REIT Income ETF,P,MORT,Y,100.0,N,MORT
+MOTI,VanEck Vectors Morningstar International Moat ETF,VanEck Vectors Morningstar International Moat ETF,P,MOTI,Y,100.0,N,MOTI
+MRGR,ProShares Merger ETF,ProShares Merger ETF,Z,MRGR,Y,100.0,N,MRGR
+MVIN,Natixis ETF Trust ETF,Natixis ETF Trust ETF,P,MVIN,Y,100.0,N,MVIN
+NASH,Nashville Area ETF,Nashville Area ETF,P,NASH,Y,100.0,N,NASH
+NFO,Guggenheim Insider ETF,Guggenheim Insider ETF,P,NFO,Y,100.0,N,NFO
+NGE,Global X MSCI Nigeria ETF,Global X MSCI Nigeria ETF,P,NGE,Y,100.0,N,NGE
+NLR,VanEck Vectors Uranium & Nuclear Energy ETF,VanEck Vectors Uranium & Nuclear Energy ETF,P,NLR,Y,100.0,N,NLR
+NOBL,ProShares S&P 500 Dividend Aristocrats ETF,ProShares S&P 500 Dividend Aristocrats ETF,Z,NOBL,Y,100.0,N,NOBL
+NORW,Global X MSCI Norway ETF,Global X MSCI Norway ETF,P,NORW,Y,100.0,N,NORW
+NULG,NuShares ESG Large,NuShares ESG Large-Cap Growth ETF,Z,NULG,Y,100.0,N,NULG
+NULV,NuShares ESG Large,NuShares ESG Large-Cap Value ETF,Z,NULV,Y,100.0,N,NULV
+NUMG,NuShares ESG Mid,NuShares ESG Mid-Cap Growth ETF,Z,NUMG,Y,100.0,N,NUMG
+NUMV,NuShares ESG Mid,NuShares ESG Mid-Cap Value ETF,Z,NUMV,Y,100.0,N,NUMV
+NUSC,NuShares ESG Small,NuShares ESG Small-Cap ETF,Z,NUSC,Y,100.0,N,NUSC
+OAPH,O'Shares FTSE Asia Pacific Quality Dividend Hedged ETF,O'Shares FTSE Asia Pacific Quality Dividend Hedged ETF,P,OAPH,Y,100.0,N,OAPH
+OASI,O'Shares FTSE Asia Pacific Quality Dividend ETF,O'Shares FTSE Asia Pacific Quality Dividend ETF,P,OASI,Y,100.0,N,OASI
+OEUH,O'Shares FTSE Europe Quality Dividend Hedged ETF,O'Shares FTSE Europe Quality Dividend Hedged ETF,P,OEUH,Y,100.0,N,OEUH
+OEUR,O'Shares FTSE Europe Quality Dividend ETF,O'Shares FTSE Europe Quality Dividend ETF,P,OEUR,Y,100.0,N,OEUR
+OEW,Guggenheim ETF Trust ETF,Guggenheim ETF Trust ETF,P,OEW,Y,100.0,N,OEW
+OIH,VanEck Vectors Oil Services ETF,VanEck Vectors Oil Services ETF,P,OIH,Y,100.0,N,OIH
+OILD,ProShares UltraPro 3x Short Crude Oil ETF,ProShares UltraPro 3x Short Crude Oil ETF,P,OILD,Y,100.0,N,OILD
+OILK,ProShares K,ProShares K-1 Free Crude Oil Strategy ETF,Z,OILK,Y,100.0,N,OILK
+OILU,ProShares UltraPro 3x Crude Oil ETF,ProShares UltraPro 3x Crude Oil ETF,P,OILU,Y,100.0,N,OILU
+ONTL,O'Shares FTSE Russell International Quality Dividend ETF,O'Shares FTSE Russell International Quality Dividend ETF,P,ONTL,Y,100.0,N,ONTL
+OPD,Guggenheim Large Cap Optimized Diversification ETF,Guggenheim Large Cap Optimized Diversification ETF,P,OPD,Y,100.0,N,OPD
+OUSA,O'Shares FTSE U.S. Quality Dividend ETF,O'Shares FTSE U.S. Quality Dividend ETF,P,OUSA,Y,100.0,N,OUSA
+OUSM,O'Shares FTSE Russell Small Cap Quality Dividend ETF,O'Shares FTSE Russell Small Cap Quality Dividend ETF,P,OUSM,Y,100.0,N,OUSM
+OVLC,Guggenheim U.S. Large Cap Optimized Volatility ETF,Guggenheim U.S. Large Cap Optimized Volatility ETF,P,OVLC,Y,100.0,N,OVLC
+PAK,Global X MSCI Pakistan ETF,Global X MSCI Pakistan ETF,P,PAK,Y,100.0,N,PAK
+PALL,ETFS Physical Palladium Shares,ETFS Physical Palladium Shares,P,PALL,Y,100.0,N,PALL
+PAVE,Global X Funds Global X U.S. Infrastructure Development ETF,Global X Funds Global X U.S. Infrastructure Development ETF,Z,PAVE,Y,100.0,N,PAVE
+PEK,VanEck Vectors ChinaAMC CSI 3000 ETF,VanEck Vectors ChinaAMC CSI 3000 ETF,P,PEK,Y,100.0,N,PEK
+PERM,Global X Permanent ETF,Global X Permanent ETF,P,PERM,Y,100.0,N,PERM
+PEX,ProShares Global Listed Private Equity ETF,ProShares Global Listed Private Equity ETF,Z,PEX,Y,100.0,N,PEX
+PFFR,ETFIS Series Trust I ETF,ETFIS Series Trust I ETF,P,PFFR,Y,100.0,N,PFFR
+PFV,Amplify YieldShares Prime 5 Dividend ETF,Amplify YieldShares Prime 5 Dividend ETF,Z,PFV,Y,100.0,N,PFV
+PFXF,VanEck Vectors Preferred Securities ex Financials ETF,VanEck Vectors Preferred Securities ex Financials ETF,P,PFXF,Y,100.0,N,PFXF
+PGAL,Global X MSCI Portugal ETF,Global X MSCI Portugal ETF,P,PGAL,Y,100.0,N,PGAL
+PLND,VanEck Vectors Poland ETF,VanEck Vectors Poland ETF,P,PLND,Y,100.0,N,PLND
+PPLT,ETFS Physical Platinum Shares,ETFS Physical Platinum Shares,P,PPLT,Y,100.0,N,PPLT
+PRB,VanEck Vectors Pre,VanEck Vectors Pre-refunded Municipal Index ETF,P,PRB,Y,100.0,N,PRB
+PRME,First Trust Heitman Global Prime Real Estate ETF,First Trust Heitman Global Prime Real Estate ETF,P,PRME,Y,100.0,N,PRME
+PRNT,3D Printing (The) ETF,3D Printing (The) ETF,Z,PRNT,Y,100.0,N,PRNT
+PTEU,Pacer TrendpilotTM European Index ETF,Pacer TrendpilotTM European Index ETF,Z,PTEU,Y,100.0,N,PTEU
+PTLC,Pacer Trendpilot 750 ETF,Pacer Trendpilot 750 ETF,Z,PTLC,Y,100.0,N,PTLC
+PTMC,Pacer Trendpilot 450 ETF,Pacer Trendpilot 450 ETF,Z,PTMC,Y,100.0,N,PTMC
+PTNQ,Pacer Trendpilot 100 ETF,Pacer Trendpilot 100 ETF,Z,PTNQ,Y,100.0,N,PTNQ
+QAI,IQ Hedge MultiIQ Hedge Multi,IQ Hedge MultiIQ Hedge Multi-Strategy Tracker ETF,P,QAI,Y,100.0,N,QAI
+QED,IQ Hedge Event,IQ Hedge Event-Driven Tracker ETF,P,QED,Y,100.0,N,QED
+QGTA,IQ Leaders GTAA Tracker ETF,IQ Leaders GTAA Tracker ETF,P,QGTA,Y,100.0,N,QGTA
+QLS,IQ Hedge Long Short Tracker ETF,IQ Hedge Long Short Tracker ETF,P,QLS,Y,100.0,N,QLS
+QMN,IQ Hedge Market Neutral Tracker ETF,IQ Hedge Market Neutral Tracker ETF,P,QMN,Y,100.0,N,QMN
+QMOM,MomentumShares U.S. Quantitative Momentum ETF,MomentumShares U.S. Quantitative Momentum ETF,Z,QMOM,Y,100.0,N,QMOM
+QVAL,ValueShares U.S. Quantitative Value ETF ETF,ValueShares U.S. Quantitative Value ETF ETF,Z,QVAL,Y,100.0,N,QVAL
+QVM,Arrow QVM Equity Factor ETF,Arrow QVM Equity Factor ETF,P,QVM,Y,100.0,N,QVM
+QXGG,QuantX Risk Managed Growth ETF ETF,QuantX Risk Managed Growth ETF ETF,Z,QXGG,Y,100.0,N,QXGG
+QXMI,QuantX Risk Managed Multi,QuantX Risk Managed Multi-Asset Income ETF,Z,QXMI,Y,100.0,N,QXMI
+QXRR,QuantX Risk Managed Real Return ETF,QuantX Risk Managed Real Return ETF,Z,QXRR,Y,100.0,N,QXRR
+QXTR,QuantX Risk Managed Multi,QuantX Risk Managed Multi-Asset Total Return ETF,Z,QXTR,Y,100.0,N,QXTR
+RALS,ProShares RAFI Long Short ETF,ProShares RAFI Long Short ETF,P,RALS,Y,100.0,N,RALS
+RCD,Guggenheim S&P 500 Equal Weight Consumer Discretionary ETF,Guggenheim S&P 500 Equal Weight Consumer Discretionary ETF,P,RCD,Y,100.0,N,RCD
+RCOM,Elkhorn ETF Trust ETF,Elkhorn ETF Trust ETF,Z,RCOM,Y,100.0,N,RCOM
+RDIV,Oppenheimer Ultra Dividend Revenue ETF,Oppenheimer Ultra Dividend Revenue ETF,P,RDIV,Y,100.0,N,RDIV
+REGL,ProShares S&P MidCap 400 Dividend Aristocrats ETF,ProShares S&P MidCap 400 Dividend Aristocrats ETF,Z,REGL,Y,100.0,N,REGL
+REMX,VanEck Vectors Rare Earth Strategic Metals ETF,VanEck Vectors Rare Earth Strategic Metals ETF,P,REMX,Y,100.0,N,REMX
+RETL,Direxion Daily Retail Bull 3X Shares ETF,Direxion Daily Retail Bull 3X Shares ETF,P,RETL,Y,100.0,N,RETL
+RFCI,RiverFront Dynamic Core Income ETF,RiverFront Dynamic Core Income ETF,P,RFCI,Y,100.0,N,RFCI
+RFDA,RiverFront Dynamic US Dividend Advantage ETF,RiverFront Dynamic US Dividend Advantage ETF,P,RFDA,Y,100.0,N,RFDA
+RFFC,RiverFront Dynamic US Flex,RiverFront Dynamic US Flex-Cap ETF,P,RFFC,Y,100.0,N,RFFC
+RFG,Guggenheim S&P Midcap 400 Pure Growth ETF,Guggenheim S&P Midcap 400 Pure Growth ETF,P,RFG,Y,100.0,N,RFG
+RFUN,RiverFront Dynamic Unconstrained Income ETF,RiverFront Dynamic Unconstrained Income ETF,P,RFUN,Y,100.0,N,RFUN
+RFV,Guggenheim S&P Midcap 400 Pure Value ETF,Guggenheim S&P Midcap 400 Pure Value ETF,P,RFV,Y,100.0,N,RFV
+RGI,Guggenheim S&P 500 Equal Weight Industrials ETF,Guggenheim S&P 500 Equal Weight Industrials ETF,P,RGI,Y,100.0,N,RGI
+RHS,Guggenheim S&P 500 Equal Weight Consumer Staples ETF,Guggenheim S&P 500 Equal Weight Consumer Staples ETF,P,RHS,Y,100.0,N,RHS
+RINF,ProShares Inflation Expectations ETF,ProShares Inflation Expectations ETF,P,RINF,Y,100.0,N,RINF
+RISE,Sit Rising Rate ETF,Sit Rising Rate ETF,P,RISE,Y,100.0,N,RISE
+ROAM,Hartford Multifactor Emerging Markets ETF,Hartford Multifactor Emerging Markets ETF,P,ROAM,Y,100.0,N,ROAM
+RODM,Hartford Multifactor Developed Markets (ex,Hartford Multifactor Developed Markets (ex-US) ETF,P,RODM,Y,100.0,N,RODM
+ROGS,Hartford Multifactor Global Small Cap ETF,Hartford Multifactor Global Small Cap ETF,P,ROGS,Y,100.0,N,ROGS
+ROOF,IQ US Real Estate Small Cap ETF,IQ US Real Estate Small Cap ETF,P,ROOF,Y,100.0,N,ROOF
+RORE,Hartford Multifactor REIT ETF,Hartford Multifactor REIT ETF,P,RORE,Y,100.0,N,RORE
+ROUS,Hartford Multifactor U.S. Equity ETF,Hartford Multifactor U.S. Equity ETF,P,ROUS,Y,100.0,N,ROUS
+RPG,Guggenheim S&P 500 Pure Growth ETF,Guggenheim S&P 500 Pure Growth ETF,P,RPG,Y,100.0,N,RPG
+RPV,Guggenheim S&P 500 Pure Value ETF,Guggenheim S&P 500 Pure Value ETF,P,RPV,Y,100.0,N,RPV
+RSP,Guggenheim S&P 500 Equal Weight ETF,Guggenheim S&P 500 Equal Weight ETF,P,RSP,Y,100.0,N,RSP
+RSX,VanEck Vectors Russia ETF,VanEck Vectors Russia ETF,P,RSX,Y,100.0,N,RSX
+RSXJ,VanEck Vectors Russia Small,VanEck Vectors Russia Small-Cap ETF,P,RSXJ,Y,100.0,N,RSXJ
+RTH,VanEck Vectors Retail ETF,VanEck Vectors Retail ETF,P,RTH,Y,100.0,N,RTH
+RTM,Guggenheim S&P 500 Equal Weight Materials ETF,Guggenheim S&P 500 Equal Weight Materials ETF,P,RTM,Y,100.0,N,RTM
+RWJ,Oppenheimer Small Cap Revenue ETF,Oppenheimer Small Cap Revenue ETF,P,RWJ,Y,100.0,N,RWJ
+RWK,Oppenheimer Mid Cap Revenue ETF,Oppenheimer Mid Cap Revenue ETF,P,RWK,Y,100.0,N,RWK
+RWL,Oppenheimer Large Cap Revenue ETF,Oppenheimer Large Cap Revenue ETF,P,RWL,Y,100.0,N,RWL
+RWW,Oppenheimer Financials Sector Revenue ETF,Oppenheimer Financials Sector Revenue ETF,P,RWW,Y,100.0,N,RWW
+RYE,Guggenheim S&P 500 Equal Weight Energy ETF,Guggenheim S&P 500 Equal Weight Energy ETF,P,RYE,Y,100.0,N,RYE
+RYF,Guggenheim S&P 500 Equal Weight Financials ETF,Guggenheim S&P 500 Equal Weight Financials ETF,P,RYF,Y,100.0,N,RYF
+RYH,Guggenheim S&P 500 Equal Weight Healthcare ETF,Guggenheim S&P 500 Equal Weight Healthcare ETF,P,RYH,Y,100.0,N,RYH
+RYT,Guggenheim S&P 500 Equal Weight Technology ETF,Guggenheim S&P 500 Equal Weight Technology ETF,P,RYT,Y,100.0,N,RYT
+RYU,Guggenheim S&P 500 Equal Weight Utilities ETF,Guggenheim S&P 500 Equal Weight Utilities ETF,P,RYU,Y,100.0,N,RYU
+RZG,Guggenheim S&P Smallcap 600 Pure Growth ETF,Guggenheim S&P Smallcap 600 Pure Growth ETF,P,RZG,Y,100.0,N,RZG
+RZV,Guggenheim S&P Smallcap 600 Pure Value ETF,Guggenheim S&P Smallcap 600 Pure Value ETF,P,RZV,Y,100.0,N,RZV
+SBIO,ALPS Medical Breakthroughs ETF,ALPS Medical Breakthroughs ETF,P,SBIO,Y,100.0,N,SBIO
+SCAP,AdvisorShares Cornerstone Small Cap ETF,AdvisorShares Cornerstone Small Cap ETF,P,SCAP,Y,100.0,N,SCAP
+SCHA,Schwab U.S. Small,Schwab U.S. Small-Cap ETF,P,SCHA,Y,100.0,N,SCHA
+SCHB,Schwab U.S. Broad Market ETF,Schwab U.S. Broad Market ETF,P,SCHB,Y,100.0,N,SCHB
+SCHC,Schwab International Small,Schwab International Small-Cap Equity ETF,P,SCHC,Y,100.0,N,SCHC
+SCHD,Schwab US Dividend Equity ETF,Schwab US Dividend Equity ETF,P,SCHD,Y,100.0,N,SCHD
+SCHE,Schwab Emerging Markets Equity ETF,Schwab Emerging Markets Equity ETF,P,SCHE,Y,100.0,N,SCHE
+SCHF,Schwab International Equity ETF,Schwab International Equity ETF,P,SCHF,Y,100.0,N,SCHF
+SCHG,Schwab U.S. Large,Schwab U.S. Large-Cap Growth ETF,P,SCHG,Y,100.0,N,SCHG
+SCHH,Schwab U.S. REIT ETF,Schwab U.S. REIT ETF,P,SCHH,Y,100.0,N,SCHH
+SCHM,Schwab U.S. Mid Cap ETF,Schwab U.S. Mid Cap ETF,P,SCHM,Y,100.0,N,SCHM
+SCHO,Schwab Short,Schwab Short-Term U.S. Treasury ETF,P,SCHO,Y,100.0,N,SCHO
+SCHP,Schwab U.S. TIPs ETF,Schwab U.S. TIPs ETF,P,SCHP,Y,100.0,N,SCHP
+SCHR,Schwab Intermediate,Schwab Intermediate-Term U.S. Treasury ETF,P,SCHR,Y,100.0,N,SCHR
+SCHV,Schwab U.S. Large,Schwab U.S. Large-Cap Value ETF,P,SCHV,Y,100.0,N,SCHV
+SCHX,Schwab U.S. Large,Schwab U.S. Large-Cap ETF,P,SCHX,Y,100.0,N,SCHX
+SCID,Global X Scientific Beta Europe ETF,Global X Scientific Beta Europe ETF,P,SCID,Y,100.0,N,SCID
+SCIF,VanEck Vectors India Small,VanEck Vectors India Small-Cap Index ETF,P,SCIF,Y,100.0,N,SCIF
+SCIJ,Global X Scientific Beta Japan ETF,Global X Scientific Beta Japan ETF,P,SCIJ,Y,100.0,N,SCIJ
+SCIN,Columbia India Small Cap ETF,Columbia India Small Cap ETF,P,SCIN,Y,100.0,N,SCIN
+SCIU,Global X Scientific Beta US ETF,Global X Scientific Beta US ETF,P,SCIU,Y,100.0,N,SCIU
+SCIX,Global X Scientific Beta Asia ex,Global X Scientific Beta Asia ex-Japan ETF,P,SCIX,Y,100.0,N,SCIX
+SCTO,Global X JPMorgan US Sector Rotator Index ETF,Global X JPMorgan US Sector Rotator Index ETF,P,SCTO,Y,100.0,N,SCTO
+SDEM,Global X MSCI SuperDividend Emerging Markets ETF,Global X MSCI SuperDividend Emerging Markets ETF,P,SDEM,Y,100.0,N,SDEM
+SDIV,Global X SuperDividend ETF,Global X SuperDividend ETF,P,SDIV,Y,100.0,N,SDIV
+SDOG,ALPS Sector Dividend Dogs ETF,ALPS Sector Dividend Dogs ETF,P,SDOG,Y,100.0,N,SDOG
+SEA,Guggenheim Shipping ETF,Guggenheim Shipping ETF,P,SEA,Y,100.0,N,SEA
+SGDJ,ALPS ETF Trust Sprott Junior Gold Miners ETF,ALPS ETF Trust Sprott Junior Gold Miners ETF,P,SGDJ,Y,100.0,N,SGDJ
+SGDM,Sprott Gold Miners ETF,Sprott Gold Miners ETF,P,SGDM,Y,100.0,N,SGDM
+SGOL,ETFS Physical Swiss Gold Shares,ETFS Physical Swiss Gold Shares,P,SGOL,Y,100.0,N,SGOL
+SHNY,Direxion Funds ETF,Direxion Funds ETF,P,SHNY,Y,100.0,N,SHNY
+SHYD,VanEck Vectors Short High,VanEck Vectors Short High-Yield Municipal Index ETF,P,SHYD,Y,100.0,N,SHYD
+SIL,Global X Silver Miners ETF,Global X Silver Miners ETF,P,SIL,Y,100.0,N,SIL
+SIVR,ETFS Physical Silver Shares Trust ETF,ETFS Physical Silver Shares Trust ETF,P,SIVR,Y,100.0,N,SIVR
+SIZ,QuantShares U.S. Market Neutral Size Fund ETF,QuantShares U.S. Market Neutral Size Fund ETF,P,SIZ,Y,100.0,N,SIZ
+SLX,VanEck Vectors Steel ETF ,VanEck Vectors Steel ETF ,P,SLX,Y,100.0,N,SLX
+SMB,VanEck Vectors AMT,VanEck Vectors AMT-Free Short Municipal Index ETF,P,SMB,Y,100.0,N,SMB
+SMDV,ProShares Russell 2000 Dividend Growers ETF,ProShares Russell 2000 Dividend Growers ETF,Z,SMDV,Y,100.0,N,SMDV
+SMH,VanEck Vectors Semiconductor ETF,VanEck Vectors Semiconductor ETF,P,SMH,Y,100.0,N,SMH
+SOIL,Global X Fertilizers/Potash ETF,Global X Fertilizers/Potash ETF,P,SOIL,Y,100.0,N,SOIL
+SPFF,Global X SuperIncome Preferred ETF,Global X SuperIncome Preferred ETF,P,SPFF,Y,100.0,N,SPFF
+SPUN,VanEck Vectors Global Spin,VanEck Vectors Global Spin-Off ETF,P,SPUN,Y,100.0,N,SPUN
+SPXE,ProShares S&P 500 Ex,ProShares S&P 500 Ex-Energy ETF,P,SPXE,Y,100.0,N,SPXE
+SPXH,Janus Detroit Street Trust Janus Velocity Volatility Hedged Large Cap ETF,Janus Detroit Street Trust Janus Velocity Volatility Hedged Large Cap ETF,P,SPXH,Y,100.0,N,SPXH
+SPXN,ProShares S&P 500 Ex,ProShares S&P 500 Ex-Financials ETF,P,SPXN,Y,100.0,N,SPXN
+SPXT,ProShares S&P 500 Ex,ProShares S&P 500 Ex-Technology ETF,P,SPXT,Y,100.0,N,SPXT
+SPXV,ProShares S&P 500 Ex,ProShares S&P 500 Ex-Health Care ETF,P,SPXV,Y,100.0,N,SPXV
+SVXY,ProShares Short VIX Short Term Futures ETF,ProShares Short VIX Short Term Futures ETF,P,SVXY,Y,100.0,N,SVXY
+SYLD,Cambria Shareholder Yield ETF,Cambria Shareholder Yield ETF,P,SYLD,Y,100.0,N,SYLD
+TAN,Guggenheim Solar ETF,Guggenheim Solar ETF,P,TAN,Y,100.0,N,TAN
+TAO,Guggenheim China Real Estate ETF,Guggenheim China Real Estate ETF,P,TAO,Y,100.0,N,TAO
+TCTL,Premise Capital Frontier Advantage Diversified Tactical ETF,Premise Capital Frontier Advantage Diversified Tactical ETF,Z,TCTL,Y,100.0,N,TCTL
+TILT,FlexShares Mornigstar US Market Factors Tilt Index Fund ETF,FlexShares Mornigstar US Market Factors Tilt Index Fund ETF,P,TILT,Y,100.0,N,TILT
+TOFR,Stock Split Index Fund ETF,Stock Split Index Fund ETF,P,TOFR,Y,100.0,N,TOFR
+TOLZ,ProShares DJ Brookfield Global Infrastructure ETF,ProShares DJ Brookfield Global Infrastructure ETF,P,TOLZ,Y,100.0,N,TOLZ
+TPYP,Tortoise North American Pipeline ETF,Tortoise North American Pipeline ETF,P,TPYP,Y,100.0,N,TPYP
+TRSK,Janus Detroit Street Trust Janus Velocity Tail Risk Hedged Large Cap ETF,Janus Detroit Street Trust Janus Velocity Tail Risk Hedged Large Cap ETF,P,TRSK,Y,100.0,N,TRSK
+TTAC,TrimTabs Float Shrink ETF,TrimTabs Float Shrink ETF,Z,TTAC,Y,100.0,N,TTAC
+TTFS,AdvisorShares Wilshire Buyback ETF,AdvisorShares Wilshire Buyback ETF,P,TTFS,Y,100.0,N,TTFS
+UJB,ProShares Ultra High Yield ETF,ProShares Ultra High Yield ETF,P,UJB,Y,100.0,N,UJB
+URA,Global X Uranium ETF,Global X Uranium ETF,P,URA,Y,100.0,N,URA
+USMR,Horizons USA Managed Risk ETF,Horizons USA Managed Risk ETF,P,USMR,Y,100.0,N,USMR
+UTES,ETFIS Series Trust I Reaves Utilities ETF,ETFIS Series Trust I Reaves Utilities ETF,P,UTES,Y,100.0,N,UTES
+UVXY,ProShares Trust Ultra VIX Short Term Futures ETF,ProShares Trust Ultra VIX Short Term Futures ETF,P,UVXY,Y,100.0,N,UVXY
+VAMO,Cambria ETF Trust Cambria Value and Momentum ETF,Cambria ETF Trust Cambria Value and Momentum ETF,Z,VAMO,Y,100.0,N,VAMO
+VEGA,AdvisorShares STAR Global Buy,AdvisorShares STAR Global Buy-Write ETF,P,VEGA,Y,100.0,N,VEGA
+VIXM,ProShares Trust VIX Mid,ProShares Trust VIX Mid-Term Futures ETF,P,VIXM,Y,100.0,N,VIXM
+VIXY,ProShares Trust VIX Short,ProShares Trust VIX Short-Term Futures ETF,P,VIXY,Y,100.0,N,VIXY
+VMAX,REX VolMAXX Long VIX Weekly Futures Strategy ETF,REX VolMAXX Long VIX Weekly Futures Strategy ETF,Z,VMAX,Y,100.0,N,VMAX
+VMIN,REX VolMAXX Inverse VIX Weekly Futures Strategy ETF,REX VolMAXX Inverse VIX Weekly Futures Strategy ETF,Z,VMIN,Y,100.0,N,VMIN
+VNLA,Janus Short Duration Income ETF,Janus Short Duration Income ETF,P,VNLA,Y,100.0,N,VNLA
+VNM,VanEck Vectors Vietnam ETF,VanEck Vectors Vietnam ETF,P,VNM,Y,100.0,N,VNM
+WBIR,WBI ETF,WBI ETF,P,WBIR,Y,100.0,N,WBIR
+WBIY,WBI Power Factor High Dividend ETF,WBI Power Factor High Dividend ETF,P,WBIY,Y,100.0,N,WBIY
+WEAR,Exchange Listed Funds Trust ETF The WEAR ETF,Exchange Listed Funds Trust ETF The WEAR ETF,Z,WEAR,Y,100.0,N,WEAR
+WMCR,Wilshire Micro,Wilshire Micro-Cap ETF (based on the Wilshire US Micro-Cap Index),P,WMCR,Y,100.0,N,WMCR
+WSKY,Spirited Funds/ETFMG Whiskey & Spirits ETF,Spirited Funds/ETFMG Whiskey & Spirits ETF,P,WSKY,Y,100.0,N,WSKY
+WTRX,Elevation ETF Trust ETF,Elevation ETF Trust ETF,P,WTRX,Y,100.0,N,WTRX
+WYDE,ProShares CDS Short North American HY Credit ETF,ProShares CDS Short North American HY Credit ETF,Z,WYDE,Y,100.0,N,WYDE
+XCEM,Columbia EM Core ex,Columbia EM Core ex-China ETF,P,XCEM,Y,100.0,N,XCEM
+XLG,Guggenheim S&P 500 Top 50 ETF,Guggenheim S&P 500 Top 50 ETF,P,XLG,Y,100.0,N,XLG
+XMPT,VanEck Vectors CEF Municipal Income ETF,VanEck Vectors CEF Municipal Income ETF,P,XMPT,Y,100.0,N,XMPT
+XUSA,QuantX Dynamic Beta US Equity ETF,QuantX Dynamic Beta US Equity ETF,Z,XUSA,Y,100.0,N,XUSA
+YAO,Guggenheim China All,Guggenheim China All-Cap ETF,P,YAO,Y,100.0,N,YAO
+YLD,Principal Exchange,Principal Exchange-Traded Funds Principal EDGE Active Income ETF,P,YLD,Y,100.0,N,YLD
+YMLI,VanEck Vectors High Income Infrastructure MLP ETF,VanEck Vectors High Income Infrastructure MLP ETF,P,YMLI,Y,100.0,N,YMLI
+YMLP,VanEck Vectors High Income MLP ETF,VanEck Vectors High Income MLP ETF,P,YMLP,Y,100.0,N,YMLP
+YYY,YieldShares High Income ETF,YieldShares High Income ETF,P,YYY,Y,100.0,N,YYY
+LDUR,PIMCO Low Duration Active Exchange,PIMCO Low Duration Active Exchange-Traded Fund,P,LDUR,Y,100.0,N,LDUR
+LTPZ,Pimco 15  Year U.S. TIPS Index Exchange,Pimco 15  Year U.S. TIPS Index Exchange-Traded Fund,P,LTPZ,Y,100.0,N,LTPZ
+MINT,PIMCO Enhanced Short Maturity Active Exchange,PIMCO Enhanced Short Maturity Active Exchange-Traded Fund,P,MINT,Y,100.0,N,MINT
+PCI,PIMCO Dynamic Credit and Mortgage Income Fund Common Shares of Beneficial Interest,PIMCO Dynamic Credit and Mortgage Income Fund Common Shares of Beneficial Interest,N,PCI,N,100.0,N,PCI
+PCK,Pimco California Municipal Income Fund II Common Shares of Beneficial Interest,Pimco California Municipal Income Fund II Common Shares of Beneficial Interest,N,PCK,N,100.0,N,PCK
+PCN,Pimco Corporate & Income Strategy Fund Common Stock,Pimco Corporate & Income Strategy Fund Common Stock,N,PCN,N,100.0,N,PCN
+PCQ,PIMCO California Municipal Income Fund Common Stock,PIMCO California Municipal Income Fund Common Stock,N,PCQ,N,100.0,N,PCQ
+PDI,PIMCO Dynamic Income Fund Common Stock,PIMCO Dynamic Income Fund Common Stock,N,PDI,N,100.0,N,PDI
+PFL,PIMCO Income Strategy Fund Shares of Beneficial Interest,PIMCO Income Strategy Fund Shares of Beneficial Interest,N,PFL,N,100.0,N,PFL
+PFN,PIMCO Income Strategy Fund II,PIMCO Income Strategy Fund II,N,PFN,N,100.0,N,PFN
+PGP,Pimco Global Stocksplus & Income Fund Pimco Global StocksPlus & Income Fund Common Shares of Beneficial Interest,Pimco Global Stocksplus & Income Fund Pimco Global StocksPlus & Income Fund Common Shares of Beneficial Interest,N,PGP,N,100.0,N,PGP
+PHK,Pimco High Income Fund Pimco High Income Fund,Pimco High Income Fund Pimco High Income Fund,N,PHK,N,100.0,N,PHK
+PKO,Pimco Income Opportunity Fund Common Shares of Beneficial Interest,Pimco Income Opportunity Fund Common Shares of Beneficial Interest,N,PKO,N,100.0,N,PKO
+PMF,PIMCO Municipal Income Fund Common Stock,PIMCO Municipal Income Fund Common Stock,N,PMF,N,100.0,N,PMF
+PML,Pimco Municipal Income Fund II Common Shares of Beneficial Interest,Pimco Municipal Income Fund II Common Shares of Beneficial Interest,N,PML,N,100.0,N,PML
+PMX,PIMCO Municipal Income Fund III Common Shares of Beneficial Interest,PIMCO Municipal Income Fund III Common Shares of Beneficial Interest,N,PMX,N,100.0,N,PMX
+PNF,PIMCO New York Municipal Income Fund Common Stock,PIMCO New York Municipal Income Fund Common Stock,N,PNF,N,100.0,N,PNF
+PNI,Pimco New York Municipal Income Fund II Common Shares of Beneficial Interest,Pimco New York Municipal Income Fund II Common Shares of Beneficial Interest,N,PNI,N,100.0,N,PNI
+PTY,Pimco Corporate & Income Opportunity Fund,Pimco Corporate & Income Opportunity Fund,N,PTY,N,100.0,N,PTY
+PYN,PIMCO New York Municipal Income Fund III Common Shares of Beneficial Interest,PIMCO New York Municipal Income Fund III Common Shares of Beneficial Interest,N,PYN,N,100.0,N,PYN
+PZC,PIMCO California Municipal Income Fund III Common Shares of Beneficial Interest,PIMCO California Municipal Income Fund III Common Shares of Beneficial Interest,N,PZC,N,100.0,N,PZC
+RCS,"PIMCO Strategic Income Fund, Inc.","PIMCO Strategic Income Fund, Inc.",N,RCS,N,100.0,N,RCS
+STPZ,PIMCO 1,PIMCO 1-5 Year U.S. TIPS Index Exchange-Traded Fund,P,STPZ,Y,100.0,N,STPZ
+TIPZ,PIMCO Broad U.S. TIPS Index Exchange,PIMCO Broad U.S. TIPS Index Exchange-Traded Fund,P,TIPZ,Y,100.0,N,TIPZ
+TUZ,PIMCO 1,PIMCO 1-3 Year US Treasury Index Exchage-Traded Fund,P,TUZ,Y,100.0,N,TUZ
+ZROZ,PIMCO 25  Year Zero Coupon U.S. Treasury Index Exchange,PIMCO 25  Year Zero Coupon U.S. Treasury Index Exchange-Traded Fund,P,ZROZ,Y,100.0,N,ZROZ
+SCHW,Charles Schwab Corporation (The) Common Stock,Charles Schwab Corporation (The) Common Stock,N,SCHW,N,100.0,N,SCHW
+EMLP,First Trust North American Energy Infrastructure Fund,First Trust North American Energy Infrastructure Fund,P,EMLP,Y,100.0,N,EMLP
+FAM,First Trust/Aberdeen Global Opportunity Income Fund First Trust/Aberdeen Global Opportunity Income Fund Common Shares of Beneficial Interest,First Trust/Aberdeen Global Opportunity Income Fund First Trust/Aberdeen Global Opportunity Income Fund Common Shares of Beneficial Interest,N,FAM,N,100.0,N,FAM
+FAUS,First Trust Australia AlphaDex fund,First Trust Australia AlphaDex fund,P,FAUS,Y,100.0,N,FAUS
+FBT,First Trust Amex Biotech Index Fund,First Trust Amex Biotech Index Fund,P,FBT,Y,100.0,N,FBT
+FCT,First Trust Senior Floating Rate Income Fund II Common Shares of Beneficial Interest,First Trust Senior Floating Rate Income Fund II Common Shares of Beneficial Interest,N,FCT,N,100.0,N,FCT
+FDD,First Trust Dow Jones STOXX Select Dividend 30 Index Fund,First Trust Dow Jones STOXX Select Dividend 30 Index Fund,P,FDD,Y,100.0,N,FDD
+FDEU,First Trust Dynamic Europe Equity Income Fund Common Shares of Beneficial Interest,First Trust Dynamic Europe Equity Income Fund Common Shares of Beneficial Interest,N,FDEU,N,100.0,N,FDEU
+FDN,First Trust DJ Internet Index Fund,First Trust DJ Internet Index Fund,P,FDN,Y,100.0,N,FDN
+FEI,First Trust MLP and Energy Income Fund Common Shares of Beneficial Interest,First Trust MLP and Energy Income Fund Common Shares of Beneficial Interest,N,FEI,N,100.0,N,FEI
+FEN,First Trust Energy Income and Growth Fund,First Trust Energy Income and Growth Fund,A,FEN,N,100.0,N,FEN
+FEO,First Trust/Aberdeen Emerging Opportunity Fund Common Shares of Beneficial Interest,First Trust/Aberdeen Emerging Opportunity Fund Common Shares of Beneficial Interest,N,FEO,N,100.0,N,FEO
+FFA,First Trust Enhanced Equity Income Fund,First Trust Enhanced Equity Income Fund,N,FFA,N,100.0,N,FFA
+FFR,First Trust FTSE EPRA/NAREIT Global Real Estate Index Fund,First Trust FTSE EPRA/NAREIT Global Real Estate Index Fund,P,FFR,Y,100.0,N,FFR
+FGB,First Trust Specialty Finance and Financial Opportunities Fund,First Trust Specialty Finance and Financial Opportunities Fund,N,FGB,N,100.0,N,FGB
+FGD,First Trust DJ Global Select Dividend,First Trust DJ Global Select Dividend,P,FGD,Y,100.0,N,FGD
+FHY,First Trust Strategic High Income Fund II First Trust Strategic High Income Fund II Common Shares of Beneficial Interest,First Trust Strategic High Income Fund II First Trust Strategic High Income Fund II Common Shares of Beneficial Interest,N,FHY,N,100.0,N,FHY
+FIF,First Trust Energy Infrastructure Fund Common Shares of Beneficial Interest,First Trust Energy Infrastructure Fund Common Shares of Beneficial Interest,N,FIF,N,100.0,N,FIF
+FIV,First Trust Senior Floating Rate 2022 Target Term Fund Common Shares of Beneficial Interest,First Trust Senior Floating Rate 2022 Target Term Fund Common Shares of Beneficial Interest,N,FIV,N,100.0,N,FIV
+FMF,First Trust Morningstar Managed Futures Strategy Fund,First Trust Morningstar Managed Futures Strategy Fund,P,FMF,Y,100.0,N,FMF
+FMY,First Trust Motgage Income Fund Common Shares of Beneficial Interest,First Trust Motgage Income Fund Common Shares of Beneficial Interest,N,FMY,N,100.0,N,FMY
+FPF,First Trust Intermediate Duration Preferred & Income Fund Common Shares of Beneficial Interest,First Trust Intermediate Duration Preferred & Income Fund Common Shares of Beneficial Interest,N,FPF,N,100.0,N,FPF
+FPL,First Trust New Opportunities MLP & Energy Fund Common Shares of Beneficial Interest,First Trust New Opportunities MLP & Energy Fund Common Shares of Beneficial Interest,N,FPL,N,100.0,N,FPL
+FRI,First Trust S&P REIT Index Fund,First Trust S&P REIT Index Fund,P,FRI,Y,100.0,N,FRI
+FSD,First Trust High Income Long Short Fund Common Shares of Beneficial Interest,First Trust High Income Long Short Fund Common Shares of Beneficial Interest,N,FSD,N,100.0,N,FSD
+FTLS,First Trust Long/Short Equity,First Trust Long/Short Equity,P,FTLS,Y,100.0,N,FTLS
+FVD,First Trust VL Dividend,First Trust VL Dividend,P,FVD,Y,100.0,N,FVD
+FVL,First Trust Value Line 100 Fund,First Trust Value Line 100 Fund,P,FVL,Y,100.0,N,FVL
+FXD,First Trust Cons. Discret. AlphaDEX,First Trust Cons. Discret. AlphaDEX,P,FXD,Y,100.0,N,FXD
+FXG,First Trust Cons. Staples AlphaDEX,First Trust Cons. Staples AlphaDEX,P,FXG,Y,100.0,N,FXG
+FXH,First Trust Health Care AlphaDEX,First Trust Health Care AlphaDEX,P,FXH,Y,100.0,N,FXH
+FXL,First Trust Technology AlphaDEX,First Trust Technology AlphaDEX,P,FXL,Y,100.0,N,FXL
+FXN,First Trust Energy AlphaDEX Fund,First Trust Energy AlphaDEX Fund,P,FXN,Y,100.0,N,FXN
+FXO,First Trust Financials AlphaDEX,First Trust Financials AlphaDEX,P,FXO,Y,100.0,N,FXO
+FXR,First Trust Industrials AlphaDEX,First Trust Industrials AlphaDEX,P,FXR,Y,100.0,N,FXR
+FXU,First Trust Utilities AlphaDEX Fund,First Trust Utilities AlphaDEX Fund,P,FXU,Y,100.0,N,FXU
+FXZ,First Trust Materials AlphaDEX Fund,First Trust Materials AlphaDEX Fund,P,FXZ,Y,100.0,N,FXZ
+MFD,Macquarie/First Trust Global Common Stock,Macquarie/First Trust Global Common Stock,N,MFD,N,100.0,N,MFD
+VIXH,First Trust CBOE S&P 500 VIX Tail Hedge Fund,First Trust CBOE S&P 500 VIX Tail Hedge Fund,P,VIXH,Y,100.0,N,VIXH
+AUSE,WisdomTree Australia Dividend Index,WisdomTree Australia Dividend Index,P,AUSE,Y,100.0,N,AUSE
+AXJL,WisdomTree Asia Pacific ex,WisdomTree Asia Pacific ex-Japan Total Dividend Fund,P,AXJL,Y,100.0,N,AXJL
+BZF,WisdomTree Brazilian Real Strategy Fund,WisdomTree Brazilian Real Strategy Fund,P,BZF,Y,100.0,N,BZF
+CEW,WisdomTree Emerging Currency Strategy Fund,WisdomTree Emerging Currency Strategy Fund,P,CEW,Y,100.0,N,CEW
+CYB,WisdomTree Chinese Yuan Strategy Fund,WisdomTree Chinese Yuan Strategy Fund,P,CYB,Y,100.0,N,CYB
+DDEZ,WisdomTree Dynamic Currency Hedged Europe Equity Fund,WisdomTree Dynamic Currency Hedged Europe Equity Fund,Z,DDEZ,Y,100.0,N,DDEZ
+DDJP,WisdomTree Dynamic Currency Hedged Japan Equity Fund,WisdomTree Dynamic Currency Hedged Japan Equity Fund,Z,DDJP,Y,100.0,N,DDJP
+DDLS,WisdomTree Dynamic Currency Hedged International SmallCap Equity Fund,WisdomTree Dynamic Currency Hedged International SmallCap Equity Fund,Z,DDLS,Y,100.0,N,DDLS
+DDWM,WisdomTree Dynamic Currency Hedged International Equity Fund,WisdomTree Dynamic Currency Hedged International Equity Fund,Z,DDWM,Y,100.0,N,DDWM
+DEM,WisdomTree Emerging Markets High Dividend Fund,WisdomTree Emerging Markets High Dividend Fund,P,DEM,Y,100.0,N,DEM
+DES,WisdomTree Trust SmallCap Dividend Fund,WisdomTree Trust SmallCap Dividend Fund,P,DES,Y,100.0,N,DES
+DEW,WisdomTree Global High Dividend Fund,WisdomTree Global High Dividend Fund,P,DEW,Y,100.0,N,DEW
+DFE,WisdomTree Europe SmallCap Dividend Fund,WisdomTree Europe SmallCap Dividend Fund,P,DFE,Y,100.0,N,DFE
+DFJ,WisdomTree Japan SmallCap Fund,WisdomTree Japan SmallCap Fund,P,DFJ,Y,100.0,N,DFJ
+DGS,WisdomTree Emerging Market SmallCap Fund,WisdomTree Emerging Market SmallCap Fund,P,DGS,Y,100.0,N,DGS
+DHDG,WisdomTree Dynamic Currency Hedged International Quality Dividend Growth Fund,WisdomTree Dynamic Currency Hedged International Quality Dividend Growth Fund,Z,DHDG,Y,100.0,N,DHDG
+DHS,WisdomTree High Dividend Fund,WisdomTree High Dividend Fund,P,DHS,Y,100.0,N,DHS
+DIM,WisdomTree International MidCap Dividend Fund,WisdomTree International MidCap Dividend Fund,P,DIM,Y,100.0,N,DIM
+DLN,WisdomTree LargeCap Dividend Fund,WisdomTree LargeCap Dividend Fund,P,DLN,Y,100.0,N,DLN
+DLS,WisdomTree International SmallCap Fund,WisdomTree International SmallCap Fund,P,DLS,Y,100.0,N,DLS
+DNL,WisdomTree Global ex,WisdomTree Global ex-US Quality Dividend Growth Fund,P,DNL,Y,100.0,N,DNL
+DOL,WisdomTree International LargeCap Dividend Fund,WisdomTree International LargeCap Dividend Fund,P,DOL,Y,100.0,N,DOL
+DON,WisdomTree MidCap Dividend Fund,WisdomTree MidCap Dividend Fund,P,DON,Y,100.0,N,DON
+DOO,WisdomTree International Dividend Top 100 Fund,WisdomTree International Dividend Top 100 Fund,P,DOO,Y,100.0,N,DOO
+DRW,WisdomTree Global ex,WisdomTree Global ex-US Real Estate Index,P,DRW,Y,100.0,N,DRW
+DTD,WisdomTree Total Dividend Fund,WisdomTree Total Dividend Fund,P,DTD,Y,100.0,N,DTD
+DTH,WisdomTree International High Dividend Fund,WisdomTree International High Dividend Fund,P,DTH,Y,100.0,N,DTH
+DTN,WisdomTree Dividend Ex,WisdomTree Dividend Ex-Financials Fund,P,DTN,Y,100.0,N,DTN
+DVEM,WisdomTree Emerging Markets Dividend Fund,WisdomTree Emerging Markets Dividend Fund,Z,DVEM,Y,100.0,N,DVEM
+DWM,WisdomTree International Equity Fund,WisdomTree International Equity Fund,P,DWM,Y,100.0,N,DWM
+DXJ,WisdomTree Japan Hedged Equity Fund,WisdomTree Japan Hedged Equity Fund,P,DXJ,Y,100.0,N,DXJ
+DXJC,WisdomTree Japan Hedged Capital Goods Fund,WisdomTree Japan Hedged Capital Goods Fund,P,DXJC,Y,100.0,N,DXJC
+DXJF,WisdomTree Japan Hedged Financials Fund,WisdomTree Japan Hedged Financials Fund,P,DXJF,Y,100.0,N,DXJF
+DXJH,WisdomTree Japan Hedged Health Care Fund,WisdomTree Japan Hedged Health Care Fund,P,DXJH,Y,100.0,N,DXJH
+DXJR,WisdomTree Japan Hedged Real Estate Fund,WisdomTree Japan Hedged Real Estate Fund,P,DXJR,Y,100.0,N,DXJR
+DXUS,WisdomTree Global ex,WisdomTree Global ex-U.S. Hedged Dividend Fund,P,DXUS,Y,100.0,N,DXUS
+DYB,WisdomTree Dynamic Bearish U.S. Equity Fund,WisdomTree Dynamic Bearish U.S. Equity Fund,Z,DYB,Y,100.0,N,DYB
+DYLS,WisdomTree Dynamic Long/Short U.S. Equity Fund,WisdomTree Dynamic Long/Short U.S. Equity Fund,Z,DYLS,Y,100.0,N,DYLS
+EDOM,WisdomTree Europe Domestic Economy Fund,WisdomTree Europe Domestic Economy Fund,Z,EDOM,Y,100.0,N,EDOM
+EES,WisdomTree SmallCap Earnings Fund,WisdomTree SmallCap Earnings Fund,P,EES,Y,100.0,N,EES
+ELD,WisdomTree Emerging Markets Local Debt Fund,WisdomTree Emerging Markets Local Debt Fund,P,ELD,Y,100.0,N,ELD
+EMSD,WisdomTree Strong Dollar Emerging Markets Equity Fund,WisdomTree Strong Dollar Emerging Markets Equity Fund,Z,EMSD,Y,100.0,N,EMSD
+EPI,WisdomTree India Earnings Fund,WisdomTree India Earnings Fund,P,EPI,Y,100.0,N,EPI
+EPS,WisdomTree Earnings 500 Fund,WisdomTree Earnings 500 Fund,P,EPS,Y,100.0,N,EPS
+EUDG,WisdomTree Europe Quality Dividend Growth Fund,WisdomTree Europe Quality Dividend Growth Fund,P,EUDG,Y,100.0,N,EUDG
+EUSC,WisdomTree Europe Hedged SmallCap Equity Fund,WisdomTree Europe Hedged SmallCap Equity Fund,P,EUSC,Y,100.0,N,EUSC
+EXT,WisdomTree Total Earnings Fund,WisdomTree Total Earnings Fund,P,EXT,Y,100.0,N,EXT
+EZM,WisdomTree MidCap Earnings Fund,WisdomTree MidCap Earnings Fund,P,EZM,Y,100.0,N,EZM
+EZY,WisdomTree Low P/E Fund,WisdomTree Low P/E Fund,P,EZY,Y,100.0,N,EZY
+GCC,WisdomTree Continuous Commodity Index Fund,WisdomTree Continuous Commodity Index Fund,P,GCC,Y,100.0,N,GCC
+GSD,WisdomTree Global SmallCap Dividend Fund,WisdomTree Global SmallCap Dividend Fund,Z,GSD,Y,100.0,N,GSD
+HDRW,WisdomTree Global ex,WisdomTree Global ex-U.S. Hedged Real Estate Fund,Z,HDRW,Y,100.0,N,HDRW
+HEDJ,WisdomTree Europe Hedged Equity Fund,WisdomTree Europe Hedged Equity Fund,P,HEDJ,Y,100.0,N,HEDJ
+HGSD,WisdomTree Global Hedged SmallCap Dividend Fund,WisdomTree Global Hedged SmallCap Dividend Fund,Z,HGSD,Y,100.0,N,HGSD
+IHDG,WisdomTree International Hedged Quality Dividend Growth Fund,WisdomTree International Hedged Quality Dividend Growth Fund,P,IHDG,Y,100.0,N,IHDG
+IQDG,WisdomTree International Quality Dividend Growth Fund,WisdomTree International Quality Dividend Growth Fund,Z,IQDG,Y,100.0,N,IQDG
+JHDG,WisdomTree Japan Hedged Quality Dividend Growth Fund,WisdomTree Japan Hedged Quality Dividend Growth Fund,P,JHDG,Y,100.0,N,JHDG
+PUTW,WisdomTree CBOE S&P 500 PutWrite Strategy Fund,WisdomTree CBOE S&P 500 PutWrite Strategy Fund,P,PUTW,Y,100.0,N,PUTW
+RRF,WisdomTree Global Real Return Fund,WisdomTree Global Real Return Fund,P,RRF,Y,100.0,N,RRF
+USDU,WisdomTree Bloomberg U.S. Dollar Bullish Fund,WisdomTree Bloomberg U.S. Dollar Bullish Fund,P,USDU,Y,100.0,N,USDU
+USFR,WisdomTree Bloomberg Floating Rate Treasury Fund,WisdomTree Bloomberg Floating Rate Treasury Fund,P,USFR,Y,100.0,N,USFR
+WDTI,WisdomTree Managed Futures Strategy Fund,WisdomTree Managed Futures Strategy Fund,P,WDTI,Y,100.0,N,WDTI
+WEXP,WisdomTree U.S. Export and Multinational Fund,WisdomTree U.S. Export and Multinational Fund,P,WEXP,Y,100.0,N,WEXP
+WUSA,WisdomTree U.S. Domestic Economy Fund,WisdomTree U.S. Domestic Economy Fund,P,WUSA,Y,100.0,N,WUSA
+XMX,WisdomTree Global ex,WisdomTree Global ex-Mexico Equity Fund,P,XMX,Y,100.0,N,XMX
+XSOE,WisdomTree Emerging Markets Ex,WisdomTree Emerging Markets Ex-State Owned Enterprises Fund,P,XSOE,Y,100.0,N,XSOE
+CGW,Guggenheim S&P Global Water,Guggenheim S&P Global Water,P,CGW,Y,100.0,N,CGW
+FXA,Guggenheim CurrencyShares Australian Dollar Trust,Guggenheim CurrencyShares Australian Dollar Trust,P,FXA,Y,100.0,N,FXA
+FXB,Guggenheim CurrencyShares British Pound Sterling Trust,Guggenheim CurrencyShares British Pound Sterling Trust,P,FXB,Y,100.0,N,FXB
+FXC,Guggenheim CurrencyShares Canadian Dollar Trust,Guggenheim CurrencyShares Canadian Dollar Trust,P,FXC,Y,100.0,N,FXC
+FXCH,Guggenheim CurrencyShares Chinese Renminbi Trust,Guggenheim CurrencyShares Chinese Renminbi Trust,P,FXCH,Y,100.0,N,FXCH
+FXE,Guggenheim CurrencyShares Euro Currency Trust,Guggenheim CurrencyShares Euro Currency Trust,P,FXE,Y,100.0,N,FXE
+FXF,Guggenheim CurrencyShares Swiss Franc Trust,Guggenheim CurrencyShares Swiss Franc Trust,P,FXF,Y,100.0,N,FXF
+FXS,Guggenheim CurrencyShares Swedish Krona Trust,Guggenheim CurrencyShares Swedish Krona Trust,P,FXS,Y,100.0,N,FXS
+FXY,Guggenheim CurrencyShares Japanese Yen Trust,Guggenheim CurrencyShares Japanese Yen Trust,P,FXY,Y,100.0,N,FXY
+GBAB,Guggenheim Taxable Municipal Managed Duration Trust Common Shares of Beneficial Interest,Guggenheim Taxable Municipal Managed Duration Trust Common Shares of Beneficial Interest,N,GBAB,N,100.0,N,GBAB
+GGM,Guggenheim Credit Allocation Fund Common Shares of Beneficial Interest,Guggenheim Credit Allocation Fund Common Shares of Beneficial Interest,N,GGM,N,100.0,N,GGM
+GOF,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,N,GOF,N,100.0,N,GOF
+GPM,Guggenheim Enhanced Equity Income Fund,Guggenheim Enhanced Equity Income Fund,N,GPM,N,100.0,N,GPM
+RYJ,Guggenheim Raymond James SB,Guggenheim Raymond James SB-1 Equity Fund,P,RYJ,Y,100.0,N,RYJ

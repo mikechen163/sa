@@ -1174,7 +1174,31 @@ def get_stockinfo_data_from_sina(code)
     p html_response
  end
 
-  def get_list_data_from_sina(codelist)
+ def normalize_name(s,def_len)
+
+  ind = 0
+  real_len = 0
+  while ind < s.size
+    if s[ind].bytesize == 3
+      real_len += 2
+    else 
+      if s[ind].bytesize == 1
+        real_len += 1
+      end
+    end
+
+
+    return s[0..ind] if real_len >= def_len
+    ind += 1
+
+  end
+
+  return s + ' '*(def_len - real_len)
+            
+
+ end
+
+  def get_list_data_from_sina(codelist,etf_flag=false)
 
   sl = ""
 
@@ -1256,34 +1280,36 @@ def get_stockinfo_data_from_sina(code)
              h[:name] =  nz
 
           when 's' # sh or sz
-            if nz.length == 3
-              nz= nz + "  " 
-            else
-              if nz.length == 5
-                nz= nz + " " 
-              end
-            end
+            # if nz.length == 3
+            #   nz= nz + "  " 
+            # else
+            #   if nz.length == 5
+            #     nz= nz + " " 
+            #   end
+            # end
 
-            h[:name] =  nz
-            if (nz[0] == 'N') 
-              h[:name] =  nz + ' '
-            end 
+            # h[:name] =  nz
+            # if (nz[0] == 'N') 
+            #   h[:name] =  nz + ' '
+            # end 
 
-            if (nz[0] == 'S') and (nz[1] != 'T') 
-              h[:name] =  nz + ' '
-            end 
+            # if (nz[0] == 'S') and (nz[1] != 'T') 
+            #   h[:name] =  nz + ' '
+            # end 
 
-             if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length>3)
-              h[:name] =  nz[0..4]
-            end 
+            #  if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length>3)
+            #   h[:name] =  nz[0..4]
+            # end 
 
-            if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length == 3)
-              h[:name] =  nz + '   '
-            end 
+            # if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length == 3)
+            #   h[:name] =  nz + '   '
+            # end 
 
-             if (nz[0] == 'S') and (nz[1] == 'T')
-              h[:name] =  nz + '  '
-            end 
+            #  if (nz[0] == 'S') and (nz[1] == 'T')
+            #   h[:name] =  nz + '  '
+            # end 
+
+             h[:name] = normalize_name(h[:name],8)
 
 
             h[:open] = sa[1].to_f
@@ -1310,22 +1336,13 @@ def get_stockinfo_data_from_sina(code)
 
             tl = ts[0].length
             len = h[:name].length
-            alen = h[:name].match(/[a-zA-Z0-9\-\s\.]+/).to_s.length
-            if len == alen
-              if len >= 12
-                h[:name] = h[:name][0..11] 
-              else
-                h[:name] = h[:name] + ' '*(12 - len)
-              end
-            else
-              hzlen = len - alen
-              real_len = hzlen*2+alen
-              if real_len >= 12
-                h[:name] = h[:name][0..5]
-              else
-                 h[:name] = h[:name] + ' '*(12 - real_len)
-              end
-            end
+            #if etf_flag
+                #puts h[:name]
+            #else
+             default_len = 14 
+             default_len = 30 if etf_flag
+
+            h[:name] = normalize_name(h[:name],default_len)
            
             h[:close] = sa[1].to_f 
             h[:ratio] = sa[2].to_f
@@ -1337,11 +1354,14 @@ def get_stockinfo_data_from_sina(code)
             h[:week52_low] = sa[9].to_f
 
             h[:volume] = sa[10].to_f
-            next if  h[:volume] == 0.0
+            next if  (h[:volume] == 0.0) and (not etf_flag)
             h[:amount] =  h[:volume] * h[:close]
             h[:volume_10days] = sa[11].to_f
             h[:total_mv] = sa[12].to_f
-            next if  h[:total_mv] < 1000000000
+            h[:total_stock_number] = sa[19].to_f
+
+            h[:total_mv] =h[:total_stock_number] *  h[:close] 
+            next if  (h[:total_mv] < 100000000) and (not etf_flag)
 
             h[:eps] = sa[13].to_f
             h[:pe] = sa[14].to_f
@@ -1361,26 +1381,27 @@ def get_stockinfo_data_from_sina(code)
             #p sa
             h[:name] = sa[1].encode('utf-8','gbk')
 
-            name = h[:name]
-             if (name[0] >= 'A') and (name[0] <= 'Z')
-                if name.length<8 
-                  name += ' '*(8 - name.length)
-                else
-                  name = name[0..7]
-                end
-             else
-              if name.length>=4
-                name = name[0..3]
-              else
-                len = name.length
-                if (name[len-1] >= 'A') and (name[len-1] <= 'Z')
-                  name += ' '*((4-name.length)*2 + 1)
-                else
-                  name += ' '*(4-name.length)*2
-                end
-              end 
-             end
-             h[:name] = name
+            # name = h[:name]
+            #  if (name[0] >= 'A') and (name[0] <= 'Z')
+            #     if name.length<8 
+            #       name += ' '*(8 - name.length)
+            #     else
+            #       name = name[0..7]
+            #     end
+            #  else
+            #   if name.length>=4
+            #     name = name[0..3]
+            #   else
+            #     len = name.length
+            #     if (name[len-1] >= 'A') and (name[len-1] <= 'Z')
+            #       name += ' '*((4-name.length)*2 + 1)
+            #     else
+            #       name += ' '*(4-name.length)*2
+            #     end
+            #   end 
+            #  end
+            #  h[:name] = name
+             h[:name] = normalize_name(h[:name],12)
 
 
 
@@ -1468,7 +1489,7 @@ def get_stockinfo_data_from_sina(code)
     return cl
 end
 
-def get_all_stock_price_from_sina(cl)
+def get_all_stock_price_from_sina(cl,etf_flag=false)
    
   batch_num = 300
   #cl = Names.get_code_list
@@ -1479,7 +1500,7 @@ def get_all_stock_price_from_sina(cl)
   while (step < len)
      a_end = step+batch_num-1
      a_end = len-1 if a_end > len 
-     tl = get_list_data_from_sina(cl[step..a_end])
+     tl = get_list_data_from_sina(cl[step..a_end],etf_flag)
      all += tl
      step += batch_num
   end
@@ -1518,6 +1539,19 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
        puts "total #{cl.length} stocks"
        t1= Time.now
        all = get_all_stock_price_from_sina(cl)
+       #all.each {|x| puts x.to_s;puts}
+     when :us_etf
+       cl = []
+       File.open('us_etf.txt') do |file|
+            file.each_line do |line|
+              na = line.split(',')
+              code = "gb_"+na[0].strip.downcase
+              cl.push(code) 
+            end
+       end
+       puts "total #{cl.length} stocks"
+       t1= Time.now
+       all = get_all_stock_price_from_sina(cl,true)
        #all.each {|x| puts x.to_s;puts}
     else
       puts "unknown market #{market.to_s}"
@@ -1675,7 +1709,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
          if (h[:amount] > 100000000)
            cje = "#{((h[:amount]/1000000.0).to_i/100.0)}亿元"
          end
-         puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])}, 换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{((h[:volume]/100.0).to_i/100.0)}万股, 成交额=#{cje}, 市值=#{format_price(h[:total_mv])}亿 " 
+         puts "#{h[:name]}[#{h[:code]}] #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])}, 换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{((h[:volume]/100.0).to_i/100.0)}万股, 成交额=#{cje}, 市值=#{format_price(h[:total_mv])}亿 " 
       end
 
     when :us 
@@ -1688,15 +1722,30 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
        
          code = h[:code][3..(h[:code].length-1)].upcase
          code = code + ' '*(5-code.size)
-         puts "#{h[:name]}(#{code}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])} ,换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{cje} 市值=#{format_price(h[:total_mv]/100000000)}亿 " 
+         puts "#{h[:name]}[#{code}] #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])} ,换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{cje} 市值=#{format_price(h[:total_mv]/100000000)}亿 " 
+      end
+
+       when :us_etf 
+        all[0..topN].each do |h|
+
+          cje = "#{((h[:amount]/100.0).to_i/100.0)}万元"
+         if (h[:amount] > 100000000)
+           cje = "#{((h[:amount]/1000000.0).to_i/100.0)}亿元"
+         end 
+       
+         code = h[:code][3..(h[:code].length-1)].upcase
+         code = code + ' '*(4-code.size)
+         puts "#{h[:name]}[#{code}] #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])} ,换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{cje}" 
       end
 
     else
       puts "unknown market #{market.to_s}"
   end
 
-
-  ave_ratio = (all[0..topN].collect{|h| h[:ratio]}.inject(:+)/topN*100).to_i/100.0
+  ave_ratio = 0.0 
+  if all.length > 0 
+    ave_ratio = (all[0..topN].collect{|h| h[:ratio]}.inject(:+)/topN*100).to_i/100.0
+  end
   puts "总共#{topN}支股票 平均涨幅 = #{ave_ratio}% on #{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
 
 

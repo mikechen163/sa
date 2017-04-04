@@ -1,4 +1,4 @@
- File.open('us_name.txt') do |file|
+ File.open('us_etf.txt') do |file|
             file.each_line do |line|
                 ws = line.split(',')
               # if not ws[0].index('$')

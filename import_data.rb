@@ -625,6 +625,15 @@ if ARGV.length != 0
       exit
    end  
 
+    if ele == '-ppp5'
+      topN = ARGV[ARGV.index(ele)+1].to_i
+      sortby = ARGV[ARGV.index(ele)+2].to_i
+      given_ratio = ARGV[ARGV.index(ele)+3].to_i
+      given_ratio = 3 if 0 == given_ratio 
+      get_topN_from_sina(topN,sortby,given_ratio,:us_etf)
+      exit
+   end  
+
    #  if ele == '-ppp3'
    #    #a_start = ARGV.index(ele)+1
    #    #a_end   = ARGV.length-1
@@ -634,7 +643,7 @@ if ARGV.length != 0
    #    exit
    # end
 
-    if ele == '-ppp5'
+    if ele == '-ppp6'
       code = ARGV.index(ele)+1
       ta=get_history_data_from_nasdaq(code)
       exit
