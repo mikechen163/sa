@@ -1309,7 +1309,23 @@ def get_stockinfo_data_from_sina(code)
           when 'g' #gb_ us
 
             tl = ts[0].length
-            #h[:code] = ts[0][3..tl-1]
+            len = h[:name].length
+            alen = h[:name].match(/[a-zA-Z0-9\-\s\.]+/).to_s.length
+            if len == alen
+              if len >= 12
+                h[:name] = h[:name][0..11] 
+              else
+                h[:name] = h[:name] + ' '*(12 - len)
+              end
+            else
+              hzlen = len - alen
+              real_len = hzlen*2+alen
+              if real_len >= 12
+                h[:name] = h[:name][0..5]
+              else
+                 h[:name] = h[:name] + ' '*(12 - real_len)
+              end
+            end
            
             h[:close] = sa[1].to_f 
             h[:ratio] = sa[2].to_f
@@ -1321,8 +1337,12 @@ def get_stockinfo_data_from_sina(code)
             h[:week52_low] = sa[9].to_f
 
             h[:volume] = sa[10].to_f
+            next if  h[:volume] == 0.0
+            h[:amount] =  h[:volume] * h[:close]
             h[:volume_10days] = sa[11].to_f
             h[:total_mv] = sa[12].to_f
+            next if  h[:total_mv] < 1000000000
+
             h[:eps] = sa[13].to_f
             h[:pe] = sa[14].to_f
             h[:beta] = sa[16].to_f
@@ -1332,6 +1352,8 @@ def get_stockinfo_data_from_sina(code)
             if h[:total_stock_number] > 0.0
               h[:trade_ratio] = ((h[:volume]/h[:total_stock_number])*10000).to_i/100.0
             end
+
+            #next if h[:trade_ratio] = 0.0
            
           when 'h' #hk
 
@@ -1485,6 +1507,18 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
        t1= Time.now
        all = get_all_stock_price_from_sina(cl)
     when :us
+       cl = []
+       File.open('us_name.txt') do |file|
+            file.each_line do |line|
+              na = line.split(',')
+              code = "gb_"+na[0].strip.downcase
+              cl.push(code) 
+            end
+       end
+       puts "total #{cl.length} stocks"
+       t1= Time.now
+       all = get_all_stock_price_from_sina(cl)
+       #all.each {|x| puts x.to_s;puts}
     else
       puts "unknown market #{market.to_s}"
   end
@@ -1646,8 +1680,15 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
 
     when :us 
         all[0..topN].each do |h|
-         #p h
-         puts "#{h[:name]}(#{h[:code]}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])},换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{format_price((h[:amount]/100).to_i/100.0)}亿元 市值=#{format_price(h[:total_mv])}亿 " 
+
+          cje = "#{((h[:amount]/100.0).to_i/100.0)}万元"
+         if (h[:amount] > 100000000)
+           cje = "#{((h[:amount]/1000000.0).to_i/100.0)}亿元"
+         end 
+       
+         code = h[:code][3..(h[:code].length-1)].upcase
+         code = code + ' '*(5-code.size)
+         puts "#{h[:name]}(#{code}) #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])} ,换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{format_big_num(h[:volume].to_i)}股, 成交额=#{cje} 市值=#{format_price(h[:total_mv]/100000000)}亿 " 
       end
 
     else
