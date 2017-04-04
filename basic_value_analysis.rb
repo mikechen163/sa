@@ -182,6 +182,7 @@ def evalate_equity(code,years=10)
   puts
   puts "#{format_code(code)} 年报 [#{rvn[0][1]}]"
   puts "过去3年平均净资产回报率 =#{(ave_roe*100).to_i/100.0}% #{roe_list.to_s}"
+  #years = 3
   income_inc_ratio = calc_fh_inc(years,income_list[years].split(',').inject(:+).to_f,income_list[1].split(',').inject(:+).to_f)
   revenue_inc_ratio = calc_fh_inc(years,rvn_list[years].split(',').inject(:+).to_f,rvn_list[1].split(',').inject(:+).to_f)
   net_asset_inc_ratio = calc_fh_inc(years,as_list[years].split(',').inject(:+).to_f,as_list[1].split(',').inject(:+).to_f)
