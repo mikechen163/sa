@@ -1709,7 +1709,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
          if (h[:amount] > 100000000)
            cje = "#{((h[:amount]/1000000.0).to_i/100.0)}亿元"
          end
-         puts "#{h[:name]}[#{h[:code]}] #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])}, 换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{((h[:volume]/100.0).to_i/100.0)}万股, 成交额=#{cje}, 市值=#{format_price(h[:total_mv])}亿 " 
+         puts "#{h[:name]}[#{h[:code][2..6]}] #{format_price(h[:close])}, 涨幅=#{format_roe(h[:ratio])}, 换手率=#{format_roe(h[:trade_ratio])}, 成交量=#{((h[:volume]/100.0).to_i/100.0)}万股, 成交额=#{cje}, 市值=#{format_price(h[:total_mv])}亿 " 
       end
 
     when :us 
