@@ -348,14 +348,14 @@ class Stock_Basic_Info < ActiveRecord::Base
   def self.get_stock_free_number(code)
     rec = self.where( code: "#{code}").first
     return rec['total_free_number'] if rec
-    return nil    
+    return 0.0    
    
   end
 
    def self.get_stock_total_number(code)
     rec = self.where( code: "#{code}").first
     return rec['total_stock_number'] if rec
-    return nil    
+    return 0.0
    
   end
 

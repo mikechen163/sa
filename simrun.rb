@@ -757,8 +757,9 @@ def find_by_ma(day1,day2,sort_method,etf_flag=false)
              h[:pri_price]=r2['close']
              h[:next_roe]=0.0
              h[:next_price]=0.0
-             h[:today_roe]=0.0
+             h[:today_roe]=0.0 
 
+             
              h[:total_mv] = Stock_Basic_Info.get_stock_total_number(h[:code]) * rec['close']
              h[:total_free_mv] = Stock_Basic_Info.get_stock_free_number(h[:code]) * rec['close']
 

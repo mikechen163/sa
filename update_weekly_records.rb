@@ -1753,6 +1753,12 @@ def update_till_lastest(dir)
       last_date = Date.parse(last_d)
 
       start_date = (last_date +1).to_s
+      
+      end_date = Time.now.to_date
+      end_date = end_date -1  if end_date.is_saturday?
+      end_date = end_date -2  if end_date.is_sunday?
+      next if (last_date +1) > end_date 
+
       end_date = Time.now.to_date.to_s
 
        code2 = code
@@ -1821,7 +1827,7 @@ def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
 
         pref = 'SZ'
         pref = 'SH' if code[0] == '6'
-        
+
 
       if not File.exist?("#{dir}\/#{pref}#{code}.txt")
            t = Time.now
