@@ -1755,8 +1755,8 @@ def update_till_lastest(dir)
       start_date = (last_date +1).to_s
       
       end_date = Time.now.to_date
-      end_date = end_date -1  if end_date.is_saturday?
-      end_date = end_date -2  if end_date.is_sunday?
+      end_date = end_date -1  if end_date.saturday?
+      end_date = end_date -2  if end_date.sunday?
       next if (last_date +1) > end_date 
 
       end_date = Time.now.to_date.to_s
