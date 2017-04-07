@@ -2016,9 +2016,17 @@ end
   uri="http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_FuQuanMarketHistory/stockid/#{code.to_s}.phtml?year=#{day.year}&jidu=#{(day.month+2)/3}"
    
     html_response = nil  
-    open(uri) do |http|  
-      html_response = http.read  
-    end  
+
+  
+    if $proxy == nil
+      open(uri) do |http|  
+        html_response = http.read  
+      end  
+    else
+      open(uri, proxy: $proxy) do |http|  
+        html_response = http.read  
+      end
+    end
 
 #    p html_response
     sa= html_response.split('http://vip.stock.finance.sina.com.cn/quotes_service/view/vMS_tradehistory.php?symbol')  
@@ -2031,10 +2039,16 @@ end
   # uri='http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/600036.phtml?year=2015&jidu=1'
   uri="http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/#{code.to_s}.phtml?year=#{day.year}&jidu=#{(day.month+2)/3}"
    
-    html_response = nil  
-    open(uri) do |http|  
-      html_response = http.read  
-    end  
+     if $proxy == nil
+      open(uri) do |http|  
+        html_response = http.read  
+      end  
+    else
+      open(uri, proxy: $proxy) do |http|  
+        html_response = http.read  
+      end
+    end
+    
     sa= html_response.split('http://vip.stock.finance.sina.com.cn/quotes_service/view/vMS_tradehistory.php?symbol')  
 
     return sa

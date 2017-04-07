@@ -1772,12 +1772,12 @@ def update_till_lastest(dir)
           qf = get_fuquan_factor_from_sina(code2)
         rescue
           p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
-          begin
-            sa = get_h_data_from_sina(code2,start_date,end_date )
-            qf = get_fuquan_factor_from_sina(code2)
-          rescue
-          p "Network ERROR AGAIN when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
-          end
+          # begin
+          #   sa = get_h_data_from_sina(code2,start_date,end_date )
+          #   qf = get_fuquan_factor_from_sina(code2)
+          # rescue
+          # p "Network ERROR AGAIN when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
+          # end
         end
 
         len=sa.length
@@ -2224,6 +2224,8 @@ num = 100
 
 check_index_state(0)
 
+$proxy = nil
+
 if ARGV.length != 0
  
     ARGV.each do |ele|       
@@ -2465,6 +2467,10 @@ if ARGV.length != 0
       if ele == '-ud' 
        dir = ARGV[ARGV.index(ele)+1]
       update_till_lastest(dir)
+     end
+
+     if ele == '-proxy' 
+       $proxy = ARGV[ARGV.index(ele)+1]
      end
 
      if ele == '-sroe' 
