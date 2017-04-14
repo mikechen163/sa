@@ -9,6 +9,27 @@ end
 def check_growth_stock_list(vl)
 end
 
+def check_track_list(fname)
+   all = []
+  puts "检查跟踪股列表。。。"
+   File.open(fname) do |file|       
+        file.each_line do |line|
+          code = line.strip
+          #puts "#{format_code(code)}"
+          #show_roe_list(code,1)
+          h = evalate_equity(code)
+          all.push(h)
+        end
+    end
+
+   all.sort_by!{|h| h[:real_roe]}
+   all.reverse!
+   puts
+   all.each do |h|
+     puts "#{format_code(h[:code])} [#{h[:year]}] pb = #{h[:pb]}, pe = #{h[:pe]}, 净资产回报率 = #{(h[:ave_roe]*100).to_i/100.0}% 预期回报率=#{h[:real_roe]}%, 10年期回报率=#{h[:ten_year_roe]}%"
+   end
+end
+
 def check_stock_list()
 
   all = []
@@ -29,6 +50,8 @@ def check_stock_list()
    all.each do |h|
      puts "#{format_code(h[:code])} [#{h[:year]}] pb = #{h[:pb]}, pe = #{h[:pe]}, 净资产回报率 = #{(h[:ave_roe]*100).to_i/100.0}% 预期回报率=#{h[:real_roe]}%, 10年期回报率=#{h[:ten_year_roe]}%"
    end
+
+
    
     all = []
    puts
@@ -48,6 +71,8 @@ def check_stock_list()
    all.each do |h|
      puts "#{format_code(h[:code])} [#{h[:year]}] pb =#{format_price(h[:pb],2)}, pe =#{format_price(h[:pe])} 利润增长率 =#{format_roe(h[:revenue_inc_ratio])} peg=#{(h[:peg]*100).to_i/100.0} 收入增长率=#{h[:income_inc_ratio]}% 净资产增长率=#{h[:net_asset_inc_ratio]}%"
    end
+
+
 end
 
 def scan_for_chance
@@ -88,13 +113,25 @@ def show_globl_index
     'int_nasdaq',
     'int_dji',
     'int_hangseng',
-     'int_nikkei',
+    'int_nikkei',
     'int_ftse',
-    'gb_spy',
-    'gb_simo',
-    'gb_qiwi',
-    'hk02208',
-    'hk00700']
+    # 'gb_spy',
+    # 'gb_simo',
+    # 'gb_qiwi',
+    # 'hk02208',
+    # 'hk00700',
+    'b_DAX',
+    'b_UKX',
+    'b_CAC',
+    'b_NKY',
+    'b_TWSE',
+     'hf_GC',
+     'hf_SI',
+     'hf_CL',
+     'hf_CAD'
+    # 'EURUSD',
+    # 'USDCNH'
+  ]
   sa = get_list_data_from_sina(cl_list)
   
   sa.each do |h|

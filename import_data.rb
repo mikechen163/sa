@@ -490,7 +490,8 @@ def print_help
     puts "-loadfile filename tablename --- 装载文件到数据表"  
     puts
     puts "-sidx     --- 显示指数数据"   
-    puts "-sfc      --- 显示投资机会"    
+    puts "-sfc      --- 显示投资机会"  
+    puts "-stc filename   --- 显示指定文件的跟踪情况"    
       
 
     puts "-h            ---  This help"    
@@ -803,6 +804,13 @@ if ARGV.length != 0
 
    if ele == '-sfc'   
      scan_for_chance
+     exit
+    end 
+
+
+   if ele == '-stc'   
+     fname = ARGV[ARGV.index(ele)+1]
+     check_track_list(fname)
      exit
     end 
    

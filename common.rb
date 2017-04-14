@@ -1203,8 +1203,10 @@ def get_stockinfo_data_from_sina(code)
   sl = ""
 
   codelist.each do |code|
-    pref = "sh"
-    pref = "sz" if (code[0]!='6')   
+
+    pref = ""
+    pref = "sh" if (code[0]=='6') 
+    pref = "sz" if (code[0]=='0') || (code[0]=='3')    
 
     #hk02208  gb_bidu
     pref = "" if (code[0]=='h') or (code[0]=='g') or (code[0]=='s') or (code[0]=='i') 
@@ -1262,6 +1264,13 @@ def get_stockinfo_data_from_sina(code)
 
         #p ts[0]
         case ts[0][0]
+          when 'b'
+            #puts sa.to_s
+            #p h[:name]
+            h[:close] = sa[1].to_f 
+            h[:change_value] = sa[2].to_f 
+            h[:ratio] = sa[3].to_f 
+             h[:name] =  normalize_name(h[:name],14)
           when 'i'
             #p h[:name] 
             tl = ts[0].length
@@ -1270,14 +1279,8 @@ def get_stockinfo_data_from_sina(code)
             h[:change_value] = sa[2].to_f 
             h[:ratio] = sa[3].to_f 
 
-            if nz.length == 3
-              nz= nz + "  " 
-            else
-              if nz.length == 5
-                nz= nz + " " 
-              end
-            end
-             h[:name] =  nz
+      
+            h[:name] =  normalize_name(h[:name],14)
 
           when 's' # sh or sz
             # if nz.length == 3
@@ -1377,67 +1380,67 @@ def get_stockinfo_data_from_sina(code)
            
           when 'h' #hk
 
-            next if  sa[6].to_f < 1
-            #p sa
-            h[:name] = sa[1].encode('utf-8','gbk')
+            if ts[0][1] == 'k'
 
-            # name = h[:name]
-            #  if (name[0] >= 'A') and (name[0] <= 'Z')
-            #     if name.length<8 
-            #       name += ' '*(8 - name.length)
-            #     else
-            #       name = name[0..7]
-            #     end
-            #  else
-            #   if name.length>=4
-            #     name = name[0..3]
-            #   else
-            #     len = name.length
-            #     if (name[len-1] >= 'A') and (name[len-1] <= 'Z')
-            #       name += ' '*((4-name.length)*2 + 1)
-            #     else
-            #       name += ' '*(4-name.length)*2
-            #     end
-            #   end 
-            #  end
-            #  h[:name] = name
-             h[:name] = normalize_name(h[:name],12)
+              next if  sa[6].to_f < 1
+              #p sa
+              h[:name] = sa[1].encode('utf-8','gbk')
+
+            
+              h[:name] = normalize_name(h[:name],12)
 
 
 
-            tl = ts[0].length
-            #h[:code] = ts[0][2..tl-1]
+              tl = ts[0].length
+              #h[:code] = ts[0][2..tl-1]
 
-            h[:open] = sa[2].to_f
-            h[:last_close] = sa[3].to_f
-            h[:high] = sa[4].to_f 
-            h[:low]   = sa[5].to_f
-            h[:close] = sa[6].to_f 
-            h[:change_value] = sa[7].to_f
-            h[:ratio] = sa[8].to_f
-            h[:buy1] = sa[9].to_f
-            h[:sell1] = sa[10].to_f
-            h[:amount] = sa[11].to_f
-            h[:volume] = sa[12].to_f
-            h[:pe] = sa[13].to_f
-            h[:week_interest_ratio] = sa[14].to_f
-            h[:week52_high] = sa[15].to_f
-            h[:week52_low] = sa[16].to_f
-            h[:date] = sa[17]
-            h[:time] = sa[18]
+              h[:open] = sa[2].to_f
+              h[:last_close] = sa[3].to_f
+              h[:high] = sa[4].to_f 
+              h[:low]   = sa[5].to_f
+              h[:close] = sa[6].to_f 
+              h[:change_value] = sa[7].to_f
+              h[:ratio] = sa[8].to_f
+              h[:buy1] = sa[9].to_f
+              h[:sell1] = sa[10].to_f
+              h[:amount] = sa[11].to_f
+              h[:volume] = sa[12].to_f
+              h[:pe] = sa[13].to_f
+              h[:week_interest_ratio] = sa[14].to_f
+              h[:week52_high] = sa[15].to_f
+              h[:week52_low] = sa[16].to_f
+              h[:date] = sa[17]
+              h[:time] = sa[18]
 
-            #h[:trade_ratio] = 0.0
-            free_number = Stock_Basic_Info.get_stock_free_number(h[:code][2..6])
-             free_number = 0.0 if free_number == nil
-             h[:total_mv] = (h[:close]*free_number/1000000).to_i/100.0
+              #h[:trade_ratio] = 0.0
+              free_number = Stock_Basic_Info.get_stock_free_number(h[:code][2..6])
+               free_number = 0.0 if free_number == nil
+               h[:total_mv] = (h[:close]*free_number/1000000).to_i/100.0
 
-             if free_number > 0.0
-               h[:trade_ratio] = ((h[:volume]/free_number)*10000).to_i/100.0
-             else
-                h[:trade_ratio] = 0.0
+               if free_number > 0.0
+                 h[:trade_ratio] = ((h[:volume]/free_number)*10000).to_i/100.0
+               else
+                  h[:trade_ratio] = 0.0
+               end
+
+               next if  h[:total_mv] < 10
+           else
+             if ts[0][1] == 'f'
+               #p sa.to_s
+               len = sa.length
+               #p 
+               ts = sa[len-1].encode('utf-8','gbk')
+               ind = ts.index('"')
+               h[:name] = ts[0..(ind-1)]
+               h[:name] =  normalize_name(h[:name],14)
+               ind = sa[0].index('"')
+
+               h[:close] = sa[0][(ind+1)..(sa[0].length-1)].to_f
+               h[:ratio] = sa[1].to_f
+               #p h[:name]
              end
 
-             next if  h[:total_mv] < 10
+           end
 
           else
             puts "unknown code = #{ts[0]}"
