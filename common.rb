@@ -1701,13 +1701,26 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
       #puts "OK"
     
     begin
-       #file.rewind
+       # #file.rewind
        line = file.readline
        #puts line
        sa = line.split(',')
        ind = sa.index('date')  
-       line = file.readline
-       sa = line.split(',')
+       # line = file.readline
+       # sa = line.split(',')
+       # date = sa[ind]
+       # 
+       file.seek(-200, IO::SEEK_END)
+       
+       last_line = nil
+
+       file.each_line do |line|
+             last_line = line
+             #puts line
+       end
+
+       #puts last_line
+       sa = last_line.split(',')
        date = sa[ind]
 
        #puts date
