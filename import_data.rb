@@ -638,33 +638,58 @@ if ARGV.length != 0
     if ele == '-ppp12'
        filename = ARGV[ARGV.index(ele)+1]
       
-       File.open(filename, "a") do |file|
+       begin
+       File.open(filename, "r+") do |file|
         get_topN_from_sina(10000,8,3,:china,file)
-      end
+       end
+       rescue
+         File.open(filename, "w") do |file|
+         get_topN_from_sina(10000,8,3,:china,file)
+        end
+       end
       exit
    end 
     if ele == '-ppp13'
        filename = ARGV[ARGV.index(ele)+1]
       
-       File.open(filename, "a") do |file|
+      begin
+       File.open(filename, "r+") do |file|
         get_topN_from_sina(10000,8,3,:hk,file)
+      end
+      rescue
+         File.open(filename, "w") do |file|
+        get_topN_from_sina(10000,8,3,:hk,file)
+      end
       end
       exit
    end 
    if ele == '-ppp14'
        filename = ARGV[ARGV.index(ele)+1]
       
-       File.open(filename, "a") do |file|
+       begin
+       File.open(filename, "r+") do |file|
         get_topN_from_sina(10000,8,3,:us,file)
       end
+    rescue
+       File.open(filename, "w") do |file|
+        get_topN_from_sina(10000,8,3,:us,file)
+      end
+    end
       exit
    end  
    if ele == '-ppp15'
        filename = ARGV[ARGV.index(ele)+1]
       
-       File.open(filename, "a") do |file|
+       begin
+       File.open(filename, "r+") do |file|
         get_topN_from_sina(10000,0,3,:us_etf,file)
       end
+    rescue
+       File.open(filename, "w") do |file|
+        get_topN_from_sina(10000,0,3,:us_etf,file)
+      end
+
+    end
       exit
    end   
 

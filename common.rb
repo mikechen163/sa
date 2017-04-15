@@ -1683,12 +1683,39 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
 
   topN = all.length - 1 if (all.length - 1)  < topN 
 
+  #return if all.length == 0
+  #puts "OK"
+
   if file != nil
-    file.puts
-    all[0].keys.each { |key| file.print "#{key},"}
+      #puts "OK"
+    
+    begin
+       #file.rewind
+       line = file.readline
+       #puts line
+       sa = line.split(',')
+       ind = sa.index('date')  
+       line = file.readline
+       sa = line.split(',')
+       date = sa[ind]
+
+       #puts date
+       #puts all[0][:date]
+       if date == all[0][:date]
+         puts "data already fetched for #{date}."
+         return
+       end
+
+        file.seek(0, IO::SEEK_END)
+    rescue
+      #file.puts
+      all[0].keys.each { |key| file.print "#{key},"}
+      file.puts
+    end
+    
 
     all.each do |h|
-      file.puts
+      #file.puts
       name = h.values[0]
       len = h.values.length 
       case name[0]
@@ -1701,6 +1728,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
       end
       file.print "#{name}"
       h.values[1..(len-1)].each {|v| file.print ",#{v}"} 
+      file.puts
     end
     return 
   end
