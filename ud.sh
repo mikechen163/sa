@@ -1,4 +1,4 @@
-/home/mike/do/work/sa
+cd /home/mike/do/work/sa
 ruby update_weekly_records.rb -ud data_0331
 rm db_backup.db
 mv db_daily.db db_backup.db
