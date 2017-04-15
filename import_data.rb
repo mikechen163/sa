@@ -606,7 +606,7 @@ if ARGV.length != 0
       get_topN_from_sina(topN,sortby,given_ratio)
       exit
    end  
-
+ 
 
     if ele == '-ppp3'
       topN = ARGV[ARGV.index(ele)+1].to_i
@@ -634,6 +634,39 @@ if ARGV.length != 0
       get_topN_from_sina(topN,sortby,given_ratio,:us_etf)
       exit
    end  
+
+    if ele == '-ppp12'
+       filename = ARGV[ARGV.index(ele)+1]
+      
+       File.open(filename, "a") do |file|
+        get_topN_from_sina(10000,8,3,:china,file)
+      end
+      exit
+   end 
+    if ele == '-ppp13'
+       filename = ARGV[ARGV.index(ele)+1]
+      
+       File.open(filename, "a") do |file|
+        get_topN_from_sina(10000,8,3,:hk,file)
+      end
+      exit
+   end 
+   if ele == '-ppp14'
+       filename = ARGV[ARGV.index(ele)+1]
+      
+       File.open(filename, "a") do |file|
+        get_topN_from_sina(10000,8,3,:us,file)
+      end
+      exit
+   end  
+   if ele == '-ppp15'
+       filename = ARGV[ARGV.index(ele)+1]
+      
+       File.open(filename, "a") do |file|
+        get_topN_from_sina(10000,0,3,:us_etf,file)
+      end
+      exit
+   end   
 
    #  if ele == '-ppp3'
    #    #a_start = ARGV.index(ele)+1

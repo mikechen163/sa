@@ -1292,35 +1292,7 @@ def get_stockinfo_data_from_sina(code)
             h[:name] =  normalize_name(h[:name],14)
 
           when 's' # sh or sz
-            # if nz.length == 3
-            #   nz= nz + "  " 
-            # else
-            #   if nz.length == 5
-            #     nz= nz + " " 
-            #   end
-            # end
-
-            # h[:name] =  nz
-            # if (nz[0] == 'N') 
-            #   h[:name] =  nz + ' '
-            # end 
-
-            # if (nz[0] == 'S') and (nz[1] != 'T') 
-            #   h[:name] =  nz + ' '
-            # end 
-
-            #  if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length>3)
-            #   h[:name] =  nz[0..4]
-            # end 
-
-            # if (nz[1] == ' ') and (nz[2] != ' ') and (nz.length == 3)
-            #   h[:name] =  nz + '   '
-            # end 
-
-            #  if (nz[0] == 'S') and (nz[1] == 'T')
-            #   h[:name] =  nz + '  '
-            # end 
-
+          
              h[:name] = normalize_name(h[:name],8)
 
 
@@ -1343,6 +1315,10 @@ def get_stockinfo_data_from_sina(code)
              end
             h[:ratio] = 0.0
             h[:ratio] = (h[:close]-h[:last_close])/h[:last_close]*100 if h[:last_close] >0
+            h[:ratio] = h[:ratio].round(2)
+            h[:date] = sa[sa.length-3]
+            h[:time] = sa[sa.length-2]
+
 
           when 'g' #gb_ us
 
@@ -1385,6 +1361,8 @@ def get_stockinfo_data_from_sina(code)
               h[:trade_ratio] = ((h[:volume]/h[:total_stock_number])*10000).to_i/100.0
             end
 
+            h[:date] = Time.parse(sa[sa.length-3]).to_date.to_s
+            h[:time] = Time.parse(sa[sa.length-3]).strftime("%H:%M:%S")
             #next if h[:trade_ratio] = 0.0
            
           when 'h' #hk
@@ -1418,8 +1396,8 @@ def get_stockinfo_data_from_sina(code)
               h[:week_interest_ratio] = sa[14].to_f
               h[:week52_high] = sa[15].to_f
               h[:week52_low] = sa[16].to_f
-              h[:date] = sa[17]
-              h[:time] = sa[18]
+              # h[:date] = sa[17]
+              # h[:time] = sa[18]
 
               #h[:trade_ratio] = 0.0
               free_number = Stock_Basic_Info.get_stock_free_number(h[:code][2..6])
@@ -1431,6 +1409,9 @@ def get_stockinfo_data_from_sina(code)
                else
                   h[:trade_ratio] = 0.0
                end
+
+                h[:date] = Time.parse(sa[17]).to_date.to_s
+              h[:time] = sa[18][0..4]
 
                next if  h[:total_mv] < 10
            else
@@ -1520,7 +1501,7 @@ def get_all_stock_price_from_sina(cl,etf_flag=false)
   return all
 end
 
-def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
+def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
 
   t1= Time.now
 
@@ -1702,6 +1683,28 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china)
 
   topN = all.length - 1 if (all.length - 1)  < topN 
 
+  if file != nil
+    file.puts
+    all[0].keys.each { |key| file.print "#{key},"}
+
+    all.each do |h|
+      file.puts
+      name = h.values[0]
+      len = h.values.length 
+      case name[0]
+        when 'g'
+          name = name[3..(name.length - 1 )].upcase
+        when 'h'  
+        else
+          name = 'sh' + name if name[0] == '6'
+          name = 'sz' + name if (name[0] == '0') or (name[0] == '3')
+      end
+      file.print "#{name}"
+      h.values[1..(len-1)].each {|v| file.print ",#{v}"} 
+    end
+    return 
+  end
+
   #puts "#{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
   case market 
     when :china
@@ -1811,7 +1814,7 @@ def get_h_data_from_sina_internal(code,d1,d2,qf)
      
 
         return [] if sa == nil
-        
+
        len=sa.length
        return [] if len==1
 

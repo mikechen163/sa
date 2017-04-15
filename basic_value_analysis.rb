@@ -115,11 +115,6 @@ def show_globl_index
     'int_hangseng',
     'int_nikkei',
     'int_ftse',
-    # 'gb_spy',
-    # 'gb_simo',
-    # 'gb_qiwi',
-    # 'hk02208',
-    # 'hk00700',
     'b_DAX',
     'b_UKX',
     'b_CAC',
@@ -132,7 +127,21 @@ def show_globl_index
      'DINIW',
      'EURUSD',
      'USDJPY',
-     'USDCNY'
+     'USDCNY',
+     'sh600519',
+     'sh600276',
+     'sz000333',
+     'sz000651',
+     'sz002415',
+    'gb_goog',
+    'gb_fb',
+    'gb_amzn',
+    'gb_aapl',
+    'gb_nvda',
+    'gb_tsla',
+    'gb_ntes',
+    'gb_tal',
+    'hk00700'
   ]
   sa = get_list_data_from_sina(cl_list)
   
