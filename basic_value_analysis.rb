@@ -128,16 +128,34 @@ def show_globl_index
      'hf_GC',
      'hf_SI',
      'hf_CL',
-     'hf_CAD'
-    # 'EURUSD',
-    # 'USDCNH'
+     'hf_CAD',
+     'DINIW',
+     'EURUSD',
+     'USDJPY',
+     'USDCNY'
   ]
   sa = get_list_data_from_sina(cl_list)
   
   sa.each do |h|
-    puts "#{h[:name]} 收盘价=#{h[:close]} 涨幅=#{(h[:ratio]*100).to_i/100.0}%"
+    puts "#{h[:name]} 收盘价=#{h[:close]} 涨幅=#{(h[:ratio]*10000).to_i/10000.0}%"
   end
 
+end
+
+def get_offset_roe(sa,day,close)
+
+  qf = sa[sa.length-1][7]
+  rec =  sa.find {|h| Time.parse(h[0]) > day }
+
+  if rec != nil
+
+    op = rec[3] / qf
+    #puts "#{op} on #{rec[0]}"
+    roe = (close - op) / op
+    return roe
+  end
+
+  return 0.0
 end
 
 def evalate_equity(code,years=10)
@@ -225,7 +243,19 @@ def evalate_equity(code,years=10)
   net_asset_inc_ratio = calc_fh_inc(years,as_list[years].split(',').inject(:+).to_f,as_list[1].split(',').inject(:+).to_f)
   puts "过去#{years}年收入复合增长率  =#{income_inc_ratio}% #{income_inc_list.to_s}"
   puts "过去#{years}年利润复合增长率  =#{revenue_inc_ratio}% #{revenue_inc_list.to_s}"
-  puts "过去#{years}年净资产复合增长率=#{net_asset_inc_ratio}% #{net_asset_inc_list.to_s}"
+  puts "过去#{years}净资产复合增长率=#{net_asset_inc_ratio}% #{net_asset_inc_list.to_s}"
+
+  today = Time.now.to_date 
+  sa = get_h_data_from_sina(code,(today - 365).to_s,today.to_s )
+
+  roe_3m = get_offset_roe(sa,today - 90, close_price)
+  roe_6m = get_offset_roe(sa,today - 180, close_price)
+  roe_12m = get_offset_roe(sa,today - 360, close_price)
+  puts "价格 #{close_price} 三个月涨幅 #{format_roe(roe_3m*100.round(2))}, 6个月涨幅 #{format_roe(roe_6m*100.round(2))}, 一年涨幅 #{format_roe(roe_12m*100.round(2))}"
+
+
+
+
 
   #puts "      过去#{years}年，收入复合增长率=#{income_inc_ratio}%,利润复合增长率=#{revenue_inc_ratio}%,\
   #净资产复合增长率=#{net_asset_inc_ratio}%, 净资产平均收益率=#{format_roe(ave_roe)}"

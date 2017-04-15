@@ -1780,7 +1780,9 @@ def update_till_lastest(dir)
           # end
         end
 
-        len=sa.length
+        len = 0 
+
+        len=sa.length if sa != nil
         p "#{code.to_s} #{start_date}:#{end_date} : #{len} records takes #{Time.now-t} secs at #{Time.now.strftime("%x %X")}"
         
         if len>0

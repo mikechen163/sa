@@ -1263,15 +1263,24 @@ def get_stockinfo_data_from_sina(code)
         h[:name] =  nz
 
         #p ts[0]
+        
+        case ts[0][0..2]
+          when 'EUR' , 'DIN','USD','JPY','CNY','GPB','AUD','CAD'
+               len = sa.length
+               #p 
+               ts = sa[len-2].encode('utf-8','gbk')
+            
+               h[:name] = ts
+               h[:name] =  normalize_name(h[:name],14)
+             
+
+               h[:close] = sa[1].to_f
+               h[:ratio] = (sa[1].to_f - sa[3].to_f) / sa[3].to_f
+        end
+
         case ts[0][0]
-          when 'b'
-            #puts sa.to_s
-            #p h[:name]
-            h[:close] = sa[1].to_f 
-            h[:change_value] = sa[2].to_f 
-            h[:ratio] = sa[3].to_f 
-             h[:name] =  normalize_name(h[:name],14)
-          when 'i'
+       
+          when 'i' , 'b'
             #p h[:name] 
             tl = ts[0].length
             h[:code] = ts[0][4..tl-1]
@@ -1443,7 +1452,7 @@ def get_stockinfo_data_from_sina(code)
            end
 
           else
-            puts "unknown code = #{ts[0]}"
+            #puts "unknown code = #{ts[0]}"
         end
 
         tta.push(h)
@@ -1798,7 +1807,11 @@ def get_h_data_from_sina_internal(code,d1,d2,qf)
     sa = get_history_data_from_sina(code,d1)
   else
     sa = get_history_data_from_sina_ori_fuquan(code,d1)
-  end
+  end 
+     
+
+        return [] if sa == nil
+        
        len=sa.length
        return [] if len==1
 
