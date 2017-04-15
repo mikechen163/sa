@@ -1507,7 +1507,18 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
 
   case market 
     when :china
-      all = get_all_stock_price_from_sina(Names.get_code_list)
+      #all = get_all_stock_price_from_sina(Names.get_code_list)
+       cl = []
+       File.open('name.txt') do |file|
+            file.each_line do |line|
+              na = line.split('|')
+              code = na[1].strip
+              cl.push(code) 
+            end
+       end
+       puts "total #{cl.length} stocks"
+       t1= Time.now
+       all = get_all_stock_price_from_sina(cl)
     when :hk
        cl = []
        File.open('hk_name.txt') do |file|
