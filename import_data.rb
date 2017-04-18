@@ -481,17 +481,21 @@ def print_help
     puts "-ppp2 TopN 18 ratio ---  show topN performace stock from sina, sorting by 流通市值 升序，涨幅大于ratio" 
     puts "-ppp2 TopN 19 ratio ---  show topN performace stock from sina, sorting by 换手率，涨幅大于ratio" 
 
-    puts "-ttp days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果"    
+    puts "-ttp  days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果"    
+    puts "-ttpq days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果,简单模式"    
+
 
     puts
-    puts "-sb  code --- 显示基本的股票股本数据" 
-    puts "-sball    --- 下载A股股权数据到数据库" 
-    puts "-sbhkall  --- 下载港股股权数据" 
-    puts "-loadfile filename tablename --- 装载文件到数据表"  
+    puts "-sb  [code]       --- 显示基本的股票股本数据" 
+    puts "-sball            --- 下载A股股权数据到数据库" 
+    puts "-sbhkall          --- 下载港股股权数据" 
+    puts "-loadfile [filename] [tablename] --- 装载文件到数据表"  
     puts
-    puts "-sidx     --- 显示指数数据"   
-    puts "-sfc      --- 显示投资机会"  
-    puts "-stc filename   --- 显示指定文件的跟踪情况"    
+    puts "-sidx             --- 显示指数数据"   
+    puts "-sfc              --- 显示投资机会"  
+    puts "-stc [filename]   --- 显示指定文件的跟踪情况"   
+    puts "-scc [code]       --- 显示指定股票的跟踪情况"   
+    puts "-mon              --- 下载每日交易数据"   
       
 
     puts "-h            ---  This help"    
@@ -869,6 +873,85 @@ if ARGV.length != 0
    if ele == '-stc'   
      fname = ARGV[ARGV.index(ele)+1]
      check_track_list(fname)
+     exit
+    end 
+
+    if ele == '-scc'   
+     code = ARGV[ARGV.index(ele)+1]
+
+     years = ARGV[ARGV.index(ele)+2].to_i
+     years = 20 if years == 0
+ 
+     evalate_equity(code)
+     puts
+     show_roe_list(code,years)
+     exit
+    end 
+
+    if ele == '-mon'  
+
+
+      reset_flag1 = false
+      reset_flag2 = false
+      old_wday = 0
+
+      
+      while (true)
+
+        t = Time.now.gmtime
+
+        date = t.getlocal.to_date
+
+        t2 = Time.new(date.year,date.month,date.day,17,0,0,"+08:00").gmtime
+        t3 = Time.new(date.year,date.month,date.day,7,0,0,"+08:00").gmtime
+
+        puts t.getlocal.to_s
+        #puts t2.getlocal.to_s
+        #puts t3.getlocal.to_s
+ 
+        if (t.getlocal.wday != old_wday)
+          reset_flag1 = false
+          reset_flag2 = false
+          old_wday = t.getlocal.wday 
+        end
+
+
+        if (t.getlocal.wday >=1) and (t.getlocal.wday <=5) and  (t> t2 ) and (not reset_flag1)
+
+           puts "Fetching China A stock daily records..."
+           File.open('cn.csv', "r+") do |file|
+             get_topN_from_sina(10000,8,3,:china,file)
+           end
+           
+           puts
+           puts "Fetching HONGKONG stock daily records..."
+           File.open('hk.csv', "r+") do |file|
+            get_topN_from_sina(10000,8,3,:hk,file)
+           end
+
+           reset_flag1 = true 
+         
+       end
+
+         if (t.getlocal.wday >=2) and (t.getlocal.wday <=6) and  (t> t3 ) and (not reset_flag2)
+           puts
+           puts "Fetching US stock daily records..."
+           File.open('us.csv', "r+") do |file|
+            get_topN_from_sina(10000,8,3,:us,file)
+           end 
+
+           puts
+           puts "Fetching US ETF daily records..."
+           File.open('us_etf.csv', "r+") do |file|
+            get_topN_from_sina(10000,0,3,:us_etf,file)
+           end 
+
+            reset_flag2 = true 
+         end
+
+        sleep(5)
+      end
+
      exit
     end 
    
