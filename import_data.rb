@@ -949,7 +949,7 @@ if ARGV.length != 0
             reset_flag2 = true 
          end
 
-        sleep(5)
+        sleep(60)
       end
 
      exit

@@ -1769,7 +1769,7 @@ def update_till_lastest(dir)
         # 
         begin
           sa = get_h_data_from_sina(code2,start_date,end_date )
-          qf = get_fuquan_factor_from_sina(code2)
+          #qf = get_fuquan_factor_from_sina(code2)
         rescue
           p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
           # begin
@@ -1787,7 +1787,7 @@ def update_till_lastest(dir)
         
         if len>0
           file.rewind
-          line = "#{code} #{format_code(code)} #{qf} at #{end_date} SINA FUQUAN DATA"
+          line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
           file.puts(line)
           file.seek(0, IO::SEEK_END)
           #wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
@@ -1838,31 +1838,35 @@ def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
           # 
           begin
             sa = get_h_data_from_sina(code2,start_date,end_date )
-            qf = get_fuquan_factor_from_sina(code2)
+            #qf = get_fuquan_factor_from_sina(code2)
           rescue
             p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
-            begin
-              sa = get_h_data_from_sina(code2,start_date,end_date )
-              qf = get_fuquan_factor_from_sina(code2)
-            rescue
-            p "Network ERROR AGAIN when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
-            end
+            # begin
+            #   sa = get_h_data_from_sina(code2,start_date,end_date )
+            #   qf = get_fuquan_factor_from_sina(code2)
+            # rescue
+            # p "Network ERROR AGAIN when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
+            # end
           end
 
-          len=sa.length
+           len = 0 
+          len=sa.length if sa != nil
           p "#{code.to_s} #{start_date}:#{end_date} : #{len} records takes #{Time.now-t} secs at #{Time.now.strftime("%x %X")}"
+
+
+          if len > 0 
+            pref = 'SZ'
+            pref = 'SH' if code[0] == '6'
+            wf = File.new("#{dir}\/#{pref}#{code}.txt",'w')
+            line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+            wf.puts(line)
+            wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
+            sa.each do |h|
+              wf.puts "#{h[0]} #{h[1]} #{h[2]} #{h[3]} #{h[4]} #{h[5]} #{h[6]} #{h[7]} "
+            end
           
-          pref = 'SZ'
-          pref = 'SH' if code[0] == '6'
-          wf = File.new("#{dir}\/#{pref}#{code}.txt",'w')
-          line = "#{code} #{format_code(code)} #{qf} at #{end_date} SINA FUQUAN DATA"
-          wf.puts(line)
-          wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
-          sa.each do |h|
-            wf.puts "#{h[0]} #{h[1]} #{h[2]} #{h[3]} #{h[4]} #{h[5]} #{h[6]} #{h[7]} "
+            wf.close
           end
-        
-          wf.close
           #sa.each {|x| p x}
           #break
         end
