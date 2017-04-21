@@ -1561,7 +1561,7 @@ end #of load_json\\
 
 def last_three_month_analysis(dir,days=90,check_ma5_days=1000)
 
-  load_name_into_database if Names.count != 0 
+  load_name_into_database if Names.count == 0 
 
    three_month_before = Time.now.to_date - days
 
@@ -1716,7 +1716,7 @@ end
 
 def update_till_lastest(dir)
 
-  load_name_into_database if Names.count != 0 
+  load_name_into_database if Names.count == 0 
 
   Dir.glob("#{dir}\/*.txt").sort.each do |afile|
     puts "processing file #{afile}"
@@ -1804,7 +1804,7 @@ end
 
 def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
 
-   load_name_into_database if Names.count != 0 
+   load_name_into_database if Names.count == 0 
 
    if start_date == nil
       rec = Weekly_records.where(:code =>"000300").last
@@ -1876,7 +1876,7 @@ end
 
 def update_fuquan_data(dir,start_date=nil,end_date=nil)
 
-   load_name_into_database if Names.count != 0 
+   load_name_into_database if Names.count == 0 
 
    if start_date == nil
       rec = Weekly_records.where(:code =>"000300").last
