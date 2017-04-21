@@ -490,6 +490,8 @@ def print_help
     puts "-sball            --- 下载A股股权数据到数据库" 
     puts "-sbhkall          --- 下载港股股权数据" 
     puts "-loadfile [filename] [tablename] --- 装载文件到数据表"  
+    puts "-gcl [filename] [section]        --- 下载全部A股交易代码  [agu bgu etf cyb all]"   
+
     puts
     puts "-sidx             --- 显示指数数据"   
     puts "-sfc              --- 显示投资机会"  
@@ -829,6 +831,26 @@ if ARGV.length != 0
       insert_data(table,ts_list) if ts_list.length!=0
       exit
    end  
+
+    if ele == '-gcl' 
+      
+      #filename = 'name_all.txt'
+      filename = ARGV[ARGV.index(ele)+1]  
+      filename = 'name_all.txt' if filename == nil
+      flag = ARGV[ARGV.index(ele)+2]
+
+      if flag == nil 
+        File.open(filename, "w") do |file|
+           fetch_all_code_list(file,:agu)
+        end
+      else
+          File.open(filename, "w") do |file|
+           fetch_all_code_list(file,flag.to_sym)
+          end
+      end
+
+     exit
+    end 
 
    if ele == '-ttp' 
      days = ARGV[ARGV.index(ele)+1].to_i

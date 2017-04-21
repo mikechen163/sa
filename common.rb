@@ -648,6 +648,30 @@ end
   return pd
  end
 
+  def normalize_name(s,def_len)
+
+  ind = 0
+  real_len = 0
+  while ind < s.size
+    if s[ind].bytesize == 3
+      real_len += 2
+    else 
+      if s[ind].bytesize == 1
+        real_len += 1
+      end
+    end
+
+
+    return s[0..ind] if real_len >= def_len
+    ind += 1
+
+  end
+
+  return s + ' '*(def_len - real_len)
+            
+
+ end
+
  def format_roe(roe,digit=2)
 
   negtive = false
@@ -947,6 +971,86 @@ end
   return get_finance_info_from_ntes(uri) 
  end
 
+def fetch_all_code_list(file,mode=:std)
+    uri="http://quote.eastmoney.com/stocklist.html"
+   
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end  
+  
+    sa=html_response.split('quote.eastmoney.com')
+    
+    start = 1 
+    sa.each  do |x|
+      code =  x[1..8]
+      ind = x.index('<')
+      name = x[16..(ind-1)].encode('utf-8','gbk')
+      name = name[0..(name.length-9)]
+      name = normalize_name(name,8)
+      market = code[0..1].upcase
+      if (market == 'SH') 
+        case mode
+        when :agu
+          if (code[2] == '6')
+            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            start += 1
+          end
+        when :bgu
+          if (code[2] == '9')
+            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            start += 1
+          end
+        when :etf
+          if (code[2] == '5')
+            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            start += 1
+          end
+        when :all
+          file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+          start += 1
+        else
+          puts "unknown mode #{mode}"
+        end
+        
+      end
+
+      if (market == 'SZ') 
+       case mode
+        when :agu
+          if (code[2] == '0') or (code[2] == '3')
+            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            start += 1
+          end
+        when :bgu
+          if (code[2] == '2')
+            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            start += 1
+          end
+
+         when :cyb
+          if  (code[2] == '3')
+            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            start += 1
+          end
+        when :etf
+          if (code[2..3] == '15') or (code[2..3] == '16')
+            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            start += 1
+          end
+        when :all
+          file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+          start += 1
+        else
+          puts "unknown mode #{mode}"
+        end
+      end
+
+    end
+     
+    puts "Total #{start - 1} items. "
+end
+
  def get_stockinfo_data_from_ntes(code)
    
    
@@ -963,8 +1067,10 @@ end
     #puts name
     #puts name.length
 
-    name = name + " " if name.length == 3
-    name = name + " " if name.length == 5
+    #name = name + " " if name.length == 3
+    #name = name + " " if name.length == 5
+
+    name = normalize_name(name,8)
    
     sa=html_response.split('table_bg001')
     
@@ -1174,29 +1280,6 @@ def get_stockinfo_data_from_sina(code)
     p html_response
  end
 
- def normalize_name(s,def_len)
-
-  ind = 0
-  real_len = 0
-  while ind < s.size
-    if s[ind].bytesize == 3
-      real_len += 2
-    else 
-      if s[ind].bytesize == 1
-        real_len += 1
-      end
-    end
-
-
-    return s[0..ind] if real_len >= def_len
-    ind += 1
-
-  end
-
-  return s + ' '*(def_len - real_len)
-            
-
- end
 
   def get_list_data_from_sina(codelist,etf_flag=false)
 
