@@ -971,6 +971,85 @@ end
   return get_finance_info_from_ntes(uri) 
  end
 
+def fetch_all_stock_for_attr(att)
+
+    #no response for these code
+    return [] if att[5..7] == '638'
+    return [] if att[5..7] == '500'
+    return [] if att[5..7] == '568'
+    return [] if att[5..7] == '681'
+    return [] if att[5..7] == '701'
+   
+    res = []
+    page = 1
+    pagesize = 100
+    ta = Array.new(pagesize)
+
+    while ta.size == pagesize
+
+       uri = "http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=C.BK0#{att[5..7]}1&sty=FCOIATA&sortType=C&sortRule=-1&page=#{page}&pageSize=#{pagesize}&js=var%20quote_123%3d{rank:[(x)],pages:(pc)}&token=7bc05d0d4c3c22ef9fca8c2a912d779c&jsName=quote_123&_g=0.7844546340215461"
+
+
+
+      html_response = nil  
+      open(uri) do |http|  
+        html_response = http.read  
+      end  
+    
+      #puts html_response
+      ta = []
+      sa=html_response.split('"')
+
+      return res if sa.length == 1
+
+      sa.each do |line|
+        c = line[0]
+        if (line.size > 1) and (c >= '0') and (c <= '9')
+          ta.push line[2..7]
+        end
+      end 
+
+     
+      page += 1
+      res = res + ta
+    end #while
+
+    return res
+end
+
+def fetch_all_hy(file)
+  uri="http://quote.eastmoney.com/center/BKList.html#trade_0_0?sortRule=0"
+   
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end  
+  
+    sa=html_response.split('list.html')
+
+    sa.each do |item|
+      ind = item.index('/span')
+      if (ind != nil) and (ind < 50)
+        item = item[1..(ind - 2)].encode('utf-8','gbk') 
+
+        ind = item.index('text')
+        att = item[(ind+6)..(item.length - 1)]
+
+        ind = item.index('"')
+        link = item[0..(ind - 1)]
+
+        puts "#{normalize_name(link,18)} #{att}"
+
+        if (link[0..4] == '28001') or (link[0..4] == '28002') or (link[0..4] == '28003')
+             stock_list =  fetch_all_stock_for_attr(link)
+             file.puts "#{att}, #{stock_list.to_s}"
+        end
+      end
+    end
+
+    return 0
+end
+
 def fetch_all_code_list(file,mode=:std)
     uri="http://quote.eastmoney.com/stocklist.html"
    

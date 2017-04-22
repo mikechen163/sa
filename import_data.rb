@@ -852,6 +852,22 @@ if ARGV.length != 0
      exit
     end 
 
+    if ele == '-fhy' 
+      
+      #filename = 'name_all.txt'
+      filename = ARGV[ARGV.index(ele)+1]  
+      filename = 'classify.txt' if filename == nil
+      #flag = ARGV[ARGV.index(ele)+2]
+
+      
+        File.open(filename, "w") do |file|
+           fetch_all_hy(file)
+        end
+      
+
+     exit
+    end 
+
    if ele == '-ttp' 
      days = ARGV[ARGV.index(ele)+1].to_i
      topN = ARGV[ARGV.index(ele)+2].to_i
