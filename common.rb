@@ -12,9 +12,9 @@ class Daily_records < ActiveRecord::Base
   def initialize
     # @date_list=[]
 
-    # list1 = self.class.find(:all,:conditions=>" code = \'601988\' ")
-    # list2 = self.class.find(:all,:conditions=>" code = \'601398\' ")
-    # list3 = self.class.find(:all,:conditions=>" code = \'601328\' ")
+     list1 = self.class.find(:all,:conditions=>" code = \'601988\' ")
+     list2 = self.class.find(:all,:conditions=>" code = \'601398\' ")
+     list3 = self.class.find(:all,:conditions=>" code = \'601328\' ")
 
     
     # # list1.each_with_index do |rec,i|
@@ -28,9 +28,9 @@ class Daily_records < ActiveRecord::Base
     # #   @date_list.push(day)
     # # end
 
-    # @date_list=(list1+list2+list3).uniq
+     @date_list=(list1+list2+list3).uniq.sort
 
-    @date_list = self.class.where(code: '399905').collect {|rec| rec['date']}
+    #@date_list = self.class.where(code: '399905').collect {|rec| rec['date']}
 
   end
 
@@ -65,9 +65,9 @@ class Weekly_records < ActiveRecord::Base
    def initialize
     @date_list=[]
     #list1 = self.class.find(:all,:conditions=>" code = \'600028\' ").collect {|rec| rec['date']}
-    # list1 = self.class.where(code: '600028').collect {|rec| rec['date']}
-    # list2 = self.class.where(code: '601857').collect {|rec| rec['date']}
-    # list3 = self.class.where(code: '600900').collect {|rec| rec['date']}
+    list1 = self.class.where(code: '600028').collect {|rec| rec['date']}
+    list2 = self.class.where(code: '601857').collect {|rec| rec['date']}
+    list3 = self.class.where(code: '600036').collect {|rec| rec['date']}
     
     #list2 = self.class.find(:all,:conditions=>" code = \'601857\' ").collect {|rec| rec['date']}
     #list3 = self.class.find(:all,:conditions=>" code = \'600900\' ").collect {|rec| rec['date']}
@@ -83,9 +83,9 @@ class Weekly_records < ActiveRecord::Base
     #   @date_list.push(day)
     # end
 
-    #@date_list=(list1+list2+list3).uniq.sort
+    @date_list=(list1+list2+list3).uniq.sort
     
-    @date_list = self.class.where(code: '399905').collect {|rec| rec['date']}
+    #@date_list = self.class.where(code: '399905').collect {|rec| rec['date']}
 
 
   end
