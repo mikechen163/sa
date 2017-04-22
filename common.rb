@@ -2193,9 +2193,13 @@ end
   # uri='http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/600036.phtml?year=2015&jidu=1'
   uri="http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/#{code.to_s}.phtml?year=#{day.year}&jidu=#{(day.month+2)/3}"
    
+    html_response = nil  
+
      if $proxy == nil
       open(uri) do |http|  
+       
         html_response = http.read  
+       
       end  
     else
       open(uri, proxy: $proxy) do |http|  
@@ -2203,8 +2207,11 @@ end
       end
     end
     
-    sa= html_response.split('http://vip.stock.finance.sina.com.cn/quotes_service/view/vMS_tradehistory.php?symbol')  
-
+   
+    sa= html_response.split('http://vip.stock.finance.sina.com.cn/quotes_service/view/vMS_tradehistory.php?symbol') 
+  
+    #puts sa.length
+ 
     return sa
  end
 
