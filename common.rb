@@ -12,9 +12,9 @@ class Daily_records < ActiveRecord::Base
   def initialize
     # @date_list=[]
 
-     list1 = self.class.find(:all,:conditions=>" code = \'601988\' ")
-     list2 = self.class.find(:all,:conditions=>" code = \'601398\' ")
-     list3 = self.class.find(:all,:conditions=>" code = \'601328\' ")
+      list1 = self.class.where(code: '600028').collect {|rec| rec['date']}
+    list2 = self.class.where(code: '601857').collect {|rec| rec['date']}
+    list3 = self.class.where(code: '600036').collect {|rec| rec['date']}
 
     
     # # list1.each_with_index do |rec,i|

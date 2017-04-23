@@ -1,6 +1,6 @@
 #显示过去若干天，topN,roe>given_roe, 流通市值> given_free_mv,按照sortby_method排序的结果
 def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0,all_data=true)
-  load_name_into_database if Names.count != 0 
+  load_name_into_database if Names.count == 0 
   #puts "#{days} #{topN} #{given_roe} #{gl_roe} #{sortby_method}"
   #
   end_date = Time.now.to_date
@@ -24,10 +24,19 @@ def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0,a
 
   rec = nil
   fr_list = Daily_records.where(date: "#{start_date.to_s}")
+
+  hr = Hash.new
+  fr_list.each do |rec|
+    code = rec['code'] 
+    hr[code] = rec
+  end
+
+
   all.each do |h|
     code = h[:code]
     rec = nil
-    fr = fr_list.find {|rec| rec['code'] == code}
+    #fr = fr_list.find {|rec| rec['code'] == code}
+    fr = hr[code]
     if fr != nil
       rec = fr
     else
@@ -94,7 +103,156 @@ def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0,a
   ave_ratio = (sa[0..topN].collect{|h| h[:new_roe]}.inject(:+)/topN*100).to_i/100.0
   puts "总共#{topN}支股票 平均涨幅 = #{ave_ratio}% on #{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
   
+  return  sa 
+
+end # of show_stock_price_change
+
+def get_hash_for_date(start_date)
+  fr_list = Daily_records.where(date: "#{start_date.to_s}")
+
+  hr = Hash.new
+  fr_list.each do |rec|
+    code = rec['code'] 
+    hr[code] = rec['close']
+  end
+
+  return hr
+end
+
+def get_hr_roe(code,price,h)
+  return 0.0 if h[code] == nil
+  roe = ( price - h[code])/h[code]*100
+  return roe
+end
+
+#显示过去30天 90天 180天 360天的统计数据
+def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20)
+  load_name_into_database if Names.count == 0 
+  #puts "#{days} #{topN} #{given_roe} #{gl_roe} #{sortby_method}"
+  #
+  end_date = Time.now.to_date
   
+  date_list = Daily_records.new.get_date_list
+  start_date1 = date_list.reverse.find {|date| date <= (end_date - 30)}
+  start_date2 = date_list.reverse.find {|date| date <= (end_date - 90)}
+  start_date3 = date_list.reverse.find {|date| date <= (end_date - 180)}
+  start_date4 = date_list.reverse.find {|date| date <= (end_date - 360)}
+
+  # sortby_method = 0 if (sortby_method > 4) or (sortby_method < 0)
+  # sbs = ['按流通市值降序','按流通市值升序','按涨幅降序','按涨幅升序','按代码排序']
+
+  # if gl_roe == 0
+  #   p "Show last #{days.to_s} days on #{start_date}, price change greater than #{given_roe.to_s}% , topN = #{topN} ，sortby = #{sbs[sortby_method]} "
+  #  else
+  #   p "Show last #{days.to_s} days on #{start_date}, price change little than #{given_roe.to_s}% , topN = #{topN} ，sortby = #{sbs[sortby_method]} "
+  # end
+
+
+  sa=[]
+  all = get_all_stock_price_from_sina(Names.get_code_list)
+  all.delete_if {|h| h[:volume] == 0.0}
+
+  #puts "calculating roe ... "
+  h1 = get_hash_for_date(start_date1)
+  h2 = get_hash_for_date(start_date2)
+  h3 = get_hash_for_date(start_date3)
+  h4 = get_hash_for_date(start_date4)
+
+  i=1   
+  all.each do |h|
+   #puts "calculating #{format_code(h[:code])} ... " if (i % 99) == 0
+   h[:roe1] = get_hr_roe(h[:code],h[:close],h1)
+   h[:roe2] = get_hr_roe(h[:code],h[:close],h2)
+   h[:roe3] = get_hr_roe(h[:code],h[:close],h3)
+   h[:roe4] = get_hr_roe(h[:code],h[:close],h4)
+
+   sa.push h
+
+   i += 1
+
+  end
+
+  case sortby_method
+    
+    when 0
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 1
+      sa.sort_by!{|h| h[:total_mv]}
+    when 2 
+      sa.sort_by!{|h| h[:roe4]}
+      sa.reverse!
+    when 3 
+      sa.sort_by!{|h| h[:roe3]}
+      sa.reverse!
+    when 4
+      sa.sort_by!{|h| h[:roe2]}
+      sa.reverse!
+    when 5 
+      sa.sort_by!{|h| h[:roe1]}
+      sa.reverse!
+    when 6 
+      sa.sort_by!{|h| h[:code]}
+
+    when 10
+      sa.delete_if {|h| h[:roe4] <= roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 11
+      sa.delete_if {|h| h[:roe4] >= - roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 12
+      sa.delete_if {|h| h[:roe3] <= roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 13
+      sa.delete_if {|h| h[:roe3] >= - roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 14
+      sa.delete_if {|h| h[:roe2] <= roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 15
+      sa.delete_if {|h| h[:roe2] >= - roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 16
+      sa.delete_if {|h| h[:roe1] <= roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+    when 17
+      sa.delete_if {|h| h[:roe1] >= - roe}
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+
+
+    else
+      p "unknown sort method #{sortby_method}"
+  end
+    
+  return if sa.length == 0
+
+  topN = sa.length - 1 if topN > (sa.length - 1 )
+  
+  #puts
+  puts "名称     代码     收盘价  一个月涨幅 三个月涨幅 半年涨幅 一年涨幅  流通市值 "
+  sa[0..(topN - 1)].each do |h|
+     #puts "代码  收盘价  一个月涨幅 三个月涨幅 半年涨幅 一年涨幅  流通市值 "
+     puts "#{format_code(h[:code])} #{format_price(h[:close])},  #{format_roe(h[:roe1])}, \
+  #{format_roe(h[:roe2])},   #{format_roe(h[:roe3])},  #{format_roe(h[:roe4])}  #{format_price(h[:total_mv])}亿 " 
+     
+  end
+
+  ave_ratio1 = (sa[0..(topN - 1)].collect{|h| h[:roe1]}.inject(:+)/topN*100).to_i/100.0
+  ave_ratio2 = (sa[0..(topN - 1)].collect{|h| h[:roe2]}.inject(:+)/topN*100).to_i/100.0
+  ave_ratio3 = (sa[0..(topN - 1)].collect{|h| h[:roe3]}.inject(:+)/topN*100).to_i/100.0
+  ave_ratio4 = (sa[0..(topN - 1)].collect{|h| h[:roe4]}.inject(:+)/topN*100).to_i/100.0
+  puts "------------------------------------------------------------------------------"
+  puts "总共#{topN}支股票   平均涨幅 = #{format_roe(ave_ratio1)}    #{format_roe(ave_ratio2)}    #{format_roe(ave_ratio3)}   #{format_roe(ave_ratio4)} on #{Time.now.strftime("%y-%m-%d %H:%M:%S")}"
+  
+  return  sa 
 
 end # of show_stock_price_change
 

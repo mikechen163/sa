@@ -896,6 +896,18 @@ if ARGV.length != 0
      exit
     end 
 
+    if ele == '-ttq' 
+    
+     topN = ARGV[ARGV.index(ele)+1].to_i
+     mode = ARGV[ARGV.index(ele)+2].to_i
+     roe  = ARGV[ARGV.index(ele)+3].to_i
+
+
+     show_stock_statiscs(topN,mode,roe)
+
+     exit
+    end 
+
 
    if ele == '-sidx'   
      show_globl_index
