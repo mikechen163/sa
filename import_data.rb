@@ -903,9 +903,13 @@ if ARGV.length != 0
      topN = ARGV[ARGV.index(ele)+1].to_i
      mode = ARGV[ARGV.index(ele)+2].to_i
      roe  = ARGV[ARGV.index(ele)+3].to_i
-
-
-     show_stock_statiscs(topN,mode,roe)
+     final  = ARGV[ARGV.index(ele)+4].to_i
+     
+     if final == 0
+      show_stock_statiscs(topN,mode,roe,:quick)
+     else
+      show_stock_statiscs(topN,mode,roe,:comp)
+     end
 
      exit
     end 

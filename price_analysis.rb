@@ -19,18 +19,22 @@ def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0,a
 
 
   sa=[]
-  all = get_all_stock_price_from_sina(Names.get_code_list)
-  all.delete_if {|h| h[:volume] == 0.0}
-
+  
   rec = nil
-  fr_list = Daily_records.where(date: "#{start_date.to_s}")
+  fr_list = Daily_records.select("code, date, close").where(date: "#{start_date.to_s}")
+
+  #puts fr_list.class
+  #puts fr_list[0]['close']
 
   hr = Hash.new
-  fr_list.each do |rec|
+  fr_list.to_a.each do |rec|
     code = rec['code'] 
+    #puts "#{format_code(code)}  #{rec['close']}"
     hr[code] = rec
   end
 
+  all = get_all_stock_price_from_sina(Names.get_code_list)
+  all.delete_if {|h| h[:volume] == 0.0}
 
   all.each do |h|
     code = h[:code]
@@ -43,8 +47,12 @@ def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0,a
       if (all_data == true)
         #p "#{h[:code]}"
         print "."
-        fr2_list = Daily_records.where(code: "#{code}")
-        rec = fr2_list.reverse.find {|rec| rec['date'] <= start_date }
+        #fr2_list = Weekly_records.where(code: "#{code}")
+        rec = Weekly_records.select("date, close").where( "date <= '#{start_date}' and code = '#{code}'").last
+        #date_list = fr2_list.collect{|rec| rec['date']}
+        #ind = date_list.find_index {|date| date <= start_date}
+        #rec = fr2_list[ind] if ind != nil
+        #rec = fr2_list.reverse.find {|rec| rec['date'] <= start_date }
       end
     end
     
@@ -108,10 +116,10 @@ def show_stock_price_change(days,topN=30,given_roe=10,gl_roe=0,sortby_method=0,a
 end # of show_stock_price_change
 
 def get_hash_for_date(start_date)
-  fr_list = Daily_records.where(date: "#{start_date.to_s}")
+  fr_list = Daily_records.select("code, close").where(date: "#{start_date.to_s}")
 
   hr = Hash.new
-  fr_list.each do |rec|
+  fr_list.to_a.each do |rec|
     code = rec['code'] 
     hr[code] = rec['close']
   end
@@ -119,14 +127,22 @@ def get_hash_for_date(start_date)
   return hr
 end
 
-def get_hr_roe(code,price,h)
-  return 0.0 if h[code] == nil
+def get_hr_roe(code,price,h,start_date,final)
+  if h[code] == nil
+    return 0.0 if final == :quick
+    rec = Weekly_records.select("close").where( "date <= '#{start_date}' and code = '#{code}'").last
+    return 0.0 if rec == nil
+    close = rec['close'] 
+    roe = ( price - close)/close*100
+    return roe
+  end
+
   roe = ( price - h[code])/h[code]*100
   return roe
 end
 
 #显示过去30天 90天 180天 360天的统计数据
-def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20)
+def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20, final = :quick)
   load_name_into_database if Names.count == 0 
   #puts "#{days} #{topN} #{given_roe} #{gl_roe} #{sortby_method}"
   #
@@ -158,17 +174,20 @@ def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20)
   h3 = get_hash_for_date(start_date3)
   h4 = get_hash_for_date(start_date4)
 
-  i=1   
+  #i=1   
   all.each do |h|
-   #puts "calculating #{format_code(h[:code])} ... " if (i % 99) == 0
-   h[:roe1] = get_hr_roe(h[:code],h[:close],h1)
-   h[:roe2] = get_hr_roe(h[:code],h[:close],h2)
-   h[:roe3] = get_hr_roe(h[:code],h[:close],h3)
-   h[:roe4] = get_hr_roe(h[:code],h[:close],h4)
+   if (final != :quick)
+     puts "calculating #{format_code(h[:code])} ... " 
+   end
+
+   h[:roe1] = get_hr_roe(h[:code],h[:close],h1,start_date1,final)
+   h[:roe2] = get_hr_roe(h[:code],h[:close],h2,start_date2,final)
+   h[:roe3] = get_hr_roe(h[:code],h[:close],h3,start_date3,final)
+   h[:roe4] = get_hr_roe(h[:code],h[:close],h4,start_date4,final)
 
    sa.push h
 
-   i += 1
+   #i += 1
 
   end
 
