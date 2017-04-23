@@ -227,6 +227,13 @@ def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20)
       sa.sort_by!{|h| h[:total_mv]}
       sa.reverse!
 
+    when 20
+      sa.delete_if {|h| h[:roe1] <= roe}
+      sa.delete_if {|h| (h[:roe1] - h[:roe2]) < -5 }
+      sa.sort_by!{|h| h[:total_mv]}
+      sa.reverse!
+
+
 
     else
       p "unknown sort method #{sortby_method}"

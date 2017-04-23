@@ -483,6 +483,8 @@ def print_help
 
     puts "-ttp  days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果"    
     puts "-ttpq days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果,简单模式"    
+    puts "-ttq  topN mode roe           --- 过滤器，显示过去3个月 ，topN，收益率大于roe 按照流通值排序的结果,简单模式"    
+
 
 
     puts
