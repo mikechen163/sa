@@ -36,11 +36,12 @@ def check_track_list(fname)
    all.sort_by!{|h| h[:real_roe]}
    all.reverse!
    puts
-   puts "名称      代码  财报年度  pb     pe    peg  净资产回报率 一年期预期回报率  利润增长率 收入增长率 净资产增长率  "
+   puts "名称      代码  财报年度  pb     pe    peg  净资产回报率 预期回报率  利润增长率 收入增长率 净资产增长率 总市值 "
    all.each do |h|
      #puts "#{format_code(h[:code])} [#{h[:year]}] pb = #{h[:pb]}, pe = #{h[:pe]}, 净资产回报率 = #{(h[:ave_roe]*100).to_i/100.0}% 预期回报率=#{h[:real_roe]}%, 10年期回报率=#{h[:ten_year_roe]}%"
      #puts "#{format_code(h[:code])} [#{h[:year]}] pb =#{format_price(h[:pb],2)}, pe =#{format_price(h[:pe])} 利润增长率 =#{format_roe(h[:revenue_inc_ratio])} peg=#{(h[:peg]*100).to_i/100.0} 收入增长率=#{h[:income_inc_ratio]}% 净资产回报率 = #{(h[:ave_roe]*100).to_i/100.0}% 预期回报率=#{h[:real_roe]}%,净资产增长率=#{h[:net_asset_inc_ratio]}%"
-     puts "#{format_code(h[:code])} [#{h[:year]}] #{format_price(h[:pb],2)} #{format_price(h[:pe])} #{format_price(h[:peg])}    #{format_roe(h[:ave_roe])}         #{format_roe(h[:real_roe])}       #{format_roe(h[:revenue_inc_ratio])}    #{format_roe(h[:income_inc_ratio])}     #{h[:net_asset_inc_ratio]}%"
+     puts "#{format_code(h[:code])} [#{h[:year]}] #{format_price(h[:pb],2)} #{format_price(h[:pe])} #{format_price(h[:peg])}  #{format_roe(h[:ave_roe])}     #{format_roe(h[:real_roe])}\
+     #{format_roe(h[:revenue_inc_ratio])}    #{format_roe(h[:income_inc_ratio])}     #{format_roe(h[:net_asset_inc_ratio])}     #{h[:total_mv].round(2)}亿"
   
    end
 end
