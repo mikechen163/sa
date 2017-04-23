@@ -176,14 +176,18 @@ def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20, final = :quick)
 
   #i=1   
   all.each do |h|
-   if (final != :quick)
-     puts "calculating #{format_code(h[:code])} ... " 
-   end
+   # if (final != :quick)
+   #   puts "calculating #{format_code(h[:code])} ... " 
+   # end
 
    h[:roe1] = get_hr_roe(h[:code],h[:close],h1,start_date1,final)
    h[:roe2] = get_hr_roe(h[:code],h[:close],h2,start_date2,final)
    h[:roe3] = get_hr_roe(h[:code],h[:close],h3,start_date3,final)
    h[:roe4] = get_hr_roe(h[:code],h[:close],h4,start_date4,final)
+
+   if (final != :quick)
+     puts "#{format_code(h[:code])} #{format_price(h[:close])} 一个月涨幅=#{format_roe(h[:roe1])} 三个月涨幅=#{format_roe(h[:roe2])} 半年涨幅=#{format_roe(h[:roe3])} 一年涨幅=#{format_roe(h[:roe4])}" 
+   end
 
    sa.push h
 
