@@ -32,8 +32,8 @@ def check_track_list(fname)
         end
     end
 
-   #all.delete_if {|h| h[:real_roe] == nil}
-   all.sort_by!{|h| h[:real_roe]}
+   all.delete_if {|h| h[:pe] < 0}
+   all.sort_by!{|h| h[:ave_roe]}
    all.reverse!
    puts
    puts "名称      代码  财报年度  pb     pe    peg  净资产回报率 预期回报率  利润增长率 收入增长率 净资产增长率 总市值 "
