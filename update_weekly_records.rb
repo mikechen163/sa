@@ -1787,7 +1787,11 @@ def update_till_lastest(dir)
         
         if len>0
           file.rewind
-          line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+          if sa[len-1][7] != nil
+             line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+          else
+             line = "#{code} #{format_code(code)} 1.0 at #{end_date} SINA FUQUAN DATA"
+          end
           file.puts(line)
           file.seek(0, IO::SEEK_END)
           #wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
@@ -1858,7 +1862,14 @@ def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
             pref = 'SZ'
             pref = 'SH' if code[0] == '6'
             wf = File.new("#{dir}\/#{pref}#{code}.txt",'w')
-            line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+
+             if sa[len-1][7] != nil
+              line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+             else
+               line = "#{code} #{format_code(code)} 1.0 at #{end_date} SINA FUQUAN DATA"
+             end
+
+            #line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
             wf.puts(line)
             wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
             sa.each do |h|
