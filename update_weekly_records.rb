@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__)) unless $LOAD_PATH.include?(File.dirname(__FILE__))  
  
+
 require "shared_setup"
 require 'time'
 require 'active_record'
@@ -1885,6 +1886,191 @@ def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
     end
 end
 
+
+
+def update_fuquan_data_by_filename_2(codefile,dir)
+
+   clear_table('name')
+   load_name_into_database(codefile) if Names.count == 0 
+
+  end_date = Time.now.to_date
+  end_date = end_date -1  if end_date.saturday?
+  end_date = end_date -2  if end_date.sunday?
+  #end_date = end_date.to_s
+
+ 
+  #start_date = (Time.now.to_date - 180 ).to_s
+
+  #puts "#{start_date} #{end_date}"
+    
+  
+  File.open(codefile).each_line do |line|
+
+      ta = line.split('|')
+      code = ta[1]
+   
+ 
+      code2 = code
+      code2 = '399300' if code == '000300'
+
+
+        pref = 'SZ'
+        pref = 'SH' if code[0] == '6'
+
+
+      #puts "#{start_date} #{end_date}"
+
+      if not File.exist?("#{dir}\/#{pref}#{code}.txt")
+          puts "#{dir}\/#{pref}#{code}.txt not found, create file"
+           t = Time.now
+          # sa = get_history_data_from_sina_fuquan(code2,Date.parse(start_date) )
+          # p "#{code.to_s} #{start_date} #{sa.to_s} takes #{Time.now-t} seconds."
+          
+          begin
+            #puts "#{start_date} #{end_date}"
+            end_date = end_date.to_s
+            start_date = (Time.now.to_date - 180 ).to_s
+            sa = get_h_data_from_sina(code2,start_date,end_date )
+            #qf = get_fuquan_factor_from_sina(code2)
+          rescue
+            p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
+          end
+
+           len = 0 
+          len=sa.length if sa != nil
+          p "#{code.to_s} #{start_date}:#{end_date} : #{len} records takes #{Time.now-t} secs at #{Time.now.strftime("%x %X")}"
+
+
+          if len > 0 
+            pref = 'SZ'
+            pref = 'SH' if code[0] == '6'
+            wf = File.new("#{dir}\/#{pref}#{code}.txt",'w')
+
+             if sa[len-1][7] != nil
+              line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+             else
+               line = "#{code} #{format_code(code)} 1.0 at #{end_date} SINA FUQUAN DATA"
+             end
+
+            #line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+            wf.puts(line)
+            wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
+            sa.each do |h|
+              wf.puts "#{h[0]} #{h[1]} #{h[2]} #{h[3]} #{h[4]} #{h[5]} #{h[6]} #{h[7]} "
+            end
+          
+            wf.close
+          end
+          #sa.each {|x| p x}
+          #break
+        else # the file exist in the directory 
+
+         
+          File.open("#{dir}\/#{pref}#{code}.txt",:mode => 'r+') do |file|
+
+              #last_date = ''
+              ta = []
+              last_d = '2016-07-01'
+              ls = 0
+              file.each_line do |line|
+                #p line
+                if line[4] == '-'
+                  ta = line.split(/ /) 
+                  last_d = ta[0]
+                end
+                #
+                # if line[4]=='-'
+                #   ls = -line.length
+                #   break
+                # end
+              end
+
+              # file.seek(ls,IO::SEEK_END)
+              # line=file.readline
+              # ta = line.split(/ /)
+              # p ta
+              # last_d = ta[0]
+
+              last_date = Date.parse(last_d)
+
+              start_date = (last_date +1).to_s
+              
+              end_date = Time.now.to_date
+              end_date = end_date -1  if end_date.saturday?
+              end_date = end_date -2  if end_date.sunday?
+
+              if (last_date +1) > end_date  # just for force update 
+                 file.rewind
+                 line=file.readline
+                 na = line.split(' ')
+              
+                 if (na[0] == na[1])
+                  qf = na[2] 
+                  puts "#{code} #{format_code(code)} #{qf} at #{last_d} SINA FUQUAN DATA"
+                  file.rewind
+                  line = "#{code} #{format_code(code)} #{qf} at #{last_d} SINA FUQUAN DATA"
+                  file.puts(line)
+                end
+
+
+              end
+
+              next if (last_date +1) > end_date 
+
+              puts "#{dir}\/#{pref}#{code}.txt found, update file"
+
+              end_date = Time.now.to_date.to_s
+
+               code2 = code
+              code2 = '399300' if code == '000300'
+                 t = Time.now
+                # sa = get_history_data_from_sina_fuquan(code2,Date.parse(start_date) )
+                # p "#{code.to_s} #{start_date} #{sa.to_s} takes #{Time.now-t} seconds."
+                # 
+                begin
+                  sa = get_h_data_from_sina(code2,start_date,end_date )
+                  #qf = get_fuquan_factor_from_sina(code2)
+                rescue
+                  p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
+                  # begin
+                  #   sa = get_h_data_from_sina(code2,start_date,end_date )
+                  #   qf = get_fuquan_factor_from_sina(code2)
+                  # rescue
+                  # p "Network ERROR AGAIN when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
+                  # end
+                end
+
+                len = 0 
+
+                len=sa.length if sa != nil
+                p "#{code.to_s} #{start_date}:#{end_date} : #{len} records takes #{Time.now-t} secs at #{Time.now.strftime("%x %X")}"
+                
+                if len>0
+                  file.rewind
+                  if sa[len-1][7] != nil
+                     line = "#{code} #{format_code(code)} #{sa[len-1][7]} at #{end_date} SINA FUQUAN DATA"
+                  else
+                     line = "#{code} #{format_code(code)} 1.0 at #{end_date} SINA FUQUAN DATA"
+                  end
+                  file.puts(line)
+                  file.seek(0, IO::SEEK_END)
+                  #wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
+                  sa.each do |h|
+                    file.puts "#{h[0]} #{h[1]} #{h[2]} #{h[3]} #{h[4]} #{h[5]} #{h[6]} #{h[7]} "
+                  end
+                end
+              
+                
+            end # file
+
+ 
+
+
+        end
+       
+    end
+end
+
 def update_fuquan_data(dir,start_date=nil,end_date=nil)
 
    load_name_into_database if Names.count == 0 
@@ -2484,6 +2670,12 @@ if ARGV.length != 0
       if ele == '-ud' 
        dir = ARGV[ARGV.index(ele)+1]
       update_till_lastest(dir)
+     end
+
+      if ele == '-ud2' 
+         codefile = ARGV[ARGV.index(ele)+1]
+       dir = ARGV[ARGV.index(ele)+2]
+        update_fuquan_data_by_filename_2(codefile,dir)
      end
 
      if ele == '-proxy' 

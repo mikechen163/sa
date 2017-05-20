@@ -493,6 +493,7 @@ def print_help
     puts "-sbhkall          --- 下载港股股权数据" 
     puts "-loadfile [filename] [tablename] --- 装载文件到数据表"  
     puts "-gcl [filename] [section]        --- 下载全部A股交易代码  [agu bgu etf cyb all]"   
+    puts "-apd [filename] [index_code]     --- 添加指数代码到下载的股票名称文件中"   
 
     puts
     puts "-sidx             --- 显示指数数据"   
@@ -834,6 +835,14 @@ if ARGV.length != 0
       exit
    end  
 
+    if ele == '-apd' 
+      filename = ARGV[ARGV.index(ele)+1]  
+      filename = 'name.txt' if filename == nil
+      index_code = ARGV[ARGV.index(ele)+2]
+      append_index_to_codefile(filename,index_code)
+      exit
+    end
+
     if ele == '-gcl' 
       
       #filename = 'name_all.txt'
@@ -849,6 +858,13 @@ if ARGV.length != 0
           File.open(filename, "w") do |file|
            fetch_all_code_list(file,flag.to_sym)
           end
+      end
+
+      if  (flag == nil) or  (flag.to_sym == :agu ) 
+       append_index_to_codefile(filename , '000300')
+       append_index_to_codefile(filename , '399905')
+       append_index_to_codefile(filename , '159915')
+       append_index_to_codefile(filename , '159919')
       end
 
      exit

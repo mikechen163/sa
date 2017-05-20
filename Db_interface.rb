@@ -57,6 +57,26 @@ def insert_data(table,sl)
 
 end
 
+def clear_table(table)
+
+   
+
+  sa = [ 
+          "BEGIN TRANSACTION"]
+
+      sa.push("delete from #{table}")
+     
+
+      sa.push("COMMIT")
+     
+      sa.each { |statement|
+         # Tables doesn't necessarily already exist
+         begin; ActiveRecord::Base.connection.execute(statement); rescue ActiveRecord::StatementInvalid; end
+      } 
+
+end
+
+
 def update_data(table,sl)
 
   sa = [ 

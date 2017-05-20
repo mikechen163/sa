@@ -838,11 +838,44 @@ end
     
 # end
 
-def load_name_into_database
+def append_index_to_codefile(codefile,index_code)
+
+  counter = 1
+  File.open(codefile, "r+") do |file|
+         
+             file.each_line do |line|
+                #puts "#{line}"
+                #lineno += 1
+                return  if line.index(index_code) != nil
+    
+                na = line.index ('|')
+                counter = (line[0..(na - 1 )]).to_i
+                #puts counter
+             end
+
+        
+          file.seek(0, IO::SEEK_END)
+
+          str = ""
+          case index_code
+            when '000300'
+              str = "#{counter + 1}|000300|沪深300 |SH"
+             when '399905'
+              str = "#{counter + 1}|399905|中证500 |SZ"
+             when '159919'
+              str = "#{counter + 1}|159919|300 ETF |SZ"
+             when '159915'
+              str = "#{counter + 1}|159915|创业板  |SZ"
+          end
+          file.puts str
+  end
+end
+
+def load_name_into_database(fname = "name.txt")
 
   name_list = []
   
-  File.open("name.txt").each_line do |line|
+  File.open(fname).each_line do |line|
 
     fn,fcode,code_name,market=line.split ('|')
 
@@ -1128,6 +1161,8 @@ def fetch_all_code_list(file,mode=:std)
     end
      
     puts "Total #{start - 1} items. "
+
+    
 end
 
  def get_stockinfo_data_from_ntes(code)
