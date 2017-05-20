@@ -1921,6 +1921,9 @@ def update_fuquan_data_by_filename_2(codefile,dir)
       #puts "#{start_date} #{end_date}"
 
       if not File.exist?("#{dir}\/#{pref}#{code}.txt")
+
+          next if not is_new_stock_number?(code)
+
           puts "#{dir}\/#{pref}#{code}.txt not found, create file"
            t = Time.now
           # sa = get_history_data_from_sina_fuquan(code2,Date.parse(start_date) )

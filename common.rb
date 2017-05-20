@@ -871,6 +871,32 @@ def append_index_to_codefile(codefile,index_code)
   end
 end
 
+# def get_last_stock_number(dir)
+#    na = Dir.glob("#{dir}\/*.txt").sort.collect {|x| x[(dir.length + 3)..(x.length - 5)]}
+#    #na.each {|x| puts x}
+#    t1 = na.select {|x| x[0..2] == '603'}
+#    t2 = na.select {|x| x[0..2] == '002'}
+#    t3 = na.select {|x| x[0..2] == '300'}
+#    puts t1.sort.reverse[0]
+#    puts t2.sort.reverse[0]
+#    puts t3.sort.reverse[0]
+# end
+# 
+def is_new_stock_number?(code)
+  case code[0]
+    when '6'
+     return true if code.to_i > 601000
+    when '0'
+      return true if code.to_i > 2800
+    when '3'
+      return true if code.to_i > 300600
+    else
+      return false
+  end
+
+  return false
+end
+
 def load_name_into_database(fname = "name.txt")
 
   name_list = []
