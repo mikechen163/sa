@@ -267,6 +267,7 @@ def update_weekly_record(code)
 
 
        len= w_list.length 
+       #p len
        return if len < 60+12
 
        week_list =  w_list.collect{|row| row['close']} 
@@ -1887,7 +1888,7 @@ def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
 end
 
 
-
+#根据最新的股票文件，以及以前下载的文件目录，更新数据。 有旧数据的股票，更新到最新日期，没有旧数据的股票，创建文件，并获取180天到现在的数据
 def update_fuquan_data_by_filename_2(codefile,dir)
 
    clear_table('name')

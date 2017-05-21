@@ -887,9 +887,9 @@ def is_new_stock_number?(code)
     when '6'
      return true if code.to_i > 601000
     when '0'
-      return true if code.to_i > 2800
+      return true if code.to_i > 1000
     when '3'
-      return true if code.to_i > 300600
+      return true if code.to_i > 300000
     else
       return false
   end

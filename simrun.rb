@@ -689,6 +689,7 @@ def find_by_ma(day1,day2,sort_method,etf_flag=false)
 
    sa=[]
    #p w_list1.length
+   #p w_list2.length
    w_list1.each do |rec|
        code = rec['code']
        r2= w_list2.find{|x| x['code'] == code}
