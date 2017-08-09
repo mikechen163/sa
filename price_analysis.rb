@@ -286,6 +286,200 @@ def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20, final = :quick)
 
 end # of show_stock_price_change
 
+# 分析 监控程序纪录的日志信息
+def  analysis_stock_log_data(fname,offset,roe)
+  #puts fname
+  
+  dl = []
+  sl = {}
+  first_record = true
+  lineno = 0
+
+  file_format = :us
+  File.open(fname, ) do |file|
+            
+        file.each_line do |line|    
+              lineno += 1
+              na = line.split(',')
+              code = na[0]
+              next if code == 'code'
+
+              if code[0..1] == 'hk'
+                file_format = :hk
+
+                close = na[6].to_f
+                date = na[19]
+                beta = 1
+                pe = na[13].to_f
+                total_mv = na[17].to_f
+                name = na[1] 
+              else
+
+                close = na[2].to_f
+                date = na[19]
+                beta = na[17].to_f
+                pe = na[16].to_f
+                total_mv = na[13].to_f
+                name = na[1]
+              end
+
+              #first record
+              if ((file_format == :us) and  (code == 'AAPL')) or ((file_format == :hk) and  (code == 'hk00700'))
+                first_record = false if dl.length > 0 
+                
+                len = dl.length
+                sl.each_pair do |k,v|
+                  if v[:cl].length < len
+                    #puts "#{k} #{v}"
+                    t = v[:cl][-1]
+                    v[:cl].push(t)
+                    #puts "#{k} #{v}"
+                  end
+                end
+
+                #puts sl.size
+
+                sl.each_pair do |k,v|
+                  #puts "#{k},#{v}"
+                end
+
+
+                puts "Processing line:#{lineno}, date = #{date}"  
+                dl.push(date) 
+
+                 if first_record and (not sl.has_key? (code.to_sym))
+                     #puts code
+
+                     h=Hash.new
+                     h[:name] = name
+                     # h[:pe] = pe
+                     # h[:beta] = beta
+                     # h[:total_mv] = total_mv
+                     h[:cl] = [] 
+                     sl[code.to_sym] = h
+                 end
+                    
+                 #sl[code.to_sym].push(close) 
+                 if sl.has_key? (code.to_sym)
+                     h = sl[code.to_sym]
+                     #h[:name] = name
+                     h[:pe] = pe
+                     h[:beta] = beta
+                     h[:total_mv] = total_mv
+                     h[:cl].push(close) 
+                 end
+                
+                
+              else
+                if date == dl[-1] #aapl is the first record, so other stock should have same date with aapl
+                   if first_record and (not sl.has_key? (code.to_sym))
+                     #sl[code.to_sym] = []
+
+
+                     h=Hash.new
+                     h[:name] = name
+                     # h[:pe] = pe
+                     # h[:beta] = beta
+                     # h[:total_mv] = total_mv
+                     h[:cl] = [] 
+                     sl[code.to_sym] = h
+                   end
+                    
+                   #sl[code.to_sym].push(close) if sl.has_key? (code.to_sym)
+                   if sl.has_key? (code.to_sym)
+                     h = sl[code.to_sym]
+                     #h[:name] = name
+                     h[:pe] = pe
+                     h[:beta] = beta
+                     h[:total_mv] = total_mv
+                     h[:cl].push(close) 
+                 end
+
+                else
+                  #puts dl
+                  #puts "ERROR HAPPED!! #{code} date is #{date}, system date is #{dl[-1]} , skip ...."
+                  #puts line
+                  #exit 
+                end
+              end
+
+              #puts "#{code}, #{date},#{close}"
+        end
+  end # end of file processing
+
+  # add last record
+   len = dl.length
+    sl.each_pair do |k,v|
+      if v[:cl].length < len
+        #puts "#{k} #{v}"
+        t = v[:cl][-1]
+        v[:cl].push(t)
+        #puts "#{k} #{v}"
+      end
+    end
+
+  #dl.each {|d| puts d}
+
+  # sl.each_pair do |k,v|
+  #   puts "#{k},#{v.length}"
+  # end
+  
+  rl = {}
+
+  start_pos = get_index_by_offset(dl,offset)
+  # puts start_pos
+  # puts dl[start_pos]
+  # 
+  tl = []
+
+  sl.each_pair do |k,v|
+    n_roe = (v[:cl][-1] - v[:cl][start_pos])/v[:cl][start_pos] * 100 
+    if n_roe >= roe
+      h = v
+      h[:id] = k
+      h[:close] = v[:cl][-1]
+      h[:roe] = n_roe 
+      tl.push(h)  
+    end
+  end 
+
+
+   tl.sort_by!{|h| h[:total_mv]}
+   tl.reverse!
+   puts "------------------------------------------------------------------------"
+   puts "过去 #{offset} 天， 股价变化大于 #{roe}% 的公司列表，按流通市值降序排列 #{dl[-1]}"
+   puts "------------------------------------------------------------------------"
+   #puts
+   if file_format == :us
+     puts "TICK    名称         收盘价    PE    beta    roe  流通市值"
+     tl.each do |h|
+      nv = (h[:total_mv]/100000000*100 ).to_i/100.0
+
+      puts "#{normalize_name(h[:id].to_s,5)} #{h[:name]} #{format_price(h[:close])} #{format_price(h[:pe])} #{format_price(h[:beta])} #{format_roe(h[:roe])} #{nv}亿"
+     end
+   else
+      puts "TICK       名称        收盘价    PE     roe  流通市值"
+     tl.each do |h|
+      nv = (h[:total_mv])
+
+      puts "#{normalize_name(h[:id].to_s,8)} #{h[:name]} #{format_price(h[:close])} #{format_price(h[:pe])}  #{format_roe(h[:roe])} #{nv}亿"
+     end
+
+   end
+
+
+end
+
+def get_index_by_offset(dl,offset)
+  last_d = Date.parse(dl[-1])
+  
+   dl.each_with_index do |d,i|
+    if (last_d - Date.parse(d)).to_i <= offset
+       return i
+    end
+   end
+end
+
 #分析给定目录下的所有股票日数据
 def analysis_daily_records(dir,rate_min=5,rate_max=8,vol_rate = 50)
 

@@ -501,6 +501,7 @@ def print_help
     puts "-stc [filename]   --- 显示指定文件的跟踪情况"   
     puts "-scc [code]       --- 显示指定股票的跟踪情况"   
     puts "-mon              --- 下载每日交易数据"   
+    puts "-ana ［filename］ [offset] [roe]  --- 分析下载的数据，给出过去offset天，股价变化大于roe的列表"   
       
 
     puts "-h            ---  This help"    
@@ -948,6 +949,14 @@ if ARGV.length != 0
      exit
     end 
 
+    if ele == '-ana'   
+     fname = ARGV[ARGV.index(ele)+1]
+     offset = ARGV[ARGV.index(ele)+2].to_i
+     roe = ARGV[ARGV.index(ele)+3].to_i
+     analysis_stock_log_data(fname,offset,roe)
+     exit
+    end 
+
     if ele == '-scc'   
      code = ARGV[ARGV.index(ele)+1]
 
@@ -1009,7 +1018,7 @@ if ARGV.length != 0
            puts
            puts "Fetching US stock daily records..."
            File.open('us.csv', "r+") do |file|
-            get_topN_from_sina(10000,8,3,:us,file)
+            get_topN_from_sina(3000,8,3,:us,file)
            end 
 
            puts
