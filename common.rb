@@ -1132,7 +1132,7 @@ def download_us_data(dir,offset)
               puts "Generating #{dir}\/#{code}.txt ... "
               File.open("#{dir}\/#{code}.txt", "w") do |file2|
                 file2.puts(line)
-                ta.each {|h| file2.puts "#{h[:date]} #{h[:open]} #{h[:high]} #{h[:low]} #{h[:close]} #{h[:volume]} #{h[:amount]}"}
+                ta.each {|h| file2.puts "#{h[:date].to_s} #{h[:open]} #{h[:high]} #{h[:low]} #{h[:close]} #{h[:volume]} #{h[:amount]}"}
               end
            
              #break
@@ -1149,13 +1149,17 @@ def trans_to_array_of_hash(sa)
   len = sa.length - 1 
   while i<len
     h=Hash.new
-    h[:date] = sa[i]
+    h[:date] = Date.parse(sa[i])
     h[:open] = sa[i+1]
     h[:high] = sa[i+2]
     h[:low] = sa[i+3]
     h[:close] = sa[i+4]
     h[:volume] = sa[i+5]
-    h[:amount] = sa[i+5].scan(/[0-9]+/).inject(:+).to_i * h[:close].to_f
+    if  h[:volume] != nil
+      h[:amount] = sa[i+5].scan(/[0-9]+/).inject(:+).to_i * h[:close].to_f
+    else
+      h[:amount] = 0.0
+    end
 
     i += 6
     ta.push(h)

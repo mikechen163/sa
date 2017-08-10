@@ -957,7 +957,7 @@ if ARGV.length != 0
      exit
     end 
 
-    if ele == '-download'   
+    if ele == '-dload'   
      dir = ARGV[ARGV.index(ele)+1]
      offset = ARGV[ARGV.index(ele)+2]
     
