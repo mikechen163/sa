@@ -1151,6 +1151,12 @@ def trans_to_array_of_hash(sa)
   len = sa.length - 1 
   while i<len
     h=Hash.new
+    #p sa[i]
+    if sa[i].index('/') == nil
+      i += 1
+      next
+    end
+    
     h[:date] = Date.strptime(sa[i],'%m/%d/%y')
     h[:open] = sa[i+1]
     h[:high] = sa[i+2]
