@@ -1089,10 +1089,13 @@ def fetch_quoto_from_nasdaq(code,length)
   end
 
   #puts res.body
-  return [] if res.body.split('Results for') == nil
-  sa=res.body.split('Results for')[1].split('<tbody>')[1]
-  #sa = sa.scan(/<tr.*>(.*)<\/tr>/)
-   nsa = sa.scan(/[0-9:,\/]+\.*[0-9:,\/]+/)
+  
+  begin
+    sa=res.body.split('Results for')[1].split('<tbody>')[1]
+    nsa = sa.scan(/[0-9:,\/]+\.*[0-9:,\/]+/)
+  rescue
+    return []
+  end
     
   return nsa
 end
