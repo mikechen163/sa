@@ -1076,8 +1076,29 @@ def fetch_all_stock_for_attr(att)
     return res
 end
 
+require 'net/http'
+def fetch_quoto_from_nasdaq(code,length)
+
+  uri = URI("http://www.nasdaq.com/symbol/#{code.downcase}/historical")
+  res = Net::HTTP.start(uri.host, 80) do |http|
+    req = Net::HTTP::Post.new(uri)
+    req['Content-Type'] = 'application/json'
+    # The body needs to be a JSON string, use whatever you know to parse Hash to JSON
+    req.body = "#{length}|false|#{code.upcase}"
+    http.request(req)
+  end
+
+  #puts res.body
+
+  sa=res.body.split('Results for')[1].split('<tbody>')[1]
+  #sa = sa.scan(/<tr.*>(.*)<\/tr>/)
+   nsa = sa.scan(/[0-9:,\/]+\.*[0-9:,\/]+/)
+    
+  return nsa
+end
+
 def fetch_all_hy(file)
-  uri="http://quote.eastmoney.com/center/BKList.html#trade_0_0?sortRule=0"
+  uri="http://quote.ql.com/center/BKList.html#trade_0_0?sortRule=0"
    
     html_response = nil  
     open(uri) do |http|  
