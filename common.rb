@@ -1182,7 +1182,7 @@ def trans_to_array_of_hash(sa)
 end
 
 def fetch_all_hy(file)
-  uri="http://quote.ql.com/center/BKList.html#trade_0_0?sortRule=0"
+  uri="http://quote.eastmoney.com/center/BKList.html#trade_0_0?sortRule=0"
    
     html_response = nil  
     open(uri) do |http|  
