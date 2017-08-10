@@ -502,8 +502,8 @@ def print_help
     puts "-scc [code]       --- 显示指定股票的跟踪情况"   
     puts "-mon              --- 下载每日交易数据"   
     puts "-ana ［filename］ [offset] [roe]  --- 分析下载的数据，给出过去offset天，股价变化大于roe的列表"   
-      
-
+    puts "-dload ［dir］ [offset]  --- 从nasdaq网站下载美股交易数据 offset = 1m 3m 6m 1y 18m 2y 5y"   
+     
     puts "-h            ---  This help"    
 end
 
@@ -956,6 +956,15 @@ if ARGV.length != 0
      analysis_stock_log_data(fname,offset,roe)
      exit
     end 
+
+    if ele == '-download'   
+     dir = ARGV[ARGV.index(ele)+1]
+     offset = ARGV[ARGV.index(ele)+2]
+    
+     download_us_data(dir,offset)
+     exit
+    end 
+
 
     if ele == '-scc'   
      code = ARGV[ARGV.index(ele)+1]

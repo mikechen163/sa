@@ -1089,12 +1089,82 @@ def fetch_quoto_from_nasdaq(code,length)
   end
 
   #puts res.body
-
   sa=res.body.split('Results for')[1].split('<tbody>')[1]
   #sa = sa.scan(/<tr.*>(.*)<\/tr>/)
    nsa = sa.scan(/[0-9:,\/]+\.*[0-9:,\/]+/)
     
   return nsa
+end
+
+def download_us_data(dir,offset)
+  puts "Fetching US stock daily records for #{offset}"
+
+  first_record = false
+  lineno = 1
+
+
+           File.open('us.csv', "r") do |file|
+            #get_topN_from_sina(3000,8,3,:us,file)
+            
+            file.seek(-800000, IO::SEEK_END)
+
+            file.each_line do|line|
+              na = line.split(',')
+              code = na[0]
+               date = na[19]
+              #puts "#{lineno} #{code} #{date}"
+              lineno += 1  
+              next if (not first_record) and (code != 'AAPL')
+              #puts code
+              first_record = true
+               
+              close = na[2].to_f
+              date = na[19]
+              beta = na[17].to_f
+              pe = na[16].to_f
+              total_stock_number = na[14].to_f
+              total_mv = na[13].to_f
+              name = na[1]
+
+              sa = fetch_quoto_from_nasdaq(code,offset)
+              ta = trans_to_array_of_hash(sa)
+
+              puts "Generating #{dir}\/#{code}.txt ... "
+              File.open("#{dir}\/#{code}.txt", "w") do |file2|
+                file2.puts(line)
+                ta.each {|h| file2.puts "#{h[:date]} #{h[:open]} #{h[:high]} #{h[:low]} #{h[:close]} #{h[:volume]} #{h[:amount]}"}
+              end
+           
+             #break
+
+            end # line
+           end # file
+  
+end #function
+
+def trans_to_array_of_hash(sa)
+
+  ta = []
+  i = 6
+  len = sa.length - 1 
+  while i<len
+    h=Hash.new
+    h[:date] = sa[i]
+    h[:open] = sa[i+1]
+    h[:high] = sa[i+2]
+    h[:low] = sa[i+3]
+    h[:close] = sa[i+4]
+    h[:volume] = sa[i+5]
+    h[:amount] = sa[i+5].scan(/[0-9]+/).inject(:+).to_i * h[:close].to_f
+
+    i += 6
+    ta.push(h)
+  end
+
+   ta.sort_by!{|h| h[:date]}
+
+   #ta.each {|h| p h}
+   return ta
 end
 
 def fetch_all_hy(file)
