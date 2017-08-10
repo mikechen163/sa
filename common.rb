@@ -1149,7 +1149,7 @@ def trans_to_array_of_hash(sa)
   len = sa.length - 1 
   while i<len
     h=Hash.new
-    h[:date] = Date.parse(sa[i])
+    h[:date] = Date.strptime(sa[i],'%m/%d/%y')
     h[:open] = sa[i+1]
     h[:high] = sa[i+2]
     h[:low] = sa[i+3]
