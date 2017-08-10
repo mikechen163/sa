@@ -1079,18 +1079,16 @@ end
 require 'net/http'
 def fetch_quoto_from_nasdaq(code,length)
 
-  uri = URI("http://www.nasdaq.com/symbol/#{code.downcase}/historical")
-  res = Net::HTTP.start(uri.host, 80) do |http|
-    req = Net::HTTP::Post.new(uri)
-    req['Content-Type'] = 'application/json'
-    # The body needs to be a JSON string, use whatever you know to parse Hash to JSON
-    req.body = "#{length}|false|#{code.upcase}"
-    http.request(req)
-  end
-
-  #puts res.body
-  
   begin
+    uri = URI("http://www.nasdaq.com/symbol/#{code.downcase}/historical")
+    res = Net::HTTP.start(uri.host, 80) do |http|
+      req = Net::HTTP::Post.new(uri)
+      req['Content-Type'] = 'application/json'
+      # The body needs to be a JSON string, use whatever you know to parse Hash to JSON
+      req.body = "#{length}|false|#{code.upcase}"
+      http.request(req)
+    end
+
     sa=res.body.split('Results for')[1].split('<tbody>')[1]
     nsa = sa.scan(/[0-9:,\/]+\.*[0-9:,\/]+/)
   rescue
@@ -1130,6 +1128,7 @@ def download_us_data(dir,offset)
               total_mv = na[13].to_f
               name = na[1]
 
+              puts "Fetching #{code} data from nasdaq ... "
               sa = fetch_quoto_from_nasdaq(code,offset)
               next if sa.length == 0
               ta = trans_to_array_of_hash(sa)
