@@ -1089,6 +1089,7 @@ def fetch_quoto_from_nasdaq(code,length)
   end
 
   #puts res.body
+  return [] if res.body.split('Results for') == nil
   sa=res.body.split('Results for')[1].split('<tbody>')[1]
   #sa = sa.scan(/<tr.*>(.*)<\/tr>/)
    nsa = sa.scan(/[0-9:,\/]+\.*[0-9:,\/]+/)
@@ -1127,6 +1128,7 @@ def download_us_data(dir,offset)
               name = na[1]
 
               sa = fetch_quoto_from_nasdaq(code,offset)
+              next if sa.length == 0
               ta = trans_to_array_of_hash(sa)
 
               puts "Generating #{dir}\/#{code}.txt ... "
