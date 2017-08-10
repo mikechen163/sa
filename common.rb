@@ -1156,8 +1156,8 @@ def trans_to_array_of_hash(sa)
       i += 1
       next
     end
-    
-    h[:date] = Date.strptime(sa[i],'%m/%d/%y')
+
+    h[:date] = Date.strptime(sa[i],'%m/%d/%Y')
     h[:open] = sa[i+1]
     h[:high] = sa[i+2]
     h[:low] = sa[i+3]
