@@ -983,6 +983,17 @@ if ARGV.length != 0
      exit
     end 
 
+  if ele == '-ddhk'   
+     dir = ARGV[ARGV.index(ele)+1]
+     offset = ARGV[ARGV.index(ele)+2].to_i
+     limit = ARGV[ARGV.index(ele)+3].to_i
+     limit = 10 if limit == nil
+    
+     download_hk_data(dir,offset,limit)
+     exit
+    end 
+    
+
 
     if ele == '-scc'   
      code = ARGV[ARGV.index(ele)+1]

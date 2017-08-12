@@ -1098,6 +1098,73 @@ def fetch_quoto_from_nasdaq(code,length)
   return nsa
 end
 
+#数据在同一个季度
+def fetch_hk_quoto_from_sina_same_season(code,d1,d2)
+  sd = fetch_hk_quoto_from_sina(code,d1.year,(d1.month+2)/3)
+  sd.delete_if{|x| x[0] < d1 }
+  sd.delete_if{|x| x[0] > d2 }
+  return sd
+end
+
+def fetch_hk_quoto_from_sina_long(code,start_date,end_date)
+   d1 = Date.parse(start_date)
+  d2 = Date.parse(end_date)
+  ra=[]
+
+
+  if (d1.year == d2.year) 
+    if (((d1.month+2)/3) == ((d2.month+2)/3))  # same year, same seaso
+       return fetch_hk_quoto_from_sina_same_season(code,d1,d2)
+    else # not same season
+     dl= make_date_season_list(d1,d2)
+     #p dl
+     return dl.inject([]){|r,v| r+fetch_hk_quoto_from_sina_same_season(code,v[0],v[1]) }
+    end
+  else # year is not same
+    dl= make_year_date_list(d1,d2)
+     #p dl
+     return dl.inject([]){|r,v| r+fetch_hk_quoto_from_sina_same_season(code,v[0],v[1]) }
+  end
+
+end
+
+def fetch_hk_quoto_from_sina(code,year,season)
+
+  begin
+    uri = URI("http://stock.finance.sina.com.cn/hkstock/history/#{code}.html")
+    res = Net::HTTP.start(uri.host, 80) do |http|
+      req = Net::HTTP::Post.new(uri)
+      req['Content-Type'] = 'application/x-www-form-urlencoded'
+      # The body needs to be a JSON string, use whatever you know to parse Hash to JSON
+      req.body = "year=#{year}&season=#{season}"
+      http.request(req)
+    end
+    sa =  res.body.split('</tr>')
+
+    sa = sa[1..(sa.length - 2)].collect{|e| e.scan(/[0-9\.\-]+/)}
+    nsa = sa.collect do |ta|
+      nta = []
+      nta[0] = Date.parse(ta[0])
+      nta[1] = ta[6].to_f
+      nta[2] = ta[7].to_f
+      nta[3] = ta[8].to_f
+      nta[4] = ta[1].to_f
+      nta[5] = ta[4].to_i
+      nta[6] = ta[5].to_f
+      nta
+    end
+
+    nsa.sort_by!{|x| x[0]}
+
+    #sa=res.body.split('Results for')[1].split('<tbody>')[1]
+    #nsa = sa.scan(/[0-9:,\/]+\.*[0-9:,\/]+/)
+  rescue
+    return []
+  end
+    
+  return nsa
+end
+
 def get_hash_for_us
    h = Hash.new
    repeat_record = false
@@ -1249,6 +1316,57 @@ def trans_to_array_of_hash(sa)
    #ta.each {|h| p h}
    return ta
 end
+
+def download_hk_data(dir,offset, limit = 10)
+  puts "Fetching HK stock daily records for #{offset} days"
+
+  first_record = false
+  lineno = 1
+
+
+           File.open('hk.csv', "r") do |file|
+            #get_topN_from_sina(3000,8,3,:us,file)
+            
+            file.seek(-200000, IO::SEEK_END)
+
+            file.each_line do|line|
+              na = line.split(',')
+              code = na[0]
+              # date = na[19]
+              #puts "#{lineno} #{code} #{date}"
+              lineno += 1  
+              next if (not first_record) and (code != 'hk00700')
+              #puts code
+              first_record = true
+               
+              close = na[6].to_f
+              date = Date.parse(na[19])
+              #beta = na[17].to_f
+              #pe = na[16].to_f
+              #total_stock_number = na[14].to_f
+              total_mv = na[17].to_f
+              #name = na[1]
+
+              next if total_mv < (limit )
+
+              puts "Fetching #{code} data from sina ... "
+              sa = fetch_hk_quoto_from_sina_long(code[2..6], (date -  offset).to_s, date.to_s)
+              next if sa.length == 0
+              
+              puts "Generating #{dir}\/#{code}.txt ... "
+              File.open("#{dir}\/#{code}.txt", "w") do |file2|
+                file2.puts(line)
+                sa.each do |ta| 
+                  file2.puts(ta.inject("") { |mem, var| mem +  "#{var.to_s} " })
+                end
+              end
+           
+             #break
+
+            end # line
+           end # file
+  
+end #function
 
 def fetch_all_hy(file)
   uri="http://quote.eastmoney.com/center/BKList.html#trade_0_0?sortRule=0"
@@ -2589,6 +2707,8 @@ end
        return [] # no data for this date
      end
  end
+
+
 
 
 def get_day_list_from_file(dir)
