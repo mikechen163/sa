@@ -217,22 +217,22 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          nd = Date.parse(na[0])
          if (not d1y_flag) and (nd >= d1y)
            d1y_flag = true
-           h[:r1y] = - (na[4].to_f - h[:close])/na[4].to_f * 100 
+           h[:r1y] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0 
          end
 
          if (not d6m_flag) and (nd >= d6m)
            d6m_flag = true
-            h[:r6m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 
+            h[:r6m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0
          end
 
          if (not d3m_flag) and (nd >= d3m)
            d3m_flag = true
-            h[:r3m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 
+            h[:r3m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0
          end
 
          if (not d1m_flag) and (nd >= d1m)
            d1m_flag = true
-           h[:r1m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 
+           h[:r1m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0
          end         
        end # of each_line
       
