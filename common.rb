@@ -1098,7 +1098,7 @@ def fetch_quoto_from_nasdaq(code,length)
   return nsa
 end
 
-def download_us_data(dir,offset)
+def download_us_data(dir,offset,limit = 5)
   puts "Fetching US stock daily records for #{offset}"
 
   first_record = false
@@ -1127,6 +1127,8 @@ def download_us_data(dir,offset)
               total_stock_number = na[14].to_f
               total_mv = na[13].to_f
               name = na[1]
+
+              next if total_mv < limit * 100000000
 
               puts "Fetching #{code} data from nasdaq ... "
               sa = fetch_quoto_from_nasdaq(code,offset)

@@ -166,7 +166,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        h[:beta] = na[17].to_f
        h[:pe] = na[16].to_f
        h[:total_mv] = na[13].to_f
-       next if h[:total_mv] < 1000000000
+       #next if h[:total_mv] < 500000000
        h[:name] = na[1]
        #puts "#{h[:code]} #{h[:name]} #{h[:date] }"
 

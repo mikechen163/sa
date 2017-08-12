@@ -976,8 +976,10 @@ if ARGV.length != 0
     if ele == '-dload'   
      dir = ARGV[ARGV.index(ele)+1]
      offset = ARGV[ARGV.index(ele)+2]
+     limit = ARGV[ARGV.index(ele)+3]
+     limit = 10 if limit == nil
     
-     download_us_data(dir,offset)
+     download_us_data(dir,offset,limit)
      exit
     end 
 
