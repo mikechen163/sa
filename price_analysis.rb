@@ -144,6 +144,8 @@ end
 
 def show_us_stock_analysis(dir,topN,mode,roe)
   #puts "#{dir}"
+  # 
+  beta_hash = get_hash_for_us
 
   ta = []
   filecount = 1
@@ -166,12 +168,13 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        h[:high52w] = na[8].to_f
        h[:low52w] = na[9].to_f
        h[:date] = Date.parse(na[19])
-       h[:beta] = na[17].to_f
+       #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+       h[:beta] = beta_hash[h[:code].to_sym]
        h[:pe] = na[16].to_f
        h[:total_mv] = na[13].to_f
        #next if h[:total_mv] < 500000000
        h[:name] = na[1]
-       #puts "#{h[:code]} #{h[:name]} #{h[:date] }"
+       #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
 
        d1y = h[:date] - 360
        d6m = h[:date] - 180

@@ -1098,6 +1098,28 @@ def fetch_quoto_from_nasdaq(code,length)
   return nsa
 end
 
+def get_hash_for_us
+   h = Hash.new
+   repeat_record = false
+   File.open('us.csv', "r") do |file|
+      #file.seek(0) 
+      skip_line = file.gets
+      file.each_line do|line|
+        na = line.split(',')
+        code = na[0]
+        #puts code
+
+        break if (repeat_record) and (code == 'AAPL')
+        #na.each_with_index {|x,i| puts "#{i} #{x}"}
+        h[code.to_sym] = na[17].to_f
+        repeat_record = true
+        #break
+    end #each_lin
+   end #File
+
+   return h 
+end
+
 def download_us_data(dir,offset,limit = 5)
   puts "Fetching US stock daily records for #{offset}"
 
@@ -1128,7 +1150,7 @@ def download_us_data(dir,offset,limit = 5)
               total_mv = na[13].to_f
               name = na[1]
 
-              next if total_mv < limit * 100000000
+              next if total_mv < (limit * 100000000)
 
               puts "Fetching #{code} data from nasdaq ... "
               sa = fetch_quoto_from_nasdaq(code,offset)
