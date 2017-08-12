@@ -503,6 +503,8 @@ def print_help
     puts "-mon              --- 下载每日交易数据"   
     puts "-ana ［filename］ [offset] [roe]  --- 分析每日数据，给出过去offset天，股价变化大于roe的列表"   
     puts "-dload ［dir］ [offset]  --- 从nasdaq网站下载美股交易数据 offset = 1m 3m 6m 1y 18m 2y 5y"  
+    puts "-ddhk  ［dir］ [offset]  --- 从sina网站下载港股交易数据 offset = days"  
+   
     puts "-usa ［dir］ [topN] [mode] [roe]  --- 分析下载的数据，给出统计信息"   
       
      

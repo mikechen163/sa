@@ -149,6 +149,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
   ta = []
   filecount = 1
+  hkstock = false
   Dir.glob("#{dir}\/*.*").each do |afile|
      
     puts "processing #{filecount} files ..." if filecount % 500 == 0
@@ -163,18 +164,39 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        na = line.split(',')
 
        h[:code] = na[0]
-       h[:close] = na[2].to_f
-       h[:ratio] = na[3].to_f
-       h[:high52w] = na[8].to_f
-       h[:low52w] = na[9].to_f
-       h[:date] = Date.parse(na[19])
-       #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
-       h[:beta] = beta_hash[h[:code].to_sym]
-       h[:pe] = na[16].to_f
-       h[:total_mv] = na[13].to_f
-       #next if h[:total_mv] < 500000000
-       h[:name] = na[1]
-       #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
+       hkstock = true if h[:code][0..1] == 'hk'
+       if hkstock
+
+         h[:close] = na[6].to_f
+         h[:ratio] = na[8].to_f
+         h[:high52w] = na[15].to_f
+         h[:low52w] = na[16].to_f
+         h[:date] = Date.parse(na[19])
+         #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+         h[:beta] = 0.0
+         h[:pe] = na[13].to_f
+         h[:total_mv] = na[17].to_f
+         #next if h[:total_mv] < 500000000
+         #h[:name] = na[1]
+         #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
+       else
+      
+         h[:close] = na[2].to_f
+         h[:ratio] = na[3].to_f
+         h[:high52w] = na[8].to_f
+         h[:low52w] = na[9].to_f
+         h[:date] = Date.parse(na[19])
+         #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+         h[:beta] = beta_hash[h[:code].to_sym]
+         h[:beta] = 0.0 if h[:beta] == nil
+         h[:pe] = na[16].to_f
+         h[:total_mv] = na[13].to_f
+         #next if h[:total_mv] < 500000000
+         #h[:name] = na[1]
+         #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
+       end
+
+        h[:name] = na[1]
 
        d1y = h[:date] - 360
        d6m = h[:date] - 180
@@ -261,7 +283,8 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   puts "TICK     名称               价格   涨跌幅  PE   beta    一年   六个月  三个月  一个月 流通市值  high52w low52w"
   puts "-------------------------------------------------------------------------------------------------------------"
   ta[0..(topN - 1)].each do |h|
-     nv = (h[:total_mv]/100000000*100 ).to_i/100.0
+     nv = h[:total_mv]
+     nv = (h[:total_mv]/100000000*100 ).to_i/100.0 if not hkstock
 
    
     puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])} #{format_roe(h[:ratio])} \
