@@ -501,8 +501,10 @@ def print_help
     puts "-stc [filename]   --- 显示指定文件的跟踪情况"   
     puts "-scc [code]       --- 显示指定股票的跟踪情况"   
     puts "-mon              --- 下载每日交易数据"   
-    puts "-ana ［filename］ [offset] [roe]  --- 分析下载的数据，给出过去offset天，股价变化大于roe的列表"   
-    puts "-dload ［dir］ [offset]  --- 从nasdaq网站下载美股交易数据 offset = 1m 3m 6m 1y 18m 2y 5y"   
+    puts "-ana ［filename］ [offset] [roe]  --- 分析每日数据，给出过去offset天，股价变化大于roe的列表"   
+    puts "-dload ［dir］ [offset]  --- 从nasdaq网站下载美股交易数据 offset = 1m 3m 6m 1y 18m 2y 5y"  
+    puts "-usa ［dir］ [topN] [mode] [roe]  --- 分析下载的数据，给出统计信息"   
+      
      
     puts "-h            ---  This help"    
 end
@@ -911,6 +913,20 @@ if ARGV.length != 0
      #p "Show last #{days.to_s} days, price change over #{roe_diff.to_s}% , topN = #{topN} "
 
      show_stock_price_change(days,topN,roe_diff,gl_roe,sortby_mv,false)
+
+     exit
+    end 
+
+     if ele == '-usa' 
+    
+     dir  = ARGV[ARGV.index(ele)+1]
+     topN = ARGV[ARGV.index(ele)+2].to_i
+     mode = ARGV[ARGV.index(ele)+3].to_i
+     #offset  = ARGV[ARGV.index(ele)+4].to_i
+     roe  = ARGV[ARGV.index(ele)+4].to_i
+     
+     show_us_stock_analysis(dir,topN,mode,roe)
+    
 
      exit
     end 

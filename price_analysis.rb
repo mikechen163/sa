@@ -141,6 +141,114 @@ def get_hr_roe(code,price,h,start_date,final)
   return roe
 end
 
+
+def show_us_stock_analysis(dir,topN,mode,roe)
+  #puts "#{dir}"
+
+  ta = []
+  filecount = 1
+  Dir.glob("#{dir}\/*.*").each do |afile|
+     
+    puts "processing #{filecount} files ..." if filecount % 500 == 0
+    filecount += 1
+    File.open(afile) do |file|
+       #lineno = 1
+       line = file.gets
+
+       #first_date = 
+
+       h =Hash.new
+       na = line.split(',')
+
+       h[:code] = na[0]
+       h[:close] = na[2].to_f
+       h[:date] = Date.parse(na[19])
+       h[:beta] = na[17].to_f
+       h[:pe] = na[16].to_f
+       h[:total_mv] = na[13].to_f
+       next if h[:total_mv] < 1000000000
+       h[:name] = na[1]
+       #puts "#{h[:code]} #{h[:name]} #{h[:date] }"
+
+       d1y = h[:date] - 360
+       d6m = h[:date] - 180
+       d3m = h[:date] - 90
+       d1m = h[:date] - 30
+       
+       #lineno += 1
+       d1y_flag = false
+       d6m_flag = false
+       d3m_flag = false
+       d1m_flag = false
+
+       file.each_line do |line|
+        
+         na = line.split(' ')
+         nd = Date.parse(na[0])
+         if (not d1y_flag) and (nd >= d1y)
+           d1y_flag = true
+           h[:r1y] = - (na[4].to_f - h[:close])/h[:close] * 100 
+         end
+
+         if (not d6m_flag) and (nd >= d6m)
+           d6m_flag = true
+            h[:r6m] = - (na[4].to_f - h[:close])/h[:close] * 100 
+         end
+
+         if (not d3m_flag) and (nd >= d3m)
+           d3m_flag = true
+            h[:r3m] = - (na[4].to_f - h[:close])/h[:close] * 100 
+         end
+
+         if (not d1m_flag) and (nd >= d1m)
+           d1m_flag = true
+           h[:r1m] = - (na[4].to_f - h[:close])/h[:close] * 100 
+         end         
+       end # of each_line
+      
+       ta.push(h)
+
+    end
+  end
+
+  ta.sort_by!{|h| h[:total_mv]}
+  ta.reverse!
+
+  case mode
+    
+    when 0
+    when 1
+      ta.delete_if {|h| h[:r1y] <= roe}
+    when 2
+      ta.delete_if {|h| h[:r6m] <= roe}
+    when 3
+      ta.delete_if {|h| h[:r3m] <= roe}
+    when 4
+      ta.delete_if {|h| h[:r1m] <= roe}
+     
+    else
+      puts "mode 0 : sorting by 流通市值"
+      puts "mode 1 : sorting by 一年涨幅大于#{roe}%"
+      puts "mode 2 : sorting by 6个月涨幅大于#{roe}%"
+      puts "mode 3 : sorting by 3个月涨幅大于#{roe}%"
+      puts "mode 4 : sorting by 1个月涨幅大于#{roe}%"
+    
+  end
+
+  topN = sa.length  if topN > ta.length 
+
+  puts "-------------------------------------------------------------------------------"
+  puts "TICK     名称               价格     一年   六个月   三个月   一个月 流通市值"
+  puts "-------------------------------------------------------------------------------"
+  ta[0..(topN - 1)].each do |h|
+     nv = (h[:total_mv]/100000000*100 ).to_i/100.0
+
+   
+    puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])}  #{format_roe(h[:r1y])}  #{format_roe(h[:r6m])}  #{format_roe(h[:r3m])}  #{format_roe(h[:r1m])} #{nv}亿"
+  end
+
+end # func
+
 #显示过去30天 90天 180天 360天的统计数据
 def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20, final = :quick)
   load_name_into_database if Names.count == 0 
