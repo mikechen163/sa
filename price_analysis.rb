@@ -162,6 +162,9 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
        h[:code] = na[0]
        h[:close] = na[2].to_f
+       h[:ratio] = na[3].to_f
+       h[:high52w] = na[8].to_f
+       h[:low52w] = na[9].to_f
        h[:date] = Date.parse(na[19])
        h[:beta] = na[17].to_f
        h[:pe] = na[16].to_f
@@ -251,14 +254,16 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
   topN = ta.length  if topN > ta.length 
 
-  puts "-------------------------------------------------------------------------------"
-  puts "TICK     名称               价格     一年   六个月   三个月   一个月 流通市值"
-  puts "-------------------------------------------------------------------------------"
+  puts "-------------------------------------------------------------------------------------------------------------"
+  puts "TICK     名称               价格   涨跌幅  PE   beta    一年   六个月  三个月  一个月 流通市值  high52w low52w"
+  puts "-------------------------------------------------------------------------------------------------------------"
   ta[0..(topN - 1)].each do |h|
      nv = (h[:total_mv]/100000000*100 ).to_i/100.0
 
    
-    puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])}  #{format_roe(h[:r1y])}  #{format_roe(h[:r6m])}  #{format_roe(h[:r3m])}  #{format_roe(h[:r1m])} #{nv}亿"
+    puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])} #{format_roe(h[:ratio])} \
+#{format_price(h[:pe])}#{format_price(h[:beta])} #{format_roe(h[:r1y])} #{format_roe(h[:r6m])} #{format_roe(h[:r3m])} #{format_roe(h[:r1m])}\
+ #{format_price(nv)}亿  #{format_price(h[:high52w])} #{format_price(h[:low52w])}"
   end
   puts "total #{topN} records"
 
