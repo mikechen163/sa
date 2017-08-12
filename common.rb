@@ -1120,7 +1120,52 @@ def get_hash_for_us
    return h 
 end
 
-def download_us_data(dir,offset,limit = 5)
+def download_from_google(code,office="",start=0)
+  #uri="http://www.google.com/finance/historical?q=HKG%3A0700&start=30&num=30"
+  uri="http://www.google.com.hk/finance/historical?q=#{office}%3A#{code}&start=#{start}&num=30"
+  #uri="http://www.google.com/finance/historical?q=#{office}%3A#{code}"
+  if office == ""
+    uri="http://www.google.com.hk/finance/historical?q=#{code}&start=#{start}&num=30"
+  end
+   
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read 
+    end  
+  
+    sa=html_response.split('</table>')
+    if sa.length > 0
+      sa = sa[3].split('<tr>')[1..30]
+      #puts sa
+      na =  sa.collect {|w| w.scan(/[0-9,\-\.]+/)} 
+
+       na.each do |ta|
+        #puts ta.to_s
+        close = ta[4].to_f
+        volume = ta[5].scan(/[0-9]+/).inject(:+).to_i
+        ta[5] = volume
+        #nta = ta
+        ta.push((close * volume).round(2))
+        #nta
+      end
+ 
+      return na
+
+    end
+    return []
+end
+
+def download_from_google_period(code,office,long)
+  na = []
+  start = 0 
+  while (start ) < long
+    na += download_from_google(code,office,start)
+    start += 30
+  end
+  return na
+end
+
+def download_us_data(dir,offset, limit = 5)
   puts "Fetching US stock daily records for #{offset}"
 
   first_record = false
