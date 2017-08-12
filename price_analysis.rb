@@ -226,16 +226,30 @@ def show_us_stock_analysis(dir,topN,mode,roe)
     when 4
       ta.delete_if {|h| h[:r1m] <= roe}
      
+
+    when 11
+      ta.delete_if {|h|  h[:r1y] > roe}
+    when 12
+      ta.delete_if {|h| h[:r6m] > roe}
+    when 13
+      ta.delete_if {|h|  h[:r3m] > roe}
+    when 14
+      ta.delete_if {|h| h[:r1m] > roe}
     else
       puts "mode 0 : sorting by 流通市值"
       puts "mode 1 : sorting by 一年涨幅大于#{roe}%"
       puts "mode 2 : sorting by 6个月涨幅大于#{roe}%"
       puts "mode 3 : sorting by 3个月涨幅大于#{roe}%"
       puts "mode 4 : sorting by 1个月涨幅大于#{roe}%"
+
+      puts "mode 11 : sorting by 一年涨幅小于#{roe}%"
+      puts "mode 12 : sorting by 6个月涨幅小于#{roe}%"
+      puts "mode 13 : sorting by 3个月涨幅小于#{roe}%"
+      puts "mode 14 : sorting by 1个月涨幅小于#{roe}%"
     
   end
 
-  topN = sa.length  if topN > ta.length 
+  topN = ta.length  if topN > ta.length 
 
   puts "-------------------------------------------------------------------------------"
   puts "TICK     名称               价格     一年   六个月   三个月   一个月 流通市值"
@@ -246,6 +260,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
    
     puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])}  #{format_roe(h[:r1y])}  #{format_roe(h[:r6m])}  #{format_roe(h[:r3m])}  #{format_roe(h[:r1m])} #{nv}亿"
   end
+  puts "total #{topN} records"
 
 end # func
 
