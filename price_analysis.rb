@@ -297,6 +297,171 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
 end # func
 
+#
+def show_offset_stock_analysis(dir,topN,offset,roe,mode = 1)
+  #puts "#{dir}"
+  # 
+  #beta_hash = get_hash_for_us
+
+  ta = []
+  filecount = 1
+  hkstock = false
+  Dir.glob("#{dir}\/*.*").each do |afile|
+     
+    puts "processing #{filecount} files ..." if filecount % 500 == 0
+    filecount += 1
+    File.open(afile) do |file|
+       #lineno = 1
+       line = file.gets
+
+       #first_date = 
+
+       h =Hash.new
+       na = line.split(',')
+
+       h[:code] = na[0]
+       hkstock = true if h[:code][0..1] == 'hk'
+       if hkstock
+
+         h[:close] = na[6].to_f
+         h[:ratio] = na[8].to_f
+         h[:high52w] = na[15].to_f
+         h[:low52w] = na[16].to_f
+         h[:date] = Date.parse(na[19])
+         #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+         #h[:beta] = 0.0
+         h[:pe] = na[13].to_f
+         h[:total_mv] = na[17].to_f
+         #next if h[:total_mv] < 500000000
+         #h[:name] = na[1]
+         #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
+       else
+      
+         h[:close] = na[2].to_f
+         h[:ratio] = na[3].to_f
+         h[:high52w] = na[8].to_f
+         h[:low52w] = na[9].to_f
+         h[:date] = Date.parse(na[19])
+         #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+         #h[:beta] = beta_hash[h[:code].to_sym]
+         h[:beta] = 0.0 if h[:beta] == nil
+         h[:pe] = na[16].to_f
+         h[:total_mv] = na[13].to_f
+         #next if h[:total_mv] < 500000000
+         #h[:name] = na[1]
+         #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
+       end
+
+        h[:name] = na[1]
+
+       d1y = h[:date] - 360
+       d6m = h[:date] - 180
+       d3m = h[:date] - 90
+       d1m = h[:date] - 30
+       
+       #lineno += 1
+       d1y_flag = false
+       d6m_flag = false
+       d3m_flag = false
+       d1m_flag = false
+
+       h[:r1y] = h[:r6m] = h[:r3m] = h[:r1m] = 0.0   
+
+       h[:r_off] = 0.0
+       dr_off_flag = false
+       dr_off = h[:date] - offset
+
+
+       file.each_line do |line|
+        
+         na = line.split(' ')
+         nd = Date.parse(na[0])
+
+         if (not dr_off_flag) and (nd >= dr_off)
+           dr_off_flag = true
+           h[:r_off] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0 
+         end
+
+         if (not d1y_flag) and (nd >= d1y)
+           d1y_flag = true
+           h[:r1y] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0 
+         end
+
+         if (not d6m_flag) and (nd >= d6m)
+           d6m_flag = true
+            h[:r6m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0
+         end
+
+         if (not d3m_flag) and (nd >= d3m)
+           d3m_flag = true
+            h[:r3m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0
+         end
+
+         if (not d1m_flag) and (nd >= d1m)
+           d1m_flag = true
+           h[:r1m] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0
+         end         
+
+        
+       end # of each_line
+      
+       ta.push(h)
+
+    end
+  end
+
+  ta.sort_by!{|h| h[:total_mv]}
+  ta.reverse!
+
+  case mode
+    
+    when 0
+    when 1
+      ta.delete_if {|h| h[:r_off] <= roe}
+    when 2
+      ta.delete_if {|h| h[:r_off] > roe}
+
+    when 11
+      ta.delete_if {|h| h[:r_off] <= roe}
+       ta.delete_if {|h| h[:total_mv] < 1000000000}
+       ta.sort_by!{|h| h[:r_off]}
+       ta.reverse!
+    when 12
+      ta.delete_if {|h| h[:r_off] > roe}
+      ta.sort_by!{|h| h[:r_off]}
+  
+    else
+      puts "mode 0 : sorting by 流通市值"
+      puts "mode 1 : sorting by 流通市值 涨幅大于#{roe}%"
+      puts "mode 2 : sorting by 流通市值 涨幅小于#{roe}%"
+
+      puts "mode 11 : sorting by 涨幅 大于#{roe}%"
+      puts "mode 12 : sorting by 涨幅 小于#{roe}%"
+    
+  end
+
+  topN = ta.length  if topN > ta.length 
+
+  dd = (ta[0][:date] - offset).to_s
+  puts dd 
+
+
+  puts "-------------------------------------------------------------------------------------------------------------"
+  puts "TICK     名称               价格   涨跌幅  PE   #{dd[0..6]}    一年  六个月  三个月  一个月 流通市值  high52w low52w"
+  puts "-------------------------------------------------------------------------------------------------------------"
+  ta[0..(topN - 1)].each do |h|
+     nv = h[:total_mv]
+     nv = (h[:total_mv]/100000000*100 ).to_i/100.0 if not hkstock
+
+   
+    puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])} #{format_roe(h[:ratio])} \
+#{format_price(h[:pe])} #{format_roe(h[:r_off])} #{format_roe(h[:r1y])} #{format_roe(h[:r6m])} #{format_roe(h[:r3m])} #{format_roe(h[:r1m])}\
+ #{format_price(nv)}亿  #{format_price(h[:high52w])} #{format_price(h[:low52w])}"
+  end
+  puts "total #{topN} records"
+
+end # func
+
 #显示过去30天 90天 180天 360天的统计数据
 def show_stock_statiscs(topN = 100, sortby_method = 0, roe = 20, final = :quick)
   load_name_into_database if Names.count == 0 

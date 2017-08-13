@@ -483,7 +483,7 @@ def print_help
 
     puts "-ttp  days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果"    
     puts "-ttpq days topN roe gl sortby --- 过滤器，显示过去若干天，topN，收益率大于roe 按照流通值排序的结果,简单模式"    
-    puts "-ttq  topN mode roe           --- 过滤器，显示过去3个月 ，topN，收益率大于roe 按照流通值排序的结果,简单模式"    
+    puts "-ttq  topN mode[10-16] roe    --- 过滤器，显示过去3个月 ，topN，收益率大于roe 按照流通值排序的结果,简单模式"    
 
 
 
@@ -506,7 +506,8 @@ def print_help
     puts "-ddhk ［dir］ [offset] [limit]  --- 从sina网站下载港股交易数据 offset = days"  
     puts "-dload［dir］[market] [offset] [limit] --- 下载港股美股历史数据 market = us/hk offset = days"  
    
-    puts "-usa ［dir］ [topN] [mode] [roe]  --- 分析下载的数据，给出统计信息"   
+    puts "-usa ［dir］ [topN] [mode] [roe]           --- 分析下载的数据，给出统计信息"   
+    puts "-ofa ［dir］ [topN] [offset] [roe] [mode]  --- 分析下载的数据，给出统计信息 mode = 0,1,2 11,12"   
       
      
     puts "-h            ---  This help"    
@@ -975,6 +976,19 @@ if ARGV.length != 0
      analysis_stock_log_data(fname,offset,roe)
      exit
     end 
+
+
+    if ele == '-ofa'   
+     dir = ARGV[ARGV.index(ele)+1]
+     topN = ARGV[ARGV.index(ele)+2].to_i
+     offset = ARGV[ARGV.index(ele)+3].to_i
+     roe = ARGV[ARGV.index(ele)+4].to_i
+     mode = ARGV[ARGV.index(ele)+5].to_i
+     show_offset_stock_analysis(dir,topN,offset,roe,mode)
+     exit
+    end 
+
+    
 
     if ele == '-ddus'   
      dir = ARGV[ARGV.index(ele)+1]
