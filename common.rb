@@ -4,6 +4,7 @@ require "shared_setup"
 require 'time'
 require 'active_record'
 require 'open-uri'
+require 'json'
 #require 'math'
 
 class Daily_records < ActiveRecord::Base
@@ -916,6 +917,67 @@ def load_name_into_database(fname = "name.txt")
 
 end
 
+  #require 'net/http'
+#require 'net/https'
+#
+#
+
+
+# require 'quandl'
+# Quandl::ApiConfig.api_key = 'TB6QKirh7HJdSH3xA3Gz'
+# Quandl::ApiConfig.api_version = '2015-04-09'
+# def get_data_from_quandl(code)  
+   
+# return Quandl::Dataset.get("WIKI/#{code}").data(params: { limit: 1 }).first
+
+# end
+# 
+
+require 'quata'
+def get_data_from_quandl(code,offset)  
+
+ quandl = Quata::API.new 'TB6QKirh7HJdSH3xA3Gz'
+ ta =  quandl.datasets "WIKI/#{code}", rows: offset  
+
+ #puts ta.values[0]['column_names'].inject(""){|r,v| r + "#{v} "}
+  sa =  ta.values[0]['data'].collect do |sa|
+   tta = sa[0..5]
+   tta.push((sa[4]*sa[5]).round(2))
+   tta
+ end
+
+ return sa.sort_by{|x| x[0]}  
+
+end
+
+
+def get_data_from_alphavantage(code)  
+   
+  uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&apikey=AYVJ7EH2MDN75056"
+
+   
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end
+
+    ta = []
+    sa =  JSON.parse(html_response).values[1]
+    sa.each_pair do |k,v|
+      #puts "#{k} #{v}"
+      tta = v.values.collect{|x| x.to_f}
+      tta.insert(0,k)
+      tta.push (v.values[3].to_f * v.values[4].to_i).round(2)
+      ta.push tta
+    end
+
+    return ta.sort_by{|x| x[0]}    
+    #return ta
+
+    #JSON.parse(html_response).values[1].values  
+
+ end
+
 def get_data_from_sina(code)
  # pref = "sh"
  #   pref = "sz" if (code[0]!='6')   
@@ -927,7 +989,7 @@ def get_data_from_sina(code)
       html_response = http.read  
     end
 
-    p html_response  
+    return html_response  
     #sa= html_response.split('http://vip.stock.finance.sina.com.cn/quotes_service/view/vMS_tradehistory.php?symbol')  
 
     #return sa
