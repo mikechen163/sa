@@ -502,8 +502,9 @@ def print_help
     puts "-scc [code]       --- 显示指定股票的跟踪情况"   
     puts "-mon              --- 下载每日交易数据"   
     puts "-ana ［filename］ [offset] [roe]  --- 分析每日数据，给出过去offset天，股价变化大于roe的列表"   
-    puts "-dload ［dir］ [offset]  --- 从nasdaq网站下载美股交易数据 offset = 1m 3m 6m 1y 18m 2y 5y"  
-    puts "-ddhk  ［dir］ [offset]  --- 从sina网站下载港股交易数据 offset = days"  
+    puts "-ddus ［dir］ [offset] [limit] --- 从nasdaq网站下载美股交易数据 offset = 1m 3m 6m 1y 18m 2y 5y"  
+    puts "-ddhk ［dir］ [offset] [limit]  --- 从sina网站下载港股交易数据 offset = days"  
+    puts "-dload［dir］[market] [offset] [limit] --- 下载港股美股历史数据 market = us/hk offset = days"  
    
     puts "-usa ［dir］ [topN] [mode] [roe]  --- 分析下载的数据，给出统计信息"   
       
@@ -975,7 +976,7 @@ if ARGV.length != 0
      exit
     end 
 
-    if ele == '-dload'   
+    if ele == '-ddus'   
      dir = ARGV[ARGV.index(ele)+1]
      offset = ARGV[ARGV.index(ele)+2]
      limit = ARGV[ARGV.index(ele)+3].to_i
@@ -994,8 +995,17 @@ if ARGV.length != 0
      download_hk_data(dir,offset,limit)
      exit
     end 
-    
 
+    if ele == '-dload'   
+     dir = ARGV[ARGV.index(ele)+1]
+     market = ARGV[ARGV.index(ele)+2]
+     offset = ARGV[ARGV.index(ele)+3].to_i
+     limit = ARGV[ARGV.index(ele)+4].to_i
+     limit = 10 if limit == nil
+    
+     download_oversea_data(dir,market.to_sym, offset,limit)
+     exit
+    end 
 
     if ele == '-scc'   
      code = ARGV[ARGV.index(ele)+1]
