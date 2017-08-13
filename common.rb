@@ -940,6 +940,13 @@ def get_data_from_quandl(code,offset)
  ta =  quandl.datasets "WIKI/#{code}", rows: offset  
 
  #puts ta.values[0]['column_names'].inject(""){|r,v| r + "#{v} "}
+  
+   #return ta
+   #return [] 
+   if ta.values[0]['data'] == nil
+    ta =  quandl.datasets "BATS/#{code}", rows: offset 
+     return [] if ta.values[0]['data'] == nil
+   end
   sa =  ta.values[0]['data'].collect do |sa|
    tta = sa[0..5]
    tta.push((sa[4]*sa[5]).round(2))
@@ -1270,6 +1277,10 @@ def download_from_google(code,office="",start=0)
 
        na.each do |ta|
         #puts ta.to_s
+        ta[1] = ta[1].to_f
+        ta[2] = ta[2].to_f 
+        ta[3] = ta[3].to_f 
+        ta[4] = ta[4].to_f 
         close = ta[4].to_f
         volume = ta[5].scan(/[0-9]+/).inject(:+).to_i
         ta[5] = volume
@@ -1291,7 +1302,7 @@ def download_from_google_period(code,office,long)
     na += download_from_google(code,office,start)
     start += 30
   end
-  return na
+  return na.sort_by{|x| x[0]}
 end
 
 def download_us_data(dir,offset, limit = 5)
@@ -1430,7 +1441,9 @@ def download_oversea_data(dir,market,offset, limit = 10)
 
               if market == :us
                 puts "Fetching #{code} data from quandl ... "
-                sa = get_data_from_quandl(code,offset)
+                #sleep(1)
+                #sa = get_data_from_quandl(code,offset)
+                sa = download_from_google_period(code,'',offset)
               end
 
               next if sa.length == 0
