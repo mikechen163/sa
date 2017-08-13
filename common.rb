@@ -958,9 +958,16 @@ def get_data_from_quandl(code,offset)
 end
 
 
-def get_data_from_alphavantage(code)  
+def get_data_from_alphavantage(code,offset)  
    
-  uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&apikey=AYVJ7EH2MDN75056"
+   full_form = false
+   if offset <= 100
+   uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&apikey=AYVJ7EH2MDN75056"
+  else
+
+    uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&outputsize=full&apikey=AYVJ7EH2MDN75056"
+    full_form = true
+  end
 
    
     html_response = nil  
@@ -968,14 +975,22 @@ def get_data_from_alphavantage(code)
       html_response = http.read  
     end
 
+    #return html_response
+
     ta = []
+    counter = 0
     sa =  JSON.parse(html_response).values[1]
+    #puts sa.length
+
+    d1 = Date.parse sa.keys[0]
     sa.each_pair do |k,v|
       #puts "#{k} #{v}"
       tta = v.values.collect{|x| x.to_f}
       tta.insert(0,k)
       tta.push (v.values[3].to_f * v.values[4].to_i).round(2)
       ta.push tta
+      counter += 1
+      break if full_form and ( (Date.parse(k) + offset ) < d1)
     end
 
     return ta.sort_by{|x| x[0]}    
@@ -1440,10 +1455,11 @@ def download_oversea_data(dir,market,offset, limit = 10)
               end
 
               if market == :us
-                puts "Fetching #{code} data from quandl ... "
+                puts "Fetching #{code} data from alphavantage ... "
                 #sleep(1)
                 #sa = get_data_from_quandl(code,offset)
-                sa = download_from_google_period(code,'',offset)
+                #sa = download_from_google_period(code,'',offset)
+                sa = get_data_from_alphavantage(code,offset)
               end
 
               next if sa.length == 0
