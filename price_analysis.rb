@@ -184,7 +184,8 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        h =Hash.new
        na = line.split(',')
 
-       h[:code] = na[0]
+       code = h[:code] = na[0]
+
        hkstock = true if h[:code][0..1] == 'hk'
        if hkstock
 
