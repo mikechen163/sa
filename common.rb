@@ -1479,6 +1479,133 @@ def download_oversea_data(dir,market,offset, limit = 10)
   
 end #function
 
+def update_oversea_data(dir)
+
+
+
+ Dir.glob("#{dir}\/*.*").each do |afile|
+    
+    filecount = 1 
+    market = :us
+    puts "processing #{filecount} files ..." if filecount % 500 == 0
+    filecount += 1
+    File.open(afile,'r+') do |file|
+       #lineno = 1
+       line = file.gets
+       na = line.split(',')
+       code = na[0]
+       market = :hk if code[0..1] == 'hk'
+
+       #puts line
+       file.seek(-100, IO::SEEK_END)
+       last_line = ""
+       file.each_line do |line|
+        #puts line
+        last_line = line
+       end
+       day1 =  Date.parse last_line[0..9]
+
+       if market == :hk
+        puts "Fetching #{code} data from sina ... "
+        sa = fetch_hk_quoto_from_sina_long(code[2..6], day1.to_s, Time.now.strftime("%Y-%m-%d"))
+      end
+
+      if market == :us
+        puts "Fetching #{code} data from alphavantage ... "
+        #sleep(1)
+        #sa = get_data_from_quandl(code,offset)
+        #sa = download_from_google_period(code,'',offset)
+        sa = get_data_from_alphavantage(code,90)
+      end
+
+        sa.each do  |ta|
+        #puts ta
+         next if (market == :hk) and (ta[0] <= day1)
+         next if (market == :us) and  Date.parse(ta[0]) <= day1
+         puts ta.to_s
+         file.puts((ta.inject("") { |mem, var| mem +  "#{var.to_s} " }))
+        end
+
+      
+    
+       
+       #end
+    end
+end   
+
+  # puts "Fetching #{market.upcase} stock daily records for #{offset} days"
+
+  # first_record = false
+  # lineno = 1
+
+  # case market
+  #   when :us
+  #     fname = 'us.csv'
+  #     seek_offset = -800000
+  #     mv_offset = 13
+  #     start_code = 'AAPL'
+  #   when :hk
+  #     fname = 'hk.csv'
+  #     seek_offset = -200000
+  #     mv_offset = 17
+  #     start_code = 'hk00700'
+  #   else
+  #     puts "unsupport #{market} now"
+  #     exit 
+  # end
+
+
+
+
+  #          File.open(fname, "r") do |file|
+  #           #get_topN_from_sina(3000,8,3,:us,file)
+            
+  #           file.seek(seek_offset, IO::SEEK_END)
+
+  #           file.each_line do|line|
+  #             na = line.split(',')
+  #             code = na[0]
+  #             lineno += 1  
+  #             next if (not first_record) and (code != start_code)
+  #             first_record = true
+               
+  #             date = Date.parse(na[19])
+             
+  #             total_mv = na[mv_offset].to_f
+  #             #name = na[1]
+
+  #             next if total_mv < (limit )
+
+  #             if market == :hk
+  #               puts "Fetching #{code} data from sina ... "
+  #               sa = fetch_hk_quoto_from_sina_long(code[2..6], (date -  offset).to_s, date.to_s)
+  #             end
+
+  #             if market == :us
+  #               puts "Fetching #{code} data from alphavantage ... "
+  #               #sleep(1)
+  #               #sa = get_data_from_quandl(code,offset)
+  #               #sa = download_from_google_period(code,'',offset)
+  #               sa = get_data_from_alphavantage(code,offset)
+  #             end
+
+  #             next if sa.length == 0
+              
+  #             puts "Generating #{dir}\/#{code}.txt ... "
+  #             File.open("#{dir}\/#{code}.txt", "w") do |file2|
+  #               file2.puts(line)
+  #               sa.each do |ta| 
+  #                 file2.puts(ta.inject("") { |mem, var| mem +  "#{var.to_s} " })
+  #               end
+  #             end
+           
+  #            #break
+
+  #           end # line
+  #          end # file
+  
+end #function
+
 def download_hk_data(dir,offset, limit = 10)
   puts "Fetching HK stock daily records for #{offset} days"
 

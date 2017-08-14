@@ -1021,6 +1021,13 @@ if ARGV.length != 0
      exit
     end 
 
+    if ele == '-update'   
+     dir = ARGV[ARGV.index(ele)+1]
+     
+     update_oversea_data(dir)
+     exit
+    end 
+
     if ele == '-scc'   
      code = ARGV[ARGV.index(ele)+1]
 
