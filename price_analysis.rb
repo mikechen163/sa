@@ -192,7 +192,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        hkstock = true if h[:code][0..1] == 'hk'
        if hkstock
 
-         na = h_hk[code]
+         na = h_hk[code] if h_hk[code] != nil
 
          h[:close] = na[6].to_f
          h[:ratio] = na[8].to_f
@@ -234,7 +234,10 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          
        else
 
-         na = h_us[code]
+         #puts code
+         #puts h_us[code]
+
+         na = h_us[code] if h_us[code] != nil
       
          h[:close] = na[2].to_f
          h[:ratio] = na[3].to_f
