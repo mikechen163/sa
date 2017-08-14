@@ -1344,7 +1344,7 @@ def get_last_record_from_monitor(market)
   return h
 end # of func
 
-def get_hash_for_us(market)
+def get_hash_for_us
 
    h = Hash.new
    repeat_record = false
