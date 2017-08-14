@@ -215,11 +215,11 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          xx = mv[-1]
          mv = mv.to_f
          case xx
-           when T
+           when 'T'
             h[:total_mv] = mv*10000
-           when B
+           when 'B'
             h[:total_mv] = mv*10
-           when M
+           when 'M'
             h[:total_mv] = mv/100.0
            else
             h[:total_mv] = 0.0
