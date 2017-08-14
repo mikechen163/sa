@@ -1305,7 +1305,47 @@ def fetch_hk_quoto_from_sina(code,year,season)
   return nsa
 end
 
-def get_hash_for_us
+def get_last_record_from_monitor(market)
+   case market
+    when :us
+      fname = 'us.csv'
+      seek_offset = -800000
+      mv_offset = 13
+      start_code = 'AAPL'
+    when :hk
+      fname = 'hk.csv'
+      seek_offset = -200000
+      mv_offset = 17
+      start_code = 'hk00700'
+    else
+      puts "unsupport #{market} now"
+      exit 
+  end
+
+   h= Hash.new
+   first_record = false
+
+   File.open(fname, "r") do |file|
+            #get_topN_from_sina(3000,8,3,:us,file)
+            
+            file.seek(seek_offset, IO::SEEK_END)
+
+            file.each_line do|line|
+              na = line.split(',')
+              code = na[0]
+              #lineno += 1  
+              next if (not first_record) and (code != start_code)
+              first_record = true
+
+              h[code] = na
+            end
+    end
+
+  return h
+end # of func
+
+def get_hash_for_us(market)
+
    h = Hash.new
    repeat_record = false
    File.open('us.csv', "r") do |file|
@@ -1322,6 +1362,7 @@ def get_hash_for_us
         repeat_record = true
         #break
     end #each_lin
+
    end #File
 
    return h 

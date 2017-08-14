@@ -166,7 +166,10 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   #puts "#{dir}"
   # 
   beta_hash = get_hash_for_us
-  basicinfo = get_stock_basic_info
+  h_us = get_last_record_from_monitor(:us)
+  h_hk = get_last_record_from_monitor(:hk)
+
+  #basicinfo = get_stock_basic_info
 
   ta = []
   filecount = 1
@@ -189,6 +192,8 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        hkstock = true if h[:code][0..1] == 'hk'
        if hkstock
 
+         na = h_hk[code]
+
          h[:close] = na[6].to_f
          h[:ratio] = na[8].to_f
          h[:high52w] = na[15].to_f
@@ -204,30 +209,32 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
          #
          
-         if basicinfo[code] != nil
-           h[:close] = basicinfo[code][3].to_f
-           h[:ratio] = basicinfo[code][4].to_f
-           h[:date]  = Date.parse(basicinfo[code][2])
-          # h[:beta] = basicinfo[code][6].to_f
-          # h[:pe]   = basicinfo[code][7].to_f
-          # h[:eps]  = basicinfo[code][8].to_f
-           mv = basicinfo[code][5]
-           xx = mv[-1]
-           mv = mv.to_f
-           case xx
-             when 'T'
-              h[:total_mv] = mv*10000
-             when 'B'
-              h[:total_mv] = mv*10
-             when 'M'
-              h[:total_mv] = mv/100.0
-             else
-              h[:total_mv] = 0.0
-           end
-         end
+         # if basicinfo[code] != nil
+         #   h[:close] = basicinfo[code][3].to_f
+         #   h[:ratio] = basicinfo[code][4].to_f
+         #   h[:date]  = Date.parse(basicinfo[code][2])
+         #  # h[:beta] = basicinfo[code][6].to_f
+         #  # h[:pe]   = basicinfo[code][7].to_f
+         #  # h[:eps]  = basicinfo[code][8].to_f
+         #   mv = basicinfo[code][5]
+         #   xx = mv[-1]
+         #   mv = mv.to_f
+         #   case xx
+         #     when 'T'
+         #      h[:total_mv] = mv*10000
+         #     when 'B'
+         #      h[:total_mv] = mv*10
+         #     when 'M'
+         #      h[:total_mv] = mv/100.0
+         #     else
+         #      h[:total_mv] = 0.0
+         #   end
+         # end
          
          
        else
+
+         na = h_us[code]
       
          h[:close] = na[2].to_f
          h[:ratio] = na[3].to_f
