@@ -208,10 +208,9 @@ def show_us_stock_analysis(dir,topN,mode,roe)
            h[:close] = basicinfo[code][3].to_f
            h[:ratio] = basicinfo[code][4].to_f
            h[:date]  = Date.parse(basicinfo[code][2])
-           #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
-           h[:beta] = basicinfo[code][6].to_f
-           h[:pe]   = basicinfo[code][7].to_f
-           h[:eps]  = basicinfo[code][8].to_f
+          # h[:beta] = basicinfo[code][6].to_f
+          # h[:pe]   = basicinfo[code][7].to_f
+          # h[:eps]  = basicinfo[code][8].to_f
            mv = basicinfo[code][5]
            xx = mv[-1]
            mv = mv.to_f
