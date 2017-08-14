@@ -1022,14 +1022,17 @@ def get_data_from_alphavantage(code,offset)
 
       xna =  html_response.split('data-test')
       return [] if xna==nil
-    rescue
+   
+
+      na = xna[5..21].collect{|x| x.scan /(.*)\<\/span\>\<\/td\>\<\/tr\>/}
+      na = na.collect {|x| x[0]}
+      ta = []
+      na.each {|x| ta.push x[0] if x!=nil}
+
+     rescue
       return [] 
     end
 
-    na = xna[5..21].collect{|x| x.scan /(.*)\<\/span\>\<\/td\>\<\/tr\>/}
-    na = na.collect {|x| x[0]}
-    ta = []
-    na.each {|x| ta.push x[0] if x!=nil}
     h= Hash.new
 
     b_start_record_flag = false
@@ -1040,11 +1043,12 @@ def get_data_from_alphavantage(code,offset)
       len = x.size
       s2 = x[t2+1..len-1]
 
-      if x.index('DATE') and s2.index('20')
-        s2 = (Date.parse s2).to_s
-      end
+      # if x.index('DATE') and s2.index('20')
+      #   s2 = (Date.parse s2).to_s
+      # end
        
       b_start_record_flag = true if x.index 'MARKET_CAP'
+      b_start_record_flag = false if x.index 'DATE'
 
        h[s1.to_sym] = s2 if b_start_record_flag
     end
