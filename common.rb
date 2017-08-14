@@ -969,10 +969,13 @@ def get_data_from_alphavantage(code,offset)
     full_form = true
   end
 
-   
+    begin
     html_response = nil  
     open(uri) do |http|  
       html_response = http.read  
+    end
+    rescue
+      return []
     end
 
     #return html_response
@@ -1009,6 +1012,7 @@ def get_data_from_alphavantage(code,offset)
    #uri="https://finance.yahoo.com/quote/#{code.upcase}/key-statistics?p=#{code.upcase}"
    uri="https://finance.yahoo.com/quote/#{code}?p=#{code}"
 
+    begin
     html_response = nil  
     open(uri) do |http|  
       html_response = http.read  
@@ -1016,8 +1020,12 @@ def get_data_from_alphavantage(code,offset)
 
     #return html_response
 
-    xna =  html_response.split('data-test')
-    return [] if xna==nil
+      xna =  html_response.split('data-test')
+      return [] if xna==nil
+    rescue
+      return [] 
+    end
+
     na = xna[5..21].collect{|x| x.scan /(.*)\<\/span\>\<\/td\>\<\/tr\>/}
     na = na.collect {|x| x[0]}
     ta = []
