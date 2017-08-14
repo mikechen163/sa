@@ -1000,6 +1000,56 @@ def get_data_from_alphavantage(code,offset)
 
  end
 
+ def get_info_from_yahoo(code)  
+
+   if code[0..2] = 'hk0'
+     code = code[3..6]+'.HK'
+   end
+   
+   #uri="https://finance.yahoo.com/quote/#{code.upcase}/key-statistics?p=#{code.upcase}"
+   uri="https://finance.yahoo.com/quote/#{code}?p=#{code}"
+
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end
+
+    #return html_response
+
+    na =  html_response.split('data-test')
+    return [] if na==nil
+    na = na[5..21].collect{|x| x.scan /(.*)\<\/span\>\<\/td\>\<\/tr\>/}
+    na = na.collect {|x| x[0]}
+    ta = []
+    na.each {|x| ta.push x[0] if x!=nil}
+    h= Hash.new
+
+    b_start_record_flag = false
+    ta.each do |x|
+      t1 = x.index '-value'
+      s1 = x[2..t1-1]
+      t2 = x.rindex '>' 
+      len = x.size
+      s2 = x[t2+1..len-1]
+
+      if x.index('DATE') == nil
+        s2 = s2.to_f
+      else
+        if s2.index('20') != nil
+          s2 = (Date.parse s2).to_s
+        else
+          s2 
+        end
+      end
+       
+      b_start_record_flag = true if x.index 'MARKET_CAP'
+
+       h[s1.to_sym] = s2 if b_start_record_flag
+    end
+
+    return h
+ end
+
 def get_data_from_sina(code)
  # pref = "sh"
  #   pref = "sz" if (code[0]!='6')   
@@ -1482,6 +1532,8 @@ end #function
 def update_oversea_data(dir)
 
 
+ basicInfoFile = File.open('basicinfo.txt','r+')
+ basicInfoFile.seek(0, IO::SEEK_END)
 
  Dir.glob("#{dir}\/*.*").each do |afile|
     
@@ -1518,92 +1570,31 @@ def update_oversea_data(dir)
         sa = get_data_from_alphavantage(code,90)
       end
 
+        day2 = day1
         sa.each do  |ta|
         #puts ta
          next if (market == :hk) and (ta[0] <= day1)
          next if (market == :us) and  Date.parse(ta[0]) <= day1
          puts ta.to_s
          file.puts((ta.inject("") { |mem, var| mem +  "#{var.to_s} " }))
+
+         day2 = ta[0]
+         day2 = Date.parse(ta[0]) if (market == :us)
         end
 
       
     
-       
+        h = get_info_from_yahoo code
+        ss = h.values.inject("") { |mem, var| mem +  "#{var.to_s} " }
+        basicInfoFile.puts "#{code} #{day2.to_s} #{ss}"
        #end
-    end
-end   
+    end # of file
 
-  # puts "Fetching #{market.upcase} stock daily records for #{offset} days"
+    
+end # of dir  
 
-  # first_record = false
-  # lineno = 1
-
-  # case market
-  #   when :us
-  #     fname = 'us.csv'
-  #     seek_offset = -800000
-  #     mv_offset = 13
-  #     start_code = 'AAPL'
-  #   when :hk
-  #     fname = 'hk.csv'
-  #     seek_offset = -200000
-  #     mv_offset = 17
-  #     start_code = 'hk00700'
-  #   else
-  #     puts "unsupport #{market} now"
-  #     exit 
-  # end
-
-
-
-
-  #          File.open(fname, "r") do |file|
-  #           #get_topN_from_sina(3000,8,3,:us,file)
-            
-  #           file.seek(seek_offset, IO::SEEK_END)
-
-  #           file.each_line do|line|
-  #             na = line.split(',')
-  #             code = na[0]
-  #             lineno += 1  
-  #             next if (not first_record) and (code != start_code)
-  #             first_record = true
-               
-  #             date = Date.parse(na[19])
-             
-  #             total_mv = na[mv_offset].to_f
-  #             #name = na[1]
-
-  #             next if total_mv < (limit )
-
-  #             if market == :hk
-  #               puts "Fetching #{code} data from sina ... "
-  #               sa = fetch_hk_quoto_from_sina_long(code[2..6], (date -  offset).to_s, date.to_s)
-  #             end
-
-  #             if market == :us
-  #               puts "Fetching #{code} data from alphavantage ... "
-  #               #sleep(1)
-  #               #sa = get_data_from_quandl(code,offset)
-  #               #sa = download_from_google_period(code,'',offset)
-  #               sa = get_data_from_alphavantage(code,offset)
-  #             end
-
-  #             next if sa.length == 0
-              
-  #             puts "Generating #{dir}\/#{code}.txt ... "
-  #             File.open("#{dir}\/#{code}.txt", "w") do |file2|
-  #               file2.puts(line)
-  #               sa.each do |ta| 
-  #                 file2.puts(ta.inject("") { |mem, var| mem +  "#{var.to_s} " })
-  #               end
-  #             end
-           
-  #            #break
-
-  #           end # line
-  #          end # file
-  
+ 
+  basicInfoFile.close 
 end #function
 
 def download_hk_data(dir,offset, limit = 10)
