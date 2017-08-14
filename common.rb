@@ -1002,7 +1002,7 @@ def get_data_from_alphavantage(code,offset)
 
  def get_info_from_yahoo(code)  
 
-   if code[0..2] = 'hk0'
+   if code[0..2] == 'hk0'
      code = code[3..6]+'.HK'
    end
    
@@ -1016,9 +1016,9 @@ def get_data_from_alphavantage(code,offset)
 
     #return html_response
 
-    na =  html_response.split('data-test')
-    return [] if na==nil
-    na = na[5..21].collect{|x| x.scan /(.*)\<\/span\>\<\/td\>\<\/tr\>/}
+    xna =  html_response.split('data-test')
+    return [] if xna==nil
+    na = xna[5..21].collect{|x| x.scan /(.*)\<\/span\>\<\/td\>\<\/tr\>/}
     na = na.collect {|x| x[0]}
     ta = []
     na.each {|x| ta.push x[0] if x!=nil}
@@ -1032,14 +1032,8 @@ def get_data_from_alphavantage(code,offset)
       len = x.size
       s2 = x[t2+1..len-1]
 
-      if x.index('DATE') == nil
-        s2 = s2.to_f
-      else
-        if s2.index('20') != nil
-          s2 = (Date.parse s2).to_s
-        else
-          s2 
-        end
+      if x.index('DATE') and s2.index('20')
+        s2 = (Date.parse s2).to_s
       end
        
       b_start_record_flag = true if x.index 'MARKET_CAP'
