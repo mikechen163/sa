@@ -189,40 +189,42 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        hkstock = true if h[:code][0..1] == 'hk'
        if hkstock
 
-         # h[:close] = na[6].to_f
-         # h[:ratio] = na[8].to_f
-         # h[:high52w] = na[15].to_f
-         # h[:low52w] = na[16].to_f
-         # h[:date] = Date.parse(na[19])
-         # #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
-         # h[:beta] = 0.0
-         # h[:pe] = na[13].to_f
-         # h[:total_mv] = na[17].to_f
+         h[:close] = na[6].to_f
+         h[:ratio] = na[8].to_f
+         h[:high52w] = na[15].to_f
+         h[:low52w] = na[16].to_f
+         h[:date] = Date.parse(na[19])
+         #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+         h[:beta] = 0.0
+         h[:pe] = na[13].to_f
+         h[:total_mv] = na[17].to_f
 
          #next if h[:total_mv] < 500000000
          #h[:name] = na[1]
          #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
          #
          
-         h[:close] = basicinfo[code][3].to_f
-         h[:ratio] = basicinfo[code][4].to_f
-         h[:date]  = Date.parse(basicinfo[code][2])
-         #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
-         h[:beta] = basicinfo[code][6].to_f
-         h[:pe]   = basicinfo[code][7].to_f
-         h[:eps]  = basicinfo[code][8].to_f
-         mv = basicinfo[code][5]
-         xx = mv[-1]
-         mv = mv.to_f
-         case xx
-           when 'T'
-            h[:total_mv] = mv*10000
-           when 'B'
-            h[:total_mv] = mv*10
-           when 'M'
-            h[:total_mv] = mv/100.0
-           else
-            h[:total_mv] = 0.0
+         if basicinfo[code] != nil
+           h[:close] = basicinfo[code][3].to_f
+           h[:ratio] = basicinfo[code][4].to_f
+           h[:date]  = Date.parse(basicinfo[code][2])
+           #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+           h[:beta] = basicinfo[code][6].to_f
+           h[:pe]   = basicinfo[code][7].to_f
+           h[:eps]  = basicinfo[code][8].to_f
+           mv = basicinfo[code][5]
+           xx = mv[-1]
+           mv = mv.to_f
+           case xx
+             when 'T'
+              h[:total_mv] = mv*10000
+             when 'B'
+              h[:total_mv] = mv*10
+             when 'M'
+              h[:total_mv] = mv/100.0
+             else
+              h[:total_mv] = 0.0
+           end
          end
          
          
