@@ -1591,8 +1591,10 @@ def update_oversea_data(dir)
       
     
         h = get_info_from_yahoo code
-        ss = h.values.inject("") { |mem, var| mem +  "#{var.to_s} " }
-        basicInfoFile.puts "#{code} #{day2.to_s} #{ss}"
+        if h.size > 0
+          ss = h.values.inject("") { |mem, var| mem +  "#{var.to_s} " }
+          basicInfoFile.puts "#{code} #{day2.to_s} #{ss}"
+        end
        #end
     end # of file
 
