@@ -142,6 +142,26 @@ def get_hr_roe(code,price,h,start_date,final)
 end
 
 
+def get_stock_basic_info
+  h=Hash.new
+
+  File.open('basicinfo.txt') do |file|
+    file.each_line do |line|
+       na = line.split ','
+       code = na[0].strip
+       if h[code] == nil
+         h[code] = na
+       else
+         if na[2] > h[code][2] 
+           h[code] = na
+         end
+       end
+    end
+  end
+  return h
+end
+
+
 def show_us_stock_analysis(dir,topN,mode,roe)
   #puts "#{dir}"
   # 

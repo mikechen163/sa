@@ -1552,16 +1552,29 @@ def update_oversea_data(dir)
        line = file.gets
        na = line.split(',')
        code = na[0]
+       name = na[1]
        market = :hk if code[0..1] == 'hk'
 
        #puts line
-       file.seek(-100, IO::SEEK_END)
-       last_line = ""
+       file.seek(-200, IO::SEEK_END)
+       last_line = ll2 = ""
        file.each_line do |line|
         #puts line
+        ll2 = last_line
         last_line = line
+
        end
        day1 =  Date.parse last_line[0..9]
+       na1 = last_line.split ' '
+       na2 = ll2.split ' '
+       close = na1[4].to_f
+       close_prev = na2[4].to_f
+ 
+       ratio = 0.0
+       if close_prev > 0.0
+         ratio = (close - close_prev)/close_prev * 100
+       end
+       close_prev = close
 
        if market == :hk
         puts "Fetching #{code} data from sina ... "
@@ -1578,7 +1591,7 @@ def update_oversea_data(dir)
 
         day2 = day1
         sa.each do  |ta|
-        #puts ta
+         
          next if (market == :hk) and (ta[0] <= day1)
          next if (market == :us) and  Date.parse(ta[0]) <= day1
          puts ta.to_s
@@ -1586,14 +1599,20 @@ def update_oversea_data(dir)
 
          day2 = ta[0]
          day2 = Date.parse(ta[0]) if (market == :us)
+
+          close = ta[4].to_f 
+         if close_prev != 0.0
+           ratio = (close - close_prev)/close_prev * 100
+         end
+         close_prev = close
+
         end
 
       
-    
-        h = get_info_from_yahoo code
+         h = get_info_from_yahoo code
         if h.size > 0
-          ss = h.values.inject("") { |mem, var| mem +  "#{var.to_s} " }
-          basicInfoFile.puts "#{code} #{day2.to_s} #{ss}"
+          ss = h.values.inject("") { |mem, var| mem +  ", #{var.to_s}" }
+          basicInfoFile.puts "#{normalize_name(code,8)},#{normalize_name(name,14)},#{day2.to_s}, #{format_price(close)},#{format_roe(ratio)}#{ss}"
         end
        #end
     end # of file
