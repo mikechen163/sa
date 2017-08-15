@@ -1003,6 +1003,47 @@ def get_data_from_alphavantage(code,offset)
 
  end
 
+ def get_info_from_google(code)  
+
+   if code[0..2] == 'hk0'
+     code = code[3..6]+'.HK'
+   end
+   
+   uri="https://www.google.com/finance?q=#{code}"
+
+    begin
+      html_response = nil  
+      open(uri) do |http|  
+        html_response = http.read  
+      end
+     sa = html_response.split('data-snapfield=')
+     #puts sa.size
+     return [] if sa.size == 1
+
+     ta = []
+     sa = sa.each_with_index do |x,i| 
+      if i>0
+        ind = x.index '</tr>'
+        ta.push x[0..ind-1]
+      end
+     end
+
+      h = Hash.new
+      ta.each do |x|
+        k = (x.scan /\"(.*)\"/)[0][0]
+        v = (x.scan /\".*\"\>(.*)\n/)[1][0]
+        #puts "#{k} => #{v}"
+        h[k.to_sym] = v
+      end
+
+     return h
+    rescue
+      return [] 
+    end
+
+   
+ end # of func
+
  def get_info_from_yahoo(code)  
 
    if code[0..2] == 'hk0'
@@ -2384,6 +2425,8 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
             file.each_line do |line|
               na = line.split('|')
               code = na[1].strip
+              next if code[0..2] == '399'
+              next if code[0..2] == '159'
               cl.push(code) if (code[0] == '6') or (code[0] == '3') or (code[0] == '0')
             end
        end
