@@ -2353,7 +2353,7 @@ end
 
 def get_all_stock_price_from_sina(cl,etf_flag=false)
    
-  batch_num = 300
+  batch_num = 100
   #cl = Names.get_code_list
   len = cl.length
   step = 0
@@ -2361,8 +2361,10 @@ def get_all_stock_price_from_sina(cl,etf_flag=false)
 
   while (step < len)
      a_end = step+batch_num-1
-     a_end = len-1 if a_end > len 
+     a_end = len-4 if a_end > len 
+     #puts "#{step} #{a_end}"
      tl = get_list_data_from_sina(cl[step..a_end],etf_flag)
+     #puts "#{step} #{a_end} #{tl.size} #{cl[step..a_end]}"
      all += tl
      step += batch_num
   end

@@ -1040,6 +1040,16 @@ if ARGV.length != 0
      exit
     end 
 
+     #just for a test function
+    if ele == '-ccc'   
+     puts "Fetching China A stock daily records..."
+           File.open('cc.csv', "r+") do |file|
+             get_topN_from_sina(10000,8,3,:china,file)
+           end
+     exit
+    end 
+
+
     if ele == '-mon'  
 
 
