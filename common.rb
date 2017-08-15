@@ -2218,7 +2218,7 @@ def get_stockinfo_data_from_sina(code)
             h[:total_stock_number] = sa[19].to_f
 
             h[:total_mv] =h[:total_stock_number] *  h[:close] 
-            next if  (h[:total_mv] < 100000000) and (not etf_flag)
+            next if  (h[:total_mv] < 500000000) and (not etf_flag)
 
             h[:eps] = sa[13].to_f
             h[:pe] = sa[14].to_f
