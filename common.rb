@@ -2361,7 +2361,7 @@ def get_all_stock_price_from_sina(cl,etf_flag=false)
 
   while (step < len)
      a_end = step+batch_num-1
-     a_end = len-4 if a_end > len 
+     a_end = len-1 if (a_end > len)  
      #puts "#{step} #{a_end}"
      tl = get_list_data_from_sina(cl[step..a_end],etf_flag)
      #puts "#{step} #{a_end} #{tl.size} #{cl[step..a_end]}"
@@ -2384,7 +2384,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
             file.each_line do |line|
               na = line.split('|')
               code = na[1].strip
-              cl.push(code) 
+              cl.push(code) if (code[0] == '6') or (code[0] == '3') or (code[0] == '0')
             end
        end
        puts "total #{cl.length} stocks"
