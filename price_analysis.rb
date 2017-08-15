@@ -168,6 +168,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   beta_hash = get_hash_for_us
   h_us = get_last_record_from_monitor(:us)
   h_hk = get_last_record_from_monitor(:hk)
+  h_cn = get_last_record_from_monitor(:cn)
 
   #basicinfo = get_stock_basic_info
 
@@ -187,10 +188,26 @@ def show_us_stock_analysis(dir,topN,mode,roe)
        h =Hash.new
        na = line.split(',')
 
-       code = h[:code] = na[0]
+       if na.size > 1 
 
-       hkstock = true if h[:code][0..1] == 'hk'
-       if hkstock
+         code = h[:code] = na[0]
+
+         market = :us
+         market = :hk if h[:code][0..1] == 'hk'
+         market = :cn if (h[:code][0..1] == 'sh') and  (h[:code][0..1] == 'sz')
+       else
+         market = :cn 
+         na = line.split(' ')
+         if na[0][0] == '6'
+           code = "sh" + na[0]
+         else
+           code = "sz" + na[0]
+         end
+
+       end
+
+       case market
+         when :hk
 
          na = h_hk[code] if h_hk[code] != nil
 
@@ -202,7 +219,8 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
          h[:beta] = 0.0
          h[:pe] = na[13].to_f
-         h[:total_mv] = na[17].to_f
+         h[:total_mv] = na[17].to_f * 100000000
+         h[:name] = na[1]
 
          #next if h[:total_mv] < 500000000
          #h[:name] = na[1]
@@ -232,7 +250,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          # end
          
          
-       else
+       when :us
 
          #puts code
          #puts h_us[code]
@@ -249,12 +267,49 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          h[:beta] = 0.0 if h[:beta] == nil
          h[:pe] = na[16].to_f
          h[:total_mv] = na[13].to_f
+         h[:name] = na[1]
          #next if h[:total_mv] < 500000000
          #h[:name] = na[1]
          #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
+       when :cn
+         na = h_cn[code] #if h_cn[code] != nil
+         if na != nil
+
+           h[:code] = code[2..-1]
+           h[:close] = na[5].to_f
+           h[:ratio] = na[11].to_f
+           h[:high52w] = 0.0
+           h[:low52w] = 0.0
+           h[:date] = Date.parse(na[12])
+           #h[:beta] = na[17].to_f # because after 2017-08-04, sina doesn't return beta for stock
+           h[:beta] = 0.0
+           h[:pe] = 0.0
+           h[:total_mv] = na[9].to_f * 100000000
+           h[:name] = na[1]
+         else
+           puts "no daily records for #{code}"
+           next if code == 'sz000300' 
+           next if code[0..4] == 'sz159' 
+           next if code[0..4] == 'sz399' 
+
+           #puts [code[2..-1]]
+           h = get_list_data_from_sina([code[2..-1]])[0]
+           #puts h.to_s
+           h[:total_mv] = h[:total_mv] * 100000000 
+           h[:date] = Date.parse h[:date]
+           #puts h.to_s
+         end
+
+         line = file.gets 
+         #puts line[0..9]
+         line = file.gets  while line[0..1] != '20'
+         #puts line
+
+       else
+         puts "unknown market #{market.to_s}"
        end
 
-        h[:name] = na[1]
+        #h[:name] = na[1]
 
        d1y = h[:date] - 360
        d6m = h[:date] - 180
@@ -269,10 +324,14 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
        h[:r1y] = h[:r6m] = h[:r3m] = h[:r1m] = 0.0   
 
+       #puts code
        file.each_line do |line|
         
+         #puts line
          na = line.split(' ')
          nd = Date.parse(na[0])
+    
+         na[4] = na[4].to_f/na[-1].to_f if market == :cn
          if (not d1y_flag) and (nd >= d1y)
            d1y_flag = true
            h[:r1y] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0 
@@ -343,10 +402,10 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   puts "TICK     名称               价格   涨跌幅  PE   beta    一年   六个月  三个月  一个月 流通市值  high52w low52w"
   puts "-------------------------------------------------------------------------------------------------------------"
   ta[0..(topN - 1)].each do |h|
-     nv = h[:total_mv]
-     nv = (h[:total_mv]/100000000*100 ).to_i/100.0 if not hkstock
+     #nv = h[:total_mv]
+     nv = (h[:total_mv]/100000000*100 ).to_i/100.0 #if not hkstock
 
-   
+    #puts h.to_s
     puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])} #{format_roe(h[:ratio])} \
 #{format_price(h[:pe])}#{format_price(h[:beta])} #{format_roe(h[:r1y])} #{format_roe(h[:r6m])} #{format_roe(h[:r3m])} #{format_roe(h[:r1m])}\
  #{format_price(nv)}亿  #{format_price(h[:high52w])} #{format_price(h[:low52w])}"

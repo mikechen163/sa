@@ -1317,6 +1317,11 @@ def get_last_record_from_monitor(market)
       seek_offset = -200000
       mv_offset = 17
       start_code = 'hk00700'
+     when :cn
+      fname = 'cn.csv'
+      seek_offset = -400000
+      mv_offset = 17
+      start_code = 'sh600519'
     else
       puts "unsupport #{market} now"
       exit 
@@ -1334,6 +1339,7 @@ def get_last_record_from_monitor(market)
               na = line.split(',')
               code = na[0]
               #lineno += 1  
+              #puts line if not first_record
               next if (not first_record) and (code != start_code)
               first_record = true
 
