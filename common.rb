@@ -1032,6 +1032,11 @@ def get_data_from_alphavantage(code,offset)
       ta.each do |x|
         k = (x.scan /\"(.*)\"/)[0][0]
         v = (x.scan /\".*\"\>(.*)\n/)[1][0]
+        v = 'N/A' if v[0..5] == "&nbsp;" 
+        if v[-7..-1] == "</span>"
+          t = v.index '<'
+          v = v[0..t-1]
+        end
         #puts "#{k} => #{v}"
         h[k.to_sym] = v
       end
@@ -1700,9 +1705,9 @@ def update_oversea_data(dir)
          #h = get_info_from_yahoo code
          h = get_info_from_google code
         if h.size > 0
-          h.each_pair {|k,v| h[k]='N/A' if v[0..5] == "&nbsp;" }
+          #h.each_pair {|k,v| h[k]='N/A' if v[0..5] == "&nbsp;" }
           #ss = h.values.inject("") { |mem, var| mem +  ", #{var.to_s}" }
-          basicInfoFile.puts "#{normalize_name(code,8)},#{normalize_name(name,14)},#{day2.to_s}, #{format_price(close)},#{format_roe(ratio)}, #{h[:market_cap]}, #{h[:beta]}, #{h[:pe_ratio]}, #{h[:eps]}, #{h[:inst_own]}, #{h[:shares]}, #{h[:range_52week]}"
+          basicInfoFile.puts "#{normalize_name(code,8)},#{normalize_name(name,14)},#{day2.to_s}, #{format_price(close)}, #{format_roe(ratio)}, #{h[:market_cap]}, #{h[:beta]}, #{h[:pe_ratio]}, #{h[:eps]}, #{h[:inst_own]}, #{h[:shares]}, #{h[:range_52week]}"
         end
        #end
     end # of file
