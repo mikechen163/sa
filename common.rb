@@ -1697,10 +1697,12 @@ def update_oversea_data(dir)
         end
 
       
-         h = get_info_from_yahoo code
+         #h = get_info_from_yahoo code
+         h = get_info_from_google code
         if h.size > 0
-          ss = h.values.inject("") { |mem, var| mem +  ", #{var.to_s}" }
-          basicInfoFile.puts "#{normalize_name(code,8)},#{normalize_name(name,14)},#{day2.to_s}, #{format_price(close)},#{format_roe(ratio)}#{ss}"
+          h.each_pair {|k,v| h[k]='N/A' if v[0..5] == "&nbsp;" }
+          #ss = h.values.inject("") { |mem, var| mem +  ", #{var.to_s}" }
+          basicInfoFile.puts "#{normalize_name(code,8)},#{normalize_name(name,14)},#{day2.to_s}, #{format_price(close)},#{format_roe(ratio)}, #{h[:market_cap]}, #{h[:beta]}, #{h[:pe_ratio]}, #{h[:eps]}, #{h[:inst_own]}, #{h[:shares]}, #{h[:range_52week]}"
         end
        #end
     end # of file

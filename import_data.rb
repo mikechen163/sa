@@ -501,13 +501,14 @@ def print_help
     puts "-stc [filename]   --- 显示指定文件的跟踪情况"   
     puts "-scc [code]       --- 显示指定股票的跟踪情况"   
     puts "-mon              --- 下载每日交易数据"   
-    puts "-ana ［filename］ [offset] [roe]  --- 分析每日数据，给出过去offset天，股价变化大于roe的列表"   
-    puts "-ddus ［dir］ [offset] [limit] --- 从nasdaq网站下载美股交易数据 offset = 1m 3m 6m 1y 18m 2y 5y"  
-    puts "-ddhk ［dir］ [offset] [limit]  --- 从sina网站下载港股交易数据 offset = days"  
-    puts "-dload［dir］[market] [offset] [limit] --- 下载港股美股历史数据 market = us/hk offset = days"  
-   
-    puts "-usa ［dir］ [topN] [mode] [roe]           --- 分析下载的数据，给出统计信息"   
-    puts "-ofa ［dir］ [topN] [offset] [roe] [mode]  --- 分析下载的数据，给出统计信息 mode = 0,1,2 11,12"   
+    puts "-ana ［filename］ [offset] [roe]  --- 分析每日自动下载的数据，给出过去offset天，股价变化大于roe的列表" 
+
+    puts "-ddus ［dir］ [offset] [limit] --- 从nasdaq网站下载美股交易数据到指定目录 offset = 1m 3m 6m 1y 18m 2y 5y"  
+    puts "-ddhk ［dir］ [offset] [limit]  --- 从sina网站下载港股交易数据指定目录 offset = days"  
+    puts "-dload［dir］[market] [offset] [limit] --- 下载港股美股历史数据[上面两个命令的合并版本] market = us/hk offset = days"  
+    puts "-update [dir]     --- 更新指定目录下的港股 美股数据到最新日期"  
+    puts "-usa ［dir］ [topN] [mode] [roe]           --- 分析指定目录下载的数据，给出统计信息"   
+    puts "-ofa ［dir］ [topN] [offset] [roe] [mode]  --- 分析指定目录下载的数据，计算offset的roe mode = 0,1,2 11,12"   
       
      
     puts "-h            ---  This help"    
