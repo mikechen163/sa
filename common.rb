@@ -1380,6 +1380,7 @@ def get_last_record_from_monitor(market)
             #get_topN_from_sina(3000,8,3,:us,file)
             
             file.seek(seek_offset, IO::SEEK_END)
+            file.gets
 
             file.each_line do|line|
               na = line.split(',')
@@ -1480,6 +1481,7 @@ def download_us_data(dir,offset, limit = 5)
             #get_topN_from_sina(3000,8,3,:us,file)
             
             file.seek(-800000, IO::SEEK_END)
+            file.gets
 
             file.each_line do|line|
               na = line.split(',')
@@ -1583,6 +1585,7 @@ def download_oversea_data(dir,market,offset, limit = 10)
             #get_topN_from_sina(3000,8,3,:us,file)
             
             file.seek(seek_offset, IO::SEEK_END)
+            file.gets
 
             file.each_line do|line|
               na = line.split(',')
@@ -1730,6 +1733,7 @@ def download_hk_data(dir,offset, limit = 10)
             #get_topN_from_sina(3000,8,3,:us,file)
             
             file.seek(-200000, IO::SEEK_END)
+            file.gets
 
             file.each_line do|line|
               na = line.split(',')
