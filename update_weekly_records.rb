@@ -1770,7 +1770,7 @@ def update_till_lastest(dir)
         # p "#{code.to_s} #{start_date} #{sa.to_s} takes #{Time.now-t} seconds."
         # 
         begin
-          sleep(1)
+          sleep(3)
           sa = get_h_data_from_sina(code2,start_date,end_date )
           #qf = get_fuquan_factor_from_sina(code2)
         rescue
