@@ -2779,7 +2779,7 @@ def get_fuquan_factor_from_sina(code)
 end
 
 #只提供在一个季度内的数据
-def get_h_data_from_sina_internal(code,d1,d2,qf)
+def get_h_data_from_sina_internal(code,d1,d2,qf=1.0)
 
   ra = []
 
@@ -2988,25 +2988,26 @@ def get_h_data_from_sina(code,start_date,end_date,fq=:qianfuquan)
   d2 = Date.parse(end_date)
   ra=[]
 
-  qf = get_fuquan_factor_from_sina(code)
+  #qf = get_fuquan_factor_from_sina(code)
 
   if (d1.year == d2.year) 
     if (((d1.month+2)/3) == ((d2.month+2)/3))  # same year, same seaso
-       return get_h_data_from_sina_internal(code,d1,d2,qf)
+       return get_h_data_from_sina_internal(code,d1,d2)
     else # not same season
      dl= make_date_season_list(d1,d2)
      #p dl
-     return dl.inject([]){|r,v| r+get_h_data_from_sina_internal(code,v[0],v[1],qf) }
+     return dl.inject([]){|r,v| r+get_h_data_from_sina_internal(code,v[0],v[1]) }
     end
   else # year is not same
     dl= make_year_date_list(d1,d2)
      #p dl
-     return dl.inject([]){|r,v| r+get_h_data_from_sina_internal(code,v[0],v[1],qf) }
+     return dl.inject([]){|r,v| r+get_h_data_from_sina_internal(code,v[0],v[1]) }
   end
 
 end
 
  def get_history_data_from_sina_ori_fuquan(code,day)
+  puts "get history data from sina for #{code} year=#{day.year} jidu=#{(day.month+2)/3} "
 
   # uri='http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/600036.phtml?year=2015&jidu=1'
   uri="http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_FuQuanMarketHistory/stockid/#{code.to_s}.phtml?year=#{day.year}&jidu=#{(day.month+2)/3}"
