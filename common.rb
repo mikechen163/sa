@@ -3007,7 +3007,7 @@ def get_h_data_from_sina(code,start_date,end_date,fq=:qianfuquan)
 end
 
  def get_history_data_from_sina_ori_fuquan(code,day)
-  puts "get history data from sina for #{code} year=#{day.year} jidu=#{(day.month+2)/3} "
+  #puts "get history data from sina for #{code} year=#{day.year} jidu=#{(day.month+2)/3} "
 
   # uri='http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/600036.phtml?year=2015&jidu=1'
   uri="http://vip.stock.finance.sina.com.cn/corp/go.php/vMS_FuQuanMarketHistory/stockid/#{code.to_s}.phtml?year=#{day.year}&jidu=#{(day.month+2)/3}"

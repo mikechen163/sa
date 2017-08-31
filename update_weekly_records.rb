@@ -1720,6 +1720,8 @@ def update_till_lastest(dir)
 
   load_name_into_database if Names.count == 0 
 
+  counter = 1
+
   Dir.glob("#{dir}\/*.txt").sort.each do |afile|
     puts "processing file #{afile}"
 
@@ -1770,7 +1772,9 @@ def update_till_lastest(dir)
         # p "#{code.to_s} #{start_date} #{sa.to_s} takes #{Time.now-t} seconds."
         # 
         begin
-          sleep(3)
+          puts counter
+          sleep(15) if counter % 10 == 0
+          counter += 1
           sa = get_h_data_from_sina(code2,start_date,end_date )
           #qf = get_fuquan_factor_from_sina(code2)
         rescue
@@ -1797,7 +1801,7 @@ def update_till_lastest(dir)
           end
           file.puts(line)
           file.seek(0, IO::SEEK_END)
-          #wf.puts("      日期     开盘      最高      最低      收盘      成交量     成交额   复权因子")
+          #wf.puts("      日期     开盘      最高      收盘      最低      成交量     成交额   复权因子")
           sa.each do |h|
             file.puts "#{h[0]} #{h[1]} #{h[2]} #{h[3]} #{h[4]} #{h[5]} #{h[6]} #{h[7]} "
           end
@@ -1904,6 +1908,8 @@ def update_fuquan_data_by_filename_2(codefile,dir)
   #start_date = (Time.now.to_date - 180 ).to_s
 
   #puts "#{start_date} #{end_date}"
+  #
+  counter = 1
     
   
   File.open(codefile).each_line do |line|
@@ -1937,6 +1943,8 @@ def update_fuquan_data_by_filename_2(codefile,dir)
             start_date = (Time.now.to_date - 180 ).to_s
             sa = get_h_data_from_sina(code2,start_date,end_date )
             #qf = get_fuquan_factor_from_sina(code2)
+            counter += 1
+            sleep(20) if counter % 10 == 0
           rescue
             p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
           end
@@ -2035,6 +2043,9 @@ def update_fuquan_data_by_filename_2(codefile,dir)
                 begin
                   sa = get_h_data_from_sina(code2,start_date,end_date )
                   #qf = get_fuquan_factor_from_sina(code2)
+                  counter += 1
+
+                  sleep(20) if counter % 10 == 0
                 rescue
                   p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
                   # begin

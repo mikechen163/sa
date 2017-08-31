@@ -333,7 +333,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          na = line.split(' ')
          nd = Date.parse(na[0])
     
-         na[4] = na[4].to_f/na[-1].to_f if market == :cn
+         na[4] = na[3].to_f/na[-1].to_f if market == :cn
          if (not d1y_flag) and (nd >= d1y)
            d1y_flag = true
            h[:r1y] = - (na[4].to_f - h[:close])/na[4].to_f * 100 if na[4].to_f > 0.0 
