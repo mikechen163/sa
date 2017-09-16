@@ -274,6 +274,11 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          #h[:name] = na[1]
          #puts "#{h[:code]} #{h[:name]} #{h[:date]} #{h[:beta]} "
        when :cn
+
+         next if code == 'sz000300' 
+         next if code[0..4] == 'sz159' 
+         next if code[0..4] == 'sz399' 
+
          na = h_cn[code] #if h_cn[code] != nil
          if na != nil
 
@@ -288,18 +293,31 @@ def show_us_stock_analysis(dir,topN,mode,roe)
            h[:pe] = 0.0
            h[:total_mv] = na[9].to_f * 100000000
            h[:name] = na[1]
+
+
+            total_number = Stock_Basic_Info.get_stock_total_number(h[:code])
+            #puts "#{h[:code]} #{total_number}"
+             total_number = 0.0 if total_number == nil
+             h[:total_value] = (h[:close]*total_number*100).to_i/100.0 * 100000000
+             #puts "#{h[:code]} #{total_number} #{h[:total_value]}"
+
          else
            puts "no daily records for #{code}"
-           next if code == 'sz000300' 
-           next if code[0..4] == 'sz159' 
-           next if code[0..4] == 'sz399' 
+           # next if code == 'sz000300' 
+           # next if code[0..4] == 'sz159' 
+           # next if code[0..4] == 'sz399' 
 
            #puts [code[2..-1]]
            h = get_list_data_from_sina([code[2..-1]])[0]
            #puts h.to_s
            h[:total_mv] = h[:total_mv] * 100000000 
            h[:date] = Date.parse h[:date]
+
+           total_number = Stock_Basic_Info.get_stock_total_number(h[:code])
+             total_number = 0.0 if total_number == nil
+             h[:total_value] = (h[:close]*total_number*100).to_i/100.0 * 100000000
            #puts h.to_s
+            #puts "#{h[:code]} #{total_number} #{h[:total_value]}"
          end
 
          line = file.gets 
@@ -361,6 +379,11 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   end
 
   ta.sort_by!{|h| h[:total_mv]}
+
+  if (market == :cn) and (mode > 100)
+    ta.sort_by!{|h| h[:total_value]}
+    mode = mode - 100 
+  end
   ta.reverse!
 
   case mode
@@ -402,7 +425,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
   if market == :cn
     puts "-------------------------------------------------------------------------------------------------------------"
-    puts "TICK     名称               价格   涨跌幅  一年   六个月  三个月  一个月 流通市值"
+    puts "TICK     名称               价格   涨跌幅  一年   六个月  三个月  一个月 流通市值  总市值"
     puts "-------------------------------------------------------------------------------------------------------------"
 
   else
@@ -413,12 +436,14 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   ta[0..(topN - 1)].each do |h|
      #nv = h[:total_mv]
      nv = (h[:total_mv]/100000000*100 ).to_i/100.0 #if not hkstock
+     nv2 = (h[:total_value]/100000000*100 ).to_i/100.0 #if not hkstock
+
 
     #puts h.to_s
      if market == :cn
        puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])} #{format_roe(h[:ratio])} \
 #{format_roe(h[:r1y])} #{format_roe(h[:r6m])} #{format_roe(h[:r3m])} #{format_roe(h[:r1m])}\
- #{format_price(nv)}亿"
+ #{normalize_name(format_price(nv),6)}亿 #{normalize_name(format_price(nv2),6)}亿"
      else
        puts "#{normalize_name(h[:code],8)} #{normalize_name(h[:name],16)} #{format_price(h[:close])} #{format_roe(h[:ratio])} \
 #{format_price(h[:pe])}#{format_price(h[:beta])} #{format_roe(h[:r1y])} #{format_roe(h[:r6m])} #{format_roe(h[:r3m])} #{format_roe(h[:r1m])}\
