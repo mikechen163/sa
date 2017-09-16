@@ -436,7 +436,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   ta[0..(topN - 1)].each do |h|
      #nv = h[:total_mv]
      nv = (h[:total_mv]/100000000*100 ).to_i/100.0 #if not hkstock
-     nv2 = (h[:total_value]/100000000*100 ).to_i/100.0 #if not hkstock
+     nv2 = (h[:total_value]/100000000*100 ).to_i/100.0 if (market == :cn) #if not hkstock 
 
 
     #puts h.to_s
