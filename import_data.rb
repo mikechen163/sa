@@ -492,7 +492,8 @@ def print_help
     puts "-sball            --- 下载A股股权数据到数据库" 
     puts "-sbhkall          --- 下载港股股权数据" 
     puts "-loadfile [filename] [tablename] --- 装载文件到数据表"  
-    puts "-gcl [filename] [section]        --- 下载全部A股交易代码  [agu bgu etf cyb all]"   
+    puts "-gcl [filename] [section]        --- 下载全部A股交易代码  [agu bgu etf cyb all]"  
+    puts "-gcl_hk [filename]               --- 下载全部港股交易代码 "   
     puts "-apd [filename] [index_code]     --- 添加指数代码到下载的股票名称文件中"   
 
     puts
@@ -850,6 +851,16 @@ if ARGV.length != 0
       append_index_to_codefile(filename,index_code)
       exit
     end
+
+    if ele == '-gcl_hk' 
+      
+      #filename = 'name_all.txt'
+      filename = ARGV[ARGV.index(ele)+1]  
+      filename = 'hk_name.txt' if filename == nil
+
+      fetch_all_code_list_hk(filename)
+      exit
+   end
 
     if ele == '-gcl' 
       

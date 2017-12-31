@@ -1889,6 +1889,84 @@ def fetch_all_code_list(file,mode=:std)
     
 end
 
+def fetch_all_code_list_hk(filename)
+
+    ha = Hash.new
+    start = 1
+    File.open(filename) do |file|
+      file.each_line do |line|
+        na = line.split '|'
+        ha[na[1].strip.to_sym] = na[2]
+        start = na[0].to_i 
+      end
+    end
+
+    #puts ha.size
+    start = start + 1
+    #puts start
+
+    #return
+    #
+    File.open(filename,'r+') do |file|
+
+      file.seek(0, IO::SEEK_END)
+
+      page = 1
+      found_flag = false
+      while true
+        if page == 1
+          uri="http://hk.eastmoney.com/ipolist.html"
+        else
+          uri="http://hk.eastmoney.com/ipolist_#{page}.html"
+        end
+
+        puts uri
+       
+        html_response = nil  
+        open(uri) do |http|  
+          html_response = http.read  
+        end  
+      
+        sa=html_response.split('quote.eastmoney.com')
+        sa = sa.select {|x| x if x.index( '/hk/') != nil}
+        sa = sa.select {|x| x if x.size > 200}
+
+        #puts sa.size
+
+        #start = 1 
+        found_flag = false
+        found_again = false
+        sa.each  do |x|
+          code =  x[4..8]
+          ind = x.index('<')
+          name = x[16..(ind - 1)]
+          #name = normalize_name(name,8)
+          if ha.has_key? code.to_sym
+            #file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+            puts "repeated #{code} found, #{name} , oldname = #{ha[code.to_sym]}" 
+            found_again = true if found_flag == true
+            found_flag = true
+            break if found_again == true
+          else
+            puts "#{start}| #{code}|#{name}|HK"
+            file.puts "#{start}| #{code}|#{name}|HK"
+            start += 1
+          end
+
+        end
+
+        break if found_again == true
+
+        page += 1
+      end # while
+
+    end # file
+     
+    puts "Total #{start - 1} items. "
+
+    
+end
+
  def get_stockinfo_data_from_ntes(code)
    
    
