@@ -1,5 +1,6 @@
 cd /home/mike/do/work/sa
 ruby import_data.rb -gcl name.txt 
+ruby import_data.rb -gcl_us us_name.txt 
 #ruby import_data.rb -gcl_hk hk_name.txt 
 ruby update_weekly_records.rb -ud2 name.txt data_0331
 rm db_backup.db

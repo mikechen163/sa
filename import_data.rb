@@ -852,6 +852,19 @@ if ARGV.length != 0
       exit
     end
 
+    if ele == '-gcl_us' 
+      
+      fetch_flag = ARGV[ARGV.index(ele)+1]  
+      if fetch_flag != nil
+        fetch_file_from_nasdaq
+      end
+
+      generate_stock_and_etf_file()
+      exit
+   end
+
+
+
     if ele == '-gcl_hk' 
       
       #filename = 'name_all.txt'

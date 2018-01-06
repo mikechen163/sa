@@ -957,6 +957,149 @@ def get_data_from_quandl(code,offset)
 
 end
 
+def generate_stock_and_etf_file()
+  count = 0
+  stock_file = File.open('us_name.txt','w')
+  etf_file = File.open('us_etf.txt','w')
+
+  begin
+    File.open('nasdaqlisted.txt','r') do |file|
+        file.each_line do |line|
+          puts line
+          na = line.split('|')
+          #puts na[0]
+          tick = na[0]
+          fname = na[1]
+          cname = fname.split('-')[0]
+          lname = fname.split('-')[1]
+
+          test_f = na[3]
+          etf_flag = na[6]
+          
+          
+           next if test_f == 'Y'
+           next if tick =~ /[^A-Z]+/
+      
+
+          if etf_flag == 'Y'
+            etf_file.puts("#{tick},#{cname},#{fname},#{na[2]},#{na[3]},#{na[4]},#{na[5]},#{na[6]},#{na[7]}")
+           next
+          end
+
+          #next if tick.size > 4
+
+          if lname != nil
+            next if lname.index('Warrant') != nil
+            next if lname.index('Senior Notes') != nil
+            next if lname.index('Preferred Stock') != nil
+            next if lname.index('Common Unit') != nil
+            next if lname.index('Closed End Fund') != nil
+            next if lname.index('Notes due') != nil
+            next if lname.index(' ETN') != nil
+            next if lname.index(' ETNs') != nil
+            next if lname.index(' Fund') != nil
+            next if lname.index(' Bonds') != nil
+            next if lname.index(' due') != nil
+            next if lname.index(' Trust') != nil
+          end
+
+          #puts line
+          puts "----------------------------------------"
+          stock_file.puts("#{tick},#{cname},#{fname},#{na[2]},#{na[3]},#{na[4]},#{na[5]},#{na[6]},#{na[7]}")
+         
+        end
+      end
+
+     File.open('otherlisted.txt','r') do |file|
+       file.each_line do |line|
+        puts line
+        na = line.split('|')
+        #puts na[0]
+        tick = na[0]
+        lname = na[1]
+        exchange = na[2]
+        etf_flag = na[4]
+        test_f = na[6]
+
+        next if test_f == 'Y'
+        next if tick =~ /[^A-Z]+/
+      
+
+        if etf_flag == 'Y'
+           etf_file.puts("#{tick},#{lname},#{na[2]},#{na[3]},#{na[4]},#{na[5]},#{na[6]},#{na[7]}")
+           next
+        end
+
+        #puts tick.size
+        #next if tick.size > 4
+
+        if lname != nil
+          next if lname.index('Warrant') != nil
+          next if lname.index('Senior Notes') != nil
+          next if lname.index('Preferred Stock') != nil
+          next if lname.index('Common Unit') != nil
+          next if lname.index('Notes due') != nil
+          next if lname.index(' ETN') != nil
+          next if lname.index(' ETNs') != nil
+          next if lname.index(' Fund') != nil
+          next if lname.index(' Bonds') != nil
+          next if lname.index(' due') != nil
+          next if lname.index(' Trust') != nil
+        end
+
+        puts "----------------------------------------"
+        stock_file.puts("#{tick},#{lname},#{na[2]},#{na[3]},#{na[4]},#{na[5]},#{na[6]},#{na[7]}")
+           
+
+      end
+    end
+
+    #rescue
+      #stock_file.close
+      #etf_file.close
+  end
+
+  stock_file.close
+  etf_file.close
+end
+
+def fetch_file_from_nasdaq()
+   uri="ftp://ftp.nasdaqtrader.com/symboldirectory/nasdaqlisted.txt"
+
+    begin
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end
+    rescue
+      return 
+    end
+    puts "Generating nasdaqlisted.txt ..."
+    File.open('nasdaqlisted.txt','w') do |file|
+      html_response.each_line do |line|
+        file.puts(line)
+      end
+    end
+
+    uri="ftp://ftp.nasdaqtrader.com/symboldirectory/otherlisted.txt"
+
+    begin
+    html_response = nil  
+    open(uri) do |http|  
+      html_response = http.read  
+    end
+    rescue
+      return 
+    end
+    puts "Generating otherlisted.txt ..."
+    File.open('otherlisted.txt','w') do |file|
+      html_response.each_line do |line|
+        file.puts(line)
+      end
+    end
+
+   return
+end
 
 def get_data_from_alphavantage(code,offset)  
    
@@ -2349,7 +2492,7 @@ def get_stockinfo_data_from_sina(code)
             h[:total_stock_number] = sa[19].to_f
 
             h[:total_mv] =h[:total_stock_number] *  h[:close] 
-            next if  (h[:total_mv] < 100000000) and (not etf_flag)
+            next if  (h[:total_mv] < 500000000) and (not etf_flag)
 
             h[:eps] = sa[13].to_f
             h[:pe] = sa[14].to_f
