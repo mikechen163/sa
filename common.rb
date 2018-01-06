@@ -983,6 +983,7 @@ def get_data_from_alphavantage(code,offset)
     ta = []
     counter = 0
     sa =  JSON.parse(html_response).values[1]
+    return [] if sa == nil
     #puts sa.length
 
     d1 = Date.parse sa.keys[0]
