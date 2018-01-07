@@ -1712,6 +1712,11 @@ def download_oversea_data(dir,market,offset, limit = 10)
       seek_offset = -800000
       mv_offset = 13
       start_code = 'AAPL'
+    when :etf
+      fname = 'us_etf.csv'
+      seek_offset = -800000
+      mv_offset = 13
+      start_code = 'SPY'
     when :hk
       fname = 'hk.csv'
       seek_offset = -200000
@@ -1750,7 +1755,7 @@ def download_oversea_data(dir,market,offset, limit = 10)
                 sa = fetch_hk_quoto_from_sina_long(code[2..6], (date -  offset).to_s, date.to_s)
               end
 
-              if market == :us
+              if (market == :us) or (market == :etf)
                 puts "Fetching #{code} data from alphavantage ... "
                 #sleep(1)
                 #sa = get_data_from_quandl(code,offset)
