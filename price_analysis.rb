@@ -177,6 +177,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   filecount = 1
   hkstock = false
 
+  etf_flag = false
   market = :us 
   Dir.glob("#{dir}\/*.*").each do |afile|
      
@@ -260,6 +261,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
          na = h_us[code] if h_us[code] != nil
          na = h_etf[code] if h_etf[code] != nil
+         etf_flag = true if h_etf[code] != nil
       
          h[:close] = na[2].to_f
          h[:ratio] = na[3].to_f
@@ -402,7 +404,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
     end
   end
 
-  if h_etf[code] == nil
+  if etf_flag == false
     ta.sort_by!{|h| h[:total_mv]}
   else
     ta.sort_by!{|h| h[:amount]}
