@@ -1147,6 +1147,47 @@ def get_data_from_alphavantage(code,offset)
 
  end
 
+ def get_cap_from_google(code)
+   uri="https://www.google.com/finance?q=#{code}"
+  #uri="https://www.google.com/search?q=#{code}"
+
+   lc = false
+   #begin
+      html_response = nil  
+      open(uri) do |http|  
+        html_response = http.read  
+      end
+
+     endp = html_response.index ('B</td></tr></table></td>')
+     #puts endp
+     if endp == nil
+      endp = html_response.index ('M</td></tr></table></td>')
+      if endp != nil
+        lc = true
+      else
+        return 0.0
+      end
+     end
+
+     ts = html_response[endp-10..endp-1]
+     start_p = ts.index '>'
+     #puts start_p
+
+     #puts html_response[endp-10+start_p+1..endp-1]
+     res = html_response[endp-10+start_p+1..endp-1].to_f
+     #puts res
+
+     if lc
+       res =  res * 1000
+     else
+       res =  res * 1000000
+     end
+
+   #end
+   return res
+
+ end # of get_cap_from_google 
+
  def get_info_from_google(code)  
 
    if code[0..2] == 'hk0'
@@ -1229,15 +1270,22 @@ def get_data_from_alphavantage(code,offset)
     ta.each do |x|
       t1 = x.index '-value'
       s1 = x[2..t1-1]
-      t2 = x.rindex '>' 
-      len = x.size
-      s2 = x[t2+1..len-1]
+
+      # t2 = x.rindex '>' 
+      # len = x.size
+      # s2 = x[t2+1..len-1]
+      # 
+      t2 = x.rindex '<!--'
+      t3 = x.index '-->'
+      s2 = x[t3+3..t2-1] if t2 and t3
+      #puts "#{s1} #{s2}"
 
       # if x.index('DATE') and s2.index('20')
       #   s2 = (Date.parse s2).to_s
       # end
        
       b_start_record_flag = true if x.index 'MARKET_CAP'
+       b_start_record_flag = true if x.index 'NET_ASSETS' 
       b_start_record_flag = false if x.index 'DATE'
 
        h[s1.to_sym] = s2 if b_start_record_flag
