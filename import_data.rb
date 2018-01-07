@@ -494,6 +494,7 @@ def print_help
     puts "-loadfile [filename] [tablename] --- 装载文件到数据表"  
     puts "-gcl [filename] [section]        --- 下载全部A股交易代码  [agu bgu etf cyb all]"  
     puts "-gcl_hk [filename]               --- 下载全部港股交易代码 "   
+    puts "-gcl_us [filename]               --- 下载全部美股交易代码  "   
     puts "-apd [filename] [index_code]     --- 添加指数代码到下载的股票名称文件中"   
 
     puts
@@ -501,7 +502,7 @@ def print_help
     puts "-sfc              --- 显示投资机会"  
     puts "-stc [filename]   --- 显示指定文件的跟踪情况"   
     puts "-scc [code]       --- 显示指定股票的跟踪情况"   
-    puts "-mon              --- 下载每日交易数据"   
+    puts "-mon [force_flag] --- 下载每日交易数据"   
     puts "-ana ［filename］ [offset] [roe]  --- 分析每日自动下载的数据，给出过去offset天，股价变化大于roe的列表" 
 
     puts "-ddus ［dir］ [offset] [limit] --- 从nasdaq网站下载美股交易数据到指定目录 offset = 1m 3m 6m 1y 18m 2y 5y"  
@@ -1077,6 +1078,10 @@ if ARGV.length != 0
 
     if ele == '-mon'  
 
+      force_flag = false
+      xx = ARGV[ARGV.index(ele)+1].to_i
+      force_flag = true if xx == 1
+
 
       reset_flag1 = false
       reset_flag2 = false
@@ -1103,7 +1108,7 @@ if ARGV.length != 0
         end
 
 
-        if (t.getlocal.wday >=1) and (t.getlocal.wday <=5) and  (t> t2 ) and (not reset_flag1)
+        if force_flag  or ((t.getlocal.wday >=1) and (t.getlocal.wday <=5) and  (t> t2 ) and (not reset_flag1))
 
            puts "Fetching China A stock daily records..."
            File.open('cn.csv', "r+") do |file|
@@ -1120,7 +1125,7 @@ if ARGV.length != 0
          
        end
 
-         if (t.getlocal.wday >=2) and (t.getlocal.wday <=6) and  (t> t3 ) and (not reset_flag2)
+         if force_flag  or ((t.getlocal.wday >=2) and (t.getlocal.wday <=6) and  (t> t3 ) and (not reset_flag2))
            puts
            puts "Fetching US stock daily records..."
            File.open('us.csv', "r+") do |file|
@@ -1136,6 +1141,7 @@ if ARGV.length != 0
             reset_flag2 = true 
          end
 
+        force_flag = false
         sleep(60)
       end
 
