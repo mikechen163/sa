@@ -276,7 +276,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
 
             #h[:total_mv] = get_cap_from_google code
             xx =  get_info_from_yahoo code
-            h[:beta]  = xx[:BETA_3Y].to_f   
+            #h[:beta]  = xx[:BETA_3Y].to_f   
             #puts xx
             cap = xx[:MARKET_CAP] if xx[:MARKET_CAP] != nil 
             cap = xx[:NET_ASSETS] if xx[:NET_ASSETS] != nil 
