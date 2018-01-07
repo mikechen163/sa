@@ -1125,7 +1125,10 @@ def get_data_from_alphavantage(code,offset)
 
     ta = []
     counter = 0
+    sa = nil
+    begin
     sa =  JSON.parse(html_response).values[1]
+    end
     return [] if sa == nil
     #puts sa.length
 
