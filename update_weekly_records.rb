@@ -1827,6 +1827,8 @@ def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
     end
 
    end_date = Time.now.to_date.to_s if end_date == nil
+
+   counter = 1
   
   File.open(codefile).each_line do |line|
 
@@ -1850,6 +1852,8 @@ def update_fuquan_data_by_filename(codefile,dir,start_date=nil,end_date=nil)
           begin
             sa = get_h_data_from_sina(code2,start_date,end_date )
             #qf = get_fuquan_factor_from_sina(code2)
+            counter += 1
+            sleep(10) if counter % 3 == 0
           rescue
             p "Network ERROR when fetch #{code2} fuquan data from sina at #{Time.now.to_s}"
             # begin
