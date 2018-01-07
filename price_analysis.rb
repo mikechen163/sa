@@ -271,23 +271,23 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          h[:total_mv] = na[13].to_f
          
          #puts h[:total_mv] 
-         if h[:total_mv] > 0 
-         else
+         # if h[:total_mv] > 0 
+         # else
 
-            #h[:total_mv] = get_cap_from_google code
-            xx =  get_info_from_yahoo code
-            #h[:beta]  = xx[:BETA_3Y].to_f   
-            #puts xx
-            cap = xx[:MARKET_CAP] if xx[:MARKET_CAP] != nil 
-            cap = xx[:NET_ASSETS] if xx[:NET_ASSETS] != nil 
+         #    #h[:total_mv] = get_cap_from_google code
+         #    xx =  get_info_from_yahoo code
+         #    #h[:beta]  = xx[:BETA_3Y].to_f   
+         #    #puts xx
+         #    cap = xx[:MARKET_CAP] if xx[:MARKET_CAP] != nil 
+         #    cap = xx[:NET_ASSETS] if xx[:NET_ASSETS] != nil 
 
-            if cap != nil
-              res = cap[0..-2].to_f
-              res = res * 1000000000 if cap[-1] == 'B'
-              res = res * 1000000 if cap[-1] == 'M'
-              h[:total_mv]  = res          
-            end
-         end
+         #    if cap != nil
+         #      res = cap[0..-2].to_f
+         #      res = res * 1000000000 if cap[-1] == 'B'
+         #      res = res * 1000000 if cap[-1] == 'M'
+         #      h[:total_mv]  = res          
+         #    end
+         # end
         # puts h[:total_mv] 
 
          h[:name] = na[1]
