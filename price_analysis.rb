@@ -167,6 +167,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
   # 
   beta_hash = get_hash_for_us
   h_us = get_last_record_from_monitor(:us)
+  h_etf = get_last_record_from_monitor(:etf)
   h_hk = get_last_record_from_monitor(:hk)
   h_cn = get_last_record_from_monitor(:cn)
 
@@ -258,6 +259,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          #puts h_us[code]
 
          na = h_us[code] if h_us[code] != nil
+         na = h_etf[code] if h_etf[code] != nil
       
          h[:close] = na[2].to_f
          h[:ratio] = na[3].to_f

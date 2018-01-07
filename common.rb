@@ -1553,6 +1553,11 @@ def get_last_record_from_monitor(market)
       seek_offset = -800000
       mv_offset = 13
       start_code = 'AAPL'
+     when :etf
+      fname = 'us_etf.csv'
+      seek_offset = -800000
+      mv_offset = 13
+      start_code = 'SPY'
     when :hk
       fname = 'hk.csv'
       seek_offset = -200000
