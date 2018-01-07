@@ -270,7 +270,8 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          h[:beta] = beta_hash[h[:code].to_sym]
          h[:beta] = 0.0 if h[:beta] == nil
          h[:pe] = na[16].to_f
-         h[:total_mv] = na[13].to_f
+         h[:total_mv] = na[13].to_f 
+         h[:amount] = na[12].to_f
          
          #puts h[:total_mv] 
          # if h[:total_mv] > 0 
@@ -401,7 +402,11 @@ def show_us_stock_analysis(dir,topN,mode,roe)
     end
   end
 
-  ta.sort_by!{|h| h[:total_mv]}
+  if h_etf[code] == nil
+    ta.sort_by!{|h| h[:total_mv]}
+  else
+    ta.sort_by!{|h| h[:amount]}
+  end
 
   if (market == :cn) and (mode > 100)
     ta.sort_by!{|h| h[:total_value]}
