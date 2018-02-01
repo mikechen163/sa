@@ -831,6 +831,8 @@ def  analysis_stock_log_data(fname,offset,roe)
                 name = na[1]
               end
 
+              #puts "#{code} #{date}"
+
               #first record
               if ((file_format == :us) and  (code == 'AAPL')) or ((file_format == :hk) and  (code == 'hk00700'))
                 first_record = false if dl.length > 0 
@@ -904,10 +906,10 @@ def  analysis_stock_log_data(fname,offset,roe)
                  end
 
                 else
-                  #puts dl
-                  #puts "ERROR HAPPED!! #{code} date is #{date}, system date is #{dl[-1]} , skip ...."
-                  #puts line
-                  #exit 
+                  # puts dl
+                  # puts "ERROR HAPPED!! #{code} date is #{date}, system date is #{dl[-1]} , skip ...."
+                  # puts line
+                  # exit 
                 end
               end
 

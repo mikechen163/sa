@@ -681,7 +681,11 @@ end
     negtive = true
   end
 
+  begin
   roe=((roe*100).round)/100.0
+  rescue
+    return "  0.00%" 
+  end
 
   s=roe.to_s
   ind=s.index('.')
