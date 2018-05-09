@@ -1887,11 +1887,19 @@ def update_oversea_data(dir)
       end
 
       if market == :us
-        puts "Fetching #{code} data from alphavantage ... "
+        #puts "Fetching #{code} data from alphavantage ... "
         #sleep(1)
         #sa = get_data_from_quandl(code,offset)
         #sa = download_from_google_period(code,'',offset)
-        sa = get_data_from_alphavantage(code,90)
+        
+        offset = Time.now.to_date - day1
+        if offset > 1
+          puts "Fetching #{code} data from alphavantage ... "
+          sa = get_data_from_alphavantage(code,offset) 
+          puts "total #{sa.size} rows fetched."
+        else
+          next
+        end
       end
 
         day2 = day1
@@ -1899,7 +1907,7 @@ def update_oversea_data(dir)
          
          next if (market == :hk) and (ta[0] <= day1)
          next if (market == :us) and  Date.parse(ta[0]) <= day1
-         puts ta.to_s
+         #puts ta.to_s
          file.puts((ta.inject("") { |mem, var| mem +  "#{var.to_s} " }))
 
          day2 = ta[0]
