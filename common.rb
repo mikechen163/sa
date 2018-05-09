@@ -1897,6 +1897,8 @@ def update_oversea_data(dir)
           puts "Fetching #{code} data from alphavantage ... "
           sa = get_data_from_alphavantage(code,offset) 
           puts "total #{sa.size} rows fetched."
+
+         sleep(3) if sa.size == 0 
         else
           next
         end
