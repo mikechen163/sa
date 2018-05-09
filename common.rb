@@ -1861,7 +1861,7 @@ def update_oversea_data(dir)
        market = :hk if code[0..1] == 'hk'
 
        #puts line
-       file.seek(-200, IO::SEEK_END)
+       file.seek(-150, IO::SEEK_END)
        last_line = ll2 = ""
        file.each_line do |line|
         #puts line
