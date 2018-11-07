@@ -2579,8 +2579,10 @@ def get_stockinfo_data_from_sina(code)
               h[:trade_ratio] = ((h[:volume]/h[:total_stock_number])*10000).to_i/100.0
             end
 
-            h[:date] = Time.parse(sa[sa.length-3]).to_date.to_s
-            h[:time] = Time.parse(sa[sa.length-3]).strftime("%H:%M:%S")
+            if sa[sa.length-3].length > 0 
+              h[:date] = Time.parse(sa[sa.length-3]).to_date.to_s
+              h[:time] = Time.parse(sa[sa.length-3]).strftime("%H:%M:%S")
+            end
             #next if h[:trade_ratio] = 0.0
            
           when 'h' #hk
