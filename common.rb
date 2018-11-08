@@ -2074,7 +2074,7 @@ def fetch_all_code_list(file,mode=:std)
        case mode
         when :agu
           if (code[2] == '0') or (code[2] == '3')
-            if ((code[3] == '3') and  code[2] == '0'))
+            if ((code[3] == '3') and  (code[2] == '0'))
 
             else
               file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
