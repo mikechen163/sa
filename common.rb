@@ -2074,8 +2074,12 @@ def fetch_all_code_list(file,mode=:std)
        case mode
         when :agu
           if (code[2] == '0') or (code[2] == '3')
-            file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
-            start += 1
+            if ((code[3] == '3') and  code[2] == '0'))
+
+            else
+              file.puts "#{start}|#{code[2..7]}|#{name}|#{market}"
+              start += 1
+            end
           end
         when :bgu
           if (code[2] == '2')
@@ -2198,7 +2202,7 @@ end
       end  
     end
     return nil,nil if html_response == nil
-    
+
     title = html_response.scan(/<title>(.*)<\/title>/)
     ind = title[0][0].split(code.to_s)
     #puts ind[0].length

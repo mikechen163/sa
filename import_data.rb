@@ -749,7 +749,7 @@ if ARGV.length != 0
 
       Names.get_code_list.each do |code|
         #puts code
-        if (code == '000300') or (code[0..2] == '399' ) or (code[0..2] == '159' )
+        if (code == '000300') or (code[0..2] == '399' ) or (code[0..2] == '159' ) or (code[0..1] == '03' )
           next 
         end
 
