@@ -2192,9 +2192,13 @@ end
   uri="http://quotes.money.163.com/f10/gdfx_#{code}.html"
    
     html_response = nil  
-    open(uri) do |http|  
-      html_response = http.read  
-    end  
+    begin
+      open(uri) do |http|  
+        html_response = http.read  
+      end  
+    end
+    return nil,nil if html_response == nil
+    
     title = html_response.scan(/<title>(.*)<\/title>/)
     ind = title[0][0].split(code.to_s)
     #puts ind[0].length

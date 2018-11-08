@@ -754,7 +754,10 @@ if ARGV.length != 0
         end
 
         if (code[0] == '3') or (code[0] == '6') or (code[0] == '0')
+
           name,t = get_stockinfo_data_from_ntes(code)
+
+          next if name == nil
 
           puts "loading #{name}(#{code}) 总股本=#{t[0]}亿股, 流通A股=#{t[1]}亿股, 限售A股=#{t[2]}亿股, B股=#{t[3]}亿股, H股=#{t[4]}亿股"
 
