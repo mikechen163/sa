@@ -7,8 +7,9 @@ rm db_backup.db
 mv db_daily.db db_backup.db
 ruby create_sys_table.rb
 ruby import_data.rb -b -d data_0331
-ruby import_data.rb -sball
+#ruby import_data.rb -sball
 #ruby import_data.rb -sbhkall
+ruby import_data.rb -loadfile agu_info.txt stock_basic_info
 ruby import_data.rb -loadfile stockinfo_hk.txt stock_basic_info
 ruby import_data.rb -update hkdata
 ruby import_data.rb -update d2y

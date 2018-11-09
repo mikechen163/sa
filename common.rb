@@ -2126,7 +2126,7 @@ def fetch_all_code_list_hk(filename)
 
     #puts ha.size
     start = start + 1
-    #puts start
+    puts "new record from start from #{start}..."
 
     #return
     #
@@ -2161,6 +2161,8 @@ def fetch_all_code_list_hk(filename)
         found_again = false
         sa.each  do |x|
           code =  x[4..8]
+          next if code.to_i == 0
+
           ind = x.index('<')
           name = x[16..(ind - 1)]
           #name = normalize_name(name,8)
