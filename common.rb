@@ -1579,6 +1579,8 @@ def get_last_record_from_monitor(market)
 
    h= Hash.new
    first_record = false
+   first_line = true
+   old_date = nil
 
    File.open(fname, "r") do |file|
             #get_topN_from_sina(3000,8,3,:us,file)
@@ -1587,12 +1589,31 @@ def get_last_record_from_monitor(market)
             file.gets
 
             file.each_line do|line|
+              #puts line.size
               na = line.split(',')
               code = na[0]
+
+              if first_line 
+                old_date = na[-2] 
+                first_line = false
+                #puts old_date
+                next
+
+              else
+                next if old_date == na[-2]
+              end
+
+                next if (market == :cn) and (na[-5] == '0.0')
+
+              #puts code
               #lineno += 1  
               #puts line if not first_record
-              next if (not first_record) and (code != start_code)
-              first_record = true
+              #next if (not first_record) and (code != start_code)
+              #next if  (code != start_code)
+              #first_record = true
+              #puts line
+              #puts code
+
 
               h[code] = na
             end
