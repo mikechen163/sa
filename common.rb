@@ -1863,6 +1863,8 @@ end #function
 
 def update_oversea_data(dir)
 
+   counter_us = 0
+
 
  basicInfoFile = File.open('basicinfo.txt','r+')
  basicInfoFile.seek(0, IO::SEEK_END)
@@ -1913,13 +1915,16 @@ def update_oversea_data(dir)
         #sa = get_data_from_quandl(code,offset)
         #sa = download_from_google_period(code,'',offset)
         
+        #counter_us = 0
         offset = Time.now.to_date - day1
         if offset > 1
           puts "Fetching #{code} data from alphavantage ... "
           sa = get_data_from_alphavantage(code,offset) 
           puts "total #{sa.size} rows fetched."
 
-          sleep(10) if sa.size == 0 
+          counter_us += 1 
+
+          sleep(62) if counter_us % 5 == 0
         else
           next
         end
