@@ -1808,6 +1808,7 @@ def download_oversea_data(dir,market,offset, limit = 10)
       exit 
   end
 
+     counter_us = 0
 
 
 
@@ -1816,12 +1817,17 @@ def download_oversea_data(dir,market,offset, limit = 10)
             
             file.seek(seek_offset, IO::SEEK_END)
             file.gets
+            line = file.gets
+            na = line.split(',')
+            old_date = na[-2]
+
 
             file.each_line do|line|
               na = line.split(',')
               code = na[0]
               lineno += 1  
-              next if (not first_record) and (code != start_code)
+              next if na[-2] == old_date
+              #next if (not first_record) and (code != start_code)
               first_record = true
                
               date = Date.parse(na[19])
@@ -1842,6 +1848,11 @@ def download_oversea_data(dir,market,offset, limit = 10)
                 #sa = get_data_from_quandl(code,offset)
                 #sa = download_from_google_period(code,'',offset)
                 sa = get_data_from_alphavantage(code,offset)
+
+                counter_us +=1
+
+                sleep(62) if counter_us % 5  == 0
+
               end
 
               next if sa.length == 0
