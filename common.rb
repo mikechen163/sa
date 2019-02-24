@@ -1132,7 +1132,7 @@ def get_data_from_alphavantage(code,offset)
 
      uri = uri + get_apikey
 
-     #puts uri
+     puts uri
 
     begin
     html_response = nil  
@@ -1869,7 +1869,7 @@ def download_oversea_data(dir,market,offset, limit = 10)
 
                 counter_us +=1
 
-                sleep(62) if counter_us % 20  == 0
+                sleep(62) if counter_us % 5  == 0
 
               end
 
@@ -1953,7 +1953,7 @@ def update_oversea_data(dir)
 
           counter_us += 1 
 
-          sleep(62) if counter_us % 20 == 0
+          sleep(62) if counter_us % 5 == 0
         else
           next
         end
