@@ -1105,16 +1105,34 @@ def fetch_file_from_nasdaq()
    return
 end
 
+$apikey_ind = 0
+def get_apikey
+
+  ak_list = "AYVJ7EH2MDN75056","OYXKB52TTMU59A6K","K6JDTQDLP39M2GHV","PMBLU1CHOVFBQ1OZ"
+
+  ind = $apikey_ind % 4
+  $apikey_ind += 1
+
+  return ak_list[ind]
+
+end
+
+
+
 def get_data_from_alphavantage(code,offset)  
    
    full_form = false
    if offset <= 100
-   uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&apikey=AYVJ7EH2MDN75056"
+   uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&apikey="
   else
 
-    uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&outputsize=full&apikey=AYVJ7EH2MDN75056"
+    uri="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{code}&outputsize=full&apikey="
     full_form = true
   end
+
+     uri = uri + get_apikey
+
+     #puts uri
 
     begin
     html_response = nil  
@@ -1851,7 +1869,7 @@ def download_oversea_data(dir,market,offset, limit = 10)
 
                 counter_us +=1
 
-                sleep(62) if counter_us % 5  == 0
+                sleep(62) if counter_us % 20  == 0
 
               end
 
@@ -1935,7 +1953,7 @@ def update_oversea_data(dir)
 
           counter_us += 1 
 
-          sleep(62) if counter_us % 5 == 0
+          sleep(62) if counter_us % 20 == 0
         else
           next
         end
