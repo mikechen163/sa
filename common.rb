@@ -1861,9 +1861,9 @@ def download_oversea_data(dir,market,offset, limit = 10.0)
               end
 
               if market == :us
-                   total_mv = (na[mv_offset+1].to_f * na[2].to_f)
-                   puts "#{code} #{total_mv/100000000} 亿"
-                   next if total_mv < (limit.to_f * 100_000_000)
+                   total_mv = (na[mv_offset+1].to_f * na[2].to_f) / 100000000
+                   puts "#{code} #{total_mv} 亿"
+                   next if total_mv < limit
               end
 
               if market == :hk
