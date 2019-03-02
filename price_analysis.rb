@@ -272,7 +272,7 @@ def show_us_stock_analysis(dir,topN,mode,roe)
          h[:beta] = beta_hash[h[:code].to_sym]
          h[:beta] = 0.0 if h[:beta] == nil
          h[:pe] = na[16].to_f
-         h[:total_mv] = na[13].to_f 
+         h[:total_mv] = (na[14].to_f * na[2].to_f)
          h[:amount] = na[11].to_f
          
          #puts h[:total_mv] 
