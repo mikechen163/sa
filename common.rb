@@ -1108,7 +1108,8 @@ end
 $apikey_ind = 0
 def get_apikey
 
-  ak_list = "AYVJ7EH2MDN75056","OYXKB52TTMU59A6K","K6JDTQDLP39M2GHV","PMBLU1CHOVFBQ1OZ","ZHJHAZE492ETLQCH","OTX18Q7B9US0IXOJ","KSVD3EY1O395NROW","4WO6FIVH8GETMS4F","RE62CG5OPB0OBWLD","DNTEB3X99JIKFFUH","X1IQFN0X3TP9SBJH","97WFOWTBXSO8QG8Z"
+  ak_list = "AYVJ7EH2MDN75056","OYXKB52TTMU59A6K","K6JDTQDLP39M2GHV","PMBLU1CHOVFBQ1OZ" \
+  ,"ZHJHAZE492ETLQCH","OTX18Q7B9US0IXOJ","KSVD3EY1O395NROW","4WO6FIVH8GETMS4F","RE62CG5OPB0OBWLD","DNTEB3X99JIKFFUH","X1IQFN0X3TP9SBJH","97WFOWTBXSO8QG8Z"
 
   ind = $apikey_ind % 12
   $apikey_ind += 1
@@ -2230,10 +2231,15 @@ def fetch_all_code_list_hk(filename)
             found_flag = true
             break if found_again == true
           else
+            found_flag = false
+            #puts "#{start}| #{code}|#{name}|HK"
+            #file.puts "#{start}| #{code}|#{name}|HK"
+            #start += 1
+          end
+
             puts "#{start}| #{code}|#{name}|HK"
             file.puts "#{start}| #{code}|#{name}|HK"
             start += 1
-          end
 
         end
 
