@@ -1044,7 +1044,7 @@ if ARGV.length != 0
      market = ARGV[ARGV.index(ele)+2]
      offset = ARGV[ARGV.index(ele)+3].to_i
      limit = ARGV[ARGV.index(ele)+4].to_i
-     limit = 10 if limit == nil
+     limit = 10 if limit == 0
     
      download_oversea_data(dir,market.to_sym, offset,limit)
      exit
