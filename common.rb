@@ -1802,7 +1802,7 @@ def trans_to_array_of_hash(sa)
    return ta
 end
 
-def download_oversea_data(dir,market,offset, limit = 10)
+def download_oversea_data(dir,market,offset, limit = 10.0)
   puts "Fetching #{market.upcase} stock daily records for #{offset} days"
 
   first_record = false
@@ -1862,8 +1862,8 @@ def download_oversea_data(dir,market,offset, limit = 10)
 
               if market == :us
                    total_mv = (na[mv_offset+1].to_f * na[2].to_f)
-                   puts "#{total_mv/100000000} 亿"
-                   next if total_mv < (limit * 100_000_000)
+                   puts "#{code} #{total_mv/100000000} 亿"
+                   next if total_mv < (limit.to_f * 100_000_000)
               end
 
               if market == :hk
