@@ -2098,7 +2098,91 @@ def fetch_all_hy(file)
 end
 
 def fetch_all_code_list(file,mode=:std)
+
+
+   ct = 100
+   i = 0
+   page = 1
+
+   ta =[]
+
+   while ct == 100
+
+     
+     u1 = "http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?cb=jQuery112408519632119220835_1556789691465&type=CT&token=4f1862fc3b5e77c150a2b985b12db0fd&sty=FCOIATC&js=(%7Bdata%3A%5B(x)%5D%2CrecordsFiltered%3A(tot)%7D)&cmd=C._A&st=(ChangePercent)&sr=-1&p="
+
+     u2 = "&ps=100&_=1556789691732"
+
+     uri = u1 + "#{page}" + u2
+
+     #puts uri
+
+      html_response = nil  
+      open(uri) do |http|  
+        html_response = http.read  
+      end  
+    
+      sa=html_response.split(",\"")
+      #puts sa.count
+      ct = sa.count
+      #i=0
+      sa.each do |x|
+        #puts "#{i} : #{x}"
+        y = x.split ','
+        if y[0].size > 1 
+          y[0] = y[0][-1]
+        end
+        puts "#{i} : #{y[0]} #{y[1]} #{y[2]}"
+        ha = Hash.new
+        ha[:code] = y[1]
+        ha[:name] = y[2]
+        ha[:market] = y[0]
+
+        ta.push ha
+        i += 1
+      end
+
+      page += 1
+  end
+
+  puts ta[0]
+  puts ta[1]
+
+  sz = ta.select {|x| x[:market] == '2'}
+  sh = ta.select {|x| x[:market] == '1'}
+  puts sz.size
+  puts sh.size
+  puts ta.size
+  sz.sort_by!{ |x| x[:code]}
+  sh.sort_by!{ |x| x[:code]}
+
+  start =1 
+
+ sh.each do |x|
+     name = normalize_name(x[:name],8)
+     file.puts "#{start}|#{x[:code]}|#{name}|SH"
+            start += 1
+
+  end
+
+  sz.each do |x|
+     name = normalize_name(x[:name],8)
+     file.puts "#{start}|#{x[:code]}|#{name}|SZ"
+            start += 1
+
+  end
+
+
+
+  #ta.sort_by!{ |x| x[:code]}
+  #ta.each {|x| puts "#{x[:code]} #{x[:name]}"}
+end
+
+
+def fetch_all_code_list_old(file,mode=:std)
     uri="http://quote.eastmoney.com/stocklist.html"
+
+    uri2 = "http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?cb=jQuery112408519632119220835_1556789691470&type=CT&token=4f1862fc3b5e77c150a2b985b12db0fd&sty=FCOIATC&js=(%7Bdata%3A%5B(x)%5D%2CrecordsFiltered%3A(tot)%7D)&cmd=C._A&st=(ChangePercent)&sr=-1&p=3&ps=20&_=1556789691577"
    
     html_response = nil  
     open(uri) do |http|  
