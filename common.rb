@@ -2963,6 +2963,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
   t2 = Time.now
   
   puts "fetching all data from sina takes #{t2-t1} seconds."
+  puts "total #{all.size} records"
   
   
   #p all.length
@@ -3094,7 +3095,7 @@ def get_topN_from_sina(topN,sortby,given_ratio=3,market=:china,file = nil)
   topN = all.length - 1 if (all.length - 1)  < topN 
 
   #return if all.length == 0
-  #puts "OK"
+  #puts "total #{all.size} records"
 
   if file != nil
       #puts "OK"
