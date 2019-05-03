@@ -1914,7 +1914,12 @@ def update_oversea_data(dir)
  basicInfoFile = File.open('basicinfo.txt','r+')
  basicInfoFile.seek(0, IO::SEEK_END)
 
- Dir.glob("#{dir}\/*.*").each do |afile|
+ taa=Dir.glob("#{dir}\/*.*").collect{|x| [x, File.mtime(x)]}
+ taa.sort_by!{|x| x[1]}
+ tb= taa.collect{|x| x[0]}
+
+
+ tb.each do |afile|
     
     filecount = 1 
     market = :us
