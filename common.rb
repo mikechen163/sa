@@ -1981,7 +1981,7 @@ def update_oversea_data(dir)
 
             if error_counter >= 5 
               puts "5 times no response from alphavantage , exit "
-              break
+              return
             end
           end
 
