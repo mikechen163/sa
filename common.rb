@@ -1918,6 +1918,8 @@ def update_oversea_data(dir)
  taa.sort_by!{|x| x[1]}
  tb= taa.collect{|x| x[0]}
 
+ error_counter = 0
+
 
  tb.each do |afile|
     
@@ -1971,6 +1973,17 @@ def update_oversea_data(dir)
           puts "Fetching #{code} data from alphavantage ... "
           sa = get_data_from_alphavantage(code,offset) 
           puts "total #{sa.size} rows fetched."
+
+          if sa.size > 0 
+            error_counter = 0
+          else
+            error_counter += 1
+
+            if error_counter >= 5 
+              puts "5 times no response from alphavantage , exit "
+              break
+            end
+          end
 
           counter_us += 1 
 
