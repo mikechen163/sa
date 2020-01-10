@@ -2560,8 +2560,21 @@ def get_stockinfo_data_from_sina(code)
     open(uri) do |http|  
       html_response = http.read  
     end  
-    title = html_response.scan(/<title>(.*)<\/title>/)
-    return "",0.0 if title[0] == nil
+
+    #begin
+     #puts 
+     return "",0.0 if  html_response.size < 10000
+
+     #xx = html_response.encode('utf-8','gbk')
+     
+     begin
+       title = html_response.scan(/<title>(.*)<\/title>/)
+     rescue
+       return "",0.0 
+     end
+     #puts title
+     return "",0.0 if title[0] == nil
+    #end
     title = title[0][0].encode('utf-8','gbk')
     #puts title
     # ind = title[0][0].split(code.to_s)

@@ -747,13 +747,21 @@ if ARGV.length != 0
         fn = Stock_Basic_Info.last.id + 1
       end
 
-      Names.get_code_list.each do |code|
+     # Names.get_code_list.each do |code|
+
+    File.open('name.txt') do |file|
+            file.each_line do |line|
+              na = line.split('|')
+              code = na[1].strip
+
         #puts code
         if (code == '000300') or (code[0..2] == '399' ) or (code[0..2] == '159' ) or (code[0..1] == '03' )
           next 
         end
 
-        if (code[0] == '3') or (code[0] == '6') or (code[0] == '0')
+        # if (code[0] == '3') or (code[0] == '6') or (code[0] == '0')
+        # 
+        #puts code
 
           name,t = get_stockinfo_data_from_ntes(code)
 
