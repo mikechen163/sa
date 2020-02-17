@@ -566,6 +566,70 @@ if ARGV.length != 0
   
     end  
 
+     if ele == '-ths'
+
+      clear_table('name')
+      load_name_into_database('name.txt') if Names.count == 0 
+
+       ts_list = []
+
+      
+      fn = 1
+      
+       File.open('name.txt') do |file|
+            file.each_line do |line|
+              na = line.split('|')
+              code = na[1].strip
+              name = na[2].strip
+              market = na[3].strip
+
+        #puts code
+        if (code == '000300') #or (code[0..2] == '399' ) or (code[0..2] == '159' ) or (code[0..1] == '03' )
+          next 
+        end
+
+        # if (code[0] == '3') or (code[0] == '6') or (code[0] == '0')
+        # 
+        #puts code
+
+          begin
+            arr = get_history_data_from_ths(code)
+          rescue
+            begin
+              arr = get_history_data_from_ths(code)
+            rescue
+              begin
+                arr = get_history_data_from_ths(code)
+              rescue
+                next
+              end
+            end
+          end
+
+
+          #next if name == nil
+
+          puts "#{code} #{name} total #{arr.size} records"
+
+          week = 1 
+          arr.each do |h|
+            ts = "#{fn},\'#{code.to_s}\',date(\'#{trans_date(h[:date])}\'),#{week},#{h[:open]},#{h[:high]},#{h[:low]},#{h[:close]},#{h[:volume]},0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,date(\'#{trans_date(h[:date])}\'),date(\'#{trans_date(h[:date])}\')"
+            ts_list.push(ts)
+            
+            fn += 1
+            week += 1 
+          end
+          insert_data('weekly_records',ts_list) if ts_list.length!=0
+
+        end #line
+      end # file
+
+      #insert_data('weekly_records',ts_list) if ts_list.length!=0
+
+     
+       exit
+    end
+
     if ele == '-g'
       dir = ARGV[ARGV.index(ele)+1]
       generating_daily_minlist(dir,2)

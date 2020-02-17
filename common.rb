@@ -560,15 +560,18 @@ def find_max_pos(l,n,dl)
    len = l.length
    #p len
    #p l[(len-n)..len-1] 
-   max = l[(len-n)..len-1].inject(0) { |mem, var|  var > mem ? var : mem  }
+   max = l[(len-n)..len-1].inject(-10000000) { |mem, var|  var > mem ? var : mem  }
+
    ind =  l[(len-n)..len-1].index(max)
+   #puts "#{max} #{ind}" 
+
    return max,dl[(len-n)..len-1][ind]
 end
 
 def find_min_pos(l,n,dl)
    len = l.length
    #p l[(len-n)..len-1] 
-   min = l[(len-n)..len-1].inject(10000) { |mem, var|  var < mem ? var : mem  }
+   min = l[(len-n)..len-1].inject(100000000) { |mem, var|  var < mem ? var : mem  }
    ind =  l[(len-n)..len-1].index(min)
    return min,dl[(len-n)..len-1][ind]
 end
@@ -3816,4 +3819,110 @@ def check_index_state(offset)
    end
 
 end
+
+
+
+
+require 'httparty'
+
+
+def trans_date(s)
+ # puts s 
+ return s[0..3] + '-' + s[4..5] + '-' + s[6..7]
+end
+
+def get_price_list_from_ths(s1,s2,s3,year)
+  xx = s1.split ','
+  #puts xx[-1]
+  i=0
+
+  j=0 
+  vol = s2.split ','
+  date = s3.split ','
+
+  #puts vol.size
+
+  a= []
+  last_date = "0000"
+
+  while j < vol.size 
+    h=Hash.new
+    h[:low] = xx[i].to_i/100.0
+    h[:open] = (xx[i].to_i+xx[i+1].to_i)/100.0
+    h[:high] = (xx[i].to_i+xx[i+2].to_i)/100.0
+    h[:close] = (xx[i].to_i+xx[i+3].to_i)/100.0
+    h[:volume] = vol[j].to_i
+
+    if (date[j][0..1] == "01") and (last_date[0..1] == "12")
+      year += 1
+    end
+
+    h[:date] = year.to_s + date[j]
+    last_date = date[j]
+
+    a.push h
+    i += 4
+    j += 1
+  end
+
+  return a
+end
+
+
+def get_history_data_from_ths(code)
+
+    #fenshi  "http://d.10jqka.com.cn/v6/time/hs_600519/defer/last.js"
+    #daily  "http://d.10jqka.com.cn/v6/line/hs_600519/01/all.js"
+    #weekly  "http://d.10jqka.com.cn/v6/line/hs_600519/11/all.js"
+    #month  "http://d.10jqka.com.cn/v6/line/hs_600519/21/all.js"
+    
+    url = "http://d.10jqka.com.cn/v6/line/hs_#{code}/11/all.js" #daily
+    headers = {
+      'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+      'Referer'  => 'http://stockpage.10jqka.com.cn/HQ_v4.html',
+    }
+
+    response = HTTParty.get(url, headers: headers)
+
+    #puts response.methods
+    sz =  response.to_s.size
+    fst = response.to_s.index 'price"'
+
+    d = response.to_s[fst-1..sz-3]
+    #puts d
+    #
+    start = response.to_s.index 'start'
+    year = response.to_s[start+8..start+11]
+    #puts year
+     
+    xx= d.scan /\"[a-z]+\"\:\"[0-9\,\-]+\"\,/
+
+    # xx.each do |ele|
+    #   puts ele[0..100]
+    # end
+
+    ind1 = xx[0].index ':'
+    ind2 = xx[1].index ':'
+    ind3 = xx[2].index ':'
+
+
+    a = get_price_list_from_ths(xx[0][ind1+2..-3],xx[1][ind1+2..-3],xx[2][ind1+2..-3],year.to_i)
+
+    # a.each do |ele|
+    #    puts ele.to_s
+    # end    
+
+   
+
+    #aa = response.to_s.scan/\".+\"\:.+\,/
+    #puts aa.size
+    #puts response.class
+    #puts response.body.size
+    #puts response
+    #res = JSON.parse(response.to_s)
+
+    #puts res.to_s
+ 
+end
+
 

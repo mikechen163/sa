@@ -375,7 +375,10 @@ def update_weekly_record(code)
          days_in_state = i-pos
 
          up = ""
+         
+
          new_high,new_high_date = get_52week_high(week_list,date_list,i,true) if i>53
+         
          #puts  "current = #{date_list[i].to_s}:#{week_list[i]}, new_high = #{new_high_date.to_s}:#{new_high}"
          if week_list[i] > new_high
            new_high = week_list[i] 
@@ -384,7 +387,9 @@ def update_weekly_record(code)
          end 
          #puts  "current = #{date_list[i].to_s}:#{week_list[i]}, new_high = #{new_high_date.to_s}:#{new_high}"+up
          #p new_high,new_high_date
+         
          new_low,new_low_date = get_52week_low(week_list,date_list,i,true)    if i>53
+         
          #puts  "current = #{date_list[i].to_s}:#{week_list[i]}, new_low = #{new_low_date.to_s}:#{new_low}"
         
          up=""
