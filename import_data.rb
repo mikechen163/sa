@@ -612,6 +612,7 @@ if ARGV.length != 0
           puts "#{code} #{name} total #{arr.size} records"
 
           week = 1 
+          ts_list = []
           arr.each do |h|
             ts = "#{fn},\'#{code.to_s}\',date(\'#{trans_date(h[:date])}\'),#{week},#{h[:open]},#{h[:high]},#{h[:low]},#{h[:close]},#{h[:volume]},0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,date(\'#{trans_date(h[:date])}\'),date(\'#{trans_date(h[:date])}\')"
             ts_list.push(ts)
