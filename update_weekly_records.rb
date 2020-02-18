@@ -280,7 +280,7 @@ def update_weekly_record(code)
 
        date_list.each_with_index do |day,i|
         if day == nil
-          date_list[i] = date_list[i] + 7 
+          date_list[i] = date_list[i-1] + 7 
         end
 
        end 
