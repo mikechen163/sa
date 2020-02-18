@@ -863,8 +863,8 @@ end
 def find_state(state,date = nil)
   
 
-     date = Weekly_records.where(code:"159915")).last['date'] if date == nil
-     w_list = Weekly_records.where(market_state : "#{state}",    date :  "#{date}")
+     date = Weekly_records.where(code:"159915").last['date'] if date == nil
+     w_list = Weekly_records.where(market_state: "#{state}",    date:  "#{date}")
        # check last (n+2) records. n = 18
     
       w_list.each do |rec|
