@@ -277,6 +277,13 @@ def update_weekly_record(code)
        low_list =  w_list.collect{|row| row['low']} 
        id_list   =  w_list.collect{|row| row['id']}  
        date_list   =  w_list.collect{|row| row['date']} 
+
+       date_list.each_with_index do |day,i|
+        if day == nil
+          date_list[i] = date_list[i] + 7 
+        end
+
+       end 
        #p week_list.length
 
        #p week_list

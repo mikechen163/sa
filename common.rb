@@ -3828,6 +3828,7 @@ require 'httparty'
 
 def trans_date(s)
  # puts s 
+ #return "2007-02-28" if s == "20070229"
  return s[0..3] + '-' + s[4..5] + '-' + s[6..7]
 end
 
