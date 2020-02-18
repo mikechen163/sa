@@ -772,7 +772,8 @@ def display_stock_states(code,info)
       buy_price = 0.0
 
        # check last (n+2) records. n = 18
-       w_list = Weekly_records.find(:all, :conditions=>" code = \'#{code}\'", :order=>"id asc")
+       #w_list = Weekly_records.find(:all, :conditions=>" code = \'#{code}\'", :order=>"id asc")
+       w_list = Weekly_records.where(code:"#{code}")
        start_date = w_list[0]['date']
 
        #puts ""
@@ -862,8 +863,8 @@ end
 def find_state(state,date = nil)
   
 
-     date = Weekly_records.find(:all, :conditions=>" code = \'600036\'", :order=>"id asc").last['date'] if date == nil
-     w_list = Weekly_records.find(:all, :conditions=>" market_state = #{state}  and date = date(\'#{date.to_s}\')", :order=>"id asc")
+     date = Weekly_records.where(code:"159915")).last['date'] if date == nil
+     w_list = Weekly_records.where(market_state : "#{state}",    date :  "#{date}")
        # check last (n+2) records. n = 18
     
       w_list.each do |rec|
