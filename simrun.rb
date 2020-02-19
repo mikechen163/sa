@@ -1887,7 +1887,9 @@ def test_trade(mode,unit_num,asset,run_class, num_of_records,show_trade=1)
         w_list = []
         #p cl_list
         if cl_list.length >0 
-          w_list = run_class.class.find(:all, :conditions=>"date = date(\'#{day.to_s}\')", :order=>"id asc")
+          #w_list = run_class.class.find(:all, :conditions=>"date = date(\'#{day.to_s}\')", :order=>"id asc")
+          w_list = run_class.class.where(date:"#{day.to_s}")  
+
           pl_list = get_price_list(cl_list,w_list,asset,old_pl_list)
 
           total_money = asset.get_gmv(pl_list)
@@ -2153,7 +2155,8 @@ def test_trade(mode,unit_num,asset,run_class, num_of_records,show_trade=1)
         #w_list = Weekly_records.find(:all, :conditions=>"market_state = 3 and date = date(\'#{day.to_s}\')", :order=>"id asc")  
         #w_list = Weekly_records.find(:all, :conditions=>"market_state = 8 and date = date(\'#{day.to_s}\')", :order=>"id asc")  
         # w_list += Weekly_records.find(:all, :conditions=>"market_state = 5 and date = date(\'#{day.to_s}\')", :order=>"id asc")  
-        w_list = run_class.class.find(:all, :conditions=>" date = date(\'#{day.to_s}\')", :order=>"id asc")  
+        #w_list = run_class.class.find(:all, :conditions=>" date = date(\'#{day.to_s}\')", :order=>"id asc")  
+        w_list = run_class.class.where(date:"#{day.to_s}")  
         
 
         len = w_list.length
@@ -2257,7 +2260,9 @@ def test_trade2(mode,unit_num,asset,run_class, num_of_records,show_trade=1)
 
      date_list.each do |day|
 
-        w_list = run_class.class.find(:all, :conditions=>"date = date(\'#{day.to_s}\')", :order=>"id asc")
+        #w_list = run_class.class.find(:all, :conditions=>"date = date(\'#{day.to_s}\')", :order=>"id asc")
+
+        w_list = run_class.class.where(date:"#{day.to_s}")  
         
         cl_list =asset.get_code_list
         pl_list = get_price_list(cl_list,w_list,asset,old_pl_list)
