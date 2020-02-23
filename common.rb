@@ -2127,6 +2127,8 @@ def fetch_all_code_list(file,mode=:std)
 
    ta =[]
 
+   reptimes = 0
+
    while ct == 100
 
      
@@ -2154,6 +2156,15 @@ def fetch_all_code_list(file,mode=:std)
           y[0] = y[0][-1]
         end
         puts "#{i} : #{y[0]} #{y[1]} #{y[2]}"
+
+        if ta.find {|h| h[:code] == y[1]}
+          reptimes += 1
+          if reptimes > 80 
+            ct = 0 
+            break
+          end
+        end
+
         ha = Hash.new
         ha[:code] = y[1]
         ha[:name] = y[2]
@@ -3832,7 +3843,8 @@ def trans_date(s)
  return s[0..3] + '-' + s[4..5] + '-' + s[6..7]
 end
 
-def get_price_list_from_ths(s1,s2,s3,year)
+
+def get_price_list_from_ths(s1,s2,s3,year,pfactor)
   xx = s1.split ','
   #puts xx[-1]
   i=0
@@ -3848,10 +3860,10 @@ def get_price_list_from_ths(s1,s2,s3,year)
 
   while j < vol.size 
     h=Hash.new
-    h[:low] = xx[i].to_i/100.0
-    h[:open] = (xx[i].to_i+xx[i+1].to_i)/100.0
-    h[:high] = (xx[i].to_i+xx[i+2].to_i)/100.0
-    h[:close] = (xx[i].to_i+xx[i+3].to_i)/100.0
+    h[:low] = xx[i].to_i/pfactor
+    h[:open] = (xx[i].to_i+xx[i+1].to_i)/pfactor 
+    h[:high] = (xx[i].to_i+xx[i+2].to_i)/pfactor
+    h[:close] = (xx[i].to_i+xx[i+3].to_i)/pfactor
     h[:volume] = vol[j].to_i
 
     if (date[j][0..1] == "01") and (last_date[0..1] == "12")
@@ -3870,18 +3882,91 @@ def get_price_list_from_ths(s1,s2,s3,year)
 end
 
 
-def get_history_data_from_ths(code)
+def get_history_data_from_ths(code,peroid='week')
 
     #fenshi  "http://d.10jqka.com.cn/v6/time/hs_600519/defer/last.js"
     #daily  "http://d.10jqka.com.cn/v6/line/hs_600519/01/all.js"
     #weekly  "http://d.10jqka.com.cn/v6/line/hs_600519/11/all.js"
     #month  "http://d.10jqka.com.cn/v6/line/hs_600519/21/all.js"
-    
-    url = "http://d.10jqka.com.cn/v6/line/hs_#{code}/11/all.js" #daily
+    # #http://d.10jqka.com.cn/v6/line/hk_HK0700/01/all.js
+    #http://d.10jqka.com.cn/v6/line/usa_GILD/01/all.js  'Referer'  => 'http://stockpage.10jqka.com.cn/HQ_v6.html',
+  
+
+    if (code[0..-1].to_i > 0 )
+      market = 'cn'
+    else
+      if (code[0..1] == 'hk') and (code[2..-1].to_i > 0 )
+        market = 'hk'
+      else
+        market = 'us'
+      end
+    end
+
+
+    case peroid
+    when 'realtime'
+      dir = 'defer'
+    when 'day'
+      dir = '01'
+    when 'week'
+      dir = '11'
+    when 'month'
+      dir = '21'
+    else
+      dir = '11'
+    end
+
+    case market
+    when 'cn'
+       if peroid == 'realtime'
+         url = "http://d.10jqka.com.cn/v6/time/hs_#{code}/defer/last.js" #daily
+       else
+         url = "http://d.10jqka.com.cn/v6/line/hs_#{code}/#{dir}/all.js" #daily
+       end
+
     headers = {
       'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
       'Referer'  => 'http://stockpage.10jqka.com.cn/HQ_v4.html',
     }
+    when 'hk'
+       ncode = "HK"+code[3..6] 
+
+       if peroid == 'realtime'
+         url = "http://d.10jqka.com.cn/v6/time/hk_#{ncode}/defer/last.js" #daily
+       else
+         url = "http://d.10jqka.com.cn/v6/line/hk_#{ncode}/#{dir}/all.js" #daily
+       end
+
+       #puts url
+    headers = {
+      'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+      'Referer'  => 'http://stockpage.10jqka.com.cn/HQ_v4.html',
+    }
+    when 'us' 
+       ncode = code.upcase
+
+       if peroid == 'realtime'
+         url = "http://d.10jqka.com.cn/v6/time/usa_#{ncode}/defer/last.js" #daily
+       else
+         url = "http://d.10jqka.com.cn/v6/line/usa_#{ncode}/#{dir}/all.js" #daily
+       end
+
+       #puts url
+
+    headers = {
+      'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+      'Referer'  => 'http://stockpage.10jqka.com.cn/HQ_v6.html',
+    }
+    else
+      puts "unknown market : #{market}"
+    end
+      
+    
+    # url = "http://d.10jqka.com.cn/v6/line/hs_#{code}/11/all.js" #daily
+    # headers = {
+    #   'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+    #   'Referer'  => 'http://stockpage.10jqka.com.cn/HQ_v4.html',
+    # }
 
     response = HTTParty.get(url, headers: headers)
 
@@ -3906,8 +3991,10 @@ def get_history_data_from_ths(code)
     ind2 = xx[1].index ':'
     ind3 = xx[2].index ':'
 
+    pfactor = 100.0 
+    pfactor = 1000.0  if market != 'cn'
 
-    a = get_price_list_from_ths(xx[0][ind1+2..-3],xx[1][ind1+2..-3],xx[2][ind1+2..-3],year.to_i)
+    a = get_price_list_from_ths(xx[0][ind1+2..-3],xx[1][ind1+2..-3],xx[2][ind1+2..-3],year.to_i,pfactor)
 
     # a.each do |ele|
     #    puts ele.to_s
