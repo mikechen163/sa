@@ -1394,6 +1394,17 @@ def calc_fh_inc(years,n1,n2)
   return ((Math.exp(Math.log(n2/n1)/years)-1)*10000).to_i.to_f/100
 end
 
+def calc_fh_inc_real(years,n1,n2)
+  return 0 if n1/n2 < 0
+  return Math.exp(Math.log(n2/n1)/years)-1
+end
+
+#增长率 折现率
+def calc_future_roe(years,inc_rate,to_cash_rate=0.1)
+  arr  =  1.upto(years).to_a.collect{|x| ((1+inc_rate)**x)/((1+to_cash_rate)**x) } 
+  return arr[-1]
+end
+
 
  def get_main_index_from_ntes(code,type=:year)
   if (type == :year)

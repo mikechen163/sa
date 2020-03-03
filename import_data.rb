@@ -575,6 +575,7 @@ if ARGV.length != 0
 
       
       fn = 1
+      fnm = 1
       
        File.open('name.txt') do |file|
             file.each_line do |line|
@@ -609,7 +610,7 @@ if ARGV.length != 0
 
           #next if name == nil
 
-          puts "#{code} #{name} total #{arr.size} records"
+          puts "#{code} #{name} total #{arr.size} weekly records"
 
           week = 1 
           ts_list = []
@@ -621,6 +622,38 @@ if ARGV.length != 0
             week += 1 
           end
           insert_data('weekly_records',ts_list) if ts_list.length!=0
+
+           # now for month
+           begin
+            arr = get_history_data_from_ths(code,'month')
+          rescue
+            begin
+              arr = get_history_data_from_ths(code,'month')
+            rescue
+              begin
+                arr = get_history_data_from_ths(code,'month')
+              rescue
+                next
+              end
+            end
+          end
+
+
+          #next if name == nil
+
+          puts "#{code} #{name} total #{arr.size} month records"
+
+          month = 1 
+          ts_list = []
+          arr.each do |h|
+            ts = "#{fnm},\'#{code.to_s}\',date(\'#{trans_date(h[:date])}\'),#{month},#{h[:open]},#{h[:high]},#{h[:low]},#{h[:close]},#{h[:volume]},0,0,0,0,0,0,0,0"
+            
+            ts_list.push(ts)
+            
+            fnm += 1
+            month += 1 
+          end
+          insert_data('monthly_records',ts_list) if ts_list.length!=0
 
         end #line
       end # file
@@ -1068,6 +1101,12 @@ if ARGV.length != 0
    if ele == '-stc'   
      fname = ARGV[ARGV.index(ele)+1]
      check_track_list(fname)
+     exit
+    end 
+
+    if ele == '-ctl'   
+     #fname = ARGV[ARGV.index(ele)+1]
+     check_stock_list
      exit
     end 
 

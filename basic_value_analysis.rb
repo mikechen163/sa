@@ -252,7 +252,11 @@ def evalate_equity(code,years=10)
   pe = ((total_mv*10000/frvn)*100).to_i/100.0
   pb = ((total_mv*10000/fas)*100).to_i/100.0
   real_roe = (ave_roe/pb*100).to_i/100.0
-  ten_year_roe = ((((1+real_roe/100)**10)-1)*10000).to_i/100.0
+  #ten_year_roe = ((((1+real_roe/100)**10)-1)*10000).to_i/100.0
+  #total_ten_year_roe = (ten_year_roe/100)*pe 
+
+  revenue_inc_real = calc_fh_inc_real(years,rvn_list[years].split(',').inject(:+).to_f,rvn_list[1].split(',').inject(:+).to_f)
+  ten_year_roe = (calc_future_roe(10,revenue_inc_real,0.1)*10000).to_i/100.0
   total_ten_year_roe = (ten_year_roe/100)*pe 
 
   h = Hash.new
@@ -278,6 +282,10 @@ def evalate_equity(code,years=10)
   puts "过去#{years}年收入复合增长率  =#{income_inc_ratio}% #{income_inc_list.to_s}"
   puts "过去#{years}年利润复合增长率  =#{revenue_inc_ratio}% #{revenue_inc_list.to_s}"
   puts "过去#{years}净资产复合增长率=#{net_asset_inc_ratio}% #{net_asset_inc_list.to_s}"
+
+  #revenue_inc_real = calc_fh_inc_real(years,rvn_list[years].split(',').inject(:+).to_f,rvn_list[1].split(',').inject(:+).to_f)
+  #h[:ten_year_roe] = calc_future_roe(10,revenue_inc_real,0.1)
+  puts  "pe = #{pe}, 十年后预期回报率 = #{h[:ten_year_roe]}%,  [利润/pe] = #{((h[:ten_year_roe]/pe).*100).to_i/100.0}  "
 
 
   today = Time.now.to_date 
