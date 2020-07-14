@@ -719,6 +719,11 @@ def find_by_ma(day1,day2,sort_method,etf_flag=false)
             when :sort_by_drop_level
                old_price = rec['new_high']
                ratio = ((price - old_price)/old_price*100)
+             when :sort_by_days_passed
+               old_day = rec['new_high_date']
+               ratio = (day1 - old_day)
+               puts "offset = #{ratio} #{day1} #{price} #{rec['new_high_date']} #{rec['new_high']}"
+
              when :sort_by_vol_ratio
                old_vol = r2['volume']
                vol = rec['volume']
@@ -1058,7 +1063,13 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
 
       sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| ((rec['close']-old_rec['open'])/old_rec['open']>0.08) and ((old_rec['close']-old_rec['open'])/old_rec['open']>=0.1)    }
 
-
+    when 150# 周K线 ma20 上升趋势， diff 小于 dea， 本周收阳线，macd大于上周的macd，并且为负值，按照 diff小于dea的时间长度排序，时间越长，越排在前面 2020-07-14
+    sa=find_by_ma(last,d2,:sort_by_days_passed) {|rec,old_rec| \
+        #  (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
+     # (rec['diff'] - rec['dea'] < 0.0)   \
+       (rec['close'] - rec['open'] > 0.0) 
+       #and (rec['macd'] - old_rec['macd'] > 0.0) \
+      }
 
       #list all stocks
        when 100
