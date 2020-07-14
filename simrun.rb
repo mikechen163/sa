@@ -721,8 +721,9 @@ def find_by_ma(day1,day2,sort_method,etf_flag=false)
                ratio = ((price - old_price)/old_price*100)
              when :sort_by_days_passed
                old_day = rec['new_high_date']
-               ratio = (day1 - old_day)
-               puts "offset = #{ratio} #{day1} #{price} #{rec['new_high_date']} #{rec['new_high']}"
+               ratio = (day1 - old_day).to_i
+
+               #puts "offset = #{ratio} #{day1.to_s} #{price} #{rec['new_high_date']} #{rec['new_high']}"
 
              when :sort_by_vol_ratio
                old_vol = r2['volume']
@@ -798,7 +799,7 @@ def add_condition1(rec,market_state_list)
 
 end
 
-def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_diff=30,sortby_mv=0)
+def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_diff=30,sortby_mv=0,sort_order=0)
 
      date_list = Weekly_records.new.get_date_list
      len = date_list.length
@@ -1065,11 +1066,13 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
 
     when 150# 周K线 ma20 上升趋势， diff 小于 dea， 本周收阳线，macd大于上周的macd，并且为负值，按照 diff小于dea的时间长度排序，时间越长，越排在前面 2020-07-14
     sa=find_by_ma(last,d2,:sort_by_days_passed) {|rec,old_rec| \
-        #  (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
-     # (rec['diff'] - rec['dea'] < 0.0)   \
-       (rec['close'] - rec['open'] > 0.0) 
-       #and (rec['macd'] - old_rec['macd'] > 0.0) \
+          (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
+      and (rec['diff'] - rec['dea'] < 0.0)   \
+      and (rec['close'] - rec['open'] > 0.0) \
+       and (rec['macd'] - old_rec['macd'] > 0.0) \
       }
+
+      sort_order = 1
 
       #list all stocks
        when 100
@@ -1094,7 +1097,12 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
     #p sa.length
      
      if (sortby_mv == 0)
-      sa.sort_by!{|h| h[:ratio]}
+      if sort_order == 0
+        sa.sort_by!{|h| h[:ratio]}
+      else
+        sa.sort_by!{|h| h[:ratio]}.reverse!
+      end
+      
       else
         if (sortby_mv == 1)
           sa.sort_by!{|h| h[:total_free_mv]}
