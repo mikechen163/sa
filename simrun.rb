@@ -1071,8 +1071,8 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
       and (rec['diff'] - rec['dea'] < 0.0)   \
       and (rec['close'] - rec['open'] > 0.0) \
        and (rec['macd'] - old_rec['macd'] > 0.0) \
-       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15)   \  #周涨幅大于15%的不要
-      }
+       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15)
+     }
 
       sort_order = 1
 
@@ -1082,8 +1082,8 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
       and (rec['close'] - rec['ma60'] > 0.0)   \
        and (rec['macd']  > 0.0) \
        and (old_rec['macd']  < 0.0) \
-       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15)   \  #周涨幅大于15%的不要
-      }
+       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15)
+     }
 
       sort_order = 1
 
@@ -1093,8 +1093,8 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
       and (rec['close'] - rec['ma60'] > 0.0)   \
        and (rec['macd']  > 0.0) \
        and (old_rec['macd']  < 0.0) \
-       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15)   \  #周涨幅大于15%的不要
-      }
+       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15)
+     }
 
       sort_order = 1
 
@@ -1103,8 +1103,8 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
        sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| \
           (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
       and (rec['close'] - rec['ma60'] > 0.0)   \
-      and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15)   \  #周涨幅大于15%的不要
-       and (rec['macd']  > 0.0) \
+      and ((rec['close'] - old_rec['close'])/old_rec['close'] < 1.15) \
+      and (rec['macd']  > 0.0) \
        and (old_rec['macd']  < 0.0) \
       }
 
