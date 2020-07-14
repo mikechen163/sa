@@ -1064,14 +1064,26 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
 
       sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| ((rec['close']-old_rec['open'])/old_rec['open']>0.08) and ((old_rec['close']-old_rec['open'])/old_rec['open']>=0.1)    }
 
-    when 150# 周K线 ma20 上升趋势， diff 小于 dea， 本周收阳线，macd大于上周的macd，并且为负值，按照 diff小于dea的时间长度排序，时间越长，越排在前面 2020-07-14
+    when 149# 周K线 ma20 上升趋势， diff 小于 dea， 本周收阳线，macd大于上周的macd，并且为负值，按照 diff小于dea的时间长度排序，时间越长，越排在前面 2020-07-14
+    sa=find_by_ma(last,d2,:sort_by_ma20) {|rec,old_rec| \
+          (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
+      and (rec['close'] - rec['ma60'] > 0.0)   \
+      and (rec['diff'] - rec['dea'] < 0.0)   \
+      and (rec['close'] - rec['open'] > 0.0) \
+       and (rec['macd'] - old_rec['macd'] > 0.0) \
+    #   and ((rec['close'] - old_rec['close'])/old_rec['close'] < 0.15)
+     }
+
+      sort_order = 1
+
+       when 150# 周K线 ma20 上升趋势， diff 小于 dea， 本周收阳线，macd大于上周的macd，并且为负值，按照 diff小于dea的时间长度排序，时间越长，越排在前面 2020-07-14
     sa=find_by_ma(last,d2,:sort_by_days_passed) {|rec,old_rec| \
           (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
       and (rec['close'] - rec['ma60'] > 0.0)   \
       and (rec['diff'] - rec['dea'] < 0.0)   \
       and (rec['close'] - rec['open'] > 0.0) \
        and (rec['macd'] - old_rec['macd'] > 0.0) \
-       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 0.15)
+    #   and ((rec['close'] - old_rec['close'])/old_rec['close'] < 0.15)
      }
 
       sort_order = 1
@@ -1082,7 +1094,7 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
       and (rec['close'] - rec['ma60'] > 0.0)   \
        and (rec['macd']  > 0.0) \
        and (old_rec['macd']  < 0.0) \
-       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 0.15)
+    #   and ((rec['close'] - old_rec['close'])/old_rec['close'] < 0.15)
      }
 
       sort_order = 1
@@ -1093,7 +1105,7 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
       and (rec['close'] - rec['ma60'] > 0.0)   \
        and (rec['macd']  > 0.0) \
        and (old_rec['macd']  < 0.0) \
-       and ((rec['close'] - old_rec['close'])/old_rec['close'] < 0.15)
+      # and ((rec['close'] - old_rec['close'])/old_rec['close'] < 0.15)
      }
 
       sort_order = 1
@@ -1602,7 +1614,7 @@ end
 def mode_compare(weeks=1)
   #sa=[]
   stock_num_list=[10,5,30,100,500]
-  mode_list = [150,151,152,153,37,46,57]
+  mode_list = [149,150,151,152,153,37,46,57]
   date_list = Weekly_records.new.get_date_list
   len=date_list.length
   zz500_list = Weekly_records.get_list_by_code('399905')
