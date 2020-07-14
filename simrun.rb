@@ -1601,8 +1601,8 @@ end
 
 def mode_compare(weeks=1)
   #sa=[]
-  stock_num_list=[10,5,3,1,2,15,20,30]
-  mode_list = [45,46,47,57,58,37]
+  stock_num_list=[10,5,30,100,500]
+  mode_list = [150,151,152,153,37,46,57]
   date_list = Weekly_records.new.get_date_list
   len=date_list.length
   zz500_list = Weekly_records.get_list_by_code('399905')
