@@ -1080,7 +1080,7 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
           (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
       and (rec['close'] - rec['ma60'] > 0.0)   \
        and (rec['macd']  > 0.0) \
-       and (rec_old['macd']  < 0.0) \
+       and (old_rec['macd']  < 0.0) \
       }
 
       sort_order = 1
