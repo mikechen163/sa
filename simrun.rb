@@ -1067,9 +1067,20 @@ def find_candidate(mode=1,topN=20,pri_week=0,func_mode=false,days_offset=30,roe_
     when 150# 周K线 ma20 上升趋势， diff 小于 dea， 本周收阳线，macd大于上周的macd，并且为负值，按照 diff小于dea的时间长度排序，时间越长，越排在前面 2020-07-14
     sa=find_by_ma(last,d2,:sort_by_days_passed) {|rec,old_rec| \
           (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
+      and (rec['close'] - rec['ma60'] > 0.0)   \
       and (rec['diff'] - rec['dea'] < 0.0)   \
       and (rec['close'] - rec['open'] > 0.0) \
        and (rec['macd'] - old_rec['macd'] > 0.0) \
+      }
+
+      sort_order = 1
+
+       when 151# 周K线 ma20 上升趋势，，按照 diff小于dea的时间长度排序，时间越长，越排在前面 2020-07-14
+    sa=find_by_ma(last,d2,:sort_by_days_passed) {|rec,old_rec| \
+          (rec['ma20'] - rec['ma20_3m_before'] > 0.0) \
+      and (rec['close'] - rec['ma60'] > 0.0)   \
+       and (rec['macd']  > 0.0) \
+       and (rec_old['macd']  < 0.0) \
       }
 
       sort_order = 1
